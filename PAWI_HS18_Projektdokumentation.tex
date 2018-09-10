@@ -1,4 +1,7 @@
 \documentclass[a4paper]{scrreprt}
+
+%%% PACKAGES %%%
+
 % add unicode support and use german as language
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
@@ -8,6 +11,13 @@
 \usepackage[T1]{fontenc}
 % Better tables
 \usepackage{tabularx}
+% Better enumerisation env
+\usepackage{enumitem}
+
+%%% COMMAND REBINDINGS %%%
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+%%% TITLEPAGE %%%
 
 \title{Projektdokumentation}
 \subtitle{PAWI HS18}
