@@ -5,19 +5,50 @@
 % add unicode support and use german as language
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+
 % Use Helvetica as font
 \usepackage[scaled]{helvet}
 \renewcommand\familydefault{\sfdefault}
 \usepackage[T1]{fontenc}
+
 % Better tables
 \usepackage{tabularx}
+
 % Better enumerisation env
 \usepackage{enumitem}
+
 % Use graphics
 \usepackage{graphicx}
 
+% Have custom abstract heading
+\usepackage{abstract}
+
+% Need a list of equation
+\usepackage{tocloft}
+\usepackage{ragged2e}
+
+% Better equation environment
+\usepackage{amsmath}
+
+% Symbols for most SI units
+\usepackage{siunitx}
+
 %%% COMMAND REBINDINGS %%%
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+% Define list of equations - Thanks to Charles Clayton: https://tex.stackexchange.com/a/354096
+\newcommand{\listequationsname}{\huge{Formelverzeichnis}}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{
+	\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}
+}
+\setlength{\cftmyequationsnumwidth}{2.3em}
+\setlength{\cftmyequationsindent}{1.5em}
+
+% Usage {equation}{caption}{label}
+\newcommand{\indexequation}[3]{
+	\begin{align} \label{#3} \ensuremath{\boxed{#1}} \end{align}
+	\myequations{#3} \centering \small \textit{#2} \normalsize \justify }
 
 %%% PATH DEFINITIONS %%%
 % Define the path were images are found
@@ -31,11 +62,18 @@
 \publishers{Richard Wetzel}
 \date{\today}
 
+%%% DOCUMENT %%%
+
 \begin{document}
 
 \begin{titlepage}
 \maketitle
 \end{titlepage}
+
+\renewcommand{\abstractname}{Management Summary}
+\begin{abstract}
+	Hier könnte ihr Management Summary stehen.
+\end{abstract}
 
 \section*{Versionskontrolle}
 
@@ -51,11 +89,38 @@
 
 \chapter{Einführung}
 
-\chapter{Problemstellung}
+\chapter{Problemstellung und Vision}
 
-\chapter{Literatur}
+\chapter{Stand der Forschung}
 
-\chapter{Vorgehensweise}
+\chapter{Ideen und Konzepte}
+
+\chapter{Methode}
+
+\section{Vorgehensmodell}
+% Beschreibung der agilen Projektmethode
+
+\section{Anforderungsanalyse}
+
+\section{Systemarchitektur}
+
+\section{Komponentendesign}
+
+\section{Umsetzung Programmierung}
+
+\section{Testing}
+
+\subsection{Testplan}
+
+\subsection{Testfälle}
+
+\chapter{Realisierung}
+
+Die Distanz zwischen zwei Geopositionen wird über die Bogenlänge (siehe \ref{Bogenlaenge}) der Differenz der Längen- und Breitengrade ausgerechnet.
+
+\indexequation{b = \frac{\pi}{\SI{180}{\degree}}\beta r}{Bogenlänge des Winkels $\beta$ mit Radius $r$}{Bogenlaenge}
+
+\section{Einschränkungen und Abgrenzungen}
 
 \section{Projektmanagementplan}
 
@@ -92,9 +157,6 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 	\caption{Überblick der Sprints}
 \end{figure}
 
-
-\chapter{Realisierung}
-
 \section{Systemspezifikation}
 
 \subsection{Systemübersicht}
@@ -107,15 +169,35 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 
 \subsection{Anwendung}
 
-\subsection{Testplan}
+\chapter{Evaluation und Validation}
 
-\subsection{Testfälle}
+\chapter{Ausblick}
 
-\subsection{Testprotokolle}
+\appendix
 
-\chapter{Reflexion}
+\chapter{Testprotokolle}
+
+
+\glossary{Abkürzungsverzeichnis}
+
+\listoffigures
+
+\listoftables
+
+\listofmyequations \pagebreak
 
 \bibliography{Referenzen.bib}
-\appendix
+
+\chapter*{Eidesstattliche Erklärung}
+Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
+
+\vspace{1em}
+
+\renewcommand{\arraystretch}{2}
+\begin{tabularx}{\textwidth}{XXXX}
+	Unterschrift: & & Unterschrift: & \\ \cline{2-2}\cline{4-4}
+	Baumann, Pascal & & Wicki, Dane & \\
+	Datum: & & Ort: & \\
+\end{tabularx}
 
 \end{document}

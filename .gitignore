@@ -242,3 +242,5 @@ TSWLatexianTemp*
 *.spl
 
 PAWI_HS18_Projektdokumentation\.pdf
+
+*.equ
