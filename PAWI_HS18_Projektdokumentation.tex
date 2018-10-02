@@ -103,6 +103,14 @@
 
 \chapter{Stand der Forschung}
 
+Als Augmented Reality (dt. erweiterte Realität) versteht man heutzutage meistens das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, es bietet sich daher an den Fortschritt im Zeitraum dieses Ereignis bis heute im Bezug auf unser Projekt anzuschauen.
+
+Fünf Jahre nach Milgram veröffentlichten \citeauthor{Kato1999} ihre Ergebnisse zu einem Marker-basierten AR Konferenzsystem. Sie lösten dabei das Problem der Registrierung (wo befindet sich der Benutzer, oder besser gesagt dessen Augen), und das Ermitteln der Pose (wie ist die Orientierung der virtuellen Kamera in Bezug zur Umwelt) über Marker mit einer fixen Grösse.\cite{Kato1999} Das System war stationär mit Computern realisiert. In den folgenden Jahren wurden Versuche mit \textquotedblleft mobilen\textquotedblright\ Prototypen durchgeführt, dies blieben jedoch in der Grösse von Rucksäcken und gebrauchten Notebooks mit der entsprechenden Rechenleistung.
+
+Ein grosser Durchbruch wurde deshalb von \citeauthor{Klein2009} erbracht, welche einen PTAM\footnote{Parallel Tracking and Mapping} Algorithmus auf einem iPhone 3G implementierten. Dieser war in der Lage sowohl in Räumen wie ausserhalb von Gebäuden, nach einer Initialisierungsphase die Lokalisierung von einem Marker loszulösen und die Pose der Kamera über \textquotedblleft Key Features\textquotedblright\ zu ermitteln. \cite{Klein2009} Seither wurde auf diesem Gebiet weiter entwickelt und Algorithmen dieser Art sind unter dem Namen SLAM\footnote{Simultaneous Location and Mapping} zusammengefasst, dazu existieren verschiedene Frameworks welche diese nativ mitbringen (Kudan, wikitude).
+
+Auch im Bereich des BIM\footnote{Building Information Modelling} wurde im Zuge der Fortschritte in AR verschieden Lösungen erarbeitet. Neben spezialisierten Fachlösungen wie beispielsweise die DAQRI Smart Glasses (welche für AR und BIM im Industrieumfeld eingesetzt wird), wurde auch im wissenschaftlichen Umfeld interessante Prototypen entwickelt. So beispielsweise das Auto AR\cite{Opperman2015} welche einem Benutzer erlaubt Neu- und geplante Bauten aus einem Auto zu begutachten, oder eine selbstentwickeltes BIM Framework des Frauenhofer Institut in Darmstadt.\cite{Olbrich2013} Dennoch sind die meisten Systeme von spezialisierter Hardware (GPS Sensoren, Serverbackend für Berechnungen) abhängig. Das Ziel unserer Arbeit soll sein BIM mittels einer AR Lösung auf handelsübliche Geräte (Smartphones, Tablets) zu bringen.
+
 \chapter{Ideen und Konzepte}
 
 \chapter{Methode}
@@ -126,6 +134,7 @@
 
 \chapter{Realisierung}
 
+% TODO Ein Beispiel für den Gebrauch von Formeln und Referenz auf die jeweilige Formel - entfernen wenn nicht mehr gebraucht
 Die Distanz zwischen zwei Geopositionen wird über die Bogenlänge (siehe \ref{Bogenlaenge}) der Differenz der Längen- und Breitengrade ausgerechnet.
 
 \indexequation{b = \frac{\pi}{\SI{180}{\degree}}\beta r}{Bogenlänge des Winkels $\beta$ mit Radius $r$}{Bogenlaenge}
