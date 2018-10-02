@@ -8,4 +8,5 @@ addons:
           - texlive-full
 script:
   - pdflatex -interaction=nonstopmode -halt-on-error *.tex
+  - biber *.bcf
   - pdflatex -interaction=nonstopmode -halt-on-error *.tex

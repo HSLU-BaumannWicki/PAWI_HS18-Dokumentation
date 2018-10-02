@@ -33,6 +33,16 @@
 % Symbols for most SI units
 \usepackage{siunitx}
 
+% Bibliography & citing
+\usepackage[
+	backend=biber,
+	style=apa,
+	bibstyle=numeric,
+	citestyle=numeric,
+	sortlocale=de_DE
+	]{biblatex}
+\addbibresource{Referenzen.bib}
+
 %%% COMMAND REBINDINGS %%%
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
@@ -186,7 +196,7 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 
 \listofmyequations \pagebreak
 
-\bibliography{Referenzen.bib}
+\printbibliography
 
 \chapter*{Eidesstattliche Erklärung}
 Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
