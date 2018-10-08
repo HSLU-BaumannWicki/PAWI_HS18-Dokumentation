@@ -13,6 +13,6 @@ script:
   - pdflatex -interaction=nonstopmode -halt-on-error *.tex
 deploy:
   provider: releases
-  api_key: $GIT_OATH
+  api_key: $GIT_AUTH
   file: "PAWI_HS18_Projektdokumentation.pdf"
   skip_cleanup: true
