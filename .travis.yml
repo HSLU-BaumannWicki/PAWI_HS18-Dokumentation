@@ -16,3 +16,5 @@ deploy:
   api_key: $GIT_AUTH
   file: "PAWI_HS18_Projektdokumentation.pdf"
   skip_cleanup: true
+  tags:
+    true
