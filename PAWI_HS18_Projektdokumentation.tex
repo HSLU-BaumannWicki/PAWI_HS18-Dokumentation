@@ -33,6 +33,8 @@
 % Symbols for most SI units
 \usepackage{siunitx}
 
+\usepackage{csquotes}
+
 % Bibliography & citing
 \usepackage[
 	backend=biber,
@@ -42,6 +44,7 @@
 	sortlocale=de_DE
 	]{biblatex}
 \addbibresource{Referenzen.bib}
+\DeclareLanguageMapping{ngerman}{ngerman-apa}
 
 %%% COMMAND REBINDINGS %%%
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
