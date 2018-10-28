@@ -157,7 +157,65 @@ Die Distanz zwischen zwei Geopositionen wird über die Bogenlänge (siehe \ref{B
 
 \indexequation{b = \frac{\pi}{\SI{180}{\degree}}\beta r}{Bogenlänge des Winkels $\beta$ mit Radius $r$}{Bogenlaenge}
 
+\subsection{Evaluation}
+Im Rahmen dieses Projektes mussten verschiedene Unbekannte zuerst analysiert und evaluiert werden. Dazu ghörten die Zielplatform, Entwicklungsumgebung und die zu verwenden Augmented Reality Frameworks.
+\subsubsection{Zielplattform}
+Als Zielplatform standen gemäs Projektbeschrieb folgende zur Auswahl:
+\begin{itemize}
+\item Microsoft Hololens
+\item Smartphone und Tablets
+\end{itemize}
+Für alle dieser Platformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
+
+
+
+Die Hololens zeigte grosse Schwächen beim Gebrauch im Freien, da der Bildschirm in der Hololens für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der Hololens Localisierungs Sensoren. In enem Blindtest mit Probanden welche die Hololens noch nicht trugen, zeigte sich, dass deren bedienung nicht intuitiv ist.
+Das Positive an der Hololens ist die Nahtlose integration der Augmented Reality Modelle in die Umgebung des Betrachters.
+
+
+??Zudem stellt sich bei der Entwicklung einer Software auf dieser Platform noch das Problem, dass für unser Projekt nur eine Hololens zur verfügung steht, was unweigerlich dazu führt, dass die Entwicklung an ein Ort gebunden ist.??
+ 
+ 
+ 
+Die Smartphones Zeigen eine Grosse Stärke in der Verbreitung. Dies führt zu einer hohen vertrautheit des Benutzers mit dem Device. Zudem sind die Heutigen Smartphones auch hell genug um das Display bei normalen Tageslicht zu sehen.
+Nachteile zeigen sich schliesslich in der Haltung des Gerätes, da für die einbindung der Augmented Reality modelle das Smartphone ständig in den Händen gehalten werden muss. 
+
+Dank der Höheren verbreitung und der damit entstehenden höheren flexibilität beim entwickeln, viel die Entscheidung auf eine Smartphone lösung. Bedingt durch das vorhandene Knowlege im Team wurde dabei die Platform Android als Primäre Zielplatform selektiert.
+\subsubsection{Entwicklungsumgebung}
+Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsumgebungen zur verfügung. Dabei wurden folgende 2 Entwicklungsumgebungen Evauliert:
+\begin{itemize}
+\item Unity
+\item AndroidStudio
+\end{itemize}
+
+Beide Platformen weissen Stärken und Schwächen auf. Um beide Entwicklungsumgebungen richtig zu Evaluieren wurden auf beiden kleine Prototypen getestet. Dabei entstand die folgende Auffassung.
+
+Bei Unity ist das Erstellen einer ersten Lauffähigen Version sehr einfach. Ein weiterere Vorteil ist die Graphische darstellung der 3D modelle. Zudem würde eine Allfällige Portierung auf eine Andere Platform sehr einfach möglich sein. Bei der Entwicklung stellte sich jedoch heraus, dass Unity seine Schwächen mit den Sensoren von Android aufweisst. So wurden Localisation Sensor Daten nicht korrekt bis gar nicht Übermittelt. Zudem fehlte eine Zureichende Debug möglichkeit.
+
+Bei Android Studio zeigte sich seine Stärke in den Debug möglichkeit und der Ausgezeichneten API Dokumentation. So funktionierten alle Sensoren beim ersten versuch. Die Schwächen dieser Entwicklungumgebung liegt darin, dass eine allfällige Portierung auf ein Anderes Device nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht Dargestellt und müssen mit einer anderen Software Manipuliert werden.
+
+Die unzureichende Debugmöglichkeiten sowie die problemen mit den Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
+
+\subsubsection{Augmented Reality Frameworks}
+Was wird Evaluirt?
+In unsere recherche stellte sich heraus, dass es insgesammt 3 Gängige AR Frameworks gibt, welche unseren Anforderungen entsprechen.
+Dazu zählen Kudan, Wikitude und Vuforia.
+Vuforia weist die Stärke im Markerbased tracking auf, kann jedoch nicht mit SLAM punkten. Deshalb viel die ängere wahl auf Wikitude und Kudan. Da das interne Knowhow von Kuden schon etwas auf dem besseren Stand war, entschieden wir uns schliesslich Kudan als unser Framework zu verwenden.
+
+
+Beschreiben wieso wir uns auf die Androidplattform beschränkt haben, dabei darf auch auf die Evaluation eingeganen werden
+
+
+\subsection{Evaluation Entwicklungsumgebung}
+
 \section{Einschränkungen und Abgrenzungen}
+Wir haben uns selber von Crossplatform auf native android entwicklung eingeschränkt. Dies wie aus der Evaluation ersichtlich ist.
+Weiter haben wir eine Android abwärtskompatibilität auf version 6.0 begränzt dies entspricht ca. 80\% aller Android besitzer. Der vorteil ist, dass wir neuere features wie das Abfragen der Permissions nicht weiter abwärtskompatibel gestallten müssen.
+Zudem muss das Android Gerät folgende Systemanforderungen aufweisen:
+	GyroSensor
+	Location Sensor (GPS, GLOSNASS, GALILEO, BEIDU usw.)
+	PPCompass??
+
 
 \section{Projektmanagementplan}
 
@@ -207,6 +265,9 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 \subsection{Anwendung}
 
 \chapter{Evaluation und Validation}
+
+
+
 
 \chapter{Ausblick}
 
