@@ -109,7 +109,7 @@
 \section{Technologische Grundlagen}
 
 \subsection{Historische Entwicklung}
-Als Augmented Reality (dt. erweiterte Realität) versteht man heutzutage meistens das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und worin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
+Als Augmented Reality (dt. erweiterte Realität) versteht man heutzutage meistens das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
 
 \vspace{1em}
 
@@ -132,11 +132,18 @@ Ein wichtiges Problem, das jede AR Appplikation lösen muss, ist die Registratio
 
 Optische (d.h. Analyse der Kameradaten) Methoden werden von den gängigen Frameworks von Grund auf unterstützt. Zu diesen optischen Methoden gehören auch Marker. Ein Marker ist in den besten Fällen ein selbst unter Rotation und Scherung verformtes, eindeutig identifizierbares Muster, kann aber im Prinzip jegliches Bild sein. Ein guter Marker hat vorzugsweise einen hohen Kontrast im Grauspektrum, und grosse, komplexe Elemente ohne feine Details (welche auf Distanz verschwimmen oder verloren gehen) \cite{Kudan2016}.
 
-Die eigentliche Erkennung der Marker geschieht mit Algorithmen der Computer Vision (Kantenerkennung, Eckenerkennung), worauf ein erkannter Marker mit einer Datenbank von bekannten abgeglichen wird. Damit kann über einen einzelnen Marker sowohl Positionierung wie auch Lokalisation geschehen.
+Die eigentliche Erkennung der Marker geschieht mit Algorithmen der Computer Vision (Kantenerkennung, Eckenerkennung), worauf ein erkannter Marker mit einer Datenbank von bekannten abgeglichen wird. Danach kann über jenen einzelnen Marker sowohl Positionierung wie auch Lokalisation geschehen.
 
 \subsubsection{SLAM}
+Tracking-Methoden welche auf Marker basieren sind darauf angewiesen, dass jener zu jeder Zeit im Bild bleibt. Ansonsten verliert die Applikation dessen Registrierung. Eine andere Möglichkeit ist, ebenfalls mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt) zu identifizieren (Location) und deren Abhängigkeiten zueinander in einer Karte zusammenfassen (Mapping). Sollte nun die Pose verloren werden (durch einen Unterbruch des Kamerastreams oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden um die Position zu bestimmen.
 
 \section{Anwendungen}
+
+% TODO Industrie AR
+
+% TODO Games
+
+% TODO BIM
 
 Auch im Bereich des BIM (Building Information Modelling) wurde im Zuge der Fortschritte in AR verschieden Lösungen erarbeitet. Neben spezialisierten Fachlösungen wie beispielsweise die DAQRI Smart Glasses (welche für AR und BIM im Industrieumfeld eingesetzt werden) \parencite{DAQRI2018}, wurde auch im wissenschaftlichen Umfeld interessante Prototypen entwickelt. So beispielsweise das Auto AR \parencite{Opperman2015} welche einem Benutzer erlaubt Neu- und geplante Bauten aus einem Auto zu begutachten, oder eine selbstentwickeltes BIM Framework des Frauenhofer Institut in Darmstadt \parencite{Olbrich2013}. Dennoch sind die Systeme von spezialisierter Hardware (GPS Sensoren, Serverbackend für Berechnungen) abhängig. Das Ziel unserer Arbeit soll sein BIM mittels einer AR Lösung auf handelsübliche Geräte (Smartphones, Tablets) zu bringen.
 
