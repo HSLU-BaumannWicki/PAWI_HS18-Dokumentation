@@ -257,6 +257,7 @@ Es wurde dennoch darauf geachtet, dass beide Mitglieder klare Verantwortungen ü
 	\hline
 \end{tabularx}
 
+\newpage
 \subsection{Projektführung}
 
 \subsection{Rahmenplan}
@@ -265,9 +266,129 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 
 \vspace{1em}
 
-\begin{figure}
+\begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{Rahmenplan}
 	\caption{Überblick der Sprints}
+\end{figure}
+
+\subsection{Tools}
+\label{sec:Tools}
+\begin{table}[h!]
+	\begin{tabular}{|p{0.4\textwidth}|p{0.6\textwidth}|}
+		\hline
+		\textbf{Aufgabe} & \textbf{Hilfsmittel} \\
+		\hline
+		Dokumente und Dokumentation & TeX / GitHub \\
+		\hline
+		Versionierung Dokumentation & git / GitHub\\
+		\hline
+		Dokumentation Code & JavaDoc \\
+		\hline
+		Git Clients & GitKraken, git Terminal\\
+		\hline
+		Quellen & Mendeley \\
+		\hline
+		Dateiablage für Teamaustausch & OneDrive \\
+		\hline
+		Rahmenplan & MS Excel 2016 \\
+		\hline
+		Kommunikation Team & WhatsApp\\
+		\hline
+		Aufgabenverwaltung & Trello, Rahmenplan\\
+		\hline
+		Entwicklungsumgebung Arduino & Arduino Studio\\
+		\hline
+	\end{tabular}
+	\caption{Gebrauchte Software Hilfsmittel}
+	\label{tab:SWTools}
+\end{table}
+
+\subsection{Risikomanagement}
+
+Es werden mögliche Risiken welche während dem Projekt auftreten können aufgezählt. Diese werden auf Eintrittswahrscheinlichkeit und Schadensmass eingeschätzt, danach wird entschieden, welche Massnahmen getroffen werden können, und was deren Auswirkungen sind.
+
+\subsubsection{Definitionen}
+\label{sssec:Def}
+\vspace{1em}
+\noindent
+Eintrittswahrscheinlichkeit:
+
+\vspace{1em}
+\noindent
+\begin{tabular}{|p{0.06\textwidth}|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\hline
+	\textbf{Stufe} & \textbf{Bezeichnung} & \textbf{Beschreibung} \\
+	\hline
+	1 & unvorstellbar & Möglich aber eher unwahrscheinlich. Tritt nie oder einmal in 14 Wochen auf \\
+	\hline
+	2 & unwahrscheinlich & Kann in 14 Wochen 1-5 Mal eintreten\\
+	\hline
+	3 & vorstellbar & Kann in 14 Wochen 6-8 Mal eintreten \\
+	\hline
+	4 & wahrscheinlich & Kann in 14 Wochen bis zu 10 Mal eintreten \\
+	\hline
+	5 & häufig & Kann in 14 Wochen 14 Mal eintreten\\
+	\hline
+\end{tabular}
+
+\vspace{1em}
+\noindent
+Schadensausmass:
+
+\vspace{1em}
+\noindent
+\begin{tabular}{|p{0.06\textwidth}|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\hline
+	\textbf{Stufe} & \textbf{Bezeichnung} & \textbf{Beschreibung} \\
+	\hline
+	1 & unwesentlich & Die Aufgabenerfüllung wird höchstens geringfügig beeinträchtigt finanzieller Schaden ist im Rahmen des Projekts nicht beeinflussend. Personenschäden treten nicht auf \\
+	\hline
+	2 & geringfügig & Wahrnehmbare Gefährdung / Einfluss auf das Projekt. Personenschäden treten nicht auf \\
+	\hline
+	3 & mittelmässig & Wahrnehmbare Gefährdung / Einfluss auf das Projekt.Finanzieller Schaden strapaziert das Projektbudget
+	Personenschäden treten nicht auf \\
+	\hline
+	4 & kritisch & Starke Gefährdung des Projekts. Finanzieller Schaden übersteigt das Projektbudget massiv. Personenschäden treten geringfügig auf \\
+	\hline
+	5 & katastrophal & Projektabbruch zur Folge. Finanzieller Schaden kann zum Projektstopp führen. Verletzung der Persönlichkeitsrechte
+	\\
+	\hline
+\end{tabular}
+
+\subsubsection{Risikokatalog}
+\label{sssec:Risikokatalog}
+Legende:
+\begin{itemize}
+	\item \textbf{S}chadensausmass bei Eintreffen des Risikos
+	\item \textbf{W}ahrscheinlichkeit das Risiko eintrifft
+	\item \textbf{K}ategorie: \textbf{T}echnisches oder \textbf{P}rojektbezogenes Risiko
+	\item \textbf{A}uswirkung auf das Projekt. Produkt aus S und W
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\begin{tabular}{|p{0.03\textwidth}|p{0.75\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}||p{0.03\textwidth}|}
+	\hline
+	\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
+	\hline
+	1 & Datenverlust & P & 5 & 1 & 5\\
+	\hline
+	2 & Fehlkommunikation im Team & P & 3 & 2 & 6 \\
+	\hline
+	3 & Teammitglied fällt aus & P & 3 & 2 & 6 \\
+	\hline
+	4 & Verzug bei Erstellung von Dokumenten & P & 3 & 2 & 6 \\
+	\hline
+	5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 2 & 10 \\
+	\hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio, width=0.8\textwidth]{Risikomatrix}
+	\caption{Auswirkungen der Risiken}
 \end{figure}
 
 \section{Systemspezifikation}
