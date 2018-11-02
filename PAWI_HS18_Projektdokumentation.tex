@@ -195,12 +195,13 @@ Das Positive an der Hololens ist die Nahtlose integration der Augmented Reality 
  
  
  
-Die Smartphones Zeigen eine Grosse Stärke in der Verbreitung. Dies führt zu einer hohen vertrautheit des Benutzers mit dem Device. Zudem sind die Heutigen Smartphones auch hell genug um das Display bei normalen Tageslicht zu sehen.
+Die Smartphones Zeigen eine Grosse Stärke in der Verbreitung. Dies führt zu einer hohen vertrautheit des Benutzers mit dem Gerät. Zudem sind die Heutigen Smartphones auch hell genug um das Display bei normalen Tageslicht zu sehen.
 Nachteile zeigen sich schliesslich in der Haltung des Gerätes, da für die einbindung der Augmented Reality modelle das Smartphone ständig in den Händen gehalten werden muss. 
 
-Dank der Höheren verbreitung und der damit entstehenden höheren flexibilität beim entwickeln, viel die Entscheidung auf eine Smartphone lösung. Bedingt durch das vorhandene Knowlege im Team wurde dabei die Platform Android als Primäre Zielplatform selektiert.
+Dank der Höheren verbreitung und der damit entstehenden höheren flexibilität beim entwickeln, fiel die Entscheidung auf eine Smartphone lösung. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine Speziellen bedinugngen wie ein MacOS bei iOS entwicklung vorausssetzt und dadurch, dass im Team das Knowlege über Android grösser ist als über iOS.
+
 \subsubsection{Entwicklungsumgebung}
-Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsumgebungen zur verfügung. Dabei wurden folgende 2 Entwicklungsumgebungen Evauliert:
+Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsumgebungen zur Verfügung. Dabei wurden folgende zwei Entwicklungsumgebungen Evauliert:
 \begin{itemize}
 \item Unity
 \item AndroidStudio
@@ -208,21 +209,27 @@ Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsum
 
 Beide Platformen weissen Stärken und Schwächen auf. Um beide Entwicklungsumgebungen richtig zu Evaluieren wurden auf beiden kleine Prototypen getestet. Dabei entstand die folgende Auffassung.
 
-Bei Unity ist das Erstellen einer ersten Lauffähigen Version sehr einfach. Ein weiterere Vorteil ist die Graphische darstellung der 3D modelle. Zudem würde eine Allfällige Portierung auf eine Andere Platform sehr einfach möglich sein. Bei der Entwicklung stellte sich jedoch heraus, dass Unity seine Schwächen mit den Sensoren von Android aufweisst. So wurden Localisation Sensor Daten nicht korrekt bis gar nicht Übermittelt. Zudem fehlte eine Zureichende Debug möglichkeit.
+Bei Unity ist das Erstellen einer ersten Lauffähigen Version sehr einfach. Ein weiterere Vorteil ist die grafische Darstellung der 3D modelle. Zudem würde eine Allfällige Portierung auf eine Andere Platform sehr einfach möglich sein. Bei der Entwicklung stellte sich jedoch heraus, dass Unity seine Schwächen mit den Sensoren von Android aufweisst. So wurden Localisation Sensor Daten nicht korrekt bis gar nicht Übermittelt. Zudem fehlte eine Zureichende Debug möglichkeit.
 
 Bei Android Studio zeigte sich seine Stärke in den Debug möglichkeit und der Ausgezeichneten API Dokumentation. So funktionierten alle Sensoren beim ersten versuch. Die Schwächen dieser Entwicklungumgebung liegt darin, dass eine allfällige Portierung auf ein Anderes Device nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht Dargestellt und müssen mit einer anderen Software Manipuliert werden.
 
-Die unzureichende Debugmöglichkeiten sowie die problemen mit den Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
+Die unzureichende Debugmöglichkeiten sowie die Problemen mit den Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
 
 \subsubsection{Augmented Reality Frameworks}
-Was wird Evaluirt?
-In unsere recherche stellte sich heraus, dass es insgesammt 3 Gängige AR Frameworks gibt, welche unseren Anforderungen entsprechen.
-Dazu zählen Kudan, Wikitude und Vuforia.
-Vuforia weist die Stärke im Markerbased tracking auf, kann jedoch nicht mit SLAM punkten. Deshalb viel die ängere wahl auf Wikitude und Kudan. Da das interne Knowhow von Kuden schon etwas auf dem besseren Stand war, entschieden wir uns schliesslich Kudan als unser Framework zu verwenden.
+Während der Recherchen stellte sich heraus, dass es Unzählige AR Frameworks gibt. Jede davon hat dabei seinen eigene Anwendungsbereiche. Für dieses Projekt wurden schliesslich 4 gängige und gut Dokumentierte Frameworks näher untersucht. Konkret handelt es sich um folgende Frameworks:
+\begin{itemize}
+\item Kudan
+\item Vuforia
+\item Wikitude
+\item ARtoolKit
+\end{itemize}
 
+Vuforia weisst eine sarke Dokumentation und gute Integration in Unity auf. Es mangelt jedoch an einer SLAM implementation.
+Wikitude ist eine umfassende Library, welche wohl alle gängigen AR features miteinbaut. Wikitude läst sich auch sehr leicht in die Applikaiton einbinden. Der Nachteil, sind die hohen kosten, welche für die Lizenzgebühren ausfallen.
+ARtoolKit ist eine Opensource lösung und bietet einiges an. Es fehlen dennoch einige features unter anderem auch eine SLAM implementation. Zudem weisst ARtoolKit die schlächteste Dokumentation auf, sowie eine schwierige einbindung in ein Projekt auf.
+Kudan hat enorme Stärken in deren SLAM implementierung. Auch weist es eine gute Dokumentation auf, sowie eine einfache einbindung in das Projekt. Ein nachteil ist auch hier die Lizenzgebühren, es kann kostenfrei verwendet werden, jedoch nur mit einem Watermark.
 
-Beschreiben wieso wir uns auf die Androidplattform beschränkt haben, dabei darf auch auf die Evaluation eingeganen werden
-
+Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Grund dafür ist die Ausgezeichnete Dokumentation, sowie die gute implementation der SLAM Lösung. Ein weiterer vorteil ist, dass die Applikation auch kostenfrei veröffentlicht werden darf.
 
 \subsection{Evaluation Entwicklungsumgebung}
 
