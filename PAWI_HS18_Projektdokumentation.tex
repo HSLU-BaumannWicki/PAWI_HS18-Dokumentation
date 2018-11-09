@@ -20,6 +20,7 @@
 % Use graphics
 \usepackage{graphicx}
 
+
 % Have custom abstract heading
 \usepackage{abstract}
 
@@ -34,6 +35,8 @@
 \usepackage{siunitx}
 
 \usepackage{csquotes}
+
+\usepackage{hyperref}
 
 % Bibliography & citing
 \usepackage[
@@ -156,6 +159,82 @@ Auch im Bereich des BIM (Building Information Modelling) wurde im Zuge der Forts
 
 \section{Anforderungsanalyse}
 
+
+\section{Systemspezifikation}
+
+\subsection{Systemübersicht}
+
+\subsection{Architektur \& Design}
+Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt. Dabei wurde ein Klassendiagramm gewählt, da es gleich den Kompletten aufbau des Projektest aufzeigt. Sowie Abhängikeiten zu Schnittstellen (in der Grafik interfaces genannt).
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverview.png}
+	\caption{Architekturübersicht als vereinfachtes Klassendiagramm}
+\end{figure}
+
+Eine detailierte Beschreibung der einzelnen Schichten ist in den folgenden Kapiteln zu finden.
+
+\begin{figure}[h!]
+  \center
+  \includegraphics[width=0.35\textwidth]{SchichtenDiagramm.png}
+  \caption{Birds}
+\end{figure}
+
+\subsubsection{AndroidApp}
+Im AndroidApp befindet sich die kompletten graphischen Elemente der Applikation. Dies ist das Interface mit welchem der User arbeitet. Zudem werden hier die Berechtigungsfragen geklärt.
+
+\subsubsection{ModelPosition}
+Im ModelPosition ist die gesammte logik für die Positionierung eines Gebäudes in der virtuellen Kudan Welt enthalten. Es Abstrahiert zudem die Zugriffe auf Kudan selber, so dass diese nicht in der eigentlichen AndroidApp Komponente zu finden sind.
+
+\subsubsection{Server}
+Der Server ist eine über eine Rest Schnittstelle ansprechbare Komponente, welche das Dynamische laden von neuen Gebäuden ermöglicht. Diese ist ausserhalb dieses Projektscopes, wurde der Vollstädnigkeitshalber Dokumentiert und Spezifiziert.
+
+
+
+
+
+
+
+
+\subsection{Schnittstellen}
+\subsubsection{Externe Schnittstellen}
+Es wurden neben der Android Library wurde lediglich KudanAR als externe Schnittstelle verwendet. Die Dokumentation zu dieser Schnittstelle für Android ist unter folgendem Link zu finden:
+\href{https://www.kudan.eu/docs-reference/AndroidDocs/annotated.html}{www.kudan.eu}
+
+
+\subsubsection{Interne Schnittstellen}
+
+Die Building Positioner Schnittstelle ist verantwortlich für die Abstraktion des gesammten Positionierungsprozesses zur Applikation. Es bietet Rudimäntäre Methoden an, welche für das starten sowie stoppen des Prozesses dienen.
+\begin{figure}[h!]
+	\center
+	\includegraphics[scale=0.8]{BuildingPositioner.png}
+	\caption{BuildingPositioner Interface}
+\end{figure}
+\begin{figure}
+	\center
+	\includegraphics[keepaspectratio, width=0.5\textwidth]{BuildingModel.png}
+	\caption{Building Model Interface}
+\end{figure}
+\begin{figure}
+	\center
+	\includegraphics[keepaspectratio, width=0.5\textwidth]{Texturizer.png}
+	\caption{Texturizer Interface}
+\end{figure}
+\begin{figure}
+	\center
+	\includegraphics[keepaspectratio, width=0.5\textwidth]{Rotator.png}
+	\caption{Rotator Interface}
+\end{figure}
+\begin{figure}
+	\center
+	\includegraphics[keepaspectratio, width=0.5\textwidth]{MeanRingBuffer.png}
+	\caption{Mean ring buffer Interface}
+\end{figure}
+
+\subsection{Anforderungen}
+
+\subsection{Anwendung}
+
 \section{Systemarchitektur}
 
 \section{Komponentendesign}
@@ -231,8 +310,6 @@ Kudan hat enorme Stärken in deren SLAM implementierung. Auch weist es eine gute
 
 Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Grund dafür ist die Ausgezeichnete Dokumentation, sowie die gute implementation der SLAM Lösung. Ein weiterer vorteil ist, dass die Applikation auch kostenfrei veröffentlicht werden darf.
 
-\subsection{Evaluation Entwicklungsumgebung}
-
 \section{Einschränkungen und Abgrenzungen}
 Wir haben uns selber von Crossplatform auf native android entwicklung eingeschränkt. Dies wie aus der Evaluation ersichtlich ist.
 Weiter haben wir eine Android abwärtskompatibilität auf version 6.0 begränzt dies entspricht ca. 80\% aller Android besitzer. Der vorteil ist, dass wir neuere features wie das Abfragen der Permissions nicht weiter abwärtskompatibel gestallten müssen.
@@ -241,6 +318,7 @@ Zudem muss das Android Gerät folgende Systemanforderungen aufweisen:
 	Location Sensor (GPS, GLOSNASS, GALILEO, BEIDU usw.)
 	PPCompass??
 
+\section{Aufbereitung Gebäudemodell}
 
 \section{Projektmanagementplan}
 
@@ -397,18 +475,6 @@ Legende:
 	\includegraphics[keepaspectratio, width=0.8\textwidth]{RisikoMatrix}
 	\caption{Auswirkungen der Risiken}
 \end{figure}
-
-\section{Systemspezifikation}
-
-\subsection{Systemübersicht}
-
-\subsection{Architektur \& Design}
-
-\subsection{Schnittstellen}
-
-\subsection{Anforderungen}
-
-\subsection{Anwendung}
 
 \chapter{Evaluation und Validation}
 
