@@ -20,6 +20,7 @@
 % Use graphics
 \usepackage{graphicx}
 
+
 % Have custom abstract heading
 \usepackage{abstract}
 
@@ -182,6 +183,86 @@ Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen i
 
 \section{Anforderungsanalyse}
 
+
+\section{Systemspezifikation}
+
+\subsection{Systemübersicht}
+
+\subsection{Architektur \& Design}
+Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt. Dabei wurde ein Klassendiagramm erstellt, da es gleich den kompletten Aufbau des Projektes aufzeigt, sowie dessen Abhängigkeiten zu Schnittstellen (in der Grafik \textquoteleft Interfaces\textquoteright\ genannt).
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverview.png}
+	\caption{Architekturübersicht als Klassendiagramm}
+\end{figure}
+
+Eine detaillierte Beschreibung der einzelnen Schichten ist in den folgenden Kapiteln zu finden.
+
+\begin{figure}[h!]
+  \center
+  \includegraphics[width=0.35\textwidth]{SchichtenDiagramm.png}
+  \caption{Birds}
+\end{figure}
+
+\subsubsection{AndroidApp}
+In AndroidApp befindet sich die kompletten graphischen Elemente der Applikation. Dies ist das Interface mit welchem der User arbeitet. Zudem werden hier die benötigten Berechtigungen geprüft und wenn nötig vom Benutzer erfragt.
+
+\subsubsection{ModelPosition}
+In ModelPosition ist die gesamte Logik für die Positionierung eines Gebäudes in der virtuellen Kudan Welt enthalten. Es abstrahiert zudem die Zugriffe auf Kudan selber, so dass diese nicht in der eigentlichen AndroidApp Komponente zu finden sind.
+
+\subsubsection{Server}
+Der Server ist eine über eine Rest Schnittstelle ansprechbare Komponente, welche das dynamische Laden von neuen Gebäuden ermöglicht. Diese ist ausserhalb dieses Projektscopes, wurde aus Gründen der Vollständigkeit jedoch dokumentiert und spezifiziert.
+
+\subsection{Schnittstellen}
+\subsubsection{Externe Schnittstellen}
+Neben der Android Bibliothek wurde lediglich KudanAR als externe Schnittstelle verwendet. Die Dokumentation zu dieser Schnittstelle für Android ist unter folgendem Link zu finden:
+\href{https://www.kudan.eu/docs-reference/AndroidDocs/annotated.html}{Dokumentation Kudan - Android}
+
+
+\subsubsection{Interne Schnittstellen}
+
+Die BuildingPositioner Schnittstelle ist verantwortlich für die Abstraktion des gesamten Positionierungsprozesses zur Applikation. Es bietet zudem Methoden an, welche dem Starten und Stoppen des Prozesses dienen.
+\begin{figure}[h!]
+	\center
+	\includegraphics[scale=0.6]{BuildingPositioner.png}
+	\caption{BuildingPositioner Interface}
+\end{figure}
+\clearpage
+Das Building Model Interface ist das Bindeglied zwischen der realen Position des Benutzers und der virtuellen Position in der Applikationswelt. Es ist verantwortlich, dass das Gebäude reale Positionsdaten besitzt und die virtuellen Koordinaten an das Modell in der virtuellen Welt übergibt.
+
+\begin{figure}[h!]
+	\center
+	\includegraphics[scale=0.6]{BuildingModel.png}
+	\caption{Building Model Interface}
+\end{figure}
+
+Der Texturizer ist verantwortlich für die Einfärbung des Modelles.
+\begin{figure}[h!]
+	\center
+	\includegraphics[scale=0.6]{Texturizer.png}
+	\caption{Texturizer Interface}
+\end{figure}
+
+
+Der Rotator verpflichtet sich ein Rotating Object in einem Raum um eine bestimmte Achse zu drehen.
+\begin{figure}[h!]
+	\center
+	\includegraphics[scale=0.6]{Rotator.png}
+	\caption{Rotator Interface}
+\end{figure}
+
+
+Der Mean Ring Buffer ist verantwortlich, dass ein Mittelwert eines Objektes <T> aus den übergebenen Objekten berechnet wird.
+\begin{figure}
+	\center
+	\includegraphics[scale=0.6]{MeanRingBuffer.png}
+	\caption{Mean ring buffer Interface}
+\end{figure}
+
+\subsection{Anforderungen}
+
+\subsection{Anwendung}
+
 \section{Systemarchitektur}
 
 \newpage
@@ -200,6 +281,221 @@ Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen i
 \subsection{Testplan}
 
 \subsection{Testfälle}
+\subsubsection{Testfall 1-Berechtigung erlauben}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-001v1 \\ 
+\hline 
+	Beschreibung & Berechtigungsanfragen \\ 
+\hline 
+	Testvoraussetzung & Die App hat die Berechtigungen noch nicht. \\ 
+\hline 
+	Testschritte &
+		1. App starten \\ &
+		2. Berechtigungen geben \\
+\hline
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App wie gewollt \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 2-Berechtigung verweigern}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-002v1 \\ 
+\hline 
+	Beschreibung & Berechtigungsanfragen verweigern \\ 
+\hline 
+	Testvoraussetzung & Die App hat die Berechtigungen noch nicht. \\ 
+\hline 
+	Testschritte &
+		1. App starten \\ &
+		2. Berechtigungsanfragen sehen und ablehnen \\
+\hline
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen nicht gegeben wurden, bleibt die App in einem Abfangbildschirm, wo die Nachfrage für die Berechtigungen erneut gestartet werden kann. \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 3-Starten von Kudan}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-003v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden ob die Kudan Komponenten starten\\ 
+\hline 
+	Testvoraussetzung &
+	T-001 wurde durchgeführt (Berechtigungen erhalten). \\ 
+\hline 
+	Testschritte &
+		1. App starten \\
+\hline
+	Erwartetes Ergebnis &
+	Es soll der Kamerabildschirm angezeigt werden. \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 4-Darstellung des Gebäudes Ausrichtung Norden}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-004v1 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird.\\ 
+\hline 
+	Testvoraussetzung &
+	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ & 
+		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach norden ausrichten \\ &
+		2. App starten \\ &
+		3. Initialisierung abwarten (ca. 3 Sekunden)\\
+\hline
+	Erwartetes Ergebnis &
+	Das Gebäude wird auf 7Uhr 30 dargestellt. \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 5-Darstellung des Gebäudes Ausrichtung Westen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-005v1 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird wenn es nicht nach norden gerichtet ist. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
+		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Westen ausrichten \\ &
+		2. App starten \\ &
+		3. Initialisierung abwarten (ca. 3 Sek) \\
+\hline
+	Erwartetes Ergebnis &
+	Das Gebäude wird auf 10Uhr 30 dargestellt. \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 6-Darstellung Gebäude mit Bewegung nach rechts}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-006v1 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
+		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Westen ausrichten \\ &
+		2. App starten \\ &
+		3. 3 Sekunden warten \\ &
+		4. App minimieren (Home Button drücken) \\ &
+		5. GPS Mocklocation verändern (auf Position 47.145739885261925,8.436641571608824) \\ &
+		6. App erneut öffnen \\
+\hline
+	Erwartetes Ergebnis &
+	Das Gebäude wandert von 10Uhr 30 auf 12Uhr \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-007v1 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
+		47.142958, 8.430126, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Norden ausrichten \\ &
+		2. App starten \\ &
+		3. 3 Sekunden warten \\ &
+		4. App minimieren (Home Button drücken) \\ &
+		5. GPS Mocklocation verändern (auf Position  47.141427, 8.432621) \\ &
+		6. App erneut öffnen \\
+\hline
+	Erwartetes Ergebnis &
+	Das Gebäude wandert von 15Uhr auf 12Uhr \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-007v1 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
+		47.142958, 8.430126, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Norden ausrichten \\ &
+		2. App starten \\ &
+		3. 3 Sekunden warten \\ &
+4. App minimieren (Home Button drücken) \\ &
+		5. GPS Mocklocation verändern (auf position  47.141427, 8.432621) \\ &
+		6. App erneut öffnen \\
+\hline
+	Erwartetes Ergebnis &
+	Das Gebäude wandert von 15Uhr auf 12Uhr \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 8-Entfernen der Berechtigung zur Laufzeit}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-008v1 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App ist auf dem Smartphone installiert und hat alle nötigen Berechtigungen \\ 
+\hline 
+	Testschritte & 
+		1. App starten \\ &
+		2. App minimieren \\ &
+		3. Berechtigungen der App entfernen \\ &
+		4. App wieder öffnen \\
+\hline
+	Erwartetes Ergebnis &
+	Die App schaltet wieder auf den Berechtigungsbildschirm. \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 9-Smartphone Rotation}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-009v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen \\ 
+\hline 
+	Testschritte & 
+		1. App starten \\ &
+		2. 3 Sekunden warten \\ &
+		3. Rotieren des Smartphones um 90 grad (Portrait auf Landscape) \\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll keine Rotationsanimation beinhalten. Die App soll das Gebäude weiter anzeigen. \\ 
+\hline 
+\end{tabularx}
 
 \chapter{Realisierung}
 
@@ -208,49 +504,45 @@ Die Distanz zwischen zwei Geopositionen wird über die Bogenlänge (siehe \ref{B
 
 \indexequation{b = \frac{\pi}{\SI{180}{\degree}}\beta r}{Bogenlänge des Winkels $\beta$ mit Radius $r$}{Bogenlaenge}
 
-\subsection{Evaluation}
-Im Rahmen dieses Projektes mussten verschiedene Unbekannte zuerst analysiert und evaluiert werden. Dazu ghörten die Zielplatform, Entwicklungsumgebung und die zu verwenden Augmented Reality Frameworks.
+\section{Ermittlung offener Projektrahmenbedingungen}
+\label{sec:evaluation}
+Im Rahmen dieses Projektes mussten verschiedene Unbekannte zuerst analysiert und evaluiert werden. Dazu gehörten die Zielplattform, Entwicklungsumgebung und die zu verwendenden Augmented Reality Frameworks.
 \subsubsection{Zielplattform}
-Als Zielplatform standen gemäs Projektbeschrieb folgende zur Auswahl:
+Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
 \begin{itemize}
 \item Microsoft Hololens
 \item Smartphone und Tablets
 \end{itemize}
-Für alle dieser Platformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
+Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
 
-
-
-Die Hololens zeigte grosse Schwächen beim Gebrauch im Freien, da der Bildschirm in der Hololens für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der Hololens Localisierungs Sensoren. In enem Blindtest mit Probanden welche die Hololens noch nicht trugen, zeigte sich, dass deren bedienung nicht intuitiv ist.
-Das Positive an der Hololens ist die Nahtlose integration der Augmented Reality Modelle in die Umgebung des Betrachters.
-
-
-??Zudem stellt sich bei der Entwicklung einer Software auf dieser Platform noch das Problem, dass für unser Projekt nur eine Hololens zur verfügung steht, was unweigerlich dazu führt, dass die Entwicklung an ein Ort gebunden ist.??
+Die Hololens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der Hololens Lokalisierungssensoren. In einem Blindtest mit Probanden welche die Hololens noch nicht trugen, zeigte sich, dass die Bedienung anfänglich nicht intuitiv ist.
+Das Positive der Hololens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
  
- 
- 
-Die Smartphones Zeigen eine Grosse Stärke in der Verbreitung. Dies führt zu einer hohen vertrautheit des Benutzers mit dem Gerät. Zudem sind die Heutigen Smartphones auch hell genug um das Display bei normalen Tageslicht zu sehen.
-Nachteile zeigen sich schliesslich in der Haltung des Gerätes, da für die einbindung der Augmented Reality modelle das Smartphone ständig in den Händen gehalten werden muss. 
+Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
+Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Augmented Reality Modelle das Smartphone ständig in den Händen gehalten werden muss.
 
-Dank der Höheren verbreitung und der damit entstehenden höheren flexibilität beim entwickeln, fiel die Entscheidung auf eine Smartphone lösung. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine Speziellen bedinugngen wie ein MacOS bei iOS entwicklung vorausssetzt und dadurch, dass im Team das Knowlege über Android grösser ist als über iOS.
+In einer ersten Evaluation mit einer Hololens wurde entschieden, dass für dieses Projekt die Hololens ausgeschlossen werden soll, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
+
+Dank der Höheren Verbreitung und der damit entstehenden höheren Flexibilität beim entwickeln, fiel die Entscheidung auf eine Smartphonelösung. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf den bereits vorhanden Geräten verwendet werden kann. 
 
 \subsubsection{Entwicklungsumgebung}
 \label{ssec:EvalPlattform}
-Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsumgebungen zur Verfügung. Dabei wurden folgende zwei Entwicklungsumgebungen Evauliert:
+Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsumgebungen zur Verfügung. Dabei wurden folgende zwei Entwicklungsumgebungen miteinander verglichen:
 \begin{itemize}
 \item Unity
 \item AndroidStudio
 \end{itemize}
 
-Beide Platformen weissen Stärken und Schwächen auf. Um beide Entwicklungsumgebungen richtig zu Evaluieren wurden auf beiden kleine Prototypen getestet. Dabei entstand die folgende Auffassung.
+Auf beiden Entwicklungsumgebungen wurde ein Prototyp für Android entwickelt. Dabei entstand folgende Auffassung:
 
-Bei Unity ist das Erstellen einer ersten Lauffähigen Version sehr einfach. Ein weiterere Vorteil ist die grafische Darstellung der 3D modelle. Zudem würde eine Allfällige Portierung auf eine Andere Platform sehr einfach möglich sein. Bei der Entwicklung stellte sich jedoch heraus, dass Unity seine Schwächen mit den Sensoren von Android aufweisst. So wurden Localisation Sensor Daten nicht korrekt bis gar nicht Übermittelt. Zudem fehlte eine Zureichende Debug möglichkeit.
+Bei Unity ist das Erstellen einer ersten lauffähigen Version sehr einfach. Ein weiterer Vorteil ist die grafische Darstellung der 3D Modelle. Zudem würde eine allfällige Portierung auf weitere Platformen einfach umsetzbar sein. Bei der Entwicklung stellte sich eine Schwäche mit den GPS Sensoren heraus. So funktionierten diese aus unbekannten Gründen nicht bei jeder Installation der Applikation korrekt. Für die Lösung dieses Problemes fehlte eine ausreichende Debugmöglichkeit in Unity.
 
-Bei Android Studio zeigte sich seine Stärke in den Debug möglichkeit und der Ausgezeichneten API Dokumentation. So funktionierten alle Sensoren beim ersten versuch. Die Schwächen dieser Entwicklungumgebung liegt darin, dass eine allfällige Portierung auf ein Anderes Device nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht Dargestellt und müssen mit einer anderen Software Manipuliert werden.
+Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeichneten API Dokumentation. So funktionierten alle benötigten Sensoren auf Anhieb. Die Schwächen dieser Entwicklungsumgebung liegt darin, dass eine allfällige Portierung auf weitere Plattformen nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht grafisch dargestellt und müssen mit einer anderen Software Editiert werden.
 
-Die unzureichende Debugmöglichkeiten sowie die Problemen mit den Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
+Die unzureichende Debugmöglichkeiten sowie die Problemen mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
 
 \subsubsection{Augmented Reality Frameworks}
-Während der Recherchen stellte sich heraus, dass es Unzählige AR Frameworks gibt. Jede davon hat dabei seinen eigene Anwendungsbereiche. Für dieses Projekt wurden schliesslich 4 gängige und gut Dokumentierte Frameworks näher untersucht. Konkret handelt es sich um folgende Frameworks:
+Während der Recherchen stellte sich heraus, dass es unzählige AR Frameworks gibt. Jede davon hat dabei seinen eigene Anwendungsbereiche. Für dieses Projekt wurden schliesslich 4 gängige und gut dokumentierte Frameworks näher untersucht. Konkret handelte es sich dabei um folgende Frameworks:
 \begin{itemize}
 \item Kudan
 \item Vuforia
@@ -258,14 +550,15 @@ Während der Recherchen stellte sich heraus, dass es Unzählige AR Frameworks gi
 \item ARtoolKit
 \end{itemize}
 
-Vuforia weisst eine sarke Dokumentation und gute Integration in Unity auf. Es mangelt jedoch an einer SLAM implementation.
-Wikitude ist eine umfassende Library, welche wohl alle gängigen AR features miteinbaut. Wikitude läst sich auch sehr leicht in die Applikaiton einbinden. Der Nachteil, sind die hohen kosten, welche für die Lizenzgebühren ausfallen.
-ARtoolKit ist eine Opensource lösung und bietet einiges an. Es fehlen dennoch einige features unter anderem auch eine SLAM implementation. Zudem weisst ARtoolKit die schlächteste Dokumentation auf, sowie eine schwierige einbindung in ein Projekt auf.
-Kudan hat enorme Stärken in deren SLAM implementierung. Auch weist es eine gute Dokumentation auf, sowie eine einfache einbindung in das Projekt. Ein nachteil ist auch hier die Lizenzgebühren, es kann kostenfrei verwendet werden, jedoch nur mit einem Watermark.
+Vuforia weisst eine starke Dokumentation und gute Integration in Unity auf. Es mangelte jedoch an einer SLAM Implementation.
 
-Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Grund dafür ist die Ausgezeichnete Dokumentation, sowie die gute implementation der SLAM Lösung. Ein weiterer vorteil ist, dass die Applikation auch kostenfrei veröffentlicht werden darf.
+Wikitude ist eine umfassende Library, welche alle gängigen AR Features mitbringt. Wikitude lässt sich auch sehr leicht in die Applikation einbinden. Der Nachteil, sind die hohen Kosten, welche für die Lizenzgebühren ausfallen.
 
-\subsection{Evaluation Entwicklungsumgebung}
+ARtoolKit ist eine OpenSource Lösung und bietet einiges an. Es fehlen dennoch einige Features unter anderem auch eine SLAM Implementation. Zudem weist ARtoolKit die schlechteste Dokumentation auf und die Einbindung in ein Projekt ist umständlich und nicht intuitiv.
+
+Kudan hat enorme Stärken in deren SLAM Implementierung. Auch weist es eine gute Dokumentation auf, sowie eine einfache Einbindung in das Projekt. Ein Nachteil sind auch hier die Lizenzgebühren, es kann jedoch kostenfrei verwendet werden, aber nur mit einem Watermark.
+
+Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Grund dafür ist die ausgezeichnete Dokumentation, sowie die gute Implementation der SLAM Lösung. Ein weiterer Vorteil ist, dass die Applikation auch kostenfrei veröffentlicht werden darf.
 
 \section{Einschränkungen und Abgrenzungen}
 
@@ -284,6 +577,7 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 	\caption{Prozentanteil der Androidversionen, Daten von \cite{Fossbytes2018}}
 	\label{fig:AndroidMarketshare}
 \end{figure}
+
 
 \newpage
 \section{Projektmanagementplan}
@@ -441,18 +735,6 @@ Legende:
 	\includegraphics[keepaspectratio, width=0.8\textwidth]{RisikoMatrix}
 	\caption{Auswirkungen der Risiken}
 \end{figure}
-
-\section{Systemspezifikation}
-
-\subsection{Systemübersicht}
-
-\subsection{Architektur \& Design}
-
-\subsection{Schnittstellen}
-
-\subsection{Anforderungen}
-
-\subsection{Anwendung}
 
 \chapter{Evaluation und Validation}
 
