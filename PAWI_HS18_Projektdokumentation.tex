@@ -108,6 +108,25 @@
 
 \chapter{Problemstellung und Vision}
 
+Der Projektbeschrieb unserer Arbeit stellt das Problem, welches wir in unserer Arbeit lösen sollten, wie folgt dar:
+
+\vspace{1em}
+
+\textquotedblleft Der Neubau des zukünftigen Informatik-Gebäudes am Bahnhof in Rotkreuz schreitet stetig voran. Passanten und Besucher sehen diesen Rohbau sowie auf den umgebenden Wänden in Form von fotografischen Visualisierungen.
+In dieser Arbeit soll untersucht werden, inwiefern das Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln. \textquotedblright
+
+\vspace{1em}
+
+Wir leiteten daraus die folgende Problemstellung ab:
+
+\vspace{1em}
+
+\textbf{\textquotedblleft Wie und mit welchen Geräten können Neubauten in Ortsnähe in Echtzeit visualisiert werden. \textquotedblright}
+
+\vspace{1em}
+
+Aus der Problemstellung wird klar, dass neben der Evaluation von Plattformen auch eine zu den Geräten passende Art der Visualisierung erarbeitet werden muss. Wir hatten schon früh im Projekt die Vision, dass unsere Arbeit nicht nur für dieses Projekt einen Nutzen haben soll, sondern auch der Gesellschaft. So stellten wir uns vor, dass beispielsweise bei Projektausschreibungen in Dörfern nicht nur die Dimensionen der Neubauten abgesteckt sind, sondern dass auch für die Bevölkerung ein Mittel zur Verfügung gestellt wird, den geplanten Neubau mittels Augmented Reality auf dem Grundstück zu sehen. 
+
 \chapter{Stand der Forschung}
 
 \section{Technologische Grundlagen}
@@ -132,11 +151,11 @@ Ein grosser Durchbruch wurde deshalb von \citeauthor{Klein2009} erbracht, welche
 \subsection{Konzepte}
 
 \subsubsection{Markerbasierte Initialisierung}
-Ein wichtiges Problem, das jede AR Appplikation lösen muss, ist die Registration. Damit ist gemeint, dass die Applikation Koordinatensysteme und Ausrichtung der virtuellen Welt mit der realen Welt abgleichen und überwachen muss.
+Ein wichtiges Problem, das jede AR Applikation lösen muss, ist die Registration. Damit ist gemeint, dass die Applikation Koordinatensysteme und Ausrichtung der virtuellen Welt mit der realen Welt abgleichen und überwachen muss.
 
 Optische (d.h. Analyse der Kameradaten) Methoden werden von den gängigen Frameworks von Grund auf unterstützt. Zu diesen optischen Methoden gehören auch Marker. Ein Marker ist in den besten Fällen ein selbst unter Rotation und Scherung verformtes, eindeutig identifizierbares Muster, kann aber im Prinzip jegliches Bild sein. Ein guter Marker hat vorzugsweise einen hohen Kontrast im Grauspektrum, und grosse, komplexe Elemente ohne feine Details (welche auf Distanz verschwimmen oder verloren gehen) \cite{Kudan2016}.
 
-Die eigentliche Erkennung der Marker geschieht mit Algorithmen der Computer Vision (Kantenerkennung, Eckenerkennung), worauf ein erkannter Marker mit einer Datenbank von bekannten abgeglichen wird. Danach kann über jenen einzelnen Marker sowohl Positionierung wie auch Lokalisation geschehen.
+Die eigentliche Erkennung der Marker geschieht mit Algorithmen der Computer Vision (Kantenerkennung, Eckerkennung), worauf ein erkannter Marker mit einer Datenbank von bekannten abgeglichen wird. Danach kann über jenen einzelnen Marker sowohl Positionierung wie auch Lokalisation geschehen.
 
 \subsubsection{SLAM}
 Tracking-Methoden welche auf Marker basieren sind darauf angewiesen, dass jener zu jeder Zeit im Bild bleibt. Ansonsten verliert die Applikation dessen Registrierung. Eine andere Möglichkeit ist, ebenfalls mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt) zu identifizieren (Location) und deren Abhängigkeiten zueinander in einer Karte zusammenfassen (Mapping). Sollte nun die Pose verloren werden (durch einen Unterbruch des Kamerastreams oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden um die Position zu bestimmen.
