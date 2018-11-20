@@ -158,6 +158,17 @@ Das Team von Auto AR \parencite{Opperman2015} entwickelten ein System, welches e
 Eine andere Richtung wurde vom Frauenhofer Institut in Darmstadt \parencite{Olbrich2013} eingeschlagen. Sie entwickelten ein BIM Framework welches erlaubt, über bestehende Gebäudebestandteile Mehrinformationen anzuzeigen, und dies sowohl auf stationären Kioskcomputern, wie auch auf mobilen Geräten welche sich im Gebäude bewegen. Sie entwickelten dafür eine Server Client Infrastruktur, welche die Berechnungen der Pose und Szenendarstellung auf den Server auslagert, und so die schwächeren Endgeräte entlastet. Ihre dafür eigens entwickelte Infrastruktur erlaubt den Benutzer ebenfalls, Notizen über ein Objekt dynamisch auf diesem zu platzieren, sodass dies auf allen anderen Endgeräten ebenfalls erscheint.
 
 \chapter{Ideen und Konzepte}
+Wie in Kapitel XYZ beschrieben, kann eine AR Applikation Markerless oder Markerbasiert sein. Dabei gibt es Unterschiedliche Möglichkeiten. Müssen beim Markerbasierten Tracking für die Initirung und Platzierung ein Marker verwendet werden, so muss beim Markerlesstracking dies nicht geschehen.
+Da Markerless tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss beim Markerless eine alternative zum Marker gefunden werden. Dies kann zum Beispiel die Erkennung von Flächen sein (Zitat zu ar core from google) oder auch Lokalisierungssensoren.
+
+Um eine AR applikation, welches ein Gebäude in der realen Umgebung darstellt, zu entwickeln würden sich Potenziell beide Lösungen, also Marker wie auch Markerless basiert, anbieten.
+
+Das Konzept eines Markerbasierten lösung sieht vor, dass die Lokalisierung des Markers in der realen Welt bereits bekannt ist, und sich dieser nicht Ändert. Sofern dies der fall ist, kann die relative Position der Kamera zum Marker und somit zum Gebäude berechnet werden.
+Die Relative Position zum Marker kann durch dessen Grösse sowie dessen Winkel mit hilfe der Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude berechnet werden.
+Der Vorteil dieser Markerbasierten lösung liegt darin, dass die Genuigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker zuerst befestigt werden muss, es ist zudem aufwändiger neue Gebäude hinzuzufügen.
+
+Das Konzept einer Lokaliesierungssensor basierten Lösung sieht vor, dass das Darzustellende Gerät über folgende zusätzliche Komponenten verfügt: 1. Lokalisierungssensor (GPS Sensor) 2. Kompass 3. Gyroscope.
+Bei dieser Lösung werden die Lokalisierungssensoren sowie der Kompass dazu gebraucht, um die Positionierung des darszutellenden Gebäudes berechnnet. Die lokalen Bewegungen des Anzeigegerätes würden mithilfe des Gyroscopes ausgelesen werden um so dass Gabäude an Ort und Stelle zu halten. Nachteil dieser Methode liegt darin, dass die Anzeige nun Abhängig von 3 Sensorwerten ist, welche selber jeweils eine Ungenauigkeit aufweisen. Dieser Umstand kann dazu führen, dass das anzuzeigende Gebäude nicht immer an der genauen Position dargestellt wird.
 
 \chapter{Methode}
 
