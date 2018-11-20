@@ -148,12 +148,6 @@ Der Einsatz von virtueller oder gemischter Realität ist für die Fachbereiche M
 Beide Gruppen identifizieren jedoch das selbe Problem für die geringe Adoption von AR in deren relevanten Felder: ein existieren von performanter, komfortabler Hardware welche einen bezahlbaren Preis besitzt. Im Moment sind solche Geräte ein Nischenprodukt, was dazu führt, das Entwicklung für ein solches Produkt ein erhebliches Risiko darstellt.
 
 Im Bereich der Unterhaltungsindustrie hat AR hingegen schon längst Einzug gehalten. Zwei der grössten Spiele (Ingress und Pokémon Go!) wurden von Niantic Labs entwickelt und besitzen Nutzerzahlen in Millionenhöhe, beide spielen in einer Spielwelt die entweder auf unserer basiert (Pokémon Go!) oder spielen in einem Paralleluniversum (Ingress) auf welches Aktionen in der realen Welt Auswirkungen besitzt. Dennoch plagen beide das gleiche Problem: Betrug der Geolokation der spielenden Geräte und ein fehlendes Endziel (\cite{MRRX2015} und \cite{KamelBoulos2017}). Dies führte zu einer Stagnation und Verlust von Spielern, nachdem der Initiale Ansturm vorüber war, dennoch trugen diese Spiele Massgeblich dazu bei ein öffentliches Verständnis von AR zu bilden. Es darf daher davon ausgegangen werden, das dadurch die Hürde für die Entwicklung neuer Spiele tiefer geworden ist.
-\section{User Experience}
-In der heutigen Zeit ist die User Expirience ein zentraler Bestandteil in der Entwicklung von Applikationen. Es gibt kaum noch erfolgreiche Anwendungen, welche nicht ein Spezielles Team für die Entwicklung der User Expirience besitzen.
-
-Für die Entwicklung einer Zweidimensionaler Applikation gibt es bereits heute genaue Vorgaben und Vorgehensmodelle, wie eine solche Applikation eine gute User Experience erreichen kann. Leider können nicht alle Vorgaben und Vorgehensmodelle auch in einer Dreidimensionaler Applikation, welcher die Augmented Reality einführt, verwendet werden. 
-Für die Entwicklung einer guten User Experience für eine AR Applikation gibt es verschiedene Ansätze, welche von verschiedenen Unternehmen veröffentlicht wurden. 
-
 
 \subsection{Building Information Modelling}
 
@@ -162,6 +156,31 @@ Auch im Bereich des BIM (Building Information Modelling) wurde im Zuge der Forts
 Das Team von Auto AR \parencite{Opperman2015} entwickelten ein System, welches es einem Benutzer erlaubt Neu- und geplante Bauten aus einem Auto zu begutachten. Dazu montierten sie auf einem Personenwagen eine omnidirektionale Panoramakamera welche ihre Daten an einen im Wagen befindenden Laptop überträgt. Dieser bereitet das Bild auf, platziert das zu betrachtende Gebäude in der virtuellen Welt, und speist diese virtuelle Welt an ein Oculus Rift welche vom Probanden getragen wird. Damit sieht dieser sowohl eine Projektion der reelen Welt, wie auch das geplante Gebäude an dessen Stelle.
 
 Eine andere Richtung wurde vom Frauenhofer Institut in Darmstadt \parencite{Olbrich2013} eingeschlagen. Sie entwickelten ein BIM Framework welches erlaubt, über bestehende Gebäudebestandteile Mehrinformationen anzuzeigen, und dies sowohl auf stationären Kioskcomputern, wie auch auf mobilen Geräten welche sich im Gebäude bewegen. Sie entwickelten dafür eine Server Client Infrastruktur, welche die Berechnungen der Pose und Szenendarstellung auf den Server auslagert, und so die schwächeren Endgeräte entlastet. Ihre dafür eigens entwickelte Infrastruktur erlaubt den Benutzer ebenfalls, Notizen über ein Objekt dynamisch auf diesem zu platzieren, sodass dies auf allen anderen Endgeräten ebenfalls erscheint.
+
+\section{Graphische Darstellung}
+In der heutigen Zeit ist die User Expirience ein zentraler Bestandteil in der Entwicklung von Applikationen. Es gibt kaum noch erfolgreiche Anwendungen, welche nicht ein Spezielles Team für die Entwicklung der User Experience besitzen.
+
+Für die Entwicklung einer Zweidimensionaler Applikation gibt es bereits heute genaue Vorgaben und Vorgehensmodelle, wie eine solche Applikation eine gute User Experience erreichen kann. Leider können nicht alle Vorgaben und Vorgehensmodelle auch in einer Dreidimensionaler Applikation, welcher die Augmented Reality einführt, verwendet werden. 
+Für die Entwicklung einer guten User Experience für eine AR Applikation gibt es verschiedene Ansätze, welche von verschiedenen Unternehmen veröffentlicht wurden. 
+
+\subsection{User Centered Design}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\textwidth]{UserCenteredDesign}
+	\caption{Phasenmodell des ISO Standart 9241-210:2010}
+\end{figure}
+Um eine möglichst Optimale User Experience zu erreichen, kann nach den Methodiken von ISO 9241-210:2010 (fortan als User Centered Design bezeichnet) vorgegangen werden. Diese ist ein iteratives Vorgehen, bei dem die Benutzer im Zentrum stehen. Dies mit ihren Zielen, Bedürfnissen und Erwartungen über den gesamten Entwicklungsprozess hinweg. 
+Während dem Entwicklungsprozess durchläuft jede Iteration 4 Phasen bevor das Produkt in eine finale Version kommt.
+
+
+Diese Methodik für die Ermittlung einer guten User Experience kann auch bei der Entwicklung einer AR Applikation verwendet werden.
+In Phase 3 werden im User Centered Design werden zu beginn meist Prototypen auf Papier entwickelt, mit welchem sich der Benutzter durch die Applikation Navigieren kann. Diese Papier Prototypen sind für eine Dreidimensionale Applikation schwieriger zu gestalten und erschweren Dadurch den Prozess. Bedingt durch die Verkomplizierung, ist der ganze Ablauf des User Centered Design teurer und komplexer. (Zitiere something)
+
+
+\subsection{Graphical User Interface}
+Im Rahmen des User Centered Designs gibt es zudem Guidlines und verhaltensweisen des GUI.
+Auch hier gilt, was bei Zweidimensionalen GUIs Funktioniert, muss nicht oder kann nicht auf einer AR Applikation verwendet werden.
+
 
 \chapter{Ideen und Konzepte}
 
