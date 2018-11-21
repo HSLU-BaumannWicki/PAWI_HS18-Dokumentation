@@ -1,5 +1,6 @@
 \documentclass[a4paper]{scrreprt}
 
+
 %%% PACKAGES %%%
 
 % add unicode support and use german as language
@@ -38,6 +39,9 @@
 
 % Clickable Links to Websites and chapters
 \usepackage{hyperref}
+
+% Symbols like checkmark
+\usepackage{amssymb}
 
 % Bibliography & citing
 \usepackage[
@@ -542,7 +546,7 @@ Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeic
 Die unzureichende Debugmöglichkeiten sowie die Problemen mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
 
 \subsubsection{Augmented Reality Frameworks}
-Während der Recherchen stellte sich heraus, dass es unzählige AR Frameworks gibt. Jede davon hat dabei seinen eigene Anwendungsbereiche. Für dieses Projekt wurden schliesslich 4 gängige und gut dokumentierte Frameworks näher untersucht. Konkret handelte es sich dabei um folgende Frameworks:
+Während der Recherchen stellte sich heraus, dass es ein breites Spektrum an verschiedenen AR Frameworks auf dem Markt vorhanden sind. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden 4 häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
 \begin{itemize}
 \item Kudan
 \item Vuforia
@@ -550,15 +554,29 @@ Während der Recherchen stellte sich heraus, dass es unzählige AR Frameworks gi
 \item ARtoolKit
 \end{itemize}
 
-Vuforia weisst eine starke Dokumentation und gute Integration in Unity auf. Es mangelte jedoch an einer SLAM Implementation.
+Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie vergleicht die für dieses Projekt notwendigen Features, sowie die Lizenzierung (\cite{DDIDevelopment}).
 
-Wikitude ist eine umfassende Library, welche alle gängigen AR Features mitbringt. Wikitude lässt sich auch sehr leicht in die Applikation einbinden. Der Nachteil, sind die hohen Kosten, welche für die Lizenzgebühren ausfallen.
+\begin{table}[h!]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline 
+		& \textbf{Mobile} & \textbf{UWP (Hololens)} & \textbf{SLAM} & \textbf{Licence} \\ 
+		\hline 
+		Kudan & \checkmark & x & \checkmark & Commercial, free \\ 
+		\hline 
+		Vuforia & \checkmark & \checkmark & \checkmark & Commercial \\ 
+		\hline 
+		Wikitude & \checkmark & \checkmark & \checkmark & Commercial, free \ \\ 
+		\hline 
+		ARToolkit & \checkmark & x & x & OpenSource \\ 
+		\hline 
+	\end{tabular}
+	\caption{Vergleichstabelle verschiedener AR Frameworks}
+\end{table}
 
-ARtoolKit ist eine OpenSource Lösung und bietet einiges an. Es fehlen dennoch einige Features unter anderem auch eine SLAM Implementation. Zudem weist ARtoolKit die schlechteste Dokumentation auf und die Einbindung in ein Projekt ist umständlich und nicht intuitiv.
 
-Kudan hat enorme Stärken in deren SLAM Implementierung. Auch weist es eine gute Dokumentation auf, sowie eine einfache Einbindung in das Projekt. Ein Nachteil sind auch hier die Lizenzgebühren, es kann jedoch kostenfrei verwendet werden, aber nur mit einem Watermark.
+Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Gründe dafür liegen darin, dass dieses Framework über ein sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}). Weiterer Grund lag in der Lizenzgestaltung, welche eine Veröffentlichung ohne weitere Kosten ermöglicht. Der wichtigste Grund liegt darin, dass das Knowhow über Kudan am grössten war.
 
-Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Grund dafür ist die ausgezeichnete Dokumentation, sowie die gute Implementation der SLAM Lösung. Ein weiterer Vorteil ist, dass die Applikation auch kostenfrei veröffentlicht werden darf.
 
 \section{Einschränkungen und Abgrenzungen}
 
