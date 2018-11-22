@@ -205,7 +205,7 @@ Eine detaillierte Beschreibung der einzelnen Schichten ist in den folgenden Kapi
 \begin{figure}[h!]
   \center
   \includegraphics[width=0.35\textwidth]{SchichtenDiagramm.png}
-  \caption{Vereinfachte Layer Architekturübersicht}
+  \caption{Übersicht der simplifizierten Schichtenarchitektur}
 \end{figure}
 
 \subsubsection{AndroidApp}
@@ -519,8 +519,7 @@ Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
 \end{itemize}
 Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
 
-Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung, wurden 5 Probanden dazu Aufgefordert mit der vorhanden HoloLens App zu Interagieren dabei wurde ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass alle Probanden intuitiv mit dem Objekt falsch Interagieren wollten.
-Nach einer kurzen Aufklärung konnten jedoch alle die Applikation ohne grössere Probleme bedienen.
+Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
 Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
  
 Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
@@ -547,7 +546,7 @@ Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeic
 Die unzureichende Debugmöglichkeiten sowie die Problemen mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
 
 \subsubsection{Augmented Reality Frameworks}
-Während der Recherchen stellte sich heraus, dass es ein breites Spektrum an verschiedenen AR Frameworks auf dem Markt vorhanden sind. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden 4 häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
+Während der Recherchen stellte sich heraus, dass ein breites Spektrum verschiedener AR Frameworks auf dem Markt vorhanden ist. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden vier häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
 \begin{itemize}
 \item Kudan
 \item Vuforia
@@ -576,8 +575,7 @@ Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie v
 \end{table}
 
 
-Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Gründe dafür liegen darin, dass dieses Framework über ein sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}). Weiterer Grund lag in der Lizenzgestaltung, welche eine Veröffentlichung ohne weitere Kosten ermöglicht. Der wichtigste Grund liegt darin, dass das Knowhow über Kudan am grössten war.
-
+Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Gründe dafür lagen darin, dass dieses Framework über eine sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}), und das Lizenzierungsmodell, welche eine Entwicklung ohne weitere Kosten ermöglichte. Der wichtigste Grund lag jedoch darin, dass die Dokumentation sehr extensiv, und die Erfahrung mit Kudan am Grössten war.
 
 \section{Einschränkungen und Abgrenzungen}
 
