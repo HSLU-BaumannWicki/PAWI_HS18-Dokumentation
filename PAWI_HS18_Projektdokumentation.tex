@@ -270,9 +270,22 @@ Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändern
 
 Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen in den jeweiligen Sprints spezifiziert werden, und in der Sprintplanung festgehalten wird. Wir unterteilten unser Projekt in eine zweiwöchige Initialisierung, zweiwöchige Evaluation, und fünf Sprints in der unser Produkt entwickelt wurde.
 
-\section{Anforderungsanalyse}
-
-
+\section{Anforderungen}
+\begin{itemize}
+	\item Das Augmented Reality Objekt soll ausserhalb von Gebäuden ...
+	\begin{itemize}
+		\item eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden (fortan korrekte Position genannt).
+		\item eine maximale Rotationsabweichung von \ang{10} aufweisen.
+		\item eine maximale Grössenunterschied von 5\% zum Original Aufweisen.
+		\item mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.
+		\item nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.
+		\item nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.
+		\item nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.
+		\item nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).
+	\end{itemize}
+	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden.
+	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden.
+\end{itemize}
 \section{Systemspezifikation}
 
 \subsection{Systemübersicht}
