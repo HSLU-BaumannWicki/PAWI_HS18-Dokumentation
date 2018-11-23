@@ -1,5 +1,6 @@
 \documentclass[a4paper]{scrreprt}
 
+
 %%% PACKAGES %%%
 
 % add unicode support and use german as language
@@ -38,6 +39,9 @@
 
 % Clickable Links to Websites and chapters
 \usepackage{hyperref}
+
+% Symbols like checkmark
+\usepackage{amssymb}
 
 % Bibliography & citing
 \usepackage[
@@ -108,12 +112,33 @@
 
 \chapter{Problemstellung und Vision}
 
+Der Projektbeschrieb unserer Arbeit stellt das Problem, welches wir in unserer Arbeit lösen sollten, wie folgt dar:
+
+\vspace{1em}
+
+\textquotedblleft Der Neubau des zukünftigen Informatik-Gebäudes am Bahnhof in Rotkreuz schreitet stetig voran. Passanten und Besucher sehen diesen Rohbau sowie auf den umgebenden Wänden in Form von fotografischen Visualisierungen.
+In dieser Arbeit soll untersucht werden, inwiefern das Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln. \textquotedblright
+
+\vspace{1em}
+
+Wir leiteten daraus die folgende Problemstellung ab:
+
+\vspace{1em}
+
+\textbf{\textquotedblleft Wie und mit welchen Geräten können Neubauten in Ortsnähe in Echtzeit visualisiert werden. \textquotedblright}
+
+\vspace{1em}
+
+Aus der Problemstellung wird klar, dass zuerst eine Evaluation geeigneter Geräte, vor allem in Bezug auf den Ausseneinsatz und Verfügbarkeit durchgeführt werden muss. Danach muss für die jeweilige Plattform ein geeignetes AR Framework gefunden oder erstellt werden, und schlussendlich die Applikation selber entwickelt werden.
+
+Unsere Vision war es, dass unsere Arbeit nicht nur für dieses Projekt einen Nutzen haben sollte, sondern auch für die breitere Gesellschaft. So wird momentan bei einem ordentlichen Bauvorhaben in der Schweiz vom Bauherren nach Einreichung des Baugesuchs, sogenannte Bauprofile aufgestellt. Diese sollen einen Überblick über die Dimensionen eines Neubaus geben, sind jedoch inadäquat um ein wirkliches Bild des Gebäudes wiederzugeben. Daher stellten wir uns vor, dass nicht nur diese Bauprofile aufgestellt werden, sondern dass ebenfalls ein Mittel zur Verfügung gestellt wird, den geplanten Neubau mittels Augmented Reality auf dem Grundstück zu sehen.
+
 \chapter{Stand der Forschung}
 
 \section{Technologische Grundlagen}
 
 \subsection{Historische Entwicklung}
-Als Augmented Reality (dt. erweiterte Realität) versteht man heutzutage meistens das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
+Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
 
 \vspace{1em}
 
@@ -132,11 +157,13 @@ Ein grosser Durchbruch wurde deshalb von \citeauthor{Klein2009} erbracht, welche
 \subsection{Konzepte}
 
 \subsubsection{Markerbasierte Initialisierung}
-Ein wichtiges Problem, das jede AR Appplikation lösen muss, ist die Registration. Damit ist gemeint, dass die Applikation Koordinatensysteme und Ausrichtung der virtuellen Welt mit der realen Welt abgleichen und überwachen muss.
+Ein wichtiges Problem, das jede AR Applikation lösen muss, ist die Registration. Damit ist gemeint, dass die Applikation Koordinatensysteme und Ausrichtung der virtuellen Welt mit der realen Welt abgleichen und überwachen muss.
 
 Optische (d.h. Analyse der Kameradaten) Methoden werden von den gängigen Frameworks von Grund auf unterstützt. Zu diesen optischen Methoden gehören auch Marker. Ein Marker ist in den besten Fällen ein selbst unter Rotation und Scherung verformtes, eindeutig identifizierbares Muster, kann aber im Prinzip jegliches Bild sein. Ein guter Marker hat vorzugsweise einen hohen Kontrast im Grauspektrum, und grosse, komplexe Elemente ohne feine Details (welche auf Distanz verschwimmen oder verloren gehen) \cite{Kudan2016}.
 
-Die eigentliche Erkennung der Marker geschieht mit Algorithmen der Computer Vision (Kantenerkennung, Eckenerkennung), worauf ein erkannter Marker mit einer Datenbank von bekannten abgeglichen wird. Danach kann über jenen einzelnen Marker sowohl Positionierung wie auch Lokalisation geschehen.
+Die eigentliche Erkennung der Marker geschieht mit Algorithmen der Computer Vision (Kantenerkennung, Eckerkennung), worauf ein erkannter Marker mit einer Datenbank von bekannten abgeglichen wird. Danach kann über jenen einzelnen Marker sowohl Positionierung wie auch Lokalisation geschehen.
+
+\subsubsection{Markerless}
 
 \subsubsection{SLAM}
 Tracking-Methoden welche auf Marker basieren sind darauf angewiesen, dass jener zu jeder Zeit im Bild bleibt. Ansonsten verliert die Applikation dessen Registrierung. Eine andere Möglichkeit ist, ebenfalls mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt) zu identifizieren (Location) und deren Abhängigkeiten zueinander in einer Karte zusammenfassen (Mapping). Sollte nun die Pose verloren werden (durch einen Unterbruch des Kamerastreams oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden um die Position zu bestimmen.
@@ -242,7 +269,7 @@ Eine detaillierte Beschreibung der einzelnen Schichten ist in den folgenden Kapi
 \begin{figure}[h!]
   \center
   \includegraphics[width=0.35\textwidth]{SchichtenDiagramm.png}
-  \caption{Birds}
+  \caption{Übersicht der simplifizierten Schichtenarchitektur}
 \end{figure}
 
 \subsubsection{AndroidApp}
@@ -551,13 +578,13 @@ Im Rahmen dieses Projektes mussten verschiedene Unbekannte zuerst analysiert und
 \subsubsection{Zielplattform}
 Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
 \begin{itemize}
-\item Microsoft Hololens
+\item Microsoft HoloLens
 \item Smartphone und Tablets
 \end{itemize}
 Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
 
-Die Hololens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der Hololens Lokalisierungssensoren. In einem Blindtest mit Probanden welche die Hololens noch nicht trugen, zeigte sich, dass die Bedienung anfänglich nicht intuitiv ist.
-Das Positive der Hololens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
+Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
+Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
  
 Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
 Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Augmented Reality Modelle das Smartphone ständig in den Händen gehalten werden muss.
@@ -583,7 +610,7 @@ Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeic
 Die unzureichende Debugmöglichkeiten sowie die Problemen mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
 
 \subsubsection{Augmented Reality Frameworks}
-Während der Recherchen stellte sich heraus, dass es unzählige AR Frameworks gibt. Jede davon hat dabei seinen eigene Anwendungsbereiche. Für dieses Projekt wurden schliesslich 4 gängige und gut dokumentierte Frameworks näher untersucht. Konkret handelte es sich dabei um folgende Frameworks:
+Während der Recherchen stellte sich heraus, dass ein breites Spektrum verschiedener AR Frameworks auf dem Markt vorhanden ist. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden vier häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
 \begin{itemize}
 \item Kudan
 \item Vuforia
@@ -591,15 +618,28 @@ Während der Recherchen stellte sich heraus, dass es unzählige AR Frameworks gi
 \item ARtoolKit
 \end{itemize}
 
-Vuforia weisst eine starke Dokumentation und gute Integration in Unity auf. Es mangelte jedoch an einer SLAM Implementation.
+Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie vergleicht die für dieses Projekt notwendigen Features, sowie die Lizenzierung (\cite{DDIDevelopment}).
 
-Wikitude ist eine umfassende Library, welche alle gängigen AR Features mitbringt. Wikitude lässt sich auch sehr leicht in die Applikation einbinden. Der Nachteil, sind die hohen Kosten, welche für die Lizenzgebühren ausfallen.
+\begin{table}[h!]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline 
+		& \textbf{Mobile} & \textbf{UWP (Hololens)} & \textbf{SLAM} & \textbf{Licence} \\ 
+		\hline 
+		Kudan & \checkmark & x & \checkmark & Commercial, free \\ 
+		\hline 
+		Vuforia & \checkmark & \checkmark & \checkmark & Commercial \\ 
+		\hline 
+		Wikitude & \checkmark & \checkmark & \checkmark & Commercial, free \ \\ 
+		\hline 
+		ARToolkit & \checkmark & x & x & OpenSource \\ 
+		\hline 
+	\end{tabular}
+	\caption{Vergleichstabelle verschiedener AR Frameworks}
+\end{table}
 
-ARtoolKit ist eine OpenSource Lösung und bietet einiges an. Es fehlen dennoch einige Features unter anderem auch eine SLAM Implementation. Zudem weist ARtoolKit die schlechteste Dokumentation auf und die Einbindung in ein Projekt ist umständlich und nicht intuitiv.
 
-Kudan hat enorme Stärken in deren SLAM Implementierung. Auch weist es eine gute Dokumentation auf, sowie eine einfache Einbindung in das Projekt. Ein Nachteil sind auch hier die Lizenzgebühren, es kann jedoch kostenfrei verwendet werden, aber nur mit einem Watermark.
-
-Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Grund dafür ist die ausgezeichnete Dokumentation, sowie die gute Implementation der SLAM Lösung. Ein weiterer Vorteil ist, dass die Applikation auch kostenfrei veröffentlicht werden darf.
+Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Gründe dafür lagen darin, dass dieses Framework über eine sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}), und das Lizenzierungsmodell, welche eine Entwicklung ohne weitere Kosten ermöglichte. Der wichtigste Grund lag jedoch darin, dass die Dokumentation sehr extensiv, und die Erfahrung mit Kudan am Grössten war.
 
 \section{Einschränkungen und Abgrenzungen}
 
