@@ -134,6 +134,7 @@ Aus der Problemstellung wird klar, dass zuerst eine Evaluation geeigneter Gerät
 Unsere Vision war es, dass unsere Arbeit nicht nur für dieses Projekt einen Nutzen haben sollte, sondern auch für die breitere Gesellschaft. So wird momentan bei einem ordentlichen Bauvorhaben in der Schweiz vom Bauherren nach Einreichung des Baugesuchs, sogenannte Bauprofile aufgestellt. Diese sollen einen Überblick über die Dimensionen eines Neubaus geben, sind jedoch inadäquat um ein wirkliches Bild des Gebäudes wiederzugeben. Daher stellten wir uns vor, dass nicht nur diese Bauprofile aufgestellt werden, sondern dass ebenfalls ein Mittel zur Verfügung gestellt wird, den geplanten Neubau mittels Augmented Reality auf dem Grundstück zu sehen.
 
 \chapter{Stand der Forschung}
+\label{ch:StandDerForschung}
 
 \section{Technologische Grundlagen}
 
@@ -226,12 +227,32 @@ Diese Hinweise müssen nicht zwingend Texte sein, so kann auch ein Pfeil in die 
 Eine AR Applikation soll stets für eine Vielzahl von Benutzer brauchbar sein. Dies soll besonders berücksichtigt werden. Es soll dabei Acht auf Behinderungen wie Farbenblindheit oder ähnliche Konditionen gegeben werden (\cite{AppleGuideline2018}, \cite{GoogleGuideline2018}, \cite{GoogleIO2018}, \cite{BerfinAyhan2017}).
 
 \chapter{Ideen und Konzepte}
+Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation Markerless oder Markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim Markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies nicht beim Markerless Tracking.
+Da Markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss beim Markerless eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
+
+Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker wie auch Markerless basierend, anbieten.
+
+\section{Markerbasierte Lösung}
+Das Konzept eines markerbasierten Lösung sieht vor, dass die Lokalisierung des Markers in der realen Welt bereits bekannt ist, und sich dieser nicht ändert. Sofern dies der Fall ist, kann die relative Position der Kamera zum Marker und somit zum Gebäude berechnet werden.
+Die relative Position zum Marker kann durch dessen Grösse sowie dem Winkel in Relation zur Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude ausgerechnet werden.
+Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker zuerst befestigt werden muss, es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man Physisch vor Ort den Marker platzieren muss.
+
+
+\section{Lösung basierend auf Lokalisierungssensoren}
+Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass das darzustellende Gerät über folgende zusätzliche Komponenten verfügt: 
+\begin{enumerate}
+	\item Lokalisierungssensor (GPS/GLONASS/BEIDOU/GALILEO Sensor)
+	\item Kompass
+	\item Gyroskop
+\end{enumerate}
+Bei dieser Lösung werden die Lokalisierungssensoren sowie der Kompass dazu verwendet die Positionierung des darzustellenden Gebäudes zu berechnen. Die lokalen Bewegungen des Anzeigegerätes würden mithilfe des Gyroskops ausgelesen, und dazu verwendet das Gebäude an Ort und Stelle zu halten.
+Nachteil dieser Methode liegt darin, dass die Anzeige nun abhängig von drei Sensorwerten ist, welche selber jeweils eine Ungenauigkeit aufweisen und damit Fehler ins System einbringen. Dieser Umstand kann dazu führen, dass das anzuzeigende Gebäude nicht immer an der exakten Position dargestellt wird.
 
 \chapter{Methode}
 
 \section{Vorgehensmodell}
 
-Alle Wirtschaftstprojekte an der Hochschule Luzern fallen in eine der folgenden Kategorien:
+Alle Wirtschaftsprojekte an der Hochschule Luzern fallen in eine der folgenden Kategorien:
 
 \begin{enumerate}
 	\item Einsatz von Standardsoftware und Services
