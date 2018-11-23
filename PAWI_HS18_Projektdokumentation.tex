@@ -184,6 +184,47 @@ Das Team von Auto AR \parencite{Opperman2015} entwickelten ein System, welches e
 
 Eine andere Richtung wurde vom Frauenhofer Institut in Darmstadt \parencite{Olbrich2013} eingeschlagen. Sie entwickelten ein BIM Framework welches erlaubt, über bestehende Gebäudebestandteile Mehrinformationen anzuzeigen, und dies sowohl auf stationären Kioskcomputern, wie auch auf mobilen Geräten welche sich im Gebäude bewegen. Sie entwickelten dafür eine Server Client Infrastruktur, welche die Berechnungen der Pose und Szenendarstellung auf den Server auslagert, und so die schwächeren Endgeräte entlastet. Ihre dafür eigens entwickelte Infrastruktur erlaubt den Benutzer ebenfalls, Notizen über ein Objekt dynamisch auf diesem zu platzieren, sodass dies auf allen anderen Endgeräten ebenfalls erscheint.
 
+\section{Benutzerführung in AR Applikationen}
+In der heutigen Zeit ist die User Experience (dt. Erfahrung der Interaktion des Benutzers mit einem System) ein zentraler Bestandteil in der Entwicklung von Applikationen. Es gibt kaum noch erfolgreiche Anwendungen, welche nicht ein spezielles Team für die Entwicklung der User Experience besitzen.
+
+Für die Entwicklung einer zweidimensionaler Applikation gibt es bereits heute genaue Vorgaben und Vorgehensmodelle, wie eine solche Applikation eine gute User Experience erreichen kann. Leider können nicht alle Vorgaben und Vorgehensmodelle auch für eine dreidimensionale Applikation verwendet werden. Da unserer Applikation eine Augmented Realitiy Applikation wird, trifft dies speziell zu.
+Für die Entwicklung einer guten User Experience für eine AR Applikation gibt es jedoch verschiedene Ansätze und Empfehlungen, welche von verschiedenen Unternehmen veröffentlicht wurden. 
+
+\subsection{User Centered Design}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\textwidth]{UserCenteredDesign}
+	\caption{Phasenmodell des ISO Standart 9241-210:2010 \parencite{ISO9241}}
+\end{figure}
+
+Um eine möglichst optimale User Experience zu erreichen, kann nach den Methodiken des Standards ISO 9241-210:2010 (fortan als User Centered Design bezeichnet) vorgegangen werden. Dies ist ein iteratives Vorgehen, bei dem die Benutzer im Zentrum stehen. Dies mit ihren Zielen, Bedürfnissen und Erwartungen über den gesamten Entwicklungsprozess hinweg. 
+Jede Iteration dieses Prozesses durchläuft vier Phasen, bevor das Produkt in eine finale Version kommt.
+
+Diese Methodik für die Ermittlung einer guten User Experience kann auch bei der Entwicklung einer AR Applikation verwendet werden.
+In Phase 3 werden im User Centered Design zu Beginn meist Prototypen auf Papier entwickelt, mit welchem sich der Benutzter konzeptuell durch die Applikation navigieren muss. Diese Papierprototypen sind für eine dreidimensionale Applikation schwieriger zu gestalten und erschweren dadurch den Prozess. Bedingt durch diese Komplikation, ist der ganze Ablauf des User Centered Design teurer und komplexer (\cite{ISO9241}).
+
+\subsection{Graphical User Interface Konzepte}
+Im Rahmen des User Centered Designs gibt es zudem Richtlinien und Verhaltensweisen der graphischen Benutzeroberfläche.
+Auch hier gilt, was bei zweidimensionalen GUI's funktioniert, muss nicht oder kann nicht zwingend bei einer AR Applikation verwendet werden. Um dem Benutzer die Interaktion mit der AR Applikation möglichst einfach und intuitiv zu gestalten, müssen folgende Punkte mit Sicherheit beachtet werden.
+
+\subsubsection{Bildschirmflächenoptimierung}
+Eine AR Applikation vermittelt den Eindruck, als ob die physikalische Welt die Limitierung der Applikation sei, in Wahrheit ist jedoch der Bildschirm des Anzeigegerätes die eigentliche Limitierung .
+Der Benutzer möchte also möglichst wenig von seiner eigentlichen Intention, zum Beispiel der Besichtigung eines Gebäudes von aussen, abgelenkt werden. Dies setzt voraus, dass die Informationen sowie Interaktionsmöglichkeiten weitgehendst konsolidiert werden.
+
+\subsubsection{Vereinfachter Einstieg}
+Selbst in einer zweidimensionalen Applikation ist die Einarbeitung in eine Applikation teilweise sehr schwierig und zeitaufwendig. In einer dreidimensionalen Applikation gestaltet sich dies jedoch noch um einiges schwieriger und ist meist mit einer grösseren Lernkurve verbunden, weshalb der Einstieg ein noch wichtigerer Aspekt bei der Entwicklung sein muss.
+
+\subsubsection{Vorhersehbarkeit}
+Ein Benutzer bringt durch seine Bildung wie auch seine Herkunft schon Erwartungen mit. Diese antrainierte Verhalten sollte eine Applikation wo immer möglich nutzen und sinnvoll wiederverwenden. Als antrainiertes Verhalten gelten zum Beispiel Gesten zur Vergrösserung und Rotation einer Anzeige. Wo immer möglich sind solche intuitiven Verhalten einer Interaktion durch Buttons und Menüs vorzuziehen,
+
+\subsubsection{Hinweise}
+Der Mensch sucht stets nach Hinweisen und Signalen. Dieses Verhalten widerspiegelt sich auch in alltäglichen Situationen wie beispielsweise einer Bahnfahrt, auf welcher wir stets nach Symbolen und Hinweise für die Nächste Haltestelle oder Ausfahrt Ausschau halten.
+Solche Hinweise sollen in einer AR Applikation den Benutzer ermutigen die Applikation noch weiter zu erkunden.
+Diese Hinweise müssen nicht zwingend Texte sein, so kann auch ein Pfeil in die Richtung deuten, in welche sich das anzuzeigende Objekt befindet, sobald dieses aus dem Bildschirm tritt.
+
+\subsubsection{Vielfältige Benutzer}
+Eine AR Applikation soll stets für eine Vielzahl von Benutzer brauchbar sein. Dies soll besonders berücksichtigt werden. Es soll dabei Acht auf Behinderungen wie Farbenblindheit oder ähnliche Konditionen gegeben werden (\cite{AppleGuideline2018}, \cite{GoogleGuideline2018}, \cite{GoogleIO2018}, \cite{BerfinAyhan2017}).
+
 \chapter{Ideen und Konzepte}
 
 \chapter{Methode}
