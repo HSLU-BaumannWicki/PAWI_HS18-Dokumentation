@@ -164,14 +164,19 @@ Ein grosser Durchbruch wurde deshalb von \citeauthor{Klein2009} erbracht, welche
 \subsubsection{Markerbasierte Initialisierung}
 Ein wichtiges Problem, das jede AR Applikation lösen muss, ist die Registration. Damit ist gemeint, dass die Applikation Koordinatensysteme und Ausrichtung der virtuellen Welt mit der realen Welt abgleichen und überwachen muss.
 
-Optische (d.h. Analyse der Kameradaten) Methoden werden von den gängigen Frameworks von Grund auf unterstützt. Zu diesen optischen Methoden gehören auch Marker. Ein Marker ist in den besten Fällen ein selbst unter Rotation und Scherung verformtes, eindeutig identifizierbares Muster, kann aber im Prinzip jegliches Bild sein. Ein guter Marker hat vorzugsweise einen hohen Kontrast im Grauspektrum, und grosse, komplexe Elemente ohne feine Details (welche auf Distanz verschwimmen oder verloren gehen) \cite{Kudan2016}.
+Optische (d.h. Analyse der Kameradaten) Methoden werden von den gängigen Frameworks von Grund auf unterstützt. Zu diesen optischen Methoden gehören auch Marker. Ein Marker ist in den besten Fällen ein selbst unter Rotation und Scherung verformtes, eindeutig identifizierbares Muster, kann aber im Prinzip jegliches Bild sein. Ein guter Marker hat vorzugsweise einen hohen Kontrast im Grauspektrum, und grosse, komplexe Elemente ohne feine Details (welche auf Distanz verschwimmen oder verloren gehen) \parencite{Kudan2016}.
 
 Die eigentliche Erkennung der Marker geschieht mit Algorithmen der Computer Vision (Kantenerkennung, Eckerkennung), worauf ein erkannter Marker mit einer Datenbank von bekannten abgeglichen wird. Danach kann über jenen einzelnen Marker sowohl Positionierung wie auch Lokalisation geschehen.
 
 \subsubsection{Markerless}
+Da beim Markerbasierten Tracking die namensgebenden \textquotedblleft Fiducial Markers\textquotedblright\ immer im Fokus der Kamera bleiben müssen, möchte man, falls möglich, diese gar nicht erst einsetzen müssen. Dies kann auf zwei verschiedene Arten erreicht werden: Modell-basiert und Feature-basiert \parencite{Ziegler2009}.
+
+Ein modellbasiertes Tracking generiert aus einem physischen Objekt ein dreidimensionales, digitales Modell, dieses wird danach verwendet um die Pose zu kalkulieren. Üblicherweise werden diese Modelle aufgrund der Kanten oder Ecken des Objektes berechnet, Kanten sind dabei vorzuziehen, da Sie gegenüber wechselnden Lichtverhältnissen robust sind und durch den Computer effizient gefunden werden können \parencite{Zhou2008}. Dies bedeutet jedoch nicht, dass dies die einzigen beiden Möglichkeiten für ein Modellbasiertes Tracking sind, sowohl \citeauthor{PauloLima2017} wie auch \citeauthor{Cote2013} gebrauchen in ihren Arbeiten Systeme welche von Punktewolken ausgehend die jeweilige Pose ausrechnen.
+
+
 
 \subsubsection{SLAM}
-Tracking-Methoden welche auf Marker basieren sind darauf angewiesen, dass jener zu jeder Zeit im Bild bleibt. Ansonsten verliert die Applikation dessen Registrierung. Eine andere Möglichkeit ist, ebenfalls mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt) zu identifizieren (Location) und deren Abhängigkeiten zueinander in einer Karte zusammenfassen (Mapping). Sollte nun die Pose verloren werden (durch einen Unterbruch des Kamerastreams oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden um die Position zu bestimmen.
+Tracking-Methoden welche auf Marker basieren sind darauf angewiesen, dass jener zu jeder Zeit im Bild bleibt. Ansonsten verliert die Applikation dessen Registrierung. Eine andere Möglichkeit ist, ebenfalls mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt) zu identifizieren (Location) und deren Abhängigkeiten zueinander in einer Karte zusammenfassen (Mapping). Sollte nun die Pose verloren werden (durch einen Unterbruch des Kamerastreams oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden um die Position zu bestimmen. Dieser Ansatz wird \textquotedblleft Simultaneous Location and Mapping\textquotedblright (dt. Simultanes Erkennen und Kartographieren) genannt.
 
 \section{Anwendungen}
 
