@@ -21,6 +21,11 @@
 % Use graphics
 \usepackage{graphicx}
 
+% Have subfigures and captions
+\usepackage{subcaption}
+
+% Be able to include PDFs in the file
+\usepackage{pdfpages}
 
 % Have custom abstract heading
 \usepackage{abstract}
@@ -86,7 +91,7 @@
 %%% DOCUMENT %%%
 
 \begin{document}
-
+\pagenumbering{Roman}
 \begin{titlepage}
 \maketitle
 \end{titlepage}
@@ -112,33 +117,21 @@
 
 \tableofcontents
 
-\chapter{Einführung}
+\clearpage
+\pagenumbering{arabic}
+\chapter{Einleitung}
+//TODO Einführungstext
 
-\chapter{Problemstellung und Vision}
-
-Der Projektbeschrieb unserer Arbeit stellt das Problem, welches wir in unserer Arbeit lösen sollten, wie folgt dar:
-
-\vspace{1em}
-
-\textquotedblleft Der Neubau des zukünftigen Informatik-Gebäudes am Bahnhof in Rotkreuz schreitet stetig voran. Passanten und Besucher sehen diesen Rohbau sowie auf den umgebenden Wänden in Form von fotografischen Visualisierungen.
-In dieser Arbeit soll untersucht werden, inwiefern das Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln. \textquotedblright
-
-\vspace{1em}
-
-Wir leiteten daraus die folgende Problemstellung ab:
-
-\vspace{1em}
-
-\textbf{\textquotedblleft Wie und mit welchen Geräten können Neubauten in Ortsnähe in Echtzeit visualisiert werden. \textquotedblright}
-
-\vspace{1em}
-
-Aus der Problemstellung wird klar, dass zuerst eine Evaluation geeigneter Geräte, vor allem in Bezug auf den Ausseneinsatz und Verfügbarkeit durchgeführt werden muss. Danach muss für die jeweilige Plattform ein geeignetes AR Framework gefunden oder erstellt werden, und schlussendlich die Applikation selber entwickelt werden.
-
-Unsere Vision war es, dass unsere Arbeit nicht nur für dieses Projekt einen Nutzen haben sollte, sondern auch für die breitere Gesellschaft. So wird momentan bei einem ordentlichen Bauvorhaben in der Schweiz vom Bauherren nach Einreichung des Baugesuchs, sogenannte Bauprofile aufgestellt. Diese sollen einen Überblick über die Dimensionen eines Neubaus geben, sind jedoch inadäquat um ein wirkliches Bild des Gebäudes wiederzugeben. Daher stellten wir uns vor, dass nicht nur diese Bauprofile aufgestellt werden, sondern dass ebenfalls ein Mittel zur Verfügung gestellt wird, den geplanten Neubau mittels Augmented Reality auf dem Grundstück zu sehen.
-
-\chapter{Stand der Forschung}
+\section{Aufgabenstellung und Zielsetzung}
+Ziel dieser Arbeit ist es zu Untersuchen, \textquotedblleft inwiefern ein Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln.\textquotedblright Es muss untersucht werden, welche Technologien geeignet für den Ausseneinsatz zur Verfügung stehen. Es soll darauf geachtet werden, dass die Applikation einen Nutzten für die breitere Gesellschaft aufweist. Denn im Moment werden in der Schweiz bei ordentlichen Bauvorhaben noch Bauprofile aufgestellt, welche einen Überblick über die Dimension des Gebäudes wiedergibt, so soll in Zukunft eine Applikation im sinne dieser Arbeit diese Konstrukt erweitern.
+\bigbreak
+Es ist zu beginn der Arbeit noch unklar, welche Geräte für einen Ausseneinsatz verwendet werden können. Daher muss eruiert werden, welche Einsatzgeräte für diese Zwecke brauchbar sind. Weiter soll für die jeweilige Plattform ein geeignetes AR Framework gefunden oder erstellt werden, und schlussendlich die prototypische Applikation selbst entwickelt werden.
+\bigbreak
+Die Vorliegende Arbeit beschäftigt sich stark mit der Fragestellung, inwiefern eine solche Applikation mit heutigen Geräten umsetzten Lässt. Zudem sollen dabei deren Schwächen, sowie Vorteile Aufgezeigt werden.
+\chapter{Grundlagen}
 \label{ch:StandDerForschung}
+
+//TODO some Text about what we will do in this chapter...
 
 \section{Technologische Grundlagen}
 
@@ -155,7 +148,36 @@ Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von
 	\label{fig:RVContiinum}
 \end{figure}
 
-Fünf Jahre nach Milgram veröffentlichten \citeauthor{Kato1999} ihre Ergebnisse zu einem Marker-basierten AR Konferenzsystem. Sie lösten dabei das Problem der Registrierung (wo befindet sich der Benutzer, oder besser gesagt dessen Augen), und das Ermitteln der Pose (wie ist die Orientierung der virtuellen Kamera in Bezug zur Umwelt) über Marker mit einer fixen Grösse \parencite{Kato1999}. Das System war stationär mit Computern realisiert. In den folgenden Jahren wurden Versuche mit  mobilen Prototypen durchgeführt, dies blieben jedoch in der Grösse von Rucksäcken und gebrauchten Notebooks mit der entsprechenden Rechenleistung.
+Fünf Jahre nach Milgram veröffentlichten \citeauthor{Kato1999} ihre Ergebnisse zu einem Marker-basierten AR Konferenzsystem. Sie lösten dabei das Problem der Registrierung (wo befindet sich der Benutzer, oder besser gesagt dessen Augen), und das Ermitteln der Pose (wie ist die Orientierung der virtuellen Kamera in Bezug zur Umwelt) über Marker mit einer fixen Grösse \parencite{Kato1999}. Das System war stationär mit Computern realisiert. In den folgenden Jahren wurden Versuche mit  mobilen Prototypen durchgeführt, dies blieben jedoch in der Grösse von Rucksäcken, und gebrauchten Notebooks mit der entsprechenden Rechenleistung (siehe Abbildung \ref{fig:MobileSysteme}).
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.4\textwidth]{tinmith2.png}
+		\caption{Das TINMITH2 System \parencite{Thomas1999}}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio]{Studierstube2001.png}
+		\caption{Interaktion mit der StudierStube Applikation \parencite{Reitmayr2001}}
+	\end{subfigure}
+
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.6\textwidth]{LiveMobilePanoramicAR.png}
+		\caption{\parencite{Cote2013}}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.8\textwidth]{ARMOR_System2013.png}
+		\caption{Das ARMOR System \parencite{Dong2013}}
+	\end{subfigure}
+	\caption{Beispiele verschiedener mobiler Systeme}
+	\label{fig:MobileSysteme}
+\end{figure}
 
 Ein grosser Durchbruch wurde deshalb von \citeauthor{Klein2009} erbracht, welche einen PTAM (Parallel Tracking and Mapping) Algorithmus auf einem iPhone 3G implementierten. Dieser war in der Lage sowohl in Räumen wie ausserhalb von Gebäuden, nach einer Initialisierungsphase die Lokalisierung von einem Marker loszulösen und die Pose der Kamera über \textquotedblleft Key Features\textquotedblright\ zu ermitteln \parencite{Klein2009}. Seither wurde auf diesem Gebiet weiter entwickelt und Algorithmen dieser Art sind unter dem Namen SLAM (Simultaneous Location and Mapping) zusammengefasst, dazu existieren verschiedene Frameworks welche diese nativ mitbringen (Kudan, wikitude).
 
@@ -180,11 +202,11 @@ Wie im vorherigen Paragraf erklärt, wird zwischen zwei Markerless Tracking Meth
 
 \section{Anwendungen}
 
-Der Einsatz von virtueller oder gemischter Realität ist für die Fachbereiche Medizin und Konstruktion sehr interessant. Wie \citeauthor{Piroozfar2018} beschreiben, bringt ein solcher Einsatz in der Konstruktionsindustrie verbesserte Kommunikation, besseres Verständnis eines Projektes, präzisere Planung, schnellere Entscheidungsfindung, und alles in allem eine erhöhte Sicherheit und Effizienz. \citeauthor{Pelargos2017} sehen den Mehrwert für die Medizin in Planung einer Operation und verbesserte, da nicht gleich kritisch, Ausbildung der beteiligten Fachkräfte. Im Vergleich zu traditionellen pädagogischen Methoden, bietet VR ein Potential den Lernenden greifbarer zu Motivieren, und gleichzeitig dessen räumliches Vorstellungsvermögen und technische Fähigkeiten zu verbessern. Weiter erwarten Sie eine erhöhte Retention des gelernten, da der Kontext des Lernstoffs direkter bei der Anwendung dessen ist.
+Der Einsatz von virtueller oder gemischter Realität ist für die Fachbereiche Medizin und Konstruktion sehr interessant. Wie \citeauthor{Piroozfar2018} beschreiben, bringt ein solcher Einsatz in der Konstruktionsindustrie verbesserte Kommunikation, besseres Verständnis eines Projektes, präzisere Planung, schnellere Entscheidungsfindung, und alles in allem eine erhöhte Sicherheit und Effizienz \parencite{Piroozfar2018}. \citeauthor{Pelargos2017} sehen den Mehrwert für die Medizin in Planung einer Operation und verbesserte, da nicht gleich kritisch, Ausbildung der beteiligten Fachkräfte \parencite{Pelargos2017}. Im Vergleich zu traditionellen pädagogischen Methoden, bietet MR ein Potential den Lernenden greifbarer zu motivieren, und gleichzeitig dessen räumliches Vorstellungsvermögen und technische Fähigkeiten zu verbessern. Weiter erwarten Sie eine erhöhte Retention des gelernten, da der Kontext des Lernstoffs direkter bei der Anwendung dessen ist.
 
-Beide Gruppen identifizieren jedoch das selbe Problem für die geringe Adoption von AR in deren relevanten Felder: ein existieren von performanter, komfortabler Hardware welche einen bezahlbaren Preis besitzt. Im Moment sind solche Geräte ein Nischenprodukt, was dazu führt, das Entwicklung für ein solches Produkt ein erhebliches Risiko darstellt.
+Beide Gruppen identifizieren jedoch dasselbe Problem für die geringe Adoption von AR in deren relevanten Felder: ein Existieren von performanter, komfortabler Hardware, welche einen bezahlbaren Preis besitzt und für diese Felder geeignet sind in Bezug auf Komfort und anderen Anforderungen. Im Moment sind solche Geräte ein Nischenprodukt, was dazu führt, das Entwicklung für ein solches Produkt ein erhebliches Risiko darstellt (\cite{Piroozfar2018}, \cite{Pelargos2017}).
 
-Im Bereich der Unterhaltungsindustrie hat AR hingegen schon längst Einzug gehalten. Zwei der grössten Spiele (Ingress und Pokémon Go!) wurden von Niantic Labs entwickelt und besitzen Nutzerzahlen in Millionenhöhe, beide spielen in einer Spielwelt die entweder auf unserer basiert (Pokémon Go!) oder spielen in einem Paralleluniversum (Ingress) auf welches Aktionen in der realen Welt Auswirkungen besitzt. Dennoch plagen beide das gleiche Problem: Betrug der Geolokation der spielenden Geräte und ein fehlendes Endziel (\cite{MRRX2015} und \cite{KamelBoulos2017}). Dies führte zu einer Stagnation und Verlust von Spielern, nachdem der Initiale Ansturm vorüber war, dennoch trugen diese Spiele Massgeblich dazu bei ein öffentliches Verständnis von AR zu bilden. Es darf daher davon ausgegangen werden, das dadurch die Hürde für die Entwicklung neuer Spiele tiefer geworden ist.
+Im Bereich der Unterhaltungsindustrie hat AR hingegen schon längst Einzug gehalten. Zwei der grössten Spiele (Ingress und Pokémon Go!) wurden von Niantic Labs entwickelt und besitzen Nutzerzahlen in Millionenhöhe, beide spielen in einer Spielwelt die entweder auf unserer basiert (Pokémon Go!) oder spielen in einem Paralleluniversum (Ingress) auf welches Aktionen in der realen Welt Auswirkungen besitzt. Dennoch plagen beide das gleiche Problem: Betrug der Geolokation der spielenden Geräte und ein fehlendes Endziel (\cite{MRRX2015} und \cite{KamelBoulos2017}). Dies führte zu einer Stagnation und Verlust von Spielern, nachdem der Initiale Ansturm vorüber war (\cite{Arif2017}, \cite{KamelBoulos2017}), dennoch trugen diese Spiele Massgeblich dazu bei ein öffentliches Verständnis von AR zu bilden. Es darf daher davon ausgegangen werden, das dadurch die Hürde für die Entwicklung neuer Spiele tiefer geworden ist.
 
 \subsection{Building Information Modelling}
 
@@ -300,11 +322,11 @@ Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen i
 \subsection{Systemübersicht}
 
 \subsection{Architektur \& Design}
-Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt. Dabei wurde ein Klassendiagramm erstellt, da es gleich den kompletten Aufbau des Projektes aufzeigt, sowie dessen Abhängigkeiten zu Schnittstellen (in der Grafik \textquoteleft Interfaces\textquoteright\ genannt).
+Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
 
 \begin{figure}[h!]
-	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverview.png}
-	\caption{Architekturübersicht als Klassendiagramm}
+	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverviewV0_4.png}
+	\caption{Architekturübersicht}
 \end{figure}
 
 Eine detaillierte Beschreibung der einzelnen Schichten ist in den folgenden Kapiteln zu finden.
@@ -347,10 +369,10 @@ Das Building Model Interface ist das Bindeglied zwischen der realen Position des
 	\caption{Building Model Interface}
 \end{figure}
 
-Der Texturizer ist verantwortlich für die Einfärbung des Modelles.
+Der BuildingTexturizer ist verantwortlich für die Einfärbung des Modelles.
 \begin{figure}[h!]
 	\center
-	\includegraphics[scale=0.6]{Texturizer.png}
+	\includegraphics[scale=0.6]{BuildingTexturizer.png}
 	\caption{Texturizer Interface}
 \end{figure}
 
@@ -364,21 +386,14 @@ Der Rotator verpflichtet sich ein Rotating Object in einem Raum um eine bestimmt
 
 
 Der Mean Ring Buffer ist verantwortlich, dass ein Mittelwert eines Objektes <T> aus den übergebenen Objekten berechnet wird.
-\begin{figure}
+\begin{figure}[h!]
 	\center
 	\includegraphics[scale=0.6]{MeanRingBuffer.png}
 	\caption{Mean ring buffer Interface}
 \end{figure}
 
-Das LocationFilterElevation Interface liefert einen Höhenwert für ein Set von Koordinaten zurück.
-\begin{figure}
-	\center
-	\includegraphics[scale=0.6]{LocationFilterElevation.png}
-	\caption{Location Elevation Interface}
-\end{figure}
-
 Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen AsyncElevationRequest.
-\begin{figure}
+\begin{figure}[h!]
 	\center
 	\includegraphics[scale=0.6]{AsyncElevationRequestCallee.png}
 	\caption{AsyncElevationRequestCallee Interface}
@@ -388,19 +403,24 @@ Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen Asyn
 
 \subsection{Anwendung}
 
-\section{Systemarchitektur}
-
-\newpage
 \section{Komponentendesign}
+
+Die Entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
+
+Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems mitbringen).
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth, keepaspectratio]{Komponentendesign}
-	\caption{Komponentendesign der ARBuildings Applikation}
+	\caption{Komponenten der ARBuildings Applikation}
+	\label{fig:Komponentendesign}
 \end{figure}
 
 \section{Umsetzung Programmierung}
-
+\subsection{Clean Code}
+Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name gewählt werden musste. 
+\subsection{Git Flow}
+Um möglichst effizient und Unabhängig voneinander zu Programmieren, sowie zu Dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
 \section{Testing}
 
 \subsection{Testplan}
@@ -640,7 +660,10 @@ Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
 \end{itemize}
 Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
 
-Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
+
+Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist.
+
+Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
 Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
  
 Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
@@ -881,9 +904,6 @@ Legende:
 
 \appendix
 
-\chapter{Testprotokolle}
-
-
 \glossary{Abkürzungsverzeichnis}
 
 \listoffigures
@@ -893,6 +913,44 @@ Legende:
 \listofmyequations \pagebreak
 
 \printbibliography
+
+\chapter{Testprotokolle}
+
+\chapter{Sprints}
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_2}
+	\caption{Erledigte Tasks in Sprint 2}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_3}
+	\caption{Erledigte Tasks in Sprint 3}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_4}
+	\caption{Erledigte Tasks in Sprint 4}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_5}
+	\caption{Erledigte Tasks in Sprint 5}
+\end{figure}
+
+\newpage
+
+\chapter{Evaluationen}
+
+\includepdf[pages=-]{Evaluation_HoloLens.pdf}
+
+\chapter{Anleitungen}
+
+\includepdf[pages=-]{Gebaeudemodell_korrekt_zu_ARModel_konvertieren.pdf}
 
 \chapter*{Eidesstattliche Erklärung}
 Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
