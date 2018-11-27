@@ -21,6 +21,8 @@
 % Use graphics
 \usepackage{graphicx}
 
+% Have subfigures and captions
+\usepackage{subcaption}
 
 % Have custom abstract heading
 \usepackage{abstract}
@@ -155,7 +157,36 @@ Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von
 	\label{fig:RVContiinum}
 \end{figure}
 
-Fünf Jahre nach Milgram veröffentlichten \citeauthor{Kato1999} ihre Ergebnisse zu einem Marker-basierten AR Konferenzsystem. Sie lösten dabei das Problem der Registrierung (wo befindet sich der Benutzer, oder besser gesagt dessen Augen), und das Ermitteln der Pose (wie ist die Orientierung der virtuellen Kamera in Bezug zur Umwelt) über Marker mit einer fixen Grösse \parencite{Kato1999}. Das System war stationär mit Computern realisiert. In den folgenden Jahren wurden Versuche mit  mobilen Prototypen durchgeführt, dies blieben jedoch in der Grösse von Rucksäcken und gebrauchten Notebooks mit der entsprechenden Rechenleistung.
+Fünf Jahre nach Milgram veröffentlichten \citeauthor{Kato1999} ihre Ergebnisse zu einem Marker-basierten AR Konferenzsystem. Sie lösten dabei das Problem der Registrierung (wo befindet sich der Benutzer, oder besser gesagt dessen Augen), und das Ermitteln der Pose (wie ist die Orientierung der virtuellen Kamera in Bezug zur Umwelt) über Marker mit einer fixen Grösse \parencite{Kato1999}. Das System war stationär mit Computern realisiert. In den folgenden Jahren wurden Versuche mit  mobilen Prototypen durchgeführt, dies blieben jedoch in der Grösse von Rucksäcken, und gebrauchten Notebooks mit der entsprechenden Rechenleistung (siehe Abbildung \ref{fig:MobileSysteme}).
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.4\textwidth]{tinmith2.png}
+		\caption{Das TINMITH2 System \parencite{Thomas1999}}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio]{Studierstube2001.png}
+		\caption{Interaktion mit der StudierStube Applikation \parencite{Reitmayr2001}}
+	\end{subfigure}
+
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.6\textwidth]{LiveMobilePanoramicAR.png}
+		\caption{\parencite{Cote2013}}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.8\textwidth]{ARMOR_System2013.png}
+		\caption{Das ARMOR System \parencite{Dong2013}}
+	\end{subfigure}
+	\caption{Beispiele verschiedener mobiler Systeme}
+	\label{fig:MobileSysteme}
+\end{figure}
 
 Ein grosser Durchbruch wurde deshalb von \citeauthor{Klein2009} erbracht, welche einen PTAM (Parallel Tracking and Mapping) Algorithmus auf einem iPhone 3G implementierten. Dieser war in der Lage sowohl in Räumen wie ausserhalb von Gebäuden, nach einer Initialisierungsphase die Lokalisierung von einem Marker loszulösen und die Pose der Kamera über \textquotedblleft Key Features\textquotedblright\ zu ermitteln \parencite{Klein2009}. Seither wurde auf diesem Gebiet weiter entwickelt und Algorithmen dieser Art sind unter dem Namen SLAM (Simultaneous Location and Mapping) zusammengefasst, dazu existieren verschiedene Frameworks welche diese nativ mitbringen (Kudan, wikitude).
 
