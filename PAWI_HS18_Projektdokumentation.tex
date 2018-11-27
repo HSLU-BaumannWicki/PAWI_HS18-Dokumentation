@@ -285,11 +285,11 @@ Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen i
 \subsection{Systemübersicht}
 
 \subsection{Architektur \& Design}
-Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt. Dabei wurde ein Klassendiagramm erstellt, da es gleich den kompletten Aufbau des Projektes aufzeigt, sowie dessen Abhängigkeiten zu Schnittstellen (in der Grafik \textquoteleft Interfaces\textquoteright\ genannt).
+Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
 
 \begin{figure}[h!]
-	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverview.png}
-	\caption{Architekturübersicht als Klassendiagramm}
+	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverviewV0_4.png}
+	\caption{Architekturübersicht}
 \end{figure}
 
 Eine detaillierte Beschreibung der einzelnen Schichten ist in den folgenden Kapiteln zu finden.
@@ -332,10 +332,10 @@ Das Building Model Interface ist das Bindeglied zwischen der realen Position des
 	\caption{Building Model Interface}
 \end{figure}
 
-Der Texturizer ist verantwortlich für die Einfärbung des Modelles.
+Der BuildingTexturizer ist verantwortlich für die Einfärbung des Modelles.
 \begin{figure}[h!]
 	\center
-	\includegraphics[scale=0.6]{Texturizer.png}
+	\includegraphics[scale=0.6]{BuildingTexturizer.png}
 	\caption{Texturizer Interface}
 \end{figure}
 
@@ -349,21 +349,14 @@ Der Rotator verpflichtet sich ein Rotating Object in einem Raum um eine bestimmt
 
 
 Der Mean Ring Buffer ist verantwortlich, dass ein Mittelwert eines Objektes <T> aus den übergebenen Objekten berechnet wird.
-\begin{figure}
+\begin{figure}[h!]
 	\center
 	\includegraphics[scale=0.6]{MeanRingBuffer.png}
 	\caption{Mean ring buffer Interface}
 \end{figure}
 
-Das LocationFilterElevation Interface liefert einen Höhenwert für ein Set von Koordinaten zurück.
-\begin{figure}
-	\center
-	\includegraphics[scale=0.6]{LocationFilterElevation.png}
-	\caption{Location Elevation Interface}
-\end{figure}
-
 Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen AsyncElevationRequest.
-\begin{figure}
+\begin{figure}[h!]
 	\center
 	\includegraphics[scale=0.6]{AsyncElevationRequestCallee.png}
 	\caption{AsyncElevationRequestCallee Interface}
@@ -373,9 +366,6 @@ Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen Asyn
 
 \subsection{Anwendung}
 
-\section{Systemarchitektur}
-
-\newpage
 \section{Komponentendesign}
 
 \begin{figure}[h!]
@@ -385,7 +375,10 @@ Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen Asyn
 \end{figure}
 
 \section{Umsetzung Programmierung}
-
+\subsection{Clean Code}
+Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name gewählt werden musste. 
+\subsection{Git Flow}
+Um möglichst effizient und Unabhängig voneinander zu Programmieren, sowie zu Dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
 \section{Testing}
 
 \subsection{Testplan}
@@ -625,7 +618,10 @@ Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
 \end{itemize}
 Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
 
-Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist. Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
+
+Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist.
+
+Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
 Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
  
 Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
