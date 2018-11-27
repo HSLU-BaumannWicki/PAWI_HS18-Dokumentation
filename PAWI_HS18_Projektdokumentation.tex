@@ -21,6 +21,8 @@
 % Use graphics
 \usepackage{graphicx}
 
+% Be able to include PDFs in the file
+\usepackage{pdfpages}
 
 % Have custom abstract heading
 \usepackage{abstract}
@@ -876,9 +878,6 @@ Legende:
 
 \appendix
 
-\chapter{Testprotokolle}
-
-
 \glossary{Abkürzungsverzeichnis}
 
 \listoffigures
@@ -888,6 +887,44 @@ Legende:
 \listofmyequations \pagebreak
 
 \printbibliography
+
+\chapter{Testprotokolle}
+
+\chapter{Sprints}
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_2}
+	\caption{Erledigte Tasks in Sprint 2}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_3}
+	\caption{Erledigte Tasks in Sprint 3}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_4}
+	\caption{Erledigte Tasks in Sprint 4}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_5}
+	\caption{Erledigte Tasks in Sprint 5}
+\end{figure}
+
+\newpage
+
+\chapter{Evaluationen}
+
+\includepdf[pages=-]{Evaluation_HoloLens.pdf}
+
+\chapter{Anleitungen}
+
+\includepdf[pages=-]{Gebaeudemodell_korrekt_zu_ARModel_konvertieren.pdf}
 
 \chapter*{Eidesstattliche Erklärung}
 Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
