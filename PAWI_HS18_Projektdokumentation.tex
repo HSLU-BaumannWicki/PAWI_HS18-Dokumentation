@@ -257,19 +257,13 @@ Diese Hinweise müssen nicht zwingend Texte sein, so kann auch ein Pfeil in die 
 \subsubsection{Vielfältige Benutzer}
 Eine AR Applikation soll stets für eine Vielzahl von Benutzer brauchbar sein. Dies soll besonders berücksichtigt werden. Es soll dabei Acht auf Behinderungen wie Farbenblindheit oder ähnliche Konditionen gegeben werden (\cite{AppleGuideline2018}, \cite{GoogleGuideline2018}, \cite{GoogleIO2018}, \cite{BerfinAyhan2017}).
 
-\chapter{Ideen und Konzepte}
-Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation Markerless oder Markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim Markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies nicht beim Markerless Tracking.
-Da Markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss beim Markerless eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
+\chapter{Lösung}
+Im folgenden Kapitel wird die Lösung beschrieben. Es soll ein Überblick über die Umsetzung der Applikation bieten. Eine detaillierte Beschreibung ist in Kapitel //TODO->KAPITEL NAME zu finden. Es wird zudem ein Alternatives Konzept vorgestellt, welches nicht weiter verfolgt wurde.
 
+\section{Konzeptionelle Idee}
+Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation Markerless oder Markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim Markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies nicht beim Markerless Tracking. Da Markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss beim Markerless eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
 Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker wie auch Markerless basierend, anbieten.
-
-\section{Markerbasierte Lösung}
-Das Konzept eines markerbasierten Lösung sieht vor, dass die Lokalisierung des Markers in der realen Welt bereits bekannt ist, und sich dieser nicht ändert. Sofern dies der Fall ist, kann die relative Position der Kamera zum Marker und somit zum Gebäude berechnet werden.
-Die relative Position zum Marker kann durch dessen Grösse sowie dem Winkel in Relation zur Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude ausgerechnet werden.
-Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker zuerst befestigt werden muss, es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man Physisch vor Ort den Marker platzieren muss.
-
-
-\section{Lösung basierend auf Lokalisierungssensoren}
+\bigbreak
 Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass das darzustellende Gerät über folgende zusätzliche Komponenten verfügt: 
 \begin{enumerate}
 	\item Lokalisierungssensor (GPS/GLONASS/BEIDOU/GALILEO Sensor)
@@ -279,7 +273,78 @@ Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass da
 Bei dieser Lösung werden die Lokalisierungssensoren sowie der Kompass dazu verwendet die Positionierung des darzustellenden Gebäudes zu berechnen. Die lokalen Bewegungen des Anzeigegerätes würden mithilfe des Gyroskops ausgelesen, und dazu verwendet das Gebäude an Ort und Stelle zu halten.
 Nachteil dieser Methode liegt darin, dass die Anzeige nun abhängig von drei Sensorwerten ist, welche selber jeweils eine Ungenauigkeit aufweisen und damit Fehler ins System einbringen. Dieser Umstand kann dazu führen, dass das anzuzeigende Gebäude nicht immer an der exakten Position dargestellt wird.
 
-\chapter{Methode}
+\section{Applikationsablauf}
+Die Applikation durchläuft verschiedene Schritte, damit sie dem Benutzer das Modell in der Umgebung an der Korrekten Position anzeigen kann. Diese Schritte sind anhand der Abbildung \ref{fig:Ablaufdiagramm} grafisch ersichtlich.
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{AblaufdiagrammARApplikation.png}
+	\caption{Ablaufdiagramm der AR Applikation}
+    \label{fig:Ablaufdiagramm}
+\end{figure}
+
+\subsection{Permission Init}
+Sobald die Applikation startet, werden diverse Berechtigungen überprüft. Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status beim Benutzer nachgefragt. Hierfür wird dem Benutzer alle Fehlenden Berechtigungen in einer Liste dargestellt. Damit der Benutzer nicht in einer Endlosschlaufe die Berechtigungen Ablehnt, wird nur einmal nach den Berechtigungen gefragt und Anschliessend lediglich auf Wunsch des Benutzers erneut gefragt. Es ist Zwingend, dass der Benutzer diese Berechtigungen zulässt da sonst die Komplette Applikation nicht funktioniert. Hat der Benutzer alle Berechtigungen zugestimmt oder hat die Applikation schon alle Berechtigungen wechselt der Status auf den im Kapitel \ref{ch:NorthInit} beschriebenen Zustand. Die Abbildung \ref{fig:PermissionInitStatus} zeigt das GUI der Abfrage.
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{ARBuildingPermissionRequest.png}
+	\caption{Darstellung fehlender Berechtigung, sowie abfrage Fehlender Berechtigung}
+    \label{fig:PermissionInitStatus}
+\end{figure}
+
+\subsection{North Init} \label{ch:NorthInit}
+In diesem Status wird versucht den Nordpol mittels dem Kompass herauszulesen. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dieser Zustand dient dazu, dass nicht Ständig der Norden vom Kompasssensor herausgelesen werden muss, was zu einer Steigerung der Genauigkeit führt. Sobald der Benutzer das Gerät genug lange nach Norden ausgerichtet hat, startet wechselt die Applikation in den in Kaptiel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{NorthInitProcess.png}
+	\caption{Darstellung North Init mit Indikator ob richtige Position erreicht wurde.}
+    \label{fig:NorthInitProcess}
+\end{figure}
+
+\subsection{AR Application Init} \label{ch:ARApplicationInit}
+Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für die Initiirung der AR Applikation gestartet. Dies bedeutet insbesondere, dass die Kudan AR Welt aufgebaut wird. Zudem abonniert dieser Status den Event, welcher bei Lokalisierungsupdates des Gerätes geworfen wird und wechselt zum Status, welcher in Kapitel \ref{ch:waitingForLocation} beschrieben ist.
+
+\subsection{3D Model Init}
+Dieser Status "3D Model Init" erfüllt zum jetztigen Zeitpunkt noch keinen Zweck. Er würde jedoch die Modelle, welche die Applikation darstellen soll von einer Website herunterladen und diese der Applikation bereitstellen.
+
+\subsection{Waiting for localisation} \label{ch:waitingForLocation}
+In diesem Schritt wird gewartet bis eine valide Lokalisierungsposition vom Gerät zurückgegeben wird. die Position wird als valide betrachtet, sobald sie genügend genau ist. Der Benutzer wird auch hier über den zustand informiert (siehe Abbildung \ref{fig:KoordinationNotFound}), indem eine Grafische Darstellung dem Benutzer mitteilt, dass zurzeit keine Lokalisierungsdaten vorhanden seien um das Gebäude darzustellen. Der Status wechselt automatisch in den in Kapitel \ref{ch:ThreeDModelPresenting} beschriebenen Zustand.
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{UnknownLocation.png}
+	\caption{Darstellung solange Position unbekannt ist.}
+    \label{fig:KoordinationNotFound}
+\end{figure}
+
+
+\subsection{3D Model presenting} \label{ch:ThreeDModelPresenting}
+In diesem Schritt wird das Model für den Benutzer dargestellt. Das Modell wird mittels eines Gyroscopes stets an der Korrekten Stelle gehalten, solange sich der Benutzer an Ort und Stelle hält. Bewegt sich jedoch der Benutzer wieder, werden die neuen Positionsdaten dazu verwendet das Modell darzustellen.
+Der Benutzer kann von diesem Zustand wieder in folgende zustände kommen:
+\begin{itemize}
+	\item North Init (Durch Klicken auf entsprechenden Button siehe Abbildung \ref{fig:ARShowBuilding})
+	\item Waiting for localisation (Sofern über eine gewisse Zeit keine neuen Daten hinzugefügt werden konnten).
+\end{itemize} 
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{ARShowBuilding.png}
+	\caption{Darstellung des Gabäudes sobald die Position ausfindigemacht werden konnte (hier gefälschte Positionsdaten).}
+    \label{fig:ARShowBuilding}
+\end{figure}
+
+\clearpage
+
+\section{Verworfene Markerbasierte Lösung}
+Das Konzept eines markerbasierten Lösung sieht vor, dass die Lokalisierung des Markers in der realen Welt bereits bekannt ist, und sich dieser nicht ändert. Sofern dies der Fall ist, kann die relative Position der Kamera zum Marker und somit zum Gebäude berechnet werden.
+Die relative Position zum Marker kann durch dessen Grösse sowie dem Winkel in Relation zur Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude ausgerechnet werden.
+Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker zuerst befestigt werden muss, es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man Physisch vor Ort den Marker platzieren muss.
+
+\subsection{Prototyp}
+Um dieses Konzept zu Entwickeln wurde ein Prototyp entwickelt. Bei diesem stellte sich jedoch ein schwerwiegendes Problem ein, dass das Gebäude aus nicht weiter untersuchten Gründen beim Gleichen Marker immer wieder verschieden dargestellt wurde. Dieses verhalten führte dazu, dass die Parallele entwicklung dieses Konzeptes eingestellt wurde und der Fokus auf die Positionsbasierte Lösung gelegt wurde. In Abbildung \ref{fig:alternativeSolution} sieht man das Fehlverhalten des 3D Modelles.
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{alternativeLoesung.png}
+	\caption{Verworfene Alternative Lösung, Problem der unterschiedlichen Darstellungen des Gebäudes.}
+    \label{fig:alternativeSolution}
+\end{figure}
+
+  
+
+
+\chapter{Technische Beschreibung}
 
 \section{Vorgehensmodell}
 
