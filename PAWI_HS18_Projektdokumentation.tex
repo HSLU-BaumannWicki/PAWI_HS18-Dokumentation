@@ -349,8 +349,8 @@ Um dieses Konzept zu Entwickeln wurde ein Prototyp entwickelt. Bei diesem stellt
 \end{figure}
 
 \chapter{Technische Beschreibung}
-
-\section{Vorgehensmodell}
+\section{Projektinformationen}
+\subsection{Vorgehensmodell}
 
 Alle Wirtschaftsprojekte an der Hochschule Luzern fallen in eine der folgenden Kategorien:
 
@@ -367,10 +367,13 @@ Dabei ist dieses Projekt als Innovationsprojekt und Softwareentwicklung klassifi
 \subsection{Agile Projektmethode}
 
 Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändernden Umfeld zu bestehen. Insbesondere heisst das, das auf sich verändernden Voraussetzungen schnell reagiert werden kann und ein funktionierendes Produkt dabei entsteht \parencite{AgileAlliance2015}. Dies soll durch eine enge Zusammenarbeit mit dem Auftraggeber und guter teaminterner Kommunikation erreicht werden.
-
+\bigbreak
 Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen in den jeweiligen Sprints spezifiziert werden, und in der Sprintplanung festgehalten wird. Wir unterteilten unser Projekt in eine zweiwöchige Initialisierung, zweiwöchige Evaluation, und fünf Sprints, in der unser Produkt entwickelt wurde.
 
-\section{Anforderungen}
+\section{Systemspezifikation}
+\label{sec:SysSpec}
+
+\subsection{Anforderungen}
 \begin{itemize}
 	\item Das Augmented Reality Objekt soll ausserhalb von Gebäuden ...
 	\begin{itemize}
@@ -386,10 +389,32 @@ Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen i
 	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden.
 	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden.
 \end{itemize}
-\section{Systemspezifikation}
-\label{sec:SysSpec}
 
-\subsection{Systemübersicht}
+\subsection{Kontext}
+Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die Interaktion der AR Applikation mit den Benutzer, Systemen und anderen Prozessen. Es zeigt somit den Kontext der gesamten Applikation auf.
+
+\begin{figure}[h!]
+	\includegraphics[keepaspectratio, width=\textwidth]{KontextDiagram.png}
+	\caption{Kontextdiagramm}
+	\label{fig:Kontext}
+\end{figure}
+
+
+\subsection{Komponentendesign}
+
+Die Entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
+\bigbreak
+Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems mitbringen).
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth, keepaspectratio]{Komponentendesign}
+	\caption{Komponenten der ARBuildings Applikation}
+	\label{fig:Komponentendesign}
+\end{figure}
+
 
 \subsection{Architektur \& Design}
 Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
@@ -416,14 +441,14 @@ In ModelPosition ist die gesamte Logik für die Positionierung eines Gebäudes i
 \subsubsection{Server}
 Der Server ist eine über eine REST Schnittstelle ansprechbare Komponente, welche das dynamische Laden von neuen Gebäuden ermöglicht. Diese ist ausserhalb dieses Projektscopes, wurde aus Gründen der Vollständigkeit jedoch dokumentiert und spezifiziert.
 
-\subsection{Schnittstellen}
-\subsubsection{Externe Schnittstellen}
+\subsection{Externe Schnittstellen}
 Neben der Android Bibliothek wurde lediglich KudanAR als externe Schnittstelle verwendet. Die Dokumentation zu dieser Schnittstelle für Android ist unter folgendem Link zu finden:
 \href{https://www.kudan.eu/docs-reference/AndroidDocs/annotated.html}{Dokumentation Kudan - Android}
 
 
-\subsubsection{Interne Schnittstellen}
+\subsection{Interne Schnittstellen}
 
+\subsubsection{Building Positioner}
 Die BuildingPositioner Schnittstelle ist verantwortlich für die Abstraktion des gesamten Positionierungsprozesses zur Applikation. Es bietet zudem Methoden an, welche dem Starten und Stoppen des Prozesses dienen.
 \begin{figure}[h!]
 	\center
@@ -431,6 +456,7 @@ Die BuildingPositioner Schnittstelle ist verantwortlich für die Abstraktion des
 	\caption{BuildingPositioner Interface}
 \end{figure}
 \clearpage
+\subsubsection{Building Model}
 Das Building Model Interface ist das Bindeglied zwischen der realen Position des Benutzers und der virtuellen Position in der Applikationswelt. Es ist verantwortlich, dass das Gebäude reale Positionsdaten besitzt und die virtuellen Koordinaten an das Modell in der virtuellen Welt übergibt.
 
 \begin{figure}[h!]
@@ -439,6 +465,7 @@ Das Building Model Interface ist das Bindeglied zwischen der realen Position des
 	\caption{Building Model Interface}
 \end{figure}
 
+\subsubsection{Building Texturizer}
 Der BuildingTexturizer ist verantwortlich für die Einfärbung des Modelles.
 \begin{figure}[h!]
 	\center
@@ -447,6 +474,7 @@ Der BuildingTexturizer ist verantwortlich für die Einfärbung des Modelles.
 \end{figure}
 
 
+\subsubsection{Rotator}
 Der Rotator verpflichtet sich ein Rotating Object in einem Raum, um eine bestimmte Achse zu drehen.
 \begin{figure}[h!]
 	\center
@@ -455,6 +483,7 @@ Der Rotator verpflichtet sich ein Rotating Object in einem Raum, um eine bestimm
 \end{figure}
 
 
+\subsubsection{Mean Ring Buffer}
 Der Mean Ring Buffer ist verantwortlich, dass ein Mittelwert eines Objektes <T> aus den übergebenen Objekten berechnet wird.
 \begin{figure}[h!]
 	\center
@@ -462,6 +491,7 @@ Der Mean Ring Buffer ist verantwortlich, dass ein Mittelwert eines Objektes <T> 
 	\caption{Mean ring buffer Interface}
 \end{figure}
 
+\subsubsection{Async Elevation Request Callee}
 Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen AsyncElevationRequest.
 \begin{figure}[h!]
 	\center
@@ -469,28 +499,15 @@ Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen Asyn
 	\caption{AsyncElevationRequestCallee Interface}
 \end{figure}
 
-\subsection{Anforderungen}
-
-\subsection{Anwendung}
-
-\section{Komponentendesign}
-
-Die Entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
-
-Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems mitbringen).
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\linewidth, keepaspectratio]{Komponentendesign}
-	\caption{Komponenten der ARBuildings Applikation}
-	\label{fig:Komponentendesign}
-\end{figure}
-
-\section{Umsetzung Programmierung}
-\subsection{Clean Code}
-Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name gewählt werden musste. 
-\subsection{Git Flow}
+\subsection{Anforderungen der Software}
+\subsection{Umsetzung Programmierung}
+\subsubsection{Clean Code}
+Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name für diese sowie deren Parameter gewählt werden musste. 
+\subsubsection{Git Flow}
 Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
+\subsubsection{Unit Test}
+Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde zu beginn des Projektes entschlossen, die Anzahl an Unit Tests vorerst noch gering zu halten. Dies ermöglichte, dass wir genug Zeit hatten um verschiedene Prototypen zu entwickeln.
+
 \section{Testing}
 
 \subsection{Testplan}
