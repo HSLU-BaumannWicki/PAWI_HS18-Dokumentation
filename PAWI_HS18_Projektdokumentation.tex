@@ -350,6 +350,8 @@ Um dieses Konzept zu Entwickeln wurde ein Prototyp entwickelt. Bei diesem stellt
 
 \chapter{Technische Beschreibung}
 \section{Projektinformationen}
+
+
 \subsection{Vorgehensmodell}
 
 Alle Wirtschaftsprojekte an der Hochschule Luzern fallen in eine der folgenden Kategorien:
@@ -370,6 +372,98 @@ Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändern
 \bigbreak
 Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen in den jeweiligen Sprints spezifiziert werden, und in der Sprintplanung festgehalten wird. Wir unterteilten unser Projekt in eine zweiwöchige Initialisierung, zweiwöchige Evaluation, und fünf Sprints, in der unser Produkt entwickelt wurde.
 
+\subsection{Ermittlung offener Projektrahmenbedingungen}
+\label{sec:evaluation}
+Im Rahmen dieses Projektes mussten verschiedene Unbekannte zuerst analysiert und evaluiert werden. Dazu gehörten die Zielplattform, Entwicklungsumgebung und die zu verwendenden Augmented Reality Frameworks.
+\subsubsection{Zielplattform}
+Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
+\begin{itemize}
+\item Microsoft HoloLens
+\item Smartphone und Tablets
+\end{itemize}
+Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
+
+
+Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist.
+
+Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten, die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
+Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
+ 
+Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
+Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Augmented Reality Modelle das Smartphone ständig in den Händen gehalten werden muss.
+
+In einer ersten Evaluation mit einer Hololens wurde entschieden, dass für dieses Projekt die Hololens ausgeschlossen werden soll, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
+
+Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf den bereits vorhanden Geräten verwendet werden kann. 
+
+\subsubsection{Entwicklungsumgebung}
+\label{ssec:EvalPlattform}
+Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsumgebungen zur Verfügung. Dabei wurden folgende zwei Entwicklungsumgebungen miteinander verglichen:
+\begin{itemize}
+\item Unity
+\item AndroidStudio
+\end{itemize}
+
+Auf beiden Entwicklungsumgebungen wurde ein Prototyp für Android entwickelt. Dabei entstand folgende Auffassung:
+
+Bei Unity ist das Erstellen einer ersten lauffähigen Version sehr einfach. Ein weiterer Vorteil ist die grafische Darstellung der 3D Modelle. Zudem würde eine allfällige Portierung auf weitere Platformen einfach umsetzbar sein. Bei der Entwicklung stellte sich eine Schwäche mit den GPS Sensoren heraus. So funktionierten diese aus unbekannten Gründen nicht bei jeder Installation der Applikation korrekt. Für die Lösung dieses Problemes fehlte eine ausreichende Debugmöglichkeit in Unity.
+
+Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeichneten API Dokumentation. So funktionierten alle benötigten Sensoren auf Anhieb. Die Schwächen dieser Entwicklungsumgebung liegt darin, dass eine allfällige Portierung auf weitere Plattformen nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht grafisch dargestellt und müssen mit einer anderen Software Editiert werden.
+
+Die unzureichende Debugmöglichkeiten sowie die Problemen mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
+
+\subsubsection{Augmented Reality Frameworks}
+Während der Recherchen stellte sich heraus, dass ein breites Spektrum verschiedener AR Frameworks auf dem Markt vorhanden ist. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden vier häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
+\begin{itemize}
+\item Kudan
+\item Vuforia
+\item Wikitude
+\item ARtoolKit
+\end{itemize}
+
+Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie vergleicht die für dieses Projekt notwendigen Features, sowie die Lizenzierung (\cite{DDIDevelopment}).
+
+\begin{table}[h!]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline 
+		& \textbf{Mobile} & \textbf{UWP (Hololens)} & \textbf{SLAM} & \textbf{Licence} \\ 
+		\hline 
+		Kudan & \checkmark & x & \checkmark & Commercial, free \\ 
+		\hline 
+		Vuforia & \checkmark & \checkmark & \checkmark & Commercial \\ 
+		\hline 
+		Wikitude & \checkmark & \checkmark & \checkmark & Commercial, free \ \\ 
+		\hline 
+		ARToolkit & \checkmark & x & x & OpenSource \\ 
+		\hline 
+	\end{tabular}
+	\caption{Vergleichstabelle verschiedener AR Frameworks}
+\end{table}
+
+
+Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Gründe dafür lagen darin, dass dieses Framework über eine sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}), und das Lizenzierungsmodell, welche eine Entwicklung ohne weitere Kosten ermöglichte. Der wichtigste Grund lag jedoch darin, dass die Dokumentation sehr extensiv, und die Erfahrung mit Kudan am Grössten war.
+
+\subsection{Einschränkungen und Abgrenzungen}
+
+Wie aus der Evaluation (siehe \ref{ssec:EvalPlattform}) ersichtlich ist, haben wir uns schlussendlich auf Android als Plattform beschränkt. Dies hat zur Folge, dass der erarbeitete Code nicht ohne weiteres auf andere Plattformen portiert werden kann. Die Architektur ist aber so modular aufgebaut, dass die Implementierung für andere Plattformen dennoch ohne grossen Aufwand geschehen kann.
+
+Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt. Dies entspricht etwa 80\% aller Androidbesitzer (siehe Abb. \ref{fig:AndroidMarketshare}), und beinhaltet wichtige Funktionen die wir für unser Projekt gebrauchen. Zudem muss das jeweilige Gerät folgende Systemanforderungen besitzen:
+\begin{itemize}
+	\item Gyroskop
+	\item Magnetometer (Kompass)
+	\item GPS Lokationssensor (GLOSNASS, GALILEO, BEIDU)
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[keepaspectratio,width=0.8\textwidth]{AndroidMarketshare}
+	\caption{Prozentanteil der Androidversionen, Daten von \cite{Fossbytes2018}}
+	\label{fig:AndroidMarketshare}
+\end{figure}
+
+
+\newpage
 \section{Systemspezifikation}
 \label{sec:SysSpec}
 
@@ -510,8 +604,8 @@ Die AR Applikation stellte folgende Hardware Anforderungen an das Gerät:
 \subsubsection{Software}
 Die AR Applikation stellt zudem folgende Software Anforderungen an das Gerät:
 \begin{itemize}
-	\item Android OS (mindestens Version 6.0}
-	\item Eine Internetverbindung
+	\item Android OS (mindestens Version 6.0)
+	\item Aktive Internetverbindung
 \end{itemize}
 \subsection{Umsetzung Programmierung}
 \subsubsection{Clean Code}
@@ -742,105 +836,6 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 \hline 
 \end{tabularx}
 
-\chapter{Realisierung}
-
-% TODO Ein Beispiel für den Gebrauch von Formeln und Referenz auf die jeweilige Formel - entfernen wenn nicht mehr gebraucht
-Die Distanz zwischen zwei Geopositionen wird über die Bogenlänge (siehe \ref{Bogenlaenge}) der Differenz der Längen- und Breitengrade ausgerechnet.
-
-\indexequation{b = \frac{\pi}{\SI{180}{\degree}}\beta r}{Bogenlänge des Winkels $\beta$ mit Radius $r$}{Bogenlaenge}
-
-\section{Ermittlung offener Projektrahmenbedingungen}
-\label{sec:evaluation}
-Im Rahmen dieses Projektes mussten verschiedene Unbekannte zuerst analysiert und evaluiert werden. Dazu gehörten die Zielplattform, Entwicklungsumgebung und die zu verwendenden Augmented Reality Frameworks.
-\subsubsection{Zielplattform}
-Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
-\begin{itemize}
-\item Microsoft HoloLens
-\item Smartphone und Tablets
-\end{itemize}
-Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
-
-
-Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist.
-
-Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten, die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
-Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
- 
-Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
-Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Augmented Reality Modelle das Smartphone ständig in den Händen gehalten werden muss.
-
-In einer ersten Evaluation mit einer Hololens wurde entschieden, dass für dieses Projekt die Hololens ausgeschlossen werden soll, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
-
-Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf den bereits vorhanden Geräten verwendet werden kann. 
-
-\subsubsection{Entwicklungsumgebung}
-\label{ssec:EvalPlattform}
-Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsumgebungen zur Verfügung. Dabei wurden folgende zwei Entwicklungsumgebungen miteinander verglichen:
-\begin{itemize}
-\item Unity
-\item AndroidStudio
-\end{itemize}
-
-Auf beiden Entwicklungsumgebungen wurde ein Prototyp für Android entwickelt. Dabei entstand folgende Auffassung:
-
-Bei Unity ist das Erstellen einer ersten lauffähigen Version sehr einfach. Ein weiterer Vorteil ist die grafische Darstellung der 3D Modelle. Zudem würde eine allfällige Portierung auf weitere Platformen einfach umsetzbar sein. Bei der Entwicklung stellte sich eine Schwäche mit den GPS Sensoren heraus. So funktionierten diese aus unbekannten Gründen nicht bei jeder Installation der Applikation korrekt. Für die Lösung dieses Problemes fehlte eine ausreichende Debugmöglichkeit in Unity.
-
-Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeichneten API Dokumentation. So funktionierten alle benötigten Sensoren auf Anhieb. Die Schwächen dieser Entwicklungsumgebung liegt darin, dass eine allfällige Portierung auf weitere Plattformen nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht grafisch dargestellt und müssen mit einer anderen Software Editiert werden.
-
-Die unzureichende Debugmöglichkeiten sowie die Problemen mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
-
-\subsubsection{Augmented Reality Frameworks}
-Während der Recherchen stellte sich heraus, dass ein breites Spektrum verschiedener AR Frameworks auf dem Markt vorhanden ist. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden vier häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
-\begin{itemize}
-\item Kudan
-\item Vuforia
-\item Wikitude
-\item ARtoolKit
-\end{itemize}
-
-Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie vergleicht die für dieses Projekt notwendigen Features, sowie die Lizenzierung (\cite{DDIDevelopment}).
-
-\begin{table}[h!]
-	\center
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline 
-		& \textbf{Mobile} & \textbf{UWP (Hololens)} & \textbf{SLAM} & \textbf{Licence} \\ 
-		\hline 
-		Kudan & \checkmark & x & \checkmark & Commercial, free \\ 
-		\hline 
-		Vuforia & \checkmark & \checkmark & \checkmark & Commercial \\ 
-		\hline 
-		Wikitude & \checkmark & \checkmark & \checkmark & Commercial, free \ \\ 
-		\hline 
-		ARToolkit & \checkmark & x & x & OpenSource \\ 
-		\hline 
-	\end{tabular}
-	\caption{Vergleichstabelle verschiedener AR Frameworks}
-\end{table}
-
-
-Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Gründe dafür lagen darin, dass dieses Framework über eine sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}), und das Lizenzierungsmodell, welche eine Entwicklung ohne weitere Kosten ermöglichte. Der wichtigste Grund lag jedoch darin, dass die Dokumentation sehr extensiv, und die Erfahrung mit Kudan am Grössten war.
-
-\section{Einschränkungen und Abgrenzungen}
-
-Wie aus der Evaluation (siehe \ref{ssec:EvalPlattform}) ersichtlich ist, haben wir uns schlussendlich auf Android als Plattform beschränkt. Dies hat zur Folge, dass der erarbeitete Code nicht ohne weiteres auf andere Plattformen portiert werden kann. Die Architektur ist aber so modular aufgebaut, dass die Implementierung für andere Plattformen dennoch ohne grossen Aufwand geschehen kann.
-
-Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt. Dies entspricht etwa 80\% aller Androidbesitzer (siehe Abb. \ref{fig:AndroidMarketshare}), und beinhaltet wichtige Funktionen die wir für unser Projekt gebrauchen. Zudem muss das jeweilige Gerät folgende Systemanforderungen besitzen:
-\begin{itemize}
-	\item Gyroskop
-	\item Magnetometer (Kompass)
-	\item GPS Lokationssensor (GLOSNASS, GALILEO, BEIDU)
-\end{itemize}
-
-\begin{figure}
-	\centering
-	\includegraphics[keepaspectratio,width=0.8\textwidth]{AndroidMarketshare}
-	\caption{Prozentanteil der Androidversionen, Daten von \cite{Fossbytes2018}}
-	\label{fig:AndroidMarketshare}
-\end{figure}
-
-
-\newpage
 \chapter{Projektmanagementplan}
 
 \section{Vorgehensmodell}
