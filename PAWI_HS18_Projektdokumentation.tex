@@ -371,6 +371,7 @@ Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändern
 Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen in den jeweiligen Sprints spezifiziert werden, und in der Sprintplanung festgehalten wird. Wir unterteilten unser Projekt in eine zweiwöchige Initialisierung, zweiwöchige Evaluation, und fünf Sprints, in der unser Produkt entwickelt wurde.
 
 \section{Anforderungen}
+\label{ch:Anforderungen}
 \begin{itemize}
 	\item Das Augmented Reality Objekt soll ausserhalb von Gebäuden ...
 	\begin{itemize}
@@ -492,10 +493,8 @@ Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widers
 \subsection{Git Flow}
 Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
 \section{Testing}
-
-\subsection{Testplan}
-
 \subsection{Testfälle}
+Bassierend auf den Anforedungen, welche in Kapitel \ref{ch:Anforderungen} definiert sind, wurden folgende Tests erstellt. In Kapitel \ref{ch:testprotokoll} ist das Protokoll zu diesen Tests zu finden. Die Testfälle werden mit einer Version versehen. Alte Testfälle sind mittels GIT Repository weiterhin gespeichert.
 \subsubsection{Testfall 1-Berechtigung erlauben}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
@@ -510,7 +509,7 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 		1. App starten \\ &
 		2. Berechtigungen geben \\
 \hline
-	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal \\ 
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal -> der North Initialize Bildschrim erscheint. \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 2-Berechtigung verweigern}
@@ -534,16 +533,17 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-003v1 \\ 
+	T-003v2 \\ 
 \hline 
 	Beschreibung & 
-	Es soll überprüft werden ob die Kudan Komponenten starten\\ 
+	Es soll überprüft werden ob die Kudan Komponenten starten.\\ 
 \hline 
 	Testvoraussetzung &
 	T-001 wurde durchgeführt (Berechtigungen erhalten). \\ 
 \hline 
 	Testschritte &
-		1. App starten \\
+		1. App starten \\ &
+		2. Gerät nach Norden ausrichten \\
 \hline
 	Erwartetes Ergebnis &
 	Es soll der Kamerabildschirm angezeigt werden. \\ 
@@ -553,7 +553,7 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-004v1 \\ 
+	T-004v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird.\\ 
@@ -563,9 +563,10 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
 \hline 
 	Testschritte & 
-		1. Smartphone nach norden ausrichten \\ &
+		1. Smartphone nach Norden ausrichten \\ &
 		2. App starten \\ &
-		3. Initialisierung abwarten (ca. 3 Sekunden)\\
+		3. Smartphone erneut nach Norden ausrichten \\ &
+		4. Initialisierung abwarten (ca. 3 Sekunden)\\
 \hline
 	Erwartetes Ergebnis &
 	Das Gebäude wird auf 7Uhr 30 dargestellt. \\ 
@@ -575,7 +576,7 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-005v1 \\ 
+	T-005v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. \\ 
@@ -587,17 +588,17 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 	Testschritte & 
 		1. Smartphone nach Westen ausrichten \\ &
 		2. App starten \\ &
-		3. Initialisierung abwarten (ca. 3 Sek) \\
+		3. Smartphone nach Norden ausrichten \\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wird auf 10Uhr 30 dargestellt. \\ 
+	Das Gebäude wird auf 7Uhr 30 dargestellt. \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 6-Darstellung Gebäude mit Bewegung nach rechts}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-006v1 \\ 
+	T-006v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
@@ -609,20 +610,20 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 	Testschritte & 
 		1. Smartphone nach Westen ausrichten \\ &
 		2. App starten \\ &
-		3. 3 Sekunden warten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
 		4. App minimieren (Home Button drücken) \\ &
 		5. GPS Mocklocation verändern (auf Position 47.145739885261925,8.436641571608824) \\ &
 		6. App erneut öffnen \\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wandert von 10Uhr 30 auf 12Uhr \\ 
+	Das Gebäude wandert von 7Uhr 30 auf 9Uhr \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-007v1 \\ 
+	T-007v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
@@ -634,34 +635,9 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 	Testschritte & 
 		1. Smartphone nach Norden ausrichten \\ &
 		2. App starten \\ &
-		3. 3 Sekunden warten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
 		4. App minimieren (Home Button drücken) \\ &
 		5. GPS Mocklocation verändern (auf Position  47.141427, 8.432621) \\ &
-		6. App erneut öffnen \\
-\hline
-	Erwartetes Ergebnis &
-	Das Gebäude wandert von 15Uhr auf 12Uhr \\ 
-\hline 
-\end{tabularx}
-\subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
-\begin{tabularx}{\textwidth}{|l|X|}
-\hline 
-	Version &
-	T-007v1 \\ 
-\hline 
-	Beschreibung & 
-	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
-\hline 
-	Testvoraussetzung &
-	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.142958, 8.430126, Altitude: 450 \\ 
-\hline 
-	Testschritte & 
-		1. Smartphone nach Norden ausrichten \\ &
-		2. App starten \\ &
-		3. 3 Sekunden warten \\ &
-4. App minimieren (Home Button drücken) \\ &
-		5. GPS Mocklocation verändern (auf position  47.141427, 8.432621) \\ &
 		6. App erneut öffnen \\
 \hline
 	Erwartetes Ergebnis &
@@ -694,7 +670,7 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-009v1 \\ 
+	T-009v2 \\ 
 \hline 
 	Beschreibung & 
 	Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. \\ 
@@ -704,12 +680,41 @@ Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu d
 \hline 
 	Testschritte & 
 		1. App starten \\ &
-		2. 3 Sekunden warten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
 		3. Rotieren des Smartphones um 90 grad (Portrait auf Landscape) \\
 \hline
 	Erwartetes Ergebnis &
 	Die App soll keine Rotationsanimation beinhalten. Die App soll das Gebäude weiter anzeigen. \\ 
 \hline 
+\end{tabularx}
+
+\subsection{Testprotokoll}
+\label{ch:testprotokoll}
+Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere Resultate sind im Anhang \ref{appendig:testprotokolle} zu finden . 
+\bigbreak
+
+\begin{tabularx}{\textwidth}{|l|X|l|}
+\hline
+	\textbf{TestID/Version }& \textbf{Beschreibung} & \textbf{Passed} \\
+\hline
+	T-001v1 & Berechtigungsanfragen & \checkmark \\
+\hline
+	T-002v1 & Berechtigungsanfragen verweigern & \checkmark \\
+\hline
+	T-003v2 & Es soll überprüft werden ob die Kudan Komponenten starten. & \checkmark \\
+\hline
+	T-004v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird. & \checkmark \\
+\hline
+	T-005v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. & \checkmark \\
+\hline
+	T-006v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. & \checkmark \\
+\hline
+	T-007v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. & \checkmark \\
+\hline
+	T-008v1 & Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. & \checkmark \\
+\hline
+	T-009v2 & Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. & \checkmark \\
+\hline
 \end{tabularx}
 
 \chapter{Realisierung}
@@ -985,6 +990,28 @@ Legende:
 \printbibliography
 
 \chapter{Testprotokolle}
+\label{appendig:testprotokolle}
+\section{Testprotokoll 28.11.2018}
+Dieses Protokoll wurde von Dane Wicki am 28.11.2018 erstellt.
+\subsection{T-001v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-002v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-003v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-004-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-005-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-006-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-007-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-008-v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-009-v2}
+Test liefert erwartetes Ergebnis.
+
 
 \chapter{Sprints}
 
