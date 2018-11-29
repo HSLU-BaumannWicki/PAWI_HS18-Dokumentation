@@ -136,7 +136,12 @@ Die vorliegende Arbeit beschäftigt sich stark mit der Fragestellung, inwiefern 
 \section{Technologische Grundlagen}
 
 \subsection{Historische Entwicklung}
-Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
+
+Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass.
+
+% TODO Science Ficiton, Head-Mounted Displays, Azuma
+
+Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
 
 \vspace{1em}
 
@@ -199,6 +204,9 @@ Die Feature-basierte Methode extrahiert interessante Punkte eines Bildes und ver
 
 \subsubsection{SLAM}
 Wie im vorherigen Paragraf erklärt, wird zwischen zwei Markerless Tracking Methoden unterscheiden. Eine spezifische, die sogenannte SLAM Methode, wird in diesem Paragraoh näher erklärt. Diese Methode identifiziert, mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt), sowie deren Abhängigkeiten zueinander (Location) und fasst diese in einer Karte zusammen (Mapping). Sollte nun die Pose verloren gehen (durch einen Unterbruch des Kamerastream oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden, um die Position wieder zu bestimmen. Dieser Ansatz wird \textquotedblleft Simultaneous Location and Mapping\textquotedblright (dt. Simultanes Erkennen und Kartografieren) genannt.
+
+\subsubsection{GPS}
+% TODO Write about GPS System
 
 \section{Anwendungen}
 
