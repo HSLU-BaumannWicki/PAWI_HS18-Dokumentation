@@ -488,13 +488,18 @@ Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese ni
 \end{figure}
 
 \section{Umsetzung Programmierung}
+
 \subsection{Clean Code}
 Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name gewählt werden musste. 
+
 \subsection{Git Flow}
 Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
+
 \section{Testing}
+
 \subsection{Testfälle}
-Bassierend auf den Anforedungen, welche in Kapitel \ref{ch:Anforderungen} definiert sind, wurden folgende Tests erstellt. In Kapitel \ref{ch:testprotokoll} ist das Protokoll zu diesen Tests zu finden. Die Testfälle werden mit einer Version versehen. Alte Testfälle sind mittels GIT Repository weiterhin gespeichert.
+Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} definiert sind, wurden folgende Tests erstellt. In Kapitel \ref{ch:testprotokoll} ist das Protokoll zu diesen Tests zu finden. Die Testfälle werden mit einer Version versehen. Alte Testfälle sind im git Repository weiterhin verfügbar.
+
 \subsubsection{Testfall 1-Berechtigung erlauben}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
@@ -509,7 +514,7 @@ Bassierend auf den Anforedungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		1. App starten \\ &
 		2. Berechtigungen geben \\
 \hline
-	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal -> der North Initialize Bildschrim erscheint. \\ 
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal -> der North Initialize Bildschirm erscheint. \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 2-Berechtigung verweigern}
@@ -681,7 +686,7 @@ Bassierend auf den Anforedungen, welche in Kapitel \ref{ch:Anforderungen} defini
 	Testschritte & 
 		1. App starten \\ &
 		3. Smartphone nach Norden ausrichten \\ &
-		3. Rotieren des Smartphones um 90 grad (Portrait auf Landscape) \\
+		3. Rotieren des Smartphones um 90 Grad (Portrait auf Landscape) \\
 \hline
 	Erwartetes Ergebnis &
 	Die App soll keine Rotationsanimation beinhalten. Die App soll das Gebäude weiter anzeigen. \\ 
