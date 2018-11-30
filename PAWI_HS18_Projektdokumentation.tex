@@ -979,7 +979,7 @@ Legende:
 
 \vspace{1em}
 \noindent
-\begin{tabular}{|p{0.03\textwidth}|p{0.75\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}||p{0.03\textwidth}|}
+\begin{tabular}{|p{0.03\textwidth}|p{0.7\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}||p{0.03\textwidth}|}
 	\hline
 	\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
 	\hline
@@ -993,6 +993,10 @@ Legende:
 	\hline
 	5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 2 & 10 \\
 	\hline
+	6 & Probleme mit GPS Sensor & T & 5 & 2 & 10 \\
+	\hline
+	7 & Unerwartete Aktionen der Applikation & T & 3 & 3 & 9\\
+	\hline
 \end{tabular}
 
 \vspace{1em}
@@ -1001,6 +1005,60 @@ Legende:
 	\centering
 	\includegraphics[keepaspectratio, width=0.8\textwidth]{RisikoMatrix}
 	\caption{Auswirkungen der Risiken}
+\end{figure}
+
+\subsubsection{Massnahmen}
+
+\begin{tabular}{|p{0.03\textwidth}|p{0.9\textwidth}|}
+	\hline
+	\textbf{Nr.} & \textbf{Beschreibung Massnahme} \\
+	\hline
+	1 & Alle Wichtigen Daten werden auf externen Diensten ausgelagert, Code und Dokumentation auf GitHub, alle projektrelevanten Dokumente auf OneDrive\\
+	\hline
+	2 & Sprintmeetings werden in Person durchgeführt, Teammitglieder bemühen sich proaktiv um Kommunikation in Person oder über Messenger und Videochat\\
+	\hline
+	3 & Alle Arbeiten werden nach CleanCode Praktiken ausgeführt und sauber dokumentiert, sodass das andere Teammitglied übernehmen kann\\
+	\hline
+	4 & Vorgaben werden periodisch durch Team überprüft, Kontakt mit Betreuer gepflegt\\
+	\hline
+	5 & Kontakt mit Betreuer wird Proaktiv gesucht und Stossrichtung validiert\\
+	\hline
+	6 & Nutzer werden Probleme mitgeteilt, Applikation meldet Funktionsbeeinträchtigung\\
+	\hline
+	7 & Applikation wird nach CleanCode Standards entwickelt und durch Teammitglieder validiert\\
+	\hline
+\end{tabular}
+
+\subsubsection{Effekt der Massnahmen}
+
+\vspace{1em}
+\noindent
+\begin{tabular}{|p{0.03\textwidth}|p{0.7\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}||p{0.03\textwidth}|}
+	\hline
+	\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
+	\hline
+	1 & Datenverlust & P & 2 & 1 & 2\\
+	\hline
+	2 & Fehlkommunikation im Team & P & 3 & 1 & 3 \\
+	\hline
+	3 & Teammitglied fällt aus & P & 3 & 1 & 3 \\
+	\hline
+	4 & Verzug bei Erstellung von Dokumenten & P & 3 & 1 & 3 \\
+	\hline
+	5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 1 & 5 \\
+	\hline
+	6 & Probleme mit GPS Sensor & T & 5 & 1 & 5 \\
+	\hline
+	7 & Unerwartete Aktionen der Applikation & T & 2 & 2 & 4\\
+	\hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio, width=0.8\textwidth]{RisikoMatrix_nach_Massnahmen}
+	\caption{Risiken nach Massnahmen}
 \end{figure}
 
 \chapter{Evaluation und Validation}
