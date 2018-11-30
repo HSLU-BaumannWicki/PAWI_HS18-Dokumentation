@@ -1014,13 +1014,13 @@ Legende:
 Hier werden die Anforderungen aufgelistet und ob diese Erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine Potentielle Lösungsidee beschrieben.
 \bigbreak
 Legende:
-<<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt
+<<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
 
 \begin{tabularx}{\textwidth}{l l X}
 \hline
 	\# & \textbf{Erfüllt?} & \textbf{Beschreibung} \\
 \hline
-	1.1 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden \\
+	1.1 & x & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden \\
 \hline
 	1.2 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Rotationsabweichung von \ang{10} aufweisen.\\
 \hline
@@ -1036,11 +1036,18 @@ Legende:
 \hline
 	1.8 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt). \\
 \hline
-	2 & \checkmark & Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden. \\
+	2 & - & Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden. \\
 \hline
-	3 & \checkmark & Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden. \\
+	3 & - & Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden. \\
 \hline
 \end{tabularx}
+
+\subsection{Verbesserung für 1.1}
+Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den Ungenauesten Sensor darstellt. Eine Potentielle lösung für dieses Problem kann die Kontinuirliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
+
+\subsection{Verbesserung für 2}
+\subsection{Verbesserung für 3}
+
 
 \section{Lessons Learned}
 
@@ -1049,6 +1056,7 @@ Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein
 \begin{itemize}
 	\item Implementierung von Unit Tests
 	\item Erstellen einer CD Pipeline
+	\item Verbesserung der Nordinitialisation (Da dies das Ungenauste ist)
 	\item Verbesserung der Höhenlogik mit OpenElevation
 	\item Implementation einer GPS/SLAM Lösung (wodurch die Darstellungsgenauigkeit verbessert werden kann)
 	\item Verbesserung des GUI
