@@ -479,6 +479,7 @@ Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die In
 	\label{fig:Kontext}
 \end{figure}
 
+\clearpage
 
 \subsection{Komponentendesign}
 
@@ -494,6 +495,9 @@ Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese ni
 	\caption{Komponenten der ARBuildings Applikation}
 	\label{fig:Komponentendesign}
 \end{figure}
+
+\subsubsection{Out of Scope}
+Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei in nicht Existierender Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
 
 
 \subsection{Architektur \& Design}
@@ -1042,11 +1046,12 @@ Legende:
 \hline
 \end{tabularx}
 
-\subsection{Verbesserung für 1.1}
+\subsection{Verbesserung für \#1.1}
 Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den Ungenauesten Sensor darstellt. Eine Potentielle lösung für dieses Problem kann die Kontinuirliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
 
-\subsection{Verbesserung für 2}
-\subsection{Verbesserung für 3}
+\subsection{Verbesserung für \#2}
+Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des aussersichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum View point zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden.
+\subsection{Verbesserung für \#3}
 
 
 \section{Lessons Learned}
@@ -1054,6 +1059,7 @@ Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung
 \section{Ausblick}
 Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein marktreifes Produkt zu verwandeln, wäre es noch nötig den bestehenden Code um folgende Aspekte zu verbessern:
 \begin{itemize}
+	\item Implementation von Anforderungen 2 und 3
 	\item Implementierung von Unit Tests
 	\item Erstellen einer CD Pipeline
 	\item Verbesserung der Nordinitialisation (Da dies das Ungenauste ist)
