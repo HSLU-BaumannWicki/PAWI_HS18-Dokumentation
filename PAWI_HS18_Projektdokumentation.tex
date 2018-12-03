@@ -607,9 +607,11 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 
 \section{Testing}
 
-\subsection{Testplan}
+\section{Testing}
 
 \subsection{Testfälle}
+Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} definiert sind, wurden folgende Tests erstellt. In Kapitel \ref{ch:testprotokoll} ist das Protokoll zu diesen Tests zu finden. Die Testfälle werden mit einer Version versehen. Alte Testfälle sind im git Repository weiterhin verfügbar.
+
 \subsubsection{Testfall 1-Berechtigung erlauben}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
@@ -624,7 +626,7 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 		1. App starten \\ &
 		2. Berechtigungen geben \\
 \hline
-	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal \\ 
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal -> der North Initialize Bildschirm erscheint. \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 2-Berechtigung verweigern}
@@ -648,16 +650,17 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-003v1 \\ 
+	T-003v2 \\ 
 \hline 
 	Beschreibung & 
-	Es soll überprüft werden ob die Kudan Komponenten starten\\ 
+	Es soll überprüft werden ob die Kudan Komponenten starten.\\ 
 \hline 
 	Testvoraussetzung &
 	T-001 wurde durchgeführt (Berechtigungen erhalten). \\ 
 \hline 
 	Testschritte &
-		1. App starten \\
+		1. App starten \\ &
+		2. Gerät nach Norden ausrichten \\
 \hline
 	Erwartetes Ergebnis &
 	Es soll der Kamerabildschirm angezeigt werden. \\ 
@@ -667,7 +670,7 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-004v1 \\ 
+	T-004v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird.\\ 
@@ -677,9 +680,10 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
 \hline 
 	Testschritte & 
-		1. Smartphone nach norden ausrichten \\ &
+		1. Smartphone nach Norden ausrichten \\ &
 		2. App starten \\ &
-		3. Initialisierung abwarten (ca. 3 Sekunden)\\
+		3. Smartphone erneut nach Norden ausrichten \\ &
+		4. Initialisierung abwarten (ca. 3 Sekunden)\\
 \hline
 	Erwartetes Ergebnis &
 	Das Gebäude wird auf 7Uhr 30 dargestellt. \\ 
@@ -689,7 +693,7 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-005v1 \\ 
+	T-005v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. \\ 
@@ -701,17 +705,17 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 	Testschritte & 
 		1. Smartphone nach Westen ausrichten \\ &
 		2. App starten \\ &
-		3. Initialisierung abwarten (ca. 3 Sek) \\
+		3. Smartphone nach Norden ausrichten \\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wird auf 10Uhr 30 dargestellt. \\ 
+	Das Gebäude wird auf 7Uhr 30 dargestellt. \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 6-Darstellung Gebäude mit Bewegung nach rechts}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-006v1 \\ 
+	T-006v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
@@ -723,20 +727,20 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 	Testschritte & 
 		1. Smartphone nach Westen ausrichten \\ &
 		2. App starten \\ &
-		3. 3 Sekunden warten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
 		4. App minimieren (Home Button drücken) \\ &
 		5. GPS Mocklocation verändern (auf Position 47.145739885261925,8.436641571608824) \\ &
 		6. App erneut öffnen \\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wandert von 10Uhr 30 auf 12Uhr \\ 
+	Das Gebäude wandert von 7Uhr 30 auf 9Uhr \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-007v1 \\ 
+	T-007v2 \\ 
 \hline 
 	Beschreibung & 
 	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
@@ -748,34 +752,9 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 	Testschritte & 
 		1. Smartphone nach Norden ausrichten \\ &
 		2. App starten \\ &
-		3. 3 Sekunden warten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
 		4. App minimieren (Home Button drücken) \\ &
 		5. GPS Mocklocation verändern (auf Position  47.141427, 8.432621) \\ &
-		6. App erneut öffnen \\
-\hline
-	Erwartetes Ergebnis &
-	Das Gebäude wandert von 15Uhr auf 12Uhr \\ 
-\hline 
-\end{tabularx}
-\subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
-\begin{tabularx}{\textwidth}{|l|X|}
-\hline 
-	Version &
-	T-007v1 \\ 
-\hline 
-	Beschreibung & 
-	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
-\hline 
-	Testvoraussetzung &
-	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.142958, 8.430126, Altitude: 450 \\ 
-\hline 
-	Testschritte & 
-		1. Smartphone nach Norden ausrichten \\ &
-		2. App starten \\ &
-		3. 3 Sekunden warten \\ &
-4. App minimieren (Home Button drücken) \\ &
-		5. GPS Mocklocation verändern (auf position  47.141427, 8.432621) \\ &
 		6. App erneut öffnen \\
 \hline
 	Erwartetes Ergebnis &
@@ -808,7 +787,7 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-009v1 \\ 
+	T-009v2 \\ 
 \hline 
 	Beschreibung & 
 	Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. \\ 
@@ -818,12 +797,67 @@ Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde z
 \hline 
 	Testschritte & 
 		1. App starten \\ &
-		2. 3 Sekunden warten \\ &
-		3. Rotieren des Smartphones um 90 grad (Portrait auf Landscape) \\
+		3. Smartphone nach Norden ausrichten \\ &
+		3. Rotieren des Smartphones um 90 Grad (Portrait auf Landscape) \\
 \hline
 	Erwartetes Ergebnis &
 	Die App soll keine Rotationsanimation beinhalten. Die App soll das Gebäude weiter anzeigen. \\ 
 \hline 
+\end{tabularx}
+\subsubsection{Testfall 10-Spezialtest Überprüfung mittels Gebäude}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-010v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich ist.\\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen \\ &
+	Teil des Gebäudekomplex ist Sichtbar\\ &
+	Der Tester befindet sich vor Ort\\ 
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
+		2. App starten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
+		4. Gebäudekomplex in Kamera fokussieren. \\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
+	Randbedingungen: \\ &
+		Maximale Abweichung 10m in alle Richtungen.\\ 
+\hline 
+\end{tabularx}
+
+\subsection{Testprotokoll}
+\label{ch:testprotokoll}
+Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere Resultate sind im Anhang \ref{appendig:testprotokolle} zu finden . 
+\bigbreak
+
+\begin{tabularx}{\textwidth}{|l|X|l|}
+\hline
+	\textbf{TestID/Version }& \textbf{Beschreibung} & \textbf{Passed} \\
+\hline
+	T-001v1 & Berechtigungsanfragen & \checkmark \\
+\hline
+	T-002v1 & Berechtigungsanfragen verweigern & \checkmark \\
+\hline
+	T-003v2 & Es soll überprüft werden ob die Kudan Komponenten starten. & \checkmark \\
+\hline
+	T-004v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird. & \checkmark \\
+\hline
+	T-005v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. & \checkmark \\
+\hline
+	T-006v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. & \checkmark \\
+\hline
+	T-007v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. & \checkmark \\
+\hline
+	T-008v1 & Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. & \checkmark \\
+\hline
+	T-009v2 & Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. & \checkmark \\
+\hline
 \end{tabularx}
 
 \chapter{Projektmanagementplan}
@@ -978,7 +1012,7 @@ Legende:
 
 \vspace{1em}
 \noindent
-\begin{tabular}{|p{0.03\textwidth}|p{0.75\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}||p{0.03\textwidth}|}
+\begin{tabular}{|p{0.03\textwidth}|p{0.7\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}||p{0.03\textwidth}|}
 	\hline
 	\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
 	\hline
@@ -992,6 +1026,10 @@ Legende:
 	\hline
 	5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 2 & 10 \\
 	\hline
+	6 & Probleme mit GPS Sensor & T & 5 & 2 & 10 \\
+	\hline
+	7 & Unerwartete Aktionen der Applikation & T & 3 & 3 & 9\\
+	\hline
 \end{tabular}
 
 \vspace{1em}
@@ -1002,7 +1040,61 @@ Legende:
 	\caption{Auswirkungen der Risiken}
 \end{figure}
 
-\chapter{Abschluss}
+\subsubsection{Massnahmen}
+
+\begin{tabular}{|p{0.03\textwidth}|p{0.9\textwidth}|}
+	\hline
+	\textbf{Nr.} & \textbf{Beschreibung Massnahme} \\
+	\hline
+	1 & Alle Wichtigen Daten werden auf externen Diensten ausgelagert, Code und Dokumentation auf GitHub, alle projektrelevanten Dokumente auf OneDrive\\
+	\hline
+	2 & Sprintmeetings werden in Person durchgeführt, Teammitglieder bemühen sich proaktiv um Kommunikation in Person oder über Messenger und Videochat\\
+	\hline
+	3 & Alle Arbeiten werden nach CleanCode Praktiken ausgeführt und sauber dokumentiert, sodass das andere Teammitglied übernehmen kann\\
+	\hline
+	4 & Vorgaben werden periodisch durch Team überprüft, Kontakt mit Betreuer gepflegt\\
+	\hline
+	5 & Kontakt mit Betreuer wird Proaktiv gesucht und Stossrichtung validiert\\
+	\hline
+	6 & Nutzer werden Probleme mitgeteilt, Applikation meldet Funktionsbeeinträchtigung\\
+	\hline
+	7 & Applikation wird nach CleanCode Standards entwickelt und durch Teammitglieder validiert\\
+	\hline
+\end{tabular}
+
+\subsubsection{Effekt der Massnahmen}
+
+\vspace{1em}
+\noindent
+\begin{tabular}{|p{0.03\textwidth}|p{0.7\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}|p{0.03\textwidth}||p{0.03\textwidth}|}
+	\hline
+	\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
+	\hline
+	1 & Datenverlust & P & 2 & 1 & 2\\
+	\hline
+	2 & Fehlkommunikation im Team & P & 3 & 1 & 3 \\
+	\hline
+	3 & Teammitglied fällt aus & P & 3 & 1 & 3 \\
+	\hline
+	4 & Verzug bei Erstellung von Dokumenten & P & 3 & 1 & 3 \\
+	\hline
+	5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 1 & 5 \\
+	\hline
+	6 & Probleme mit GPS Sensor & T & 5 & 1 & 5 \\
+	\hline
+	7 & Unerwartete Aktionen der Applikation & T & 2 & 2 & 4\\
+	\hline
+\end{tabular}
+
+\vspace{1em}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio, width=0.8\textwidth]{RisikoMatrix_nach_Massnahmen}
+	\caption{Risiken nach Massnahmen}
+\end{figure}
+
+\chapter{Evaluation und Validation}
 \section{Nutzerumfrage}
 %TODO Kurze einleitung
 \subsection{Methodik und Drehbuch}
@@ -1085,6 +1177,30 @@ Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein
 \printbibliography
 
 \chapter{Testprotokolle}
+\label{appendig:testprotokolle}
+\section{Testprotokoll 28.11.2018}
+Dieses Protokoll wurde von Dane Wicki am 28.11.2018 erstellt.
+\subsection{T-001v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-002v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-003v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-004-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-005-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-006-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-007-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-008-v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-009-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-010-v1}
+Ausstehend da Bedingungen nicht erfüllt waren.
+
 
 \chapter{Sprints}
 
