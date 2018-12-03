@@ -101,26 +101,12 @@
 	Hier könnte ihr Management Summary stehen.
 \end{abstract}
 
-\section*{Versionskontrolle}
-
-\begin{tabularx}{\textwidth}{|c|c|c|X|}
-	\hline
-	\textbf{Versionsnummer} & \textbf{Kürzel} & \textbf{Datum} & \textbf{Beschreibung} \\
-	\hline
-	0.1 & PB & 10.09.18 & Erste Versionierung \\
-	\hline
-	0.2 & PB & 16.11.18 & Zwischenabgabe an Betreuer \\
-	\hline
-	0.3 & PB & 23.11.18 & Ende Sprint 5\\
-	\hline
-\end{tabularx}
-
 \tableofcontents
 
 \clearpage
 \pagenumbering{arabic}
 \chapter{Einleitung}
-% TODO Einführungstext
+%TODO Einführungstext
 
 \section{Aufgabenstellung und Zielsetzung}
 Ziel dieser Arbeit ist es zu Untersuchen, \textquotedblleft inwiefern ein Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln.\textquotedblright Es muss untersucht werden, welche Technologien geeignet für den Ausseneinsatz zur Verfügung stehen. Es soll darauf geachtet werden, dass die Applikation einen Nutzten für die breitere Gesellschaft aufweist. Denn im Moment werden in der Schweiz bei ordentlichen Bauvorhaben noch Bauprofile aufgestellt, welche einen Überblick über die Dimension des Gebäudes wiedergibt, so soll in Zukunft eine Applikation im Sinne dieser Arbeit diese Konstrukte erweitern.
@@ -497,9 +483,9 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 \label{sec:SysSpec}
 
 \subsection{Anforderungen}
-\begin{itemize}
+\begin{enumerate}
 	\item Das Augmented Reality Objekt soll ausserhalb von Gebäuden ...
-	\begin{itemize}
+	\begin{enumerate}[label*=\arabic*.]
 		\item eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden (fortan korrekte Position genannt).
 		\item eine maximale Rotationsabweichung von \ang{10} aufweisen.
 		\item eine maximale Grössenunterschied von 5\% zum Original Aufweisen.
@@ -508,10 +494,10 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 		\item nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.
 		\item nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.
 		\item nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).
-	\end{itemize}
+	\end{enumerate}
 	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden.
 	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Kontext}
 Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die Interaktion der AR Applikation mit den Benutzer, Systemen und anderen Prozessen. Es zeigt somit den Kontext der gesamten Applikation auf.
@@ -522,14 +508,13 @@ Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die In
 	\label{fig:Kontext}
 \end{figure}
 
+\clearpage
 
 \subsection{Komponentendesign}
 
-Die Entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
+Die entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
 \bigbreak
 Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems mitbringen).
-
-
 
 \begin{figure}[h!]
 	\centering
@@ -538,6 +523,8 @@ Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese ni
 	\label{fig:Komponentendesign}
 \end{figure}
 
+\subsubsection{Out of Scope}
+Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei in nicht existierender Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
 
 \subsection{Architektur \& Design}
 Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
@@ -1169,7 +1156,66 @@ Legende:
 \subsection{Fazit}
 %TODO Fazit
 
-\chapter{Ausblick}
+\section{Vergleich mit Anforderungen}
+Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben.
+\bigbreak
+Legende:
+<<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
+
+\begin{tabularx}{\textwidth}{l l X}
+\hline
+	\# & \textbf{Erfüllt?} & \textbf{Beschreibung} \\
+\hline
+	1.1 & x & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden \\
+\hline
+	1.2 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Rotationsabweichung von \ang{10} aufweisen.\\
+\hline
+	1.3 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Grössenunterschied von 5\% zum Original Aufweisen.\\
+\hline
+	1.4 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.\\
+\hline
+	1.5 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.\\
+\hline
+	1.6 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.\\
+\hline
+	1.7 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.\\
+\hline
+	1.8 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).\\
+\hline
+	2 & - & Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden.\\
+\hline
+	3 & - & Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden. \\
+\hline
+\end{tabularx}
+
+\subsection{Verbesserung für \#1.1}
+Um die Anforderung von 1.1  erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den ungenauesten Sensor darstellt. Eine potenzielle Lösung für dieses Problem kann die kontinuierliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
+
+\subsection{Verbesserung für \#2}
+Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des ausser Sichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum Viewpoint zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
+
+\subsection{Verbesserung für \#3}
+Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste, um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder zurückgesetzt werden.
+Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden. 
+
+\section{Lessons Learned}
+% TODO Gelernte Lektionen schreiben
+
+\section{Ausblick}
+Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein marktreifes Produkt zu verwandeln, wäre es noch nötig den bestehenden Code um folgende Aspekte zu verbessern:
+
+\begin{itemize}
+	\item Implementation von Anforderungen 2 und 3
+	\item Implementierung von Unittests
+	\item Erstellen einer CD Pipeline
+	\item Verbesserung der Initialisierung gegen Norden
+	\item Verbesserung der Höhenlogik mit OpenElevation
+	\item Implementation einer GPS Lösung mit SLAM Implementierung (damit könnte die Darstellungsgenauigkeit verbessert werden)
+	\item Verbesserung des GUI
+	\item Implementation der Serverseite mit dazugehörender Client Logik
+	\item Implementation einer Schnittstelle um neue Gebäude auf Server hochzuladen
+	\item Implementation einer iOS Lösung
+\end{itemize}
 
 \appendix
 
