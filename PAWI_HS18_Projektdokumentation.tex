@@ -976,13 +976,13 @@ Eintrittswahrscheinlichkeit:
 	\hline
 	1 & unvorstellbar & Möglich aber eher unwahrscheinlich. Tritt nie oder einmal in 14 Wochen auf \\
 	\hline
-	2 & unwahrscheinlich & Kann in 14 Wochen 1-5 Mal eintreten\\
+	2 & unwahrscheinlich & Kann in 14 Wochen 0-1 Mal eintreten\\
 	\hline
-	3 & vorstellbar & Kann in 14 Wochen 6-8 Mal eintreten \\
+	3 & vorstellbar & Kann in 14 Wochen 1-2 Mal eintreten \\
 	\hline
-	4 & wahrscheinlich & Kann in 14 Wochen bis zu 10 Mal eintreten \\
+	4 & wahrscheinlich & Kann in 14 Wochen bis zu 3 Mal eintreten \\
 	\hline
-	5 & häufig & Kann in 14 Wochen 14 Mal eintreten\\
+	5 & häufig & Kann in 14 Wochen 7 Mal eintreten\\
 	\hline
 \end{tabular}
 
@@ -1040,6 +1040,14 @@ Legende:
 	\hline
 	7 & Unerwartete Aktionen der Applikation & T & 3 & 3 & 9\\
 	\hline
+	8 & GPS ungenau & T & 2 & 5 & 10\\
+	\hline
+	9 & Kompass ungenau & T & 4 & 3 & 12\\
+	\hline
+	10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
+	\hline
+	11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
+	\hline
 \end{tabular}
 
 \vspace{1em}
@@ -1070,6 +1078,14 @@ Legende:
 	\hline
 	7 & Applikation wird nach CleanCode Standards entwickelt und durch Teammitglieder validiert\\
 	\hline
+	8 & Es werden mehrere Messungen zusammengefasst und der Median deren berechnet\\
+	\hline
+	9 & In einer Initialisierungsphase wird der Kompass kalibriert\\
+	\hline
+	10 & Dem Benutzer wird die Möglichkeit gegeben die Initialisierungsphase manuell neu zu starten\\
+	\hline
+	11 & Das Laden des Gebäudemodells geschieht in der Initialisierungsphase, welche nicht abgeschlossen ist solange das Gebäude nicht verfügbar ist; das Gebäudemodell wird im Detailgrad reduziert, sodass das Laden des Modells schneller vonstatten geht\\
+	\hline
 \end{tabular}
 
 \subsubsection{Effekt der Massnahmen}
@@ -1093,6 +1109,14 @@ Legende:
 	6 & Probleme mit GPS Sensor & T & 5 & 1 & 5 \\
 	\hline
 	7 & Unerwartete Aktionen der Applikation & T & 2 & 2 & 4\\
+	\hline
+	8 & GPS ungenau & T & 2 & 5 & 10\\
+	\hline
+	9 & Kompass ungenau & T & 4 & 3 & 12\\
+	\hline
+	10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
+	\hline
+	11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
 	\hline
 \end{tabular}
 
