@@ -512,11 +512,9 @@ Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die In
 
 \subsection{Komponentendesign}
 
-Die Entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
+Die entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
 \bigbreak
 Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems mitbringen).
-
-
 
 \begin{figure}[h!]
 	\centering
@@ -526,8 +524,7 @@ Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese ni
 \end{figure}
 
 \subsubsection{Out of Scope}
-Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei in nicht Existierender Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
-
+Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei in nicht existierender Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
 
 \subsection{Architektur \& Design}
 Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
@@ -1160,7 +1157,7 @@ Legende:
 %TODO Fazit
 
 \section{Vergleich mit Anforderungen}
-Hier werden die Anforderungen aufgelistet und ob diese Erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine Potentielle Lösungsidee beschrieben.
+Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben.
 \bigbreak
 Legende:
 <<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
@@ -1175,42 +1172,45 @@ Legende:
 \hline
 	1.3 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Grössenunterschied von 5\% zum Original Aufweisen.\\
 \hline
-	1.4 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren. \\
+	1.4 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.\\
 \hline
-	1.5 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben. \\
+	1.5 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.\\
 \hline
-	1.6 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden. \\
+	1.6 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.\\
 \hline
-	1.7 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden. \\
+	1.7 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.\\
 \hline
-	1.8 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt). \\
+	1.8 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).\\
 \hline
-	2 & - & Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden. \\
+	2 & - & Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden.\\
 \hline
 	3 & - & Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden. \\
 \hline
 \end{tabularx}
 
 \subsection{Verbesserung für \#1.1}
-Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den Ungenauesten Sensor darstellt. Eine Potentielle lösung für dieses Problem kann die Kontinuirliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
+Um die Anforderung von 1.1  erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den ungenauesten Sensor darstellt. Eine potenzielle Lösung für dieses Problem kann die kontinuierliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
 
 \subsection{Verbesserung für \#2}
-Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des aussersichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum View point zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus Zeitlichen Gründen nicht Implementiert werden.
+Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des ausser Sichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum Viewpoint zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
+
 \subsection{Verbesserung für \#3}
-Die Momentanige Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information Anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder Zurückgesetzt werden.
-Die Implementation konnte jedoch aus Zeitlichen Gründen nicht Implementiert werden. 
+Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste, um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder zurückgesetzt werden.
+Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden. 
 
 \section{Lessons Learned}
+% TODO Gelernte Lektionen schreiben
 
 \section{Ausblick}
 Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein marktreifes Produkt zu verwandeln, wäre es noch nötig den bestehenden Code um folgende Aspekte zu verbessern:
+
 \begin{itemize}
 	\item Implementation von Anforderungen 2 und 3
-	\item Implementierung von Unit Tests
+	\item Implementierung von Unittests
 	\item Erstellen einer CD Pipeline
-	\item Verbesserung der Nordinitialisation
+	\item Verbesserung der Initialisierung gegen Norden
 	\item Verbesserung der Höhenlogik mit OpenElevation
-	\item Implementation einer GPS Lösung mit SLAM Implementierung (Somit kann die Darstellungsgenauigkeit verbessert werden).
+	\item Implementation einer GPS Lösung mit SLAM Implementierung (damit könnte die Darstellungsgenauigkeit verbessert werden)
 	\item Verbesserung des GUI
 	\item Implementation der Serverseite mit dazugehörender Client Logik
 	\item Implementation einer Schnittstelle um neue Gebäude auf Server hochzuladen
