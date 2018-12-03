@@ -131,12 +131,34 @@ Die vorliegende Arbeit beschäftigt sich stark mit der Fragestellung, inwiefern 
 \chapter{Grundlagen}
 \label{ch:StandDerForschung}
 
-% TODO some Text about what we will do in this chapter...
+Dieses Kapitel bietet einen Übersicht über die Entwicklung der Augmented Reality und deren Technologien. Es führt weiterhin wichtige Konzepte und Begriffe dieser Arbeit ein. Es soll dem Leser einen Startpunkt in dieses Thema bieten und in das Projekt einführen.
 
 \section{Technologische Grundlagen}
 
 \subsection{Historische Entwicklung}
-Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
+
+Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass.
+
+Der Anfang der Augmented Reality begann mit der kontemporären Science Fiction Geschichte \textquotedblleft The Master Key, indem ein Elektrizitätsdämon dem Hauptcharakter eine Brille überreicht, welche die Charakterzüge der Personen (\textquotedblleft E\textquotedblright\ für \textbf{E}vil, \textquotedblleft F\textquotedblright\ für \textbf{F}oolis, usw.) jeweils virtuell auf die Stirn schreibt \parencite{Baum1901}. 
+Diese Vision wurde im Jahre 1968 von Sutherland realisiert. Dessen Head-Mounted Display, das Erste seiner Art, projizierte dem Nutzer dreidimensionale Objekte virtuell in den Raum \parencite{Sutherland1968}. In dieser Arbeit schilderte Sutherland auch wie sie die Probleme der Lokalisierung lösten. Diese Entwicklungen wurden in den nächsten 20 Jahren verbessert, vor allem mit dem Fokus auf Heads Up Displays und industrielle Anwendungen. Diese Fortschritte wurden in einem Paper von Azuma 1994 gebündelt zusammengefasst und beschrieben. Azuma identifiziert als Anwendungsfelder das Militär mit AR in den Pilotenhelmen, die Medizin als unterstützende, bildgebende Instrumente (konkret eine Visualisierung eines Fötus aus Ultraschallaufnahmen), und als Unterstützung und Trainingshilfe in der industriellen Produktion \parencite{Azuma1997}.
+
+\begin{figure}[h!]
+	\centering	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.6\textwidth]{Sutherland_HUD.png}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.6\textwidth]{cyclo-hexane_molecule.png}
+		\caption{Modell eines Cyclohexanmoleküls, welches der Benutzer einblenden konnte}
+	\end{subfigure}
+	\caption{Sutherlands head-mounted display}
+	\label{fig:FirstHUD}
+\end{figure}
+
+Der Term Augmented Reality selber wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
 
 \vspace{1em}
 
@@ -199,6 +221,13 @@ Die Feature-basierte Methode extrahiert interessante Punkte eines Bildes und ver
 
 \subsubsection{SLAM}
 Wie im vorherigen Paragraf erklärt, wird zwischen zwei Markerless Tracking Methoden unterscheiden. Eine spezifische, die sogenannte SLAM Methode, wird in diesem Paragraoh näher erklärt. Diese Methode identifiziert, mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt), sowie deren Abhängigkeiten zueinander (Location) und fasst diese in einer Karte zusammen (Mapping). Sollte nun die Pose verloren gehen (durch einen Unterbruch des Kamerastream oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden, um die Position wieder zu bestimmen. Dieser Ansatz wird \textquotedblleft Simultaneous Location and Mapping\textquotedblright (dt. Simultanes Erkennen und Kartografieren) genannt.
+
+\subsection{GPS}
+Das Global Positioning System (GPS) ist ein ursprünglich von dem amerikanischen Militär entwickeltes System von Satelliten. Jeder der Satelliten besitzt intern mehrere Atomuhren worüber er die so genannte \textquotedblleft composite clock\textquotedblright\ (CC) berechnet \parencite{GPSSysDesc2009}. Diese CC Zeit wird mit seiner Position zusammen als C/A (Coarse / Acquisition) transmittiert, dies als Dienst des Standard Positioning Service (SPS). Über mehrere solcher Signale verschiedener Satelliten, kann schlussendlich die Position des Benutzers berechnet werden. Die C/A ergibt eine Genauigkeit von 13 Metern in 95\% der Fällen, ein genaueres Signal steht dem amerikanischen Militär über einen verschlüsselten Kanal dem Precise Positioning Service zur Verfügung.
+
+Im Jahre 1983 wurde das GPS der Öffentlichkeit durch Präsident Reagan zur Nutzung freigegeben \parencite{Brustein2014}. Aus Angst vor Missbrauch jedoch mit einem verschlechterten Signal, was sich Selective Availability (S/A) nannte. Dieses SA wurde im Jahre 2000 durch Präsident Clinton abgeschafft und erlaubte von da an präzise Positionierung von bis zu 3 Metern in 95\% der Fälle für alle Nutzer. GPS Satelliten werden in drei Blöcke unterteilt wobei diese wiederum in Generationen differenziert werden \parencite{DoDGPS2008}. Mindestens 24 Satelliten sollen zu jeder Zeit operational sein, und im Moment sind 31 Satelliten operational, 1 Block 2A, 11 Block 2R, 7 Block 2R-M, und 12 Block 2F \parencite{NCOGPS2018}.
+
+Neben dem amerikanischen GPS System existieren ebenfalls das chinesische BeiDou Navigation Satellite System (BDS) welches planmässig 2020 mit 35 Satelliten globale Abdeckung erreichen soll, das europäische Galileo System welches ebenfalls 2020 mit mehr als 24 Satelliten operational sein soll, das indische IRNSS welches aber nur den indischen Kontinent abdeckt, das japanische QZSS welches mit 7 Satelliten bis im Jahre 2023 den Ostasiatischen Raum abdecken soll, und das russische GLONASS System welches mit 24 operationellen Satelitten globale Abdeckung erreicht (\cite{NCOGPS2017}, \cite{IACPNTGLONASS2018}).
 
 \section{Anwendungen}
 
