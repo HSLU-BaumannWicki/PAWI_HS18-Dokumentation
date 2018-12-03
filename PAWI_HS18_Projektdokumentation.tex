@@ -1050,9 +1050,10 @@ Legende:
 Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den Ungenauesten Sensor darstellt. Eine Potentielle lösung für dieses Problem kann die Kontinuirliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
 
 \subsection{Verbesserung für \#2}
-Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des aussersichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum View point zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden.
+Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des aussersichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum View point zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus Zeitlichen Gründen nicht Implementiert werden.
 \subsection{Verbesserung für \#3}
-
+Die Momentanige Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information Anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder Zurückgesetzt werden.
+Die Implementation konnte jedoch aus Zeitlichen Gründen nicht Implementiert werden. 
 
 \section{Lessons Learned}
 
