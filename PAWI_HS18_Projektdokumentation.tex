@@ -106,7 +106,11 @@
 \clearpage
 \pagenumbering{arabic}
 \chapter{Einleitung}
-%TODO Einführungstext
+Diese Arbeit hat sich zum Ziel gesetzt einen Prototypen für eine Augmented Reality Applikaiton zu entwickeln, welche es ermöglicht Neubauten virtuell dem Benutzer auf einem reelen Grundstück darzustellen.
+
+Im ersten Teil werden die technologischen Grundlagen und historischen Hintergründe der Arbeit erläutert. Danach wird die erarbeite Lösung vorgestellt und deren Funktionsweise dargestellt, im gleichen Kapitel wird auch geschildert welche Prototypen aus welchem Grund verworfen wurden. Es folgt ein Kapitel über die Durchführung des Projektes und wie dieses geplant wurde, unter anderem wie die verschiedenen Projektrahmenbedingungen evaluiert und gewählt wurden. Im darauffolgenden Kapitel folgt eine Detailbeschreibung des Systems und dessen interne Architektur.
+
+Es folgt ein Kapitel über Testdesign, Testplanung und Durchführung. Danach in der Evaluation und Validation des Projektes die Durchführung einer Nutzerumfrage und Analyse derer. Nach der Validation folgt die Reflektion und ein Ausblick auf die zukünftige Entwicklung.
 
 \section{Aufgabenstellung und Zielsetzung}
 Ziel dieser Arbeit ist es zu Untersuchen, \textquotedblleft inwiefern ein Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln.\textquotedblright Es muss untersucht werden, welche Technologien geeignet für den Ausseneinsatz zur Verfügung stehen. Es soll darauf geachtet werden, dass die Applikation einen Nutzten für die breitere Gesellschaft aufweist. Denn im Moment werden in der Schweiz bei ordentlichen Bauvorhaben noch Bauprofile aufgestellt, welche einen Überblick über die Dimension des Gebäudes wiedergibt, so soll in Zukunft eine Applikation im Sinne dieser Arbeit diese Konstrukte erweitern.
@@ -125,11 +129,11 @@ Dieses Kapitel bietet einen Übersicht über die Entwicklung der Augmented Reali
 
 Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass.
 
-Der Anfang der Augmented Reality begann mit der kontemporären Science Fiction Geschichte \textquotedblleft The Master Key, indem ein Elektrizitätsdämon dem Hauptcharakter eine Brille überreicht, welche die Charakterzüge der Personen (\textquotedblleft E\textquotedblright\ für \textbf{E}vil, \textquotedblleft F\textquotedblright\ für \textbf{F}oolis, usw.) jeweils virtuell auf die Stirn schreibt \parencite{Baum1901}. 
+Der Anfang der Augmented Reality begann mit der kontemporären Science Fiction Geschichte \textquotedblleft The Master Key, indem ein Elektrizitätsdämon dem Hauptcharakter eine Brille überreicht, welche die Charakterzüge der Personen (\textquotedblleft E\textquotedblright\ für \textbf{E}vil, \textquotedblleft F\textquotedblright\ für \textbf{F}oolis, usw.) jeweils virtuell auf die Stirn schreibt \parencite{Baum1901}.
 Diese Vision wurde im Jahre 1968 von Sutherland realisiert. Dessen Head-Mounted Display, das Erste seiner Art, projizierte dem Nutzer dreidimensionale Objekte virtuell in den Raum \parencite{Sutherland1968}. In dieser Arbeit schilderte Sutherland auch wie sie die Probleme der Lokalisierung lösten. Diese Entwicklungen wurden in den nächsten 20 Jahren verbessert, vor allem mit dem Fokus auf Heads Up Displays und industrielle Anwendungen. Diese Fortschritte wurden in einem Paper von Azuma 1994 gebündelt zusammengefasst und beschrieben. Azuma identifiziert als Anwendungsfelder das Militär mit AR in den Pilotenhelmen, die Medizin als unterstützende, bildgebende Instrumente (konkret eine Visualisierung eines Fötus aus Ultraschallaufnahmen), und als Unterstützung und Trainingshilfe in der industriellen Produktion \parencite{Azuma1997}.
 
 \begin{figure}[h!]
-	\centering	
+	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[keepaspectratio, width=0.6\textwidth]{Sutherland_HUD.png}
@@ -235,7 +239,7 @@ Eine andere Richtung wurde vom Frauenhofer Institut in Darmstadt \parencite{Olbr
 In der heutigen Zeit ist die User Experience (dt. Erfahrung der Interaktion des Benutzers mit einem System) ein zentraler Bestandteil in der Entwicklung von Applikationen. Es gibt kaum noch erfolgreiche Anwendungen, welche nicht ein spezielles Team für die Entwicklung der User Experience besitzen.
 
 Für die Entwicklung einer zweidimensionalen Applikation gibt es bereits heute genaue Vorgaben und Vorgehensmodelle, wie eine solche Applikation eine gute User Experience erreichen kann. Leider können nicht alle Vorgaben und Vorgehensmodelle auch für eine dreidimensionale Applikation verwendet werden. Da unserer Applikation eine Augmented Realitiy Applikation wird, trifft dies speziell zu.
-Für die Entwicklung einer guten User Experience für eine AR Applikation gibt es jedoch verschiedene Ansätze und Empfehlungen, welche von verschiedenen Unternehmen veröffentlicht wurden. 
+Für die Entwicklung einer guten User Experience für eine AR Applikation gibt es jedoch verschiedene Ansätze und Empfehlungen, welche von verschiedenen Unternehmen veröffentlicht wurden.
 
 \subsection{User Centered Design}
 \begin{figure}[h!]
@@ -244,7 +248,7 @@ Für die Entwicklung einer guten User Experience für eine AR Applikation gibt e
 	\caption{Phasenmodell des ISO Standart 9241-210:2010 \parencite{ISO9241}}
 \end{figure}
 
-Um eine möglichst optimale User Experience zu erreichen, kann nach den Methodiken des Standards ISO 9241-210:2010 (fortan als User Centered Design bezeichnet) vorgegangen werden. Dies ist ein iteratives Vorgehen, bei dem die Benutzer im Zentrum stehen. Dies mit ihren Zielen, Bedürfnissen und Erwartungen über den gesamten Entwicklungsprozess hinweg. 
+Um eine möglichst optimale User Experience zu erreichen, kann nach den Methodiken des Standards ISO 9241-210:2010 (fortan als User Centered Design bezeichnet) vorgegangen werden. Dies ist ein iteratives Vorgehen, bei dem die Benutzer im Zentrum stehen. Dies mit ihren Zielen, Bedürfnissen und Erwartungen über den gesamten Entwicklungsprozess hinweg.
 Jede Iteration dieses Prozesses durchläuft vier Phasen, bevor das Produkt in eine finale Version kommt.
 
 Diese Methodik für die Ermittlung einer guten User Experience kann auch bei der Entwicklung einer AR Applikation verwendet werden.
@@ -279,7 +283,7 @@ Im folgenden Kapitel wird die Lösung beschrieben. Es soll ein Überblick über 
 Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation Markerless oder Markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim Markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies nicht beim Markerless Tracking. Da Markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss beim Markerless eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
 Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker wie auch Markerless basierend, anbieten.
 \bigbreak
-Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass das darzustellende Gerät über folgende zusätzliche Komponenten verfügt: 
+Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass das darzustellende Gerät über folgende zusätzliche Komponenten verfügt:
 \begin{enumerate}
 	\item Lokalisierungssensor (GPS/GLONASS/BEIDOU/GALILEO Sensor)
 	\item Kompass
@@ -402,14 +406,14 @@ Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um
 Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist.
 
 Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten, die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
-Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters. 
- 
+Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters.
+
 Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
 Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Augmented Reality Modelle das Smartphone ständig in den Händen gehalten werden muss.
 
 In einer ersten Evaluation mit einer Hololens wurde entschieden, dass für dieses Projekt die Hololens ausgeschlossen werden soll, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
 
-Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf den bereits vorhanden Geräten verwendet werden kann. 
+Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf den bereits vorhanden Geräten verwendet werden kann.
 
 \subsubsection{Entwicklungsumgebung}
 \label{ssec:EvalPlattform}
@@ -441,17 +445,17 @@ Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie v
 \begin{table}[h!]
 	\center
 	\begin{tabular}{|c|c|c|c|c|}
-		\hline 
-		& \textbf{Mobile} & \textbf{UWP (Hololens)} & \textbf{SLAM} & \textbf{Licence} \\ 
-		\hline 
-		Kudan & \checkmark & x & \checkmark & Commercial, free \\ 
-		\hline 
-		Vuforia & \checkmark & \checkmark & \checkmark & Commercial \\ 
-		\hline 
-		Wikitude & \checkmark & \checkmark & \checkmark & Commercial, free \ \\ 
-		\hline 
-		ARToolkit & \checkmark & x & x & OpenSource \\ 
-		\hline 
+		\hline
+		& \textbf{Mobile} & \textbf{UWP (Hololens)} & \textbf{SLAM} & \textbf{Licence} \\
+		\hline
+		Kudan & \checkmark & x & \checkmark & Commercial, free \\
+		\hline
+		Vuforia & \checkmark & \checkmark & \checkmark & Commercial \\
+		\hline
+		Wikitude & \checkmark & \checkmark & \checkmark & Commercial, free \ \\
+		\hline
+		ARToolkit & \checkmark & x & x & OpenSource \\
+		\hline
 	\end{tabular}
 	\caption{Vergleichstabelle verschiedener AR Frameworks}
 \end{table}
@@ -625,7 +629,7 @@ Die AR Applikation stellt zudem folgende Software Anforderungen an das Gerät:
 \end{itemize}
 \subsection{Umsetzung Programmierung}
 \subsubsection{Clean Code}
-Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name für diese sowie deren Parameter gewählt werden musste. 
+Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name für diese sowie deren Parameter gewählt werden musste.
 \subsubsection{Git Flow}
 Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
 \subsubsection{Unit Test}
@@ -640,117 +644,117 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 
 \subsubsection{Testfall 1-Berechtigung erlauben}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-001v1 \\ 
-\hline 
-	Beschreibung & Berechtigungsanfragen \\ 
-\hline 
-	Testvoraussetzung & Die App hat die Berechtigungen noch nicht. \\ 
-\hline 
+	T-001v1 \\
+\hline
+	Beschreibung & Berechtigungsanfragen \\
+\hline
+	Testvoraussetzung & Die App hat die Berechtigungen noch nicht. \\
+\hline
 	Testschritte &
 		1. App starten \\ &
 		2. Berechtigungen geben \\
 \hline
-	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal -> der North Initialize Bildschirm erscheint. \\ 
-\hline 
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal -> der North Initialize Bildschirm erscheint. \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 2-Berechtigung verweigern}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-002v1 \\ 
-\hline 
-	Beschreibung & Berechtigungsanfragen verweigern \\ 
-\hline 
-	Testvoraussetzung & Die App hat die Berechtigungen noch nicht. \\ 
-\hline 
+	T-002v1 \\
+\hline
+	Beschreibung & Berechtigungsanfragen verweigern \\
+\hline
+	Testvoraussetzung & Die App hat die Berechtigungen noch nicht. \\
+\hline
 	Testschritte &
 		1. App starten \\ &
 		2. Berechtigungsanfragen sehen und ablehnen \\
 \hline
-	Erwartetes Ergebnis & Nachdem alle Berechtigungen nicht gegeben wurden, bleibt die App in einem Abfangbildschirm, wo die Nachfrage für die Berechtigungen erneut gestartet werden kann. \\ 
-\hline 
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen nicht gegeben wurden, bleibt die App in einem Abfangbildschirm, wo die Nachfrage für die Berechtigungen erneut gestartet werden kann. \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 3-Starten von Kudan}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-003v2 \\ 
-\hline 
-	Beschreibung & 
-	Es soll überprüft werden ob die Kudan Komponenten starten.\\ 
-\hline 
+	T-003v2 \\
+\hline
+	Beschreibung &
+	Es soll überprüft werden ob die Kudan Komponenten starten.\\
+\hline
 	Testvoraussetzung &
-	T-001 wurde durchgeführt (Berechtigungen erhalten). \\ 
-\hline 
+	T-001 wurde durchgeführt (Berechtigungen erhalten). \\
+\hline
 	Testschritte &
 		1. App starten \\ &
 		2. Gerät nach Norden ausrichten \\
 \hline
 	Erwartetes Ergebnis &
-	Es soll der Kamerabildschirm angezeigt werden. \\ 
-\hline 
+	Es soll der Kamerabildschirm angezeigt werden. \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 4-Darstellung des Gebäudes Ausrichtung Norden}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-004v2 \\ 
-\hline 
-	Beschreibung & 
-	Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird.\\ 
-\hline 
+	T-004v2 \\
+\hline
+	Beschreibung &
+	Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird.\\
+\hline
 	Testvoraussetzung &
-	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ & 
-		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
-\hline 
-	Testschritte & 
+	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
+		47.145739885261925,8.436641571608824, Altitude: 450 \\
+\hline
+	Testschritte &
 		1. Smartphone nach Norden ausrichten \\ &
 		2. App starten \\ &
 		3. Smartphone erneut nach Norden ausrichten \\ &
 		4. Initialisierung abwarten (ca. 3 Sekunden)\\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wird auf 7Uhr 30 dargestellt. \\ 
-\hline 
+	Das Gebäude wird auf 7Uhr 30 dargestellt. \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 5-Darstellung des Gebäudes Ausrichtung Westen}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-005v2 \\ 
-\hline 
-	Beschreibung & 
-	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. \\ 
-\hline 
+	T-005v2 \\
+\hline
+	Beschreibung &
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. \\
+\hline
 	Testvoraussetzung &
 	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
-\hline 
-	Testschritte & 
+		47.145739885261925,8.436641571608824, Altitude: 450 \\
+\hline
+	Testschritte &
 		1. Smartphone nach Westen ausrichten \\ &
 		2. App starten \\ &
 		3. Smartphone nach Norden ausrichten \\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wird auf 7Uhr 30 dargestellt. \\ 
-\hline 
+	Das Gebäude wird auf 7Uhr 30 dargestellt. \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 6-Darstellung Gebäude mit Bewegung nach rechts}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-006v2 \\ 
-\hline 
-	Beschreibung & 
-	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
-\hline 
+	T-006v2 \\
+\hline
+	Beschreibung &
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\
+\hline
 	Testvoraussetzung &
 	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
-\hline 
-	Testschritte & 
+		47.145739885261925,8.436641571608824, Altitude: 450 \\
+\hline
+	Testschritte &
 		1. Smartphone nach Westen ausrichten \\ &
 		2. App starten \\ &
 		3. Smartphone nach Norden ausrichten \\ &
@@ -759,23 +763,23 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		6. App erneut öffnen \\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wandert von 7Uhr 30 auf 9Uhr \\ 
-\hline 
+	Das Gebäude wandert von 7Uhr 30 auf 9Uhr \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-007v2 \\ 
-\hline 
-	Beschreibung & 
-	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\ 
-\hline 
+	T-007v2 \\
+\hline
+	Beschreibung &
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird und sich die Position des Gebäudes den GPS Daten anpasst. \\
+\hline
 	Testvoraussetzung &
 	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.142958, 8.430126, Altitude: 450 \\ 
-\hline 
-	Testschritte & 
+		47.142958, 8.430126, Altitude: 450 \\
+\hline
+	Testschritte &
 		1. Smartphone nach Norden ausrichten \\ &
 		2. App starten \\ &
 		3. Smartphone nach Norden ausrichten \\ &
@@ -784,67 +788,67 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		6. App erneut öffnen \\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wandert von 15Uhr auf 12Uhr \\ 
-\hline 
+	Das Gebäude wandert von 15Uhr auf 12Uhr \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 8-Entfernen der Berechtigung zur Laufzeit}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-008v1 \\ 
-\hline 
-	Beschreibung & 
-	Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. \\ 
-\hline 
+	T-008v1 \\
+\hline
+	Beschreibung &
+	Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. \\
+\hline
 	Testvoraussetzung &
-	Die App ist auf dem Smartphone installiert und hat alle nötigen Berechtigungen \\ 
-\hline 
-	Testschritte & 
+	Die App ist auf dem Smartphone installiert und hat alle nötigen Berechtigungen \\
+\hline
+	Testschritte &
 		1. App starten \\ &
 		2. App minimieren \\ &
 		3. Berechtigungen der App entfernen \\ &
 		4. App wieder öffnen \\
 \hline
 	Erwartetes Ergebnis &
-	Die App schaltet wieder auf den Berechtigungsbildschirm. \\ 
-\hline 
+	Die App schaltet wieder auf den Berechtigungsbildschirm. \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 9-Smartphone Rotation}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-009v2 \\ 
-\hline 
-	Beschreibung & 
-	Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. \\ 
-\hline 
+	T-009v2 \\
+\hline
+	Beschreibung &
+	Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. \\
+\hline
 	Testvoraussetzung &
-	Die App hat alle Berechtigungen \\ 
-\hline 
-	Testschritte & 
+	Die App hat alle Berechtigungen \\
+\hline
+	Testschritte &
 		1. App starten \\ &
 		3. Smartphone nach Norden ausrichten \\ &
 		3. Rotieren des Smartphones um 90 Grad (Portrait auf Landscape) \\
 \hline
 	Erwartetes Ergebnis &
-	Die App soll keine Rotationsanimation beinhalten. Die App soll das Gebäude weiter anzeigen. \\ 
-\hline 
+	Die App soll keine Rotationsanimation beinhalten. Die App soll das Gebäude weiter anzeigen. \\
+\hline
 \end{tabularx}
 \subsubsection{Testfall 10-Spezialtest Überprüfung mittels Gebäude}
 \begin{tabularx}{\textwidth}{|l|X|}
-\hline 
+\hline
 	Version &
-	T-010v1 \\ 
-\hline 
-	Beschreibung & 
-	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich ist.\\ 
-\hline 
+	T-010v1 \\
+\hline
+	Beschreibung &
+	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich ist.\\
+\hline
 	Testvoraussetzung &
 	Die App hat alle Berechtigungen \\ &
 	Teil des Gebäudekomplex ist Sichtbar\\ &
-	Der Tester befindet sich vor Ort\\ 
-\hline 
-	Testschritte & 
+	Der Tester befindet sich vor Ort\\
+\hline
+	Testschritte &
 		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
 		2. App starten \\ &
 		3. Smartphone nach Norden ausrichten \\ &
@@ -853,13 +857,13 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 	Erwartetes Ergebnis &
 	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
 	Randbedingungen: \\ &
-		Maximale Abweichung 10m in alle Richtungen.\\ 
-\hline 
+		Maximale Abweichung 10m in alle Richtungen.\\
+\hline
 \end{tabularx}
 
 \subsection{Testprotokoll}
 \label{ch:testprotokoll}
-Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere Resultate sind im Anhang \ref{appendig:testprotokolle} zu finden . 
+Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere Resultate sind im Anhang \ref{appendig:testprotokolle} zu finden .
 \bigbreak
 
 \begin{tabularx}{\textwidth}{|l|X|l|}
@@ -1249,7 +1253,7 @@ Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indi
 
 \subsection{Verbesserung für \#3}
 Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste, um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder zurückgesetzt werden.
-Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden. 
+Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
 
 \section{Lessons Learned}
 % TODO Gelernte Lektionen schreiben
