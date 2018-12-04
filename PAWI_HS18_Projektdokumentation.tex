@@ -1146,15 +1146,68 @@ Legende:
 
 \chapter{Evaluation und Validation}
 \section{Nutzerumfrage}
-%TODO Kurze einleitung
+Um den Stand der Arbeit zu messen und den Erreichungsgrad der Ziele einzuschätzen wurde eine Nutzerumfrage durchgeführt. Diese fand am Freitag 30. November um 11:00 bis 13:00 am Bahnhof Rotkreuz statt. Ziel war es ein möglichst guter Durchschnitt der Bevölkerung und der Demografie der entwickelten Applikation (siehe Tabelle \ref{tab:UserDemografie}) zu erreichen. Im folgenden Kapitel werden der Versuchsaufbau und das Drehbuch erläutert, danach die Resultate ausgewertet und ein Fazit gezogen.
+
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|}
+		\hline
+		\textbf{Altersgruppe} & \textbf{Prozentsatz} \\
+		\hline
+		10-20 & 10\% \\
+		\hline
+		21-30 & 30\% \\
+		\hline
+		21-45 & 30\% \\
+		\hline
+		46-65 & 20\% \\
+		\hline
+		66+ & 10\% \\
+		\hline
+	\end{tabular}
+	\label{tab:UserDemografie}
+	\caption{Geschätzte Prozentanteile des Alters an Demografie der Nutzer}
+\end{table}
+
 \subsection{Methodik und Drehbuch}
-%TODO Methodik
-%TODO Drehbuch
+Die Nutzerumfrage wurde folgendermassen durchgeführt: Nach einer kurzen Einleitung über das Projekt wurde dem Probanden die Applikation ohne Erklärung über die Benutzung überreicht. Nachdem sich dieser ein Bild machen konnte, wurden ihm die Fragen des Fragebogens gestellt. Ziel war es den Probanden möglichst nicht zu lange aufzuhalten.
+
+\subsubsection{Drehbuch}
+
+\begin{enumerate}
+	\item Begrüssung, Anfragen bezüglich Teilnahme, ansprechen das Toblerone als Dankeschön überreicht wird:
+	\textquotedblleft Im Rahmen unseres Industrieprojekt, haben wir eine App entwickelt, welche Neubauten an deren geplanten Position darstellen soll. Dies insbesondere um bei geplanten Projekten neben einer normalen Ausschreibung und den bekannten Stangen, eine visuelle Alternative zu bieten. Diese Befragung dient für uns als Validierung und Sammlung von Verbesserungswünschen.
+	Die ganze Befragung dauert in etwa 5Minuten. Und wir würden Ihnen zum Schluss gerne dieses kleine Präsent als Dankeschön für Ihre Hilfe überreichen.\textquotedblright
+	\item Übergabe Tablet/Smartphone mit Applikation
+	\item Rücknahme Tablet/Smartphone
+	\item Fragebogen überreichen / mit Proband durcharbeiten
+	\item Danksagung und Verabschiedung
+\end{enumerate}
+
 \subsection{Analyse und Resultat}
-%TODO Analyse
-%TODO Resultat
+
+Insgesamt war die Teilnahmebereitschaft der Probanden auf einem sehr niedrigen Niveau. So erklärten sich von gut 60 Probanden lediglich 13 bereit an der Umfrage teilzunehmen. Die meisten Probanden waren, wie in Abbildung \ref{fig:Altersgruppen} zu sehen, Schüler oder Studenten, welche sich für die Umfrage Zeit nahmen.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[keepaspectratio, width=0.8\textwidth]{Altersgruppen.png}
+	\caption{Anteil der Altersgruppen an der Gesamtheit der Befragung}
+	\label{fig:Altersgruppen}
+\end{figure}
+
+Die Bewertung der Handhabung wurde insgesamt mit 4.54 (0: unintuitiv, 6: intuitiv) als gut bewertet. Der Grossteil der Probanden wünscht sich eine grössere Präzision bei der Positionierung des Gebäudes. Daneben wurden sich ein Indikator in Richtung des Gebäudes, falls dieses nicht im Blickfeld ist, Hilfetexte und ein Tutorial gewünscht. Von allen Befragten können sich mehr als 90\% vorstellen die Applikation zu gebrauchen, um geplante Neubauten anzusehen (siehe Abbildung \ref{fig:Nutzung}).
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[keepaspectratio, width=0.3\textwidth]{Nutzung.png}
+	\caption{Prozentanteile für die Nutzung der Applikation}
+	\label{fig:Nutzung}
+\end{figure}
+
+Als zusätzliche Nutzungsmöglichkeiten wurden neben der Betrachtung einer Immobilie (Apartments, Neubau, geplantes Gebäude) von aussen, auch die Visualisierung von Gebäuden für den Unterricht (beispielsweise Geschichtsunterricht oder gestalterisches Zeichnen) und eine Art Röntgenblick für Gebäude genannt.
+
 \subsection{Fazit}
-%TODO Fazit
+Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls Sie verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einlick über die Innenstruktur von ausserhalb.
 
 \section{Vergleich mit Anforderungen}
 Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben.
@@ -1290,6 +1343,10 @@ Ausstehend da Bedingungen nicht erfüllt waren.
 \chapter{Anleitungen}
 
 \includepdf[pages=-]{Gebaeudemodell_korrekt_zu_ARModel_konvertieren.pdf}
+
+\chapter{Daten der Nutzerbefragung}
+
+\includepdf[pages=-]{Nutzerbefragung_Rohdaten.pdf}
 
 \chapter*{Eidesstattliche Erklärung}
 Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
