@@ -98,9 +98,9 @@
 
 \renewcommand{\abstractname}{Management Summary}
 \begin{abstract}
-	Das Ergebnis dieser Arbeit ist eine AR Applikation für Android SmartPhones. Diese Applikation wurde in 14 Wochen mit der Agilen Projektentwicklungsmethode erarbeitet. Neben einer Evaluation von Plattform, AR Frameworks und Entwicklungsumgebungen, wurden verschiedene Prototypen entwickelt, bis die geeignete Stossrichtung festgelegt werden konnte. Diese Arbeit schildert sowohl den Entwicklungsprozess, wie auch die Spezifikationen und Funktionsweise des Systems. Die Durchführung einer Nutzerumfrage ergab die Markttauglichkeit der Applikation, andere Nutzungsmöglichkeiten und Verbesserungswünsche.
+	Das Ergebnis dieser Arbeit ist eine AR Applikation für Android SmartPhones. Diese Applikation wurde in 14 Wochen mit der Agilen Projektentwicklungsmethode erarbeitet. Sie gebraucht dabei eine klassische drei Schichten Architektur, mit Schnittstellen zu dem Kudan AR Framework und Höhen-REST-Schnittstellen. Bei einer Evaluation von Plattform wurde neben Smartphones auch die HoloLens in Betracht gezogen. Als AR Frameworks wurden Kudan, Vuforia und Wikitude, und andere betrachtet, und deren Vor- und Nachteile abgewogen, wobei man sich schliesslich für Kudan entschied. Es wurden verschiedene Prototypen zuerst mit Unity entwickelt, bis man sich im Verlauf des Projektes auf AndroidStudio festgelegt konnte. Diese Arbeit schildert sowohl den Entwicklungsprozess, wie auch die Spezifikationen und Funktionsweise des Systems. Die Durchführung einer Nutzerumfrage ergab die Markttauglichkeit der Applikation, andere Nutzungsmöglichkeiten und Verbesserungswünsche.
 	
-	Dem Leser werden wichtige Grundlagen der Augmented und Mixed Reality nähergebracht und einen historischen Überblick gewährt. Das Projekt schliesst mit einer Evaluierung der geleisteten Arbeit, Reflexion und Ausblick für die Zukunft. 
+	Dem Leser werden wichtige Grundlagen der Augmented und Mixed Reality nähergebracht und einen historischen Überblick gewährt. Das Projekt leitete seine Anforderungen sowohl aus dem Projektbeschrieb, wie aus eigens erarbeiteten Vorgaben ab. Diese werden in einer Validierungsphase überprüft wobei von zehn Zielen, deren sieben erreicht wurden. Das Projekt schliesst mit einer Evaluierung der geleisteten Arbeit, Reflexion und Ausblick für die Zukunft. 
 \end{abstract}
 
 \tableofcontents
@@ -120,6 +120,7 @@ Ziel dieser Arbeit ist es zu Untersuchen, \textquotedblleft inwiefern ein Gebäu
 Es ist zu Beginn der Arbeit noch unklar, welche Geräte für einen Ausseneinsatz verwendet werden können. Daher muss eruiert werden, welche Einsatzgeräte für diese Zwecke brauchbar sind. Weiter soll für die jeweilige Plattform ein geeignetes AR Framework gefunden oder erstellt werden, und schlussendlich die prototypische Applikation selbst entwickelt werden.
 \bigbreak
 Die vorliegende Arbeit beschäftigt sich stark mit der Fragestellung, inwiefern eine solche Applikation mit heutigen Geräten umsetzten lässt. Zudem sollen dabei deren Schwächen, sowie Vorteile aufgezeigt werden.
+
 \chapter{Grundlagen}
 \label{ch:StandDerForschung}
 
