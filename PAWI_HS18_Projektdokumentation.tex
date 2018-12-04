@@ -880,7 +880,7 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 	Erwartetes Ergebnis &
 	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
 	Randbedingungen: \\ &
-		Der maximale Grösssenunterschied beträgt < 5 (Augenmass) \\ 
+		Der maximale Grösssenunterschied beträgt < 5\% (Augenmass) \\ 
 \hline 
 \end{tabularx}
 \subsubsection{Testfall 12-Rotationsabweichung}
@@ -938,6 +938,32 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 \hline 
 \end{tabularx}
 
+\subsubsection{Testfall 14-Darstellungsgeschwindigkeit}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-014v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das AR Gebäude schnell auf die Smartphone-Bewegungen Reagiert. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen \\ &
+	Teil des Gebäudekomplex ist Sichtbar \\ &
+	Der Tester befindet sich vor Ort \\ &
+	Das Gebäude wird nach Initialisierung an Korrekter Position dargestellt. \\
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
+		2. App starten \\ &
+		3. Smartphone nach Norden ausrichten. \\ &
+		4. Gebäudekomplex in Kamera fokussieren. \\ &
+		5. Leichte bewegungen des Smartphones. \\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell ohne Verzögerungen über einer Sekunde darstellen. \\ 
+\hline 
+\end{tabularx}
 \subsection{Testprotokoll}
 \label{ch:testprotokoll}
 Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere Resultate sind im Anhang \ref{appendig:testprotokolle} zu finden . 
