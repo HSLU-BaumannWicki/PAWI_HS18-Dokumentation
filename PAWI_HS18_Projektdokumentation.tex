@@ -856,6 +856,32 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		Maximale Abweichung 10m in alle Richtungen.\\ 
 \hline 
 \end{tabularx}
+\subsubsection{Testfall 11-Spezialtest Überprüfung mittels Gebäude}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-010v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich ist.\\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen \\ &
+	Teil des Gebäudekomplex ist Sichtbar\\ &
+	Der Tester befindet sich vor Ort\\ 
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
+		2. App starten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
+		4. Gebäudekomplex in Kamera fokussieren. \\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
+	Randbedingungen: \\ &
+		Maximale Abweichung 10m in alle Richtungen.\\ 
+\hline 
+\end{tabularx}
 
 \subsection{Testprotokoll}
 \label{ch:testprotokoll}
@@ -1305,8 +1331,33 @@ Test liefert erwartetes Ergebnis.
 \subsection{T-009-v2}
 Test liefert erwartetes Ergebnis.
 \subsection{T-010-v1}
-Ausstehend da Bedingungen nicht erfüllt waren.
+Test wurde erst am 03.12.2018 ausgeführt.
 
+Test wurde nicht erfüllt.
+Das Darstellung des Gebäudes weist teilweise stärkere Abweichungen als erlaubt auf. Diese Abweichungen hängen stark von der korrekten Nordausrichtung des Smartphones zusammen.
+Mit einem Abstand zum Gebäude von ca. 80m wurden insgesammt 10 Testdurchfürungen durchgeführt. Die Höhenungenauigkeit wurde bei diesen durchführungen lediglich das augenmas verewendet. Für die X und Y abweichungen wurde das Smartphone auf bedennähe gebracht und dort Fixiert, damit die Position des Smartphones glechbleibt. Anschliessend wurde auf sichtlinie in ca. 50cm abstand ein Marker für den Rand des Physikalischen gebäudes auf den Boden des Sichtbereiches gelegt. Danach wurde für denselben Rand des Virtuellen Gebäudes ein weiterer Marker in der Gleichen Distanz auf den Boden gelegt. Danach konnte mittels Trigonometrie die ungefähre Abweichung berechnet werden (siehe Abbildung \ref{fig:TrigometrieBeispiel})
+
+
+\begin{figure}[h!]
+	\center
+	\includegraphics[keepaspectratio, width=\textwidth / 2]{TrigonometrieBeispiel.png}
+	\caption{Beispiel der Verwendeten Trigonometrie}
+	\label{fig:TrigometrieBeispiel}
+\end{figure}
+
+Die 10 Messungen ergaben folgende Abweichungen (gerundete auf einen Meter):
+\begin{enumerate}
+	\item 8m
+	\item 15m
+	\item 4m
+	\item 7m
+	\item 2m
+	\item 19m
+	\item 5m
+	\item 14m
+	\item 9m
+	\item 12m
+\end{enumerate}
 
 \chapter{Sprints}
 
