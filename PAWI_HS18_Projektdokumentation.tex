@@ -487,7 +487,7 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 	\item Das Augmented Reality Objekt soll ausserhalb von Gebäuden ...
 	\begin{enumerate}[label*=\arabic*.]
 		\item eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden (fortan korrekte Position genannt).
-		\item eine maximale Rotationsabweichung von \ang{10} aufweisen.
+		\item eine maximale Rotationsabweichung von \ang{25} aufweisen.
 		\item eine maximale Grössenunterschied von 5\% zum Original Aufweisen.
 		\item mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.
 		\item nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.
@@ -856,19 +856,20 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		Maximale Abweichung 10m in alle Richtungen.\\ 
 \hline 
 \end{tabularx}
-\subsubsection{Testfall 11-Spezialtest Überprüfung mittels Gebäude}
+\subsubsection{Testfall 11-Grössenunterschied}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline 
 	Version &
-	T-010v1 \\ 
+	T-011v1 \\ 
 \hline 
 	Beschreibung & 
-	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich ist.\\ 
-\hline 
-	Testvoraussetzung &
+	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich was die Grösse des Gebäudes betrifft ist. \\ 
+\hline
+    Testvoraussetzung &
 	Die App hat alle Berechtigungen \\ &
-	Teil des Gebäudekomplex ist Sichtbar\\ &
-	Der Tester befindet sich vor Ort\\ 
+	Teil des Gebäudekomplex ist Sichtbar \\ &
+	Der Tester befindet sich vor Ort \\ &
+	Das Gebäude wird nach Initialisierung an Korrekter Position dargestellt \\
 \hline 
 	Testschritte & 
 		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
@@ -879,7 +880,34 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 	Erwartetes Ergebnis &
 	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
 	Randbedingungen: \\ &
-		Maximale Abweichung 10m in alle Richtungen.\\ 
+		Der maximale Grösssenunterschied beträgt < 5 (Augenmass) \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 12-Rotationsabweichung}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-012v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich was die Rotation des Gebäudes betrifft \\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen \\ &
+	Teil des Gebäudekomplex ist Sichtbar \\ &
+	Der Tester befindet sich vor Ort \\ &
+	Das Gebäude wird nach Initialisierung an Korrekter Position dargestellt \\
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
+		2. App starten \\ &
+		3. Smartphone nach Norden ausrichten \\ &
+		4. Gebäudekomplex in Kamera fokussieren. \\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
+	Randbedingungen: \\ &
+		Der maximale Rotationsabweichung beträgt < \ang{25} (Augenmass) \\ 
 \hline 
 \end{tabularx}
 
@@ -909,6 +937,12 @@ Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere R
 	T-008v1 & Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. & \checkmark \\
 \hline
 	T-009v2 & Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. & \checkmark \\
+\hline
+	T-010v1 & Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich ist. & x \\
+\hline
+	T-011v1 & Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich was die Grösse des Gebäudes betrifft. & \checkmark \\
+\hline
+	T-012v1 & Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich was die Rotation des Gebäudes betrifft. & \checkmark \\
 \hline
 \end{tabularx}
 
@@ -1236,7 +1270,7 @@ Als zusätzliche Nutzungsmöglichkeiten wurden neben der Betrachtung einer Immob
 Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls Sie verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einlick über die Innenstruktur von ausserhalb.
 
 \section{Vergleich mit Anforderungen}
-Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben.
+Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben. Für die Verifikation wurden die Testfälle überprüft.
 \bigbreak
 Legende:
 <<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
@@ -1358,7 +1392,10 @@ Die 10 Messungen ergaben folgende Abweichungen (gerundete auf einen Meter):
 	\item 9m
 	\item 12m
 \end{enumerate}
-
+\subsection{T-011-v1}
+Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Grössenunterschiede festgestellt werden.
+\subsection{T-012-v1}
+Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Rotationsabweichungen festgestellt werden.
 \chapter{Sprints}
 
 \begin{figure}[h!]
