@@ -349,15 +349,16 @@ Der Benutzer kann von diesem Zustand wieder in folgende zustände kommen:
 \clearpage
 
 \section{Verworfene Lösungen}
-Insgesamt wurden 4 Prototypen gebaut, von welchen 3 verworfen wurden.
-Es wurde dabei jeweils 2 Mal das gleiche Konzept auf verschiedener Entwicklungsumgebungen aufgebaut. So wurde zuerst die Konzeptionelle Idee aus Kapitel \ref{ch:KonzeptionelleIdee} mit Unity entwickelt. Zudem wurde ein zweites Lösungskonzept (Siehe Kapitel \ref{ch:markerbasiertesLoesungskonzept} simultan zum gewählten entwickelt, welches wieder eingestellt wurde. Auch dieser Prototyp wurde zuerst mit Unity und anschliessend mit AndroidStudio entwickelt (Entscheidungsgründe dafür sind in Kapitel \ref{ch:evaluation} zu finden). 
+Insgesamt wurden vier Prototypen gebaut, von denen drei verworfen wurden.
+Es wurde dabei jeweils zwei Mal das gleiche Konzept auf verschiedener Entwicklungsumgebungen aufgebaut. So wurde zuerst die konzeptionelle Idee aus Kapitel \ref{ch:KonzeptionelleIdee} mit Unity entwickelt. Zudem wurde ein zweites Lösungskonzept (siehe Kapitel \ref{ch:markerbasiertesLoesungskonzept} simultan zum gewählten Konzept entwickelt, welches jedoch nach der Prototypenphase verworfen wurde. Auch dieser Prototyp wurde zuerst mit Unity und anschliessend mit AndroidStudio entwickelt (Gründe dafür sind in Kapitel \ref{ch:evaluation} zu finden).
+
 \subsection{Markerbasiertes Lösungskonzept}
 \label{ch:markerbasiertesLoesungskonzept}
 Das Konzept eines markerbasierten Lösung sieht vor, dass die Position des Markers in der realen Welt bereits bekannt ist, und sich diese nicht ändert. Sofern dies der Fall ist, kann die relative Position der Kamera zum Marker und somit zum Gebäude berechnet werden.
 
 Die relative Position zum Marker kann durch dessen Grösse sowie dem Winkel in Relation zur Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude ausgerechnet werden.
 
-Der Vorteil dieser Markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker zuerst befestigt werden muss, es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man Physisch vor Ort den Marker platzieren muss.
+Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker zuerst befestigt werden muss, es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man Physisch vor Ort den Marker platzieren muss.
 
 \subsection{Prototyp}
 Um dieses Konzept zu Entwickeln wurde ein Prototyp entwickelt. Bei diesem stellte sich jedoch ein schwerwiegendes Problem ein, dass das Gebäude aus nicht weiter untersuchten Gründen beim Gleichen Marker immer wieder verschieden dargestellt wurde. Dieses Verhalten führte dazu, dass die Parallele Entwicklung dieses Konzeptes eingestellt wurde und der Fokus auf die auf der Position basierte Lösung gelegt wurde. In Abbildung \ref{fig:alternativeSolution} sieht man das Fehlverhalten des 3D Modelles.
