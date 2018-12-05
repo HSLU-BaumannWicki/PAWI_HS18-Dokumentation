@@ -98,9 +98,9 @@
 
 \renewcommand{\abstractname}{Management Summary}
 \begin{abstract}
-	Das Ergebnis dieser Arbeit ist eine AR Applikation für Android Smartphones. Diese Applikation wurde in 14 Wochen mit der Agilen Projektentwicklungsmethode erarbeitet. Sie gebraucht dabei eine klassische drei Schichten Architektur, mit Schnittstellen zu dem Kudan AR Framework und REST-Schnittstellen. Bei einer Evaluation von Plattform wurde neben Smartphones auch die HoloLens in Betracht gezogen. Als AR Frameworks wurden Kudan, Vuforia und Wikitude, und andere betrachtet, und deren Vor- und Nachteile abgewogen, wobei schlussendlich Kudan ausgewählt wurde. Es wurden verschiedene Prototypen erstellt. Dabei zuerst mit Unity, im Verlauf des Projektes wurde dann auf AndroidStudio gewechselt. Diese Arbeit schildert sowohl den Entwicklungsprozess, wie auch die Spezifikationen und Funktionsweise des Systems. Die Markttauglichkeit der Applikation, sowie andere Nutzungsmöglichkeiten und Verbesserungswünsche wurde mithilfe einer Nutzerumfrage evaluiert.
+	Das Ergebnis dieser Arbeit ist eine AR Applikation für Android Smartphones. Diese Applikation wurde in 14 Wochen mit der Agilen Projektentwicklungsmethode erarbeitet. Sie gebraucht dabei eine klassische drei Schichten Architektur, mit Schnittstellen zu dem Kudan AR Framework und REST-Schnittstellen. Bei einer Evaluation von Plattformen wurde neben Smartphones auch die HoloLens in Betracht gezogen. Als AR Frameworks wurden Kudan, Vuforia und Wikitude, und andere betrachtet, und deren Vor- und Nachteile abgewogen, wobei schlussendlich Kudan ausgewählt wurde. Es wurden verschiedene Prototypen erstellt. Dabei zuerst mit Unity, im Verlauf des Projektes wurde dann auf AndroidStudio gewechselt. Diese Arbeit schildert sowohl den Entwicklungsprozess, wie auch die Spezifikationen und Funktionsweise des Systems. Die Markttauglichkeit der Applikation, sowie andere Nutzungsmöglichkeiten und Verbesserungswünsche wurden mithilfe einer Nutzerumfrage evaluiert.
 	
-	Dem Leser werden wichtige Grundlagen der Augmented und Mixed Reality nähergebracht und einen historischen Überblick gewährt, sowie weitere für das Projekt relevante Konzepte erklärt. Das Projekt leitete seine Anforderungen sowohl aus dem Projektbeschrieb, wie aus eigens erarbeiteten Vorgaben ab. Diese werden in einer Validierungsphase überprüft wobei von zehn Zielen, deren sieben erreicht wurden. Das Projekt schliesst mit einer Evaluierung der geleisteten Arbeit, Reflexion und Ausblick für die Zukunft. 
+	Dem Leser werden wichtige Grundlagen der Augmented und Mixed Reality nähergebracht und einen historischen Überblick gegeben, sowie weitere für das Projekt relevante Konzepte erklärt. Das Projekt leitete seine Anforderungen sowohl aus dem Projektbeschrieb, wie aus eigens erarbeiteten Vorgaben ab. Diese werden in einer Validierungsphase überprüft wobei von zehn Zielen, deren sieben erreicht wurden. Das Projekt schliesst mit einer Evaluierung der geleisteten Arbeit, Reflexion und Ausblick für die Zukunft. 
 \end{abstract}
 
 \tableofcontents
@@ -115,9 +115,9 @@ Im ersten Teil werden die technologischen Grundlagen und historischen Hintergrü
 Es folgt ein Kapitel über Testdesign, Testplanung und Durchführung. Danach die Evaluation und Validierung des Projektes, und die Durchführung einer Nutzerumfrage und Analyse derer. Zum Schluss wird in der Reflexion der Projektverlauf kritisch betrachtet, und ein Ausblick auf die zukünftige Entwicklung gegeben.
 
 \section{Aufgabenstellung und Zielsetzung}
-Ziel dieser Arbeit ist es zu Untersuchen, \textquotedblleft inwiefern ein Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln.\textquotedblright Es muss untersucht werden, welche Technologien geeignet für den Ausseneinsatz zur Verfügung stehen. Es soll darauf geachtet werden, dass die Applikation einen Nutzten für die breitere Gesellschaft aufweist. Denn im Moment werden in der Schweiz bei ordentlichen Bauvorhaben noch Bauprofile aufgestellt, welche einen Überblick über die Dimension des Gebäudes wiedergibt, so soll in Zukunft eine Applikation im Sinne dieser Arbeit diese Konstrukte erweitern.
+Ziel dieser Arbeit ist es zu untersuchen, \textquotedblleft inwiefern ein Gebäude mittels Augmented Reality vor Ort selbst dargestellt werden kann, um interessierten Nutzern ein besseres Verständnis des Neubaus zu vermitteln.\textquotedblright Es muss untersucht werden, welche Technologien geeignet für den Ausseneinsatz zur Verfügung stehen. Es soll darauf geachtet werden, dass die Applikation einen Nutzten für die breitere Gesellschaft aufweist. Denn im Moment werden in der Schweiz bei ordentlichen Bauvorhaben nur Bauprofile aufgestellt, welche nur einen Überblick über die Dimension des Gebäudes wiedergibt. In Zukunft soll eine Applikation im Sinne dieser Arbeit diese Profile erweitern.
 \bigbreak
-Es ist zu Beginn der Arbeit noch unklar, welche Geräte für einen Ausseneinsatz verwendet werden können. Daher muss eruiert werden, welche Einsatzgeräte für diese Zwecke brauchbar sind. Weiter soll für die jeweilige Plattform ein geeignetes AR Framework gefunden oder erstellt werden, und schlussendlich die prototypische Applikation selbst entwickelt werden.
+Es ist zu Beginn der Arbeit noch unklar, welche Geräte für einen Ausseneinsatz verwendet werden können. Daher muss eruiert werden, welche Einsatzgeräte für diese Zwecke brauchbar sind. Weiter soll für die jeweilige Plattform ein geeignetes AR Framework gefunden oder erstellt werden, und schlussendlich die Applikation als Prototyp selbst entwickelt werden.
 \bigbreak
 Die vorliegende Arbeit beschäftigt sich stark mit der Fragestellung, inwiefern eine solche Applikation mit heutigen Geräten umsetzten lässt. Zudem sollen dabei deren Schwächen, sowie Vorteile aufgezeigt werden.
 
@@ -132,7 +132,7 @@ Dieses Kapitel bietet einen Übersicht über die Entwicklung der Augmented Reali
 
 Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass.
 
-Der Anfang der Augmented Reality begann mit der kontemporären Science Fiction Geschichte \textquotedblleft The Master Key, indem ein Elektrizitätsdämon dem Hauptcharakter eine Brille überreicht, welche die Charakterzüge der Personen (\textquotedblleft E\textquotedblright\ für \textbf{E}vil, \textquotedblleft F\textquotedblright\ für \textbf{F}oolis, usw.) jeweils virtuell auf die Stirn schreibt \parencite{Baum1901}.
+Der Anfang der Augmented Reality begann mit der kontemporären Science Fiction Geschichte \textquotedblleft The Master Key\textquotedblright, in dem ein Elektrizitätsdämon dem Hauptcharakter eine Brille überreicht, welche die Charakterzüge der Personen (\textquotedblleft E\textquotedblright\ für \textbf{E}vil, \textquotedblleft F\textquotedblright\ für \textbf{F}ools, usw.) jeweils virtuell auf die Stirn schreibt \parencite{Baum1901}.
 Diese Vision wurde im Jahre 1968 von Sutherland realisiert. Dessen Head-Mounted Display, das Erste seiner Art, projizierte dem Nutzer dreidimensionale Objekte virtuell in den Raum \parencite{Sutherland1968}. In dieser Arbeit schilderte Sutherland auch wie sie die Probleme der Lokalisierung lösten. Diese Entwicklungen wurden in den nächsten 20 Jahren verbessert, vor allem mit dem Fokus auf Heads Up Displays und industrielle Anwendungen. Diese Fortschritte wurden in einem Paper von Azuma 1994 gebündelt zusammengefasst und beschrieben. Azuma identifiziert als Anwendungsfelder das Militär mit AR in den Pilotenhelmen, die Medizin als unterstützende, bildgebende Instrumente (konkret eine Visualisierung eines Fötus aus Ultraschallaufnahmen), und als Unterstützung und Trainingshilfe in der industriellen Produktion \parencite{Azuma1997}.
 
 \begin{figure}[h!]
@@ -210,10 +210,10 @@ Da beim Markerbasierten Tracking die namensgebenden \textquotedblleft Fiducial M
 
 Ein modellbasiertes Tracking generiert aus einem physischen Objekt ein dreidimensionales, digitales Modell, dieses wird danach verwendet, um die Pose zu kalkulieren. Üblicherweise werden diese Modelle aufgrund der Kanten oder Ecken des Objektes berechnet, Kanten sind dabei vorzuziehen, da Sie gegenüber wechselnden Lichtverhältnissen robust sind und durch den Computer effizient gefunden werden können \parencite{Zhou2008}. Dies bedeutet jedoch nicht, dass dies die einzigen beiden Möglichkeiten für ein Modellbasiertes Tracking sind, sowohl \citeauthor{PauloLima2017} wie auch \citeauthor{Cote2013} gebrauchen in ihren Arbeiten Systeme, welche von Punktewolken ausgehend die jeweilige Pose ausrechnen.
 
-Die Feature-basierte Methode extrahiert interessante Punkte eines Bildes und versucht diese auf subsequenten Bildern wiederzufinden. Wie diese Punkte identifiziert werden hängt von der gewählten Methode ab. Bei SIFT (scale-invariant feature transform) sind dies beispielsweise die Minima/Maxima mehrerer Gaussschen Weichzeichnungsfunktionen \parencite{Lowe1999}. Bei nachfolgenden Bildern werden wieder Features bestimmt und mit den vorhergegangen abgeglichen. Erschwert wird der Prozess dadurch, dass zwei Bilder nicht unbedingt durch Transformationen (Rotation, Skalierung, Scherungen) ineinander überführt werden können. Es müssen also Features gefunden und erkannt werden, welche gegen solche Transformationen resistent sind.
+Die Feature-basierte Methode extrahiert interessante Punkte eines Bildes und versucht diese auf subsequenten Bildern wiederzufinden. Wie diese Punkte identifiziert werden, hängt von der gewählten Methode ab. Bei SIFT (scale-invariant feature transform) sind dies beispielsweise die Minima/Maxima mehrerer Gaussschen Weichzeichnungsfunktionen \parencite{Lowe1999}. Bei nachfolgenden Bildern werden wieder Features bestimmt und mit den vorhergegangen abgeglichen. Erschwert wird der Prozess dadurch, dass zwei Bilder nicht unbedingt durch Transformationen (Rotation, Skalierung, Scherungen) ineinander überführt werden können. Es müssen also Features gefunden und erkannt werden, welche gegenüber solchen Transformationen resistent sind.
 
 \subsubsection{SLAM}
-Wie im vorherigen Paragraf erklärt, wird zwischen zwei Markerless Tracking Methoden unterscheiden. Eine spezifische, die sogenannte SLAM Methode, wird in diesem Paragraoh näher erklärt. Diese Methode identifiziert, mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt), sowie deren Abhängigkeiten zueinander (Location) und fasst diese in einer Karte zusammen (Mapping). Sollte nun die Pose verloren gehen (durch einen Unterbruch des Kamerastream oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden, um die Position wieder zu bestimmen. Dieser Ansatz wird \textquotedblleft Simultaneous Location and Mapping\textquotedblright (dt. Simultanes Erkennen und Kartografieren) genannt.
+Wie im vorherigen Paragraf erklärt, wird zwischen zwei markerless Tracking Methoden unterscheiden. Eine spezifische, die sogenannte SLAM Methode, wird in diesem Paragraf näher erklärt. Diese Methode identifiziert, mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt), sowie deren Abhängigkeiten zueinander (Location) und fasst diese in einer Karte zusammen (Mapping). Sollte nun die Pose verloren gehen (durch einen Unterbruch des Kamerastream oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden, um die Position wieder zu bestimmen. Dieser Ansatz wird \textquotedblleft Simultaneous Location and Mapping\textquotedblright (dt. Simultanes Erkennen und Kartografieren) genannt.
 
 \subsection{GPS}
 Das Global Positioning System (GPS) ist ein ursprünglich von dem amerikanischen Militär entwickeltes System von Satelliten. Jeder der Satelliten besitzt intern mehrere Atomuhren worüber er die so genannte \textquotedblleft composite clock\textquotedblright\ (CC) berechnet \parencite{GPSSysDesc2009}. Diese CC Zeit wird mit seiner Position zusammen als C/A (Coarse / Acquisition) transmittiert, dies als Dienst des Standard Positioning Service (SPS). Über mehrere solcher Signale verschiedener Satelliten, kann schlussendlich die Position des Benutzers berechnet werden. Die C/A ergibt eine Genauigkeit von 13 Metern in 95\% der Fällen, ein genaueres Signal steht dem amerikanischen Militär über einen verschlüsselten Kanal dem Precise Positioning Service zur Verfügung.
@@ -228,7 +228,7 @@ Der Einsatz von virtueller oder gemischter Realität ist für die Fachbereiche M
 
 Beide Gruppen identifizieren jedoch dasselbe Problem für die geringe Adoption von AR in deren relevanten Felder: ein Existieren von performanter, komfortabler Hardware, welche einen bezahlbaren Preis besitzt und für diese Felder geeignet sind in Bezug auf Komfort und anderen Anforderungen. Im Moment sind solche Geräte ein Nischenprodukt, was dazu führt, das Entwicklung für ein solches Produkt ein erhebliches Risiko darstellt (\cite{Piroozfar2018}, \cite{Pelargos2017}).
 
-Im Bereich der Unterhaltungsindustrie hat AR hingegen schon längst Einzug gehalten. Zwei der grössten Spiele (Ingress und Pokémon Go!) wurden von Niantic Labs entwickelt und besitzen Nutzerzahlen in Millionenhöhe, beide spielen in einer Spielwelt die entweder auf unserer basiert (Pokémon Go!) oder spielen in einem Paralleluniversum (Ingress) in welchem Aktionen in der realen Welt Auswirkungen besitzt. Dennoch plagen beide das gleiche Problem: Betrug der Geolokation der spielenden Geräte und ein fehlendes Endziel (\cite{MRRX2015} und \cite{KamelBoulos2017}). Dies führte zu einer Stagnation und Verlust von Spielern, nachdem der Initiale Ansturm vorüber war (\cite{Arif2017}, \cite{KamelBoulos2017}), dennoch trugen diese Spiele Massgeblich dazu bei ein öffentliches Verständnis von AR zu bilden. Es darf daher davon ausgegangen werden, das dadurch die Hürde für die Entwicklung neuer Spiele tiefer geworden ist.
+Im Bereich der Unterhaltungsindustrie hat AR hingegen schon längst Einzug gehalten. Zwei der grössten Spiele (Ingress und Pokémon Go!) wurden von Niantic Labs entwickelt und besitzen Nutzerzahlen in Millionenhöhe, beide spielen in einer Spielwelt die entweder auf unserer basiert (Pokémon Go!) oder spielen in einem Paralleluniversum (Ingress) in welchem Aktionen in der realen Welt Auswirkungen besitzt. Dennoch plagen beide das gleiche Problem: Betrug der Geolokation der spielenden Geräte und ein fehlendes Endziel (\cite{MRRX2015} und \cite{KamelBoulos2017}). Dies führte zu einer Stagnation und Verlust von Spielern, nachdem der Initiale Ansturm vorüber war (\cite{Arif2017}, \cite{KamelBoulos2017}), dennoch trugen diese Spiele massgeblich dazu bei, ein öffentliches Verständnis von AR zu bilden. Es darf daher davon ausgegangen werden, das dadurch die Hürde für die Entwicklung neuer Spiele tiefer geworden ist.
 
 \subsection{Building Information Modelling}
 
@@ -284,8 +284,8 @@ Im folgenden Kapitel wird die Lösung beschrieben. Es soll ein Überblick über 
 
 \section{Konzeptionelle Idee}
 \label{ch:KonzeptionelleIdee}
-Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation Markerless oder Markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim Markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies nicht beim Markerless Tracking. Da Markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss beim Markerless eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
-Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker wie auch Markerless basierend, anbieten.
+Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation markerless oder markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies beim markerless Tracking nicht. Da markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss bei markerless Tracking eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
+Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker basierend wie auch markerless Tracking, anbieten.
 \bigbreak
 Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass das darzustellende Gerät über folgende zusätzliche Komponenten verfügt:
 \begin{enumerate}
@@ -298,7 +298,7 @@ Bei dieser Lösung werden die Lokalisierungssensoren sowie der Kompass dazu verw
 Nachteil dieser Methode liegt darin, dass die Anzeige nun abhängig von drei Sensorwerten ist, welche selber jeweils eine Ungenauigkeit aufweisen und damit Fehler ins System einbringen. Dieser Umstand kann dazu führen, dass das anzuzeigende Gebäude nicht immer an der exakten Position dargestellt wird.
 
 \section{Applikationsablauf}
-Die Applikation durchläuft verschiedene Schritte, damit sie dem Benutzer das Modell in der Umgebung an der korrekten Position anzeigen kann. Diese Schritte sind anhand der Abbildung  \ref{fig:Ablaufdiagramm} grafisch ersichtlich.
+Die Applikation durchläuft verschiedene Schritte, damit sie dem Benutzer das Modell in der Umgebung an der korrekten Position anzeigen kann. Diese Schritte sind anhand der Abbildung  \ref{fig:Ablaufdiagramm} grafisch dargestellt.
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{AblaufdiagrammARApplikation.png}
@@ -315,7 +315,7 @@ Sobald die Applikation startet, werden diverse Berechtigungen überprüft. Sind 
 \end{figure}
 
 \subsection{North Init} \label{ch:NorthInit}
-In diesem Status wird versucht den Nordpol mittels Kompass herauszulesen. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dieser Zustand dient dazu, dass nicht ständig der Norden vom Kompasssensor herausgelesen werden muss, was zu einer Steigerung der Genauigkeit führt. Sobald der Benutzer das Gerät genug lange nach Norden ausgerichtet hat, startet die Applikation in den in Kaptiel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
+In diesem Status wird versucht den Nordpol mittels Kompass herauszulesen. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dieser Zustand dient dazu, dass nicht ständig der Norden vom Kompasssensor herausgelesen werden muss, was zu einer Steigerung der Genauigkeit führt. Sobald der Benutzer das Gerät genug lange nach Norden ausgerichtet hat, startet die Applikation in den in Kapitel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{NorthInitProcess.png}
 	\caption{Darstellung North Init mit Indikator ob richtige Position erreicht wurde.}
@@ -323,13 +323,13 @@ In diesem Status wird versucht den Nordpol mittels Kompass herauszulesen. Dabei 
 \end{figure}
 
 \subsection{AR Application Init} \label{ch:ARApplicationInit}
-Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für die Initialisierung der AR Applikation gestartet. Dies bedeutet insbesondere, dass die Kudan AR Welt aufgebaut wird. Zudem abonniert dieser Status den Event, welcher bei Lokalisierungsupdates des Gerätes geworfen wird und wechselt zum Status, welcher in Kapitel \ref{ch:waitingForLocation} beschrieben ist.
+Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für die Initialisierung der AR Applikation gestartet. Dies bedeutet insbesondere, dass die Kudan AR Welt aufgebaut wird. Zudem abonniert dieser Status den Event, welcher bei Aktualisierungen der Lokalisation des Gerätes geworfen wird und wechselt zum Status, welcher in Kapitel \ref{ch:waitingForLocation} beschrieben ist.
 
 \subsection{3D Model Init}
 Dieser Status \textquotedblleft 3D Model Init\textquoteright\ erfüllt zum jetzigen Zeitpunkt noch keinen Zweck. Er würde jedoch die Modelle, welche die Applikation darstellen soll von einer Website herunterladen und diese der Applikation bereitstellen.
 
 \subsection{Waiting for localisation} \label{ch:waitingForLocation}
-In diesem Schritt wird gewartet, bis eine valide Lokalisierungsposition vom Gerät zurückgegeben wird. Die Position wird als valide betrachtet, sobald sie genügend genau ist. Der Benutzer wird auch hier über den Zustand der Applikation informiert (siehe Abbildung \ref{fig:KoordinationNotFound}), indem eine Grafische Darstellung dem Benutzer mitteilt, dass zurzeit keine Lokalisierungsdaten vorhanden seien um das Gebäude darzustellen. Der Status wechselt automatisch in den in Kapitel \ref{ch:ThreeDModelPresenting} beschriebenen Zustand, sobald dies ändert.
+In diesem Schritt wird gewartet, bis eine valide Position vom Gerät zurückgegeben wird. Die Position wird als valide betrachtet, sobald sie genügend genau ist. Der Benutzer wird auch hier über den Zustand der Applikation informiert (siehe Abbildung \ref{fig:KoordinationNotFound}), indem eine Grafische Darstellung dem Benutzer mitteilt, dass zurzeit keine Daten über die Position vorhanden seien um das Gebäude darzustellen. Der Status wechselt automatisch in den in Kapitel \ref{ch:ThreeDModelPresenting} beschriebenen Zustand, sobald dies ändert.
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{UnknownLocation.png}
@@ -339,17 +339,17 @@ In diesem Schritt wird gewartet, bis eine valide Lokalisierungsposition vom Ger�
 
 
 \subsection{3D Model presenting} \label{ch:ThreeDModelPresenting}
-In diesem Schritt wird das Model für den Benutzer dargestellt. Das Modell wird mittels eines Gyroscopes stets an der korrekten Stelle gehalten, solange sich der Benutzer an Ort und Stelle hält. Bewegt sich jedoch der Benutzer wieder, werden die neuen Positionsdaten dazu verwendet das Modell darzustellen.
-Der Benutzer kann von diesem Zustand wieder in folgende zustände kommen:
+In diesem Schritt wird das Model für den Benutzer dargestellt. Das Modell wird mittels eines Gyroskops stets an der korrekten Stelle gehalten, solange der Benutzer an Ort und Stelle bleibt. Bewegt sich der Benutzer jedoch wieder, werden die neuen Positionsdaten dazu verwendet das Modell darzustellen.
+Der Benutzer kann von diesem Zustand wieder in folgende Zustände kommen:
 
 \begin{itemize}
-	\item North Init (Durch Klicken auf entsprechenden Button siehe Abbildung \ref{fig:ARShowBuilding})
+	\item North init (Durch Klicken auf entsprechenden Button siehe Abbildung \ref{fig:ARShowBuilding})
 	\item Waiting for localisation (Sofern über eine gewisse Zeit keine neuen Daten hinzugefügt werden konnten).
 \end{itemize}
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{ARShowBuilding.png}
-	\caption{Darstellung des Gabäudes sobald die Position ausfindigemacht werden konnte (hier gefälschte Positionsdaten).}
+	\caption{Darstellung des Gebäudes sobald die Position ausfindig gemacht werden konnte (hier gefälschte Positionsdaten).}
     \label{fig:ARShowBuilding}
 \end{figure}
 
@@ -365,10 +365,10 @@ Das Konzept eines markerbasierten Lösung sieht vor, dass die Position des Marke
 
 Die relative Position zum Marker kann durch dessen Grösse sowie dem Winkel in Relation zur Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude ausgerechnet werden.
 
-Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker zuerst befestigt werden muss, es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man Physisch vor Ort den Marker platzieren muss.
+Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker an einer fixen Stelle befestigt werden muss. Es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man physisch vor Ort den Marker platzieren muss.
 
 \subsection{Prototyp}
-Um dieses Konzept zu Entwickeln wurde ein Prototyp entwickelt. Bei diesem stellte sich jedoch ein schwerwiegendes Problem ein, dass das Gebäude aus nicht weiter untersuchten Gründen beim Gleichen Marker immer wieder verschieden dargestellt wurde. Dieses Verhalten führte dazu, dass die Parallele Entwicklung dieses Konzeptes eingestellt wurde und der Fokus auf die auf der Position basierte Lösung gelegt wurde. In Abbildung \ref{fig:alternativeSolution} sieht man das Fehlverhalten des 3D Modelles.
+Um dieses Konzept zu realisieren, wurde ein Prototyp entwickelt. Bei diesem wurde jedoch ein schwerwiegendes Problem identifiziert. Nämlich, dass das Gebäude aus nicht weiter untersuchten Gründen beim gleichen Marker immer wieder verschieden dargestellt wurde. Dieses Verhalten führte dazu, dass die Parallele Entwicklung dieses Konzeptes eingestellt wurde, und der Fokus auf die auf der Position basierte Lösung gelegt wurde. In Abbildung \ref{fig:alternativeSolution} sieht man das Fehlverhalten des 3D Modells.
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{alternativeLoesung.png}
@@ -377,8 +377,8 @@ Um dieses Konzept zu Entwickeln wurde ein Prototyp entwickelt. Bei diesem stellt
 \end{figure}
 
 \chapter{Technische Beschreibung}
-\section{Projektinformationen}
 
+\section{Projektinformationen}
 
 \subsection{Vorgehensmodell}
 
@@ -411,16 +411,15 @@ Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
 \end{itemize}
 Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
 
+Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig hell ist.
 
-Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig Hell ist.
-
-Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren, und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten, die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (antippen eines virtuellen Objektes).
+Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten, die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (Antippen eines virtuellen Objektes).
 Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters.
 
 Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
 Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Augmented Reality Modelle das Smartphone ständig in den Händen gehalten werden muss.
 
-In einer ersten Evaluation mit einer Hololens wurde entschieden, dass für dieses Projekt die Hololens ausgeschlossen werden soll, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
+In einer ersten Evaluation mit einer Hololens wurde entschieden, dass für dieses Projekt die Hololens ausgeschlossen wird, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
 
 Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf den bereits vorhanden Geräten verwendet werden kann.
 
@@ -432,13 +431,13 @@ Bedingt durch die Selektion der Zielplatform standen verschiedene Entwicklungsum
 \item AndroidStudio
 \end{itemize}
 
-Auf beiden Entwicklungsumgebungen wurde ein Prototyp für Android entwickelt. Dabei entstand folgende Auffassung:
+Auf beiden Entwicklungsumgebungen wurde ein Prototyp für Android entwickelt. Dabei entstand folgende Beobachtung:
 
 Bei Unity ist das Erstellen einer ersten lauffähigen Version sehr einfach. Ein weiterer Vorteil ist die grafische Darstellung der 3D Modelle. Zudem würde eine allfällige Portierung auf weitere Platformen einfach umsetzbar sein. Bei der Entwicklung stellte sich eine Schwäche mit den GPS Sensoren heraus. So funktionierten diese aus unbekannten Gründen nicht bei jeder Installation der Applikation korrekt. Für die Lösung dieses Problemes fehlte eine ausreichende Debugmöglichkeit in Unity.
 
 Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeichneten API Dokumentation. So funktionierten alle benötigten Sensoren auf Anhieb. Die Schwächen dieser Entwicklungsumgebung liegt darin, dass eine allfällige Portierung auf weitere Plattformen nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht grafisch dargestellt und müssen mit einer anderen Software Editiert werden.
 
-Die unzureichende Debugmöglichkeiten sowie die Problemen mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
+Die unzureichende Debugmöglichkeiten und Probleme mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
 
 \subsubsection{Augmented Reality Frameworks}
 Während der Recherchen stellte sich heraus, dass ein breites Spektrum verschiedener AR Frameworks auf dem Markt vorhanden ist. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden vier häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
@@ -470,13 +469,13 @@ Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie v
 \end{table}
 
 
-Für das Projekt wurde entschieden Kudan als AR Framework zu verwenden. Gründe dafür lagen darin, dass dieses Framework über eine sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}), und das Lizenzierungsmodell, welche eine Entwicklung ohne weitere Kosten ermöglichte. Der wichtigste Grund lag jedoch darin, dass die Dokumentation sehr extensiv, und die Erfahrung mit Kudan am Grössten war.
+Für das Projekt wurde entschieden, Kudan als AR Framework zu verwenden. Gründe dafür lagen darin, dass dieses Framework über eine sehr robuste single-Kamera SLAM Implementation verfügt (\cite{BerfinAyhan2017}), und das Lizenzierungsmodell, welche eine Entwicklung ohne weitere Kosten ermöglichte. Der wichtigste Grund lag jedoch darin, dass die Dokumentation sehr extensiv, und die Erfahrung mit Kudan am Grössten war.
 
 \subsection{Einschränkungen und Abgrenzungen}
 
 Wie aus der Evaluation (siehe \ref{ssec:EvalPlattform}) ersichtlich ist, haben wir uns schlussendlich auf Android als Plattform beschränkt. Dies hat zur Folge, dass der erarbeitete Code nicht ohne weiteres auf andere Plattformen portiert werden kann. Die Architektur ist aber so modular aufgebaut, dass die Implementierung für andere Plattformen dennoch ohne grossen Aufwand geschehen kann.
 
-Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt. Dies entspricht etwa 80\% aller Androidbesitzer (siehe Abb. \ref{fig:AndroidMarketshare}), und beinhaltet wichtige Funktionen die wir für unser Projekt gebrauchen. Zudem muss das jeweilige Gerät folgende Systemanforderungen besitzen:
+Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt. Dies entspricht etwa 80\% aller Androidbesitzer (siehe Abb. \ref{fig:AndroidMarketshare}) und beinhaltet wichtige Funktionen die wir für unser Projekt gebrauchen. Zudem muss das jeweilige Gerät folgende Systemanforderungen besitzen:
 \begin{itemize}
 	\item Gyroskop
 	\item Magnetometer (Kompass)
@@ -486,7 +485,7 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 \begin{figure}
 	\centering
 	\includegraphics[keepaspectratio,width=0.8\textwidth]{AndroidMarketshare}
-	\caption{Prozentanteil der Androidversionen, Daten von \cite{Fossbytes2018}}
+	\caption{Prozentanteil der Android Versionen, Daten von \cite{Fossbytes2018}}
 	\label{fig:AndroidMarketshare}
 \end{figure}
 
@@ -526,9 +525,9 @@ Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die In
 
 \subsection{Komponentendesign}
 
-Die entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
+Die entwickelte Applikation ist von weiteren Komponenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren aufgelistet.
 \bigbreak
-Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems mitbringen).
+Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems bedingen).
 
 \begin{figure}[h!]
 	\centering
@@ -624,7 +623,7 @@ Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen Asyn
 \end{figure}
 
 \subsection{Klassendiagramm}
-Nachfolgend ist das Klassendiagramm der AR Applikation. Es zeigt die Packages auf, und deren Klassen. Zusätzlich ist auf Serverseite die REST API angedacht.
+Nachfolgend ist das Klassendiagramm der AR Applikation. Es zeigt die Packages auf und deren Klassen. Zusätzlich ist auf Serverseite eine REST API angedacht.
 
 \begin{figure}[h!]
 	\center
@@ -634,25 +633,37 @@ Nachfolgend ist das Klassendiagramm der AR Applikation. Es zeigt die Packages au
 
 
 \subsection{Anforderungen der Software}
+
 \subsubsection{Hardware}
+
 Die AR Applikation stellte folgende Hardware Anforderungen an das Gerät:
+
 \begin{enumerate}
 	\item Lokalisierungssensor
 	\item Kompass
 	\item Gyroskop
 \end{enumerate}
+
 \subsubsection{Software}
+
 Die AR Applikation stellt zudem folgende Software Anforderungen an das Gerät:
+
 \begin{itemize}
 	\item Android OS (mindestens Version 6.0)
 	\item Aktive Internetverbindung
 \end{itemize}
+
 \subsection{Umsetzung Programmierung}
+
 \subsubsection{Clean Code}
+
 Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name für diese sowie deren Parameter gewählt werden musste.
+
 \subsubsection{Git Flow}
+
 Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
 Auf der Abbildung \ref{fig:FeatureBranchWorkflow} ist ein Auszug aus der Baumstruktur unserer Dokumentation dargestellt. Dabei ist zu erkennen, dass zu Sprintbeginn möglichst keine offenen Zweige mehr vorhanden sind und gegen Sprintende alle Zweige in den Master (in Abbildung \ref{fig:FeatureBranchWorkflow} die Schwarze Linie) über einen Pull Request zusammengeführt werden.
+
 \begin{figure}[h!]
 	\center
 	\includegraphics[width=\textwidth]{GitFeatureBranchWorkflow.png}
@@ -660,9 +671,8 @@ Auf der Abbildung \ref{fig:FeatureBranchWorkflow} ist ein Auszug aus der Baumstr
 	\label{fig:FeatureBranchWorkflow}
 \end{figure}
 
-
 \subsubsection{Unit Test}
-Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde zu beginn des Projektes entschlossen, die Anzahl an Unit Tests vorerst noch gering zu halten. Dies ermöglichte, dass wir genug Zeit hatten um verschiedene Prototypen zu entwickeln.
+Da es sich bei der entwickelten Applikation um einen Prototyp handelt, wurde zu Beginn des Projektes entschlossen, die Anzahl an Unit Tests vorerst noch gering zu halten. Dies ermöglichte, dass wir genug Zeit hatten um verschiedene Prototypen zu entwickeln.
 
 \section{Testing}
 
@@ -1385,7 +1395,7 @@ Die Bewertung der Handhabung wurde insgesamt mit 4.54 (0: unintuitiv, 6: intuiti
 Als zusätzliche Nutzungsmöglichkeiten wurden neben der Betrachtung einer Immobilie (Apartments, Neubau, geplantes Gebäude) von aussen, auch die Visualisierung von Gebäuden für den Unterricht (beispielsweise Geschichtsunterricht oder gestalterisches Zeichnen) und eine Art Röntgenblick für Gebäude genannt.
 
 \subsection{Fazit}
-Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls Sie verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einlick über die Innenstruktur von ausserhalb.
+Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls Sie verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einblick über die Innenstruktur von ausserhalb.
 
 \section{Vergleich mit Anforderungen}
 \label{sec:VergleichAnforderungen}
@@ -1421,7 +1431,7 @@ Legende:
 \end{tabularx}
 
 \subsection{Verbesserung für \#1.1}
-Um die Anforderung von 1.1  erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den ungenauesten Sensor darstellt. Eine potenzielle Lösung für dieses Problem kann die kontinuierliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
+Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den ungenauesten Sensor darstellt. Eine potenzielle Lösung für dieses Problem kann die kontinuierliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
 
 \subsection{Verbesserung für \#2}
 Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des ausser Sichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum Viewpoint zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
@@ -1431,16 +1441,16 @@ Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activ
 Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
 
 \section{Projekt Fazit}
-Die Projektarbeit im Rahmen dieses Moduls hat uns sehr viel gebracht. Wir konnten wertvolle Erkenntnisse sammeln und wissen dadurch viel genauer, was uns bei der Bachelorarbeit erwartet. Die Zusammenarbeit und Kommunikation innerhalb des Teams verlief einwandfrei, auch die Kommunikation mit dem Betreuer war sehr gut und angenehm.
+Die Projektarbeit im Rahmen dieses Moduls hat uns sehr viel gebracht. Wir konnten wertvolle Erkenntnisse sammeln und wissen dadurch viel besser, was uns bei der Bachelorarbeit erwartet. Die Zusammenarbeit und Kommunikation innerhalb des Teams verlief einwandfrei, auch die Kommunikation mit dem Betreuer war sehr gut und angenehm.
 
 Im nachfolgenden Abschnitt schildern wir was wir gelernt haben und was wir bei unserem nächsten Projekt besser lösen werden.
-Erster Punkt, welchen wir verbessern werden, ist mit der Dokumentation früher im Projekt zu beginnen.  Die Dokumentation ist nicht erst während der letzten Wochen entstanden, aber es gab viele Punkte, die bis zum Schluss nicht ganz klar und somit noch nicht dokumentiert waren.
+Der erste Punkt, welchen wir verbessern werden, ist mit der Dokumentation früher im Projekt zu beginnen.  Die Dokumentation ist nicht erst während der letzten Wochen entstanden, aber es gab viele Punkte, die bis zum Schluss nicht ganz klar und somit noch nicht dokumentiert waren.
 
-Eine weiterer Punkt zur Verbesserung wäre, dass wir uns schneller auf eine Plattform und ein Framework beschränken. Eine Eingrenzung der Plattform und des Framworkes hätte früher im Projekt eine Abgrenzung gesetzt und die Entwicklung des eigentlichen Prototyps fokussiert.
+Eine weiterer Punkt zur Verbesserung wäre, dass wir uns schneller auf eine Plattform und ein Framework beschränken. Eine Eingrenzung der Plattform und des Frameworks hätte früher im Projekt eine Abgrenzung gesetzt und die Entwicklung des eigentlichen Prototyps fokussiert.
 
-Weiter haben wir den Aufwand für die Literaturrecherche und das Schreiben einer Stand der Forschung massiv unterschätzt, dieser Punkt wird für die nächste Arbeit sicher hohe Priorität am Anfang bekommen.
+Weiter haben wir den Aufwand für die Literaturrecherche und das Schreiben der Stand der Forschung massiv unterschätzt, dieser Punkt wird für die nächste Arbeit sicher hohe Priorität am Anfang bekommen.
 
-Weiter gilt es zu beachten, dass auch positives aus diesem Projekt genommen werden kann. So konnten wir den Umgang mit den Hilfsmitteln stärker vertiefen. Zudem konnte für die Dokumentation sowie den Code der Git Feature Branch Workflow etabliert werden, welche das simultane Arbeiten stark vereinfachte und einen optimalen Code und Dokumentationsüberprüfung des anderen Projektmitgliedes forcierte. Ein weiterer Vorteil ist zudem das nun vorhandene Wissen wie eine CI \& CD Infrastruktur für Code sowie Dokumentation früher und speditiver aufgebaut werden kann.
+Weiter gilt es zu beachten, dass auch in dieser Projekt entstandene Artefakte weiter nutzen können. So konnten wir den Umgang mit den Hilfsmitteln stärker vertiefen. Zudem konnte für die Dokumentation sowie den Code der Git Feature Branch Workflow etabliert werden, welche das simultane Arbeiten stark vereinfachte und einen optimalen Code und Dokumentationsüberprüfung des anderen Projektmitgliedes forcierte. Ein weiterer Vorteil ist zudem das nun vorhandene Wissen wie eine CI \& CD Infrastruktur für Code sowie Dokumentation früher und effizienter aufgebaut werden kann.
 
 Wie im Unterkapitel \ref{sec:VergleichAnforderungen} beschrieben wurde nur ein Subset der Anforderungen erfüllt. Dennoch konnte in der Nutzerumfrage bewiesen werden, dass die Nutzer ein Interesse an der Applikation besitzt und einen reellen Nutzen sieht. Es konnten jedoch wichtige Funktionalitäten nicht realisiert werden, welche für eine Markteinführung noch implementiert werden müssten. Diese schildern wir im Ausblick (siehe \ref{sec:Ausblick}) im Detail.
 
