@@ -117,12 +117,34 @@ Die vorliegende Arbeit beschäftigt sich stark mit der Fragestellung, inwiefern 
 \chapter{Grundlagen}
 \label{ch:StandDerForschung}
 
-%TODO some Text about what we will do in this chapter...
+Dieses Kapitel bietet einen Übersicht über die Entwicklung der Augmented Reality und deren Technologien. Es führt weiterhin wichtige Konzepte und Begriffe dieser Arbeit ein. Es soll dem Leser einen Startpunkt in dieses Thema bieten und in das Projekt einführen.
 
 \section{Technologische Grundlagen}
 
 \subsection{Historische Entwicklung}
-Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass. Der Term wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
+
+Als Augmented Reality (dt. erweiterte Realität) versteht man das Vermitteln von Zusatzinformationen über die Umgebung in Form von Animationen, Einblendungen und Tonwiedergaben. In den meisten Fällen wird dies über Smartphones oder Computer bewerkstelligt, es existieren jedoch auch spezialisierte Geräte wie die Microsoft HoloLens oder Google Glass.
+
+Der Anfang der Augmented Reality begann mit der kontemporären Science Fiction Geschichte \textquotedblleft The Master Key, indem ein Elektrizitätsdämon dem Hauptcharakter eine Brille überreicht, welche die Charakterzüge der Personen (\textquotedblleft E\textquotedblright\ für \textbf{E}vil, \textquotedblleft F\textquotedblright\ für \textbf{F}oolis, usw.) jeweils virtuell auf die Stirn schreibt \parencite{Baum1901}. 
+Diese Vision wurde im Jahre 1968 von Sutherland realisiert. Dessen Head-Mounted Display, das Erste seiner Art, projizierte dem Nutzer dreidimensionale Objekte virtuell in den Raum \parencite{Sutherland1968}. In dieser Arbeit schilderte Sutherland auch wie sie die Probleme der Lokalisierung lösten. Diese Entwicklungen wurden in den nächsten 20 Jahren verbessert, vor allem mit dem Fokus auf Heads Up Displays und industrielle Anwendungen. Diese Fortschritte wurden in einem Paper von Azuma 1994 gebündelt zusammengefasst und beschrieben. Azuma identifiziert als Anwendungsfelder das Militär mit AR in den Pilotenhelmen, die Medizin als unterstützende, bildgebende Instrumente (konkret eine Visualisierung eines Fötus aus Ultraschallaufnahmen), und als Unterstützung und Trainingshilfe in der industriellen Produktion \parencite{Azuma1997}.
+
+\begin{figure}[h!]
+	\centering	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.6\textwidth]{Sutherland_HUD.png}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[keepaspectratio, width=0.6\textwidth]{cyclo-hexane_molecule.png}
+		\caption{Modell eines Cyclohexanmoleküls, welches der Benutzer einblenden konnte}
+	\end{subfigure}
+	\caption{Sutherlands head-mounted display}
+	\label{fig:FirstHUD}
+\end{figure}
+
+Der Term Augmented Reality selber wurde erstmals von \citeauthor{Milgram1994} im Jahre 1994 detailliert definiert, wobei sie die Vermischung der realen und virtuellen Welt betrachten und wohin die Technologie Augmented Reality fällt (siehe \ref{fig:RVContiinum}):
 
 \vspace{1em}
 
@@ -185,6 +207,13 @@ Die Feature-basierte Methode extrahiert interessante Punkte eines Bildes und ver
 
 \subsubsection{SLAM}
 Wie im vorherigen Paragraf erklärt, wird zwischen zwei Markerless Tracking Methoden unterscheiden. Eine spezifische, die sogenannte SLAM Methode, wird in diesem Paragraoh näher erklärt. Diese Methode identifiziert, mit Computer Vision, Feature-Points (ein Bildpunkt der sich durch seine lokale detaillierte Umgebung von anderen Punkten desselben Bilds hervorhebt), sowie deren Abhängigkeiten zueinander (Location) und fasst diese in einer Karte zusammen (Mapping). Sollte nun die Pose verloren gehen (durch einen Unterbruch des Kamerastream oder zu schnelle Bewegungen), muss nur ein Teil der vorherigen Karte wiedergefunden werden, um die Position wieder zu bestimmen. Dieser Ansatz wird \textquotedblleft Simultaneous Location and Mapping\textquotedblright (dt. Simultanes Erkennen und Kartografieren) genannt.
+
+\subsection{GPS}
+Das Global Positioning System (GPS) ist ein ursprünglich von dem amerikanischen Militär entwickeltes System von Satelliten. Jeder der Satelliten besitzt intern mehrere Atomuhren worüber er die so genannte \textquotedblleft composite clock\textquotedblright\ (CC) berechnet \parencite{GPSSysDesc2009}. Diese CC Zeit wird mit seiner Position zusammen als C/A (Coarse / Acquisition) transmittiert, dies als Dienst des Standard Positioning Service (SPS). Über mehrere solcher Signale verschiedener Satelliten, kann schlussendlich die Position des Benutzers berechnet werden. Die C/A ergibt eine Genauigkeit von 13 Metern in 95\% der Fällen, ein genaueres Signal steht dem amerikanischen Militär über einen verschlüsselten Kanal dem Precise Positioning Service zur Verfügung.
+
+Im Jahre 1983 wurde das GPS der Öffentlichkeit durch Präsident Reagan zur Nutzung freigegeben \parencite{Brustein2014}. Aus Angst vor Missbrauch jedoch mit einem verschlechterten Signal, was sich Selective Availability (S/A) nannte. Dieses SA wurde im Jahre 2000 durch Präsident Clinton abgeschafft und erlaubte von da an präzise Positionierung von bis zu 3 Metern in 95\% der Fälle für alle Nutzer. GPS Satelliten werden in drei Blöcke unterteilt wobei diese wiederum in Generationen differenziert werden \parencite{DoDGPS2008}. Mindestens 24 Satelliten sollen zu jeder Zeit operational sein, und im Moment sind 31 Satelliten operational, 1 Block 2A, 11 Block 2R, 7 Block 2R-M, und 12 Block 2F \parencite{NCOGPS2018}.
+
+Neben dem amerikanischen GPS System existieren ebenfalls das chinesische BeiDou Navigation Satellite System (BDS) welches planmässig 2020 mit 35 Satelliten globale Abdeckung erreichen soll, das europäische Galileo System welches ebenfalls 2020 mit mehr als 24 Satelliten operational sein soll, das indische IRNSS welches aber nur den indischen Kontinent abdeckt, das japanische QZSS welches mit 7 Satelliten bis im Jahre 2023 den Ostasiatischen Raum abdecken soll, und das russische GLONASS System welches mit 24 operationellen Satelitten globale Abdeckung erreicht (\cite{NCOGPS2017}, \cite{IACPNTGLONASS2018}).
 
 \section{Anwendungen}
 
@@ -483,11 +512,9 @@ Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die In
 
 \subsection{Komponentendesign}
 
-Die Entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
+Die entwickelte Applikation ist von weiteren Kompoenenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren Komponenten aufgelistet.
 \bigbreak
 Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems mitbringen).
-
-
 
 \begin{figure}[h!]
 	\centering
@@ -497,8 +524,7 @@ Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese ni
 \end{figure}
 
 \subsubsection{Out of Scope}
-Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei in nicht Existierender Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
-
+Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei in nicht existierender Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
 
 \subsection{Architektur \& Design}
 Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
@@ -583,6 +609,16 @@ Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen Asyn
 	\caption{AsyncElevationRequestCallee Interface}
 \end{figure}
 
+\subsection{Klassendiagramm}
+Nachfolgend ist das Klassendiagramm der AR Applikation. Es zeigt die Packages auf, und deren Klassen. Zusätzlich ist auf Serverseite die REST API angedacht.
+
+\begin{figure}[h!]
+	\center
+	\includegraphics[width=\textwidth]{Klassendiagramm.png}
+	\caption{Klassendiagramm der AR Applikation}
+\end{figure}
+
+
 \subsection{Anforderungen der Software}
 \subsubsection{Hardware}
 Die AR Applikation stellte folgende Hardware Anforderungen an das Gerät:
@@ -604,8 +640,6 @@ Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widers
 Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
 \subsubsection{Unit Test}
 Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde zu beginn des Projektes entschlossen, die Anzahl an Unit Tests vorerst noch gering zu halten. Dies ermöglichte, dass wir genug Zeit hatten um verschiedene Prototypen zu entwickeln.
-
-\section{Testing}
 
 \section{Testing}
 
@@ -966,13 +1000,13 @@ Eintrittswahrscheinlichkeit:
 	\hline
 	1 & unvorstellbar & Möglich aber eher unwahrscheinlich. Tritt nie oder einmal in 14 Wochen auf \\
 	\hline
-	2 & unwahrscheinlich & Kann in 14 Wochen 1-5 Mal eintreten\\
+	2 & unwahrscheinlich & Kann in 14 Wochen 0-1 Mal eintreten\\
 	\hline
-	3 & vorstellbar & Kann in 14 Wochen 6-8 Mal eintreten \\
+	3 & vorstellbar & Kann in 14 Wochen 1-2 Mal eintreten \\
 	\hline
-	4 & wahrscheinlich & Kann in 14 Wochen bis zu 10 Mal eintreten \\
+	4 & wahrscheinlich & Kann in 14 Wochen bis zu 3 Mal eintreten \\
 	\hline
-	5 & häufig & Kann in 14 Wochen 14 Mal eintreten\\
+	5 & häufig & Kann in 14 Wochen 7 Mal eintreten\\
 	\hline
 \end{tabular}
 
@@ -1030,6 +1064,14 @@ Legende:
 	\hline
 	7 & Unerwartete Aktionen der Applikation & T & 3 & 3 & 9\\
 	\hline
+	8 & GPS ungenau & T & 2 & 5 & 10\\
+	\hline
+	9 & Kompass ungenau & T & 4 & 3 & 12\\
+	\hline
+	10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
+	\hline
+	11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
+	\hline
 \end{tabular}
 
 \vspace{1em}
@@ -1060,6 +1102,14 @@ Legende:
 	\hline
 	7 & Applikation wird nach CleanCode Standards entwickelt und durch Teammitglieder validiert\\
 	\hline
+	8 & Es werden mehrere Messungen zusammengefasst und der Median deren berechnet\\
+	\hline
+	9 & In einer Initialisierungsphase wird der Kompass kalibriert\\
+	\hline
+	10 & Dem Benutzer wird die Möglichkeit gegeben die Initialisierungsphase manuell neu zu starten\\
+	\hline
+	11 & Das Laden des Gebäudemodells geschieht in der Initialisierungsphase, welche nicht abgeschlossen ist solange das Gebäude nicht verfügbar ist; das Gebäudemodell wird im Detailgrad reduziert, sodass das Laden des Modells schneller vonstatten geht\\
+	\hline
 \end{tabular}
 
 \subsubsection{Effekt der Massnahmen}
@@ -1084,6 +1134,14 @@ Legende:
 	\hline
 	7 & Unerwartete Aktionen der Applikation & T & 2 & 2 & 4\\
 	\hline
+	8 & GPS ungenau & T & 2 & 5 & 10\\
+	\hline
+	9 & Kompass ungenau & T & 4 & 3 & 12\\
+	\hline
+	10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
+	\hline
+	11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
+	\hline
 \end{tabular}
 
 \vspace{1em}
@@ -1096,18 +1154,71 @@ Legende:
 
 \chapter{Evaluation und Validation}
 \section{Nutzerumfrage}
-%TODO Kurze einleitung
+Um den Stand der Arbeit zu messen und den Erreichungsgrad der Ziele einzuschätzen wurde eine Nutzerumfrage durchgeführt. Diese fand am Freitag 30. November um 11:00 bis 13:00 am Bahnhof Rotkreuz statt. Ziel war es ein möglichst guter Durchschnitt der Bevölkerung und der Demografie der entwickelten Applikation (siehe Tabelle \ref{tab:UserDemografie}) zu erreichen. Im folgenden Kapitel werden der Versuchsaufbau und das Drehbuch erläutert, danach die Resultate ausgewertet und ein Fazit gezogen.
+
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|}
+		\hline
+		\textbf{Altersgruppe} & \textbf{Prozentsatz} \\
+		\hline
+		10-20 & 10\% \\
+		\hline
+		21-30 & 30\% \\
+		\hline
+		21-45 & 30\% \\
+		\hline
+		46-65 & 20\% \\
+		\hline
+		66+ & 10\% \\
+		\hline
+	\end{tabular}
+	\label{tab:UserDemografie}
+	\caption{Geschätzte Prozentanteile des Alters an Demografie der Nutzer}
+\end{table}
+
 \subsection{Methodik und Drehbuch}
-%TODO Methodik
-%TODO Drehbuch
+Die Nutzerumfrage wurde folgendermassen durchgeführt: Nach einer kurzen Einleitung über das Projekt wurde dem Probanden die Applikation ohne Erklärung über die Benutzung überreicht. Nachdem sich dieser ein Bild machen konnte, wurden ihm die Fragen des Fragebogens gestellt. Ziel war es den Probanden möglichst nicht zu lange aufzuhalten.
+
+\subsubsection{Drehbuch}
+
+\begin{enumerate}
+	\item Begrüssung, Anfragen bezüglich Teilnahme, ansprechen das Toblerone als Dankeschön überreicht wird:
+	\textquotedblleft Im Rahmen unseres Industrieprojekt, haben wir eine App entwickelt, welche Neubauten an deren geplanten Position darstellen soll. Dies insbesondere um bei geplanten Projekten neben einer normalen Ausschreibung und den bekannten Stangen, eine visuelle Alternative zu bieten. Diese Befragung dient für uns als Validierung und Sammlung von Verbesserungswünschen.
+	Die ganze Befragung dauert in etwa 5Minuten. Und wir würden Ihnen zum Schluss gerne dieses kleine Präsent als Dankeschön für Ihre Hilfe überreichen.\textquotedblright
+	\item Übergabe Tablet/Smartphone mit Applikation
+	\item Rücknahme Tablet/Smartphone
+	\item Fragebogen überreichen / mit Proband durcharbeiten
+	\item Danksagung und Verabschiedung
+\end{enumerate}
+
 \subsection{Analyse und Resultat}
-%TODO Analyse
-%TODO Resultat
+
+Insgesamt war die Teilnahmebereitschaft der Probanden auf einem sehr niedrigen Niveau. So erklärten sich von gut 60 Probanden lediglich 13 bereit an der Umfrage teilzunehmen. Die meisten Probanden waren, wie in Abbildung \ref{fig:Altersgruppen} zu sehen, Schüler oder Studenten, welche sich für die Umfrage Zeit nahmen.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[keepaspectratio, width=0.8\textwidth]{Altersgruppen.png}
+	\caption{Anteil der Altersgruppen an der Gesamtheit der Befragung}
+	\label{fig:Altersgruppen}
+\end{figure}
+
+Die Bewertung der Handhabung wurde insgesamt mit 4.54 (0: unintuitiv, 6: intuitiv) als gut bewertet. Der Grossteil der Probanden wünscht sich eine grössere Präzision bei der Positionierung des Gebäudes. Daneben wurden sich ein Indikator in Richtung des Gebäudes, falls dieses nicht im Blickfeld ist, Hilfetexte und ein Tutorial gewünscht. Von allen Befragten können sich mehr als 90\% vorstellen die Applikation zu gebrauchen, um geplante Neubauten anzusehen (siehe Abbildung \ref{fig:Nutzung}).
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[keepaspectratio, width=0.3\textwidth]{Nutzung.png}
+	\caption{Prozentanteile für die Nutzung der Applikation}
+	\label{fig:Nutzung}
+\end{figure}
+
+Als zusätzliche Nutzungsmöglichkeiten wurden neben der Betrachtung einer Immobilie (Apartments, Neubau, geplantes Gebäude) von aussen, auch die Visualisierung von Gebäuden für den Unterricht (beispielsweise Geschichtsunterricht oder gestalterisches Zeichnen) und eine Art Röntgenblick für Gebäude genannt.
+
 \subsection{Fazit}
-%TODO Fazit
+Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls Sie verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einlick über die Innenstruktur von ausserhalb.
 
 \section{Vergleich mit Anforderungen}
-Hier werden die Anforderungen aufgelistet und ob diese Erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine Potentielle Lösungsidee beschrieben.
+Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben.
 \bigbreak
 Legende:
 <<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
@@ -1122,30 +1233,31 @@ Legende:
 \hline
 	1.3 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Grössenunterschied von 5\% zum Original Aufweisen.\\
 \hline
-	1.4 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren. \\
+	1.4 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.\\
 \hline
-	1.5 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben. \\
+	1.5 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.\\
 \hline
-	1.6 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden. \\
+	1.6 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.\\
 \hline
-	1.7 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden. \\
+	1.7 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.\\
 \hline
-	1.8 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt). \\
+	1.8 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).\\
 \hline
-	2 & - & Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden. \\
+	2 & - & Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden.\\
 \hline
 	3 & - & Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden. \\
 \hline
 \end{tabularx}
 
 \subsection{Verbesserung für \#1.1}
-Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den Ungenauesten Sensor darstellt. Eine Potentielle lösung für dieses Problem kann die Kontinuirliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
+Um die Anforderung von 1.1  erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den ungenauesten Sensor darstellt. Eine potenzielle Lösung für dieses Problem kann die kontinuierliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
 
 \subsection{Verbesserung für \#2}
-Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des aussersichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum View point zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus Zeitlichen Gründen nicht Implementiert werden.
+Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des ausser Sichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum Viewpoint zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
+
 \subsection{Verbesserung für \#3}
-Die Momentanige Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information Anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder Zurückgesetzt werden.
-Die Implementation konnte jedoch aus Zeitlichen Gründen nicht Implementiert werden. 
+Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste, um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder zurückgesetzt werden.
+Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden. 
 
 \section{Projekt Fazit}
 Die Projektarbeit im Rahmen dieses Modules hat uns sehr viel gebracht. Wir konnten viel mitnehmen und wissen nun viel genauer, was uns bei der Bachelorarbeit erwartet. Die Zusammenarbeit und Kommunikation innerhalb des Teams verlief einwandfrei, auch die Kommunikation mit dem Experten war sehr gut und angenehm.
@@ -1158,15 +1270,17 @@ Weiter haben wir den Aufwand für die Literaturrecherche und das Schreiben einer
 \bigbreak
 Weiter gilt es zu beachten, dass auch positives aus diesem Projekt genommen werden kann. So konnten wir den Umgang mit den Hilfmittel stärker Vertiefen. Zudem konnte für die Dokumentation sowie den Code der Git Feature Branch Workflow etabliert werden, welche das Simultane arbeiten stark vereinfachte und eine Optimale Code und Dokumentationsüberprüfung des anderen Projektmitgliedes forcierte. Ein weiterer Vorteil ist zudem das nun Vorhandene wissen wie eine CI \& CD Infrastruktur für Code sowie Dokumentation aufgebaut werden kann.
 
+
 \section{Ausblick}
 Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein marktreifes Produkt zu verwandeln, wäre es noch nötig den bestehenden Code um folgende Aspekte zu verbessern:
+
 \begin{itemize}
 	\item Implementation von Anforderungen 2 und 3
-	\item Implementierung von Unit Tests
+	\item Implementierung von Unittests
 	\item Erstellen einer CD Pipeline
-	\item Verbesserung der Nordinitialisation
+	\item Verbesserung der Initialisierung gegen Norden
 	\item Verbesserung der Höhenlogik mit OpenElevation
-	\item Implementation einer GPS Lösung mit SLAM Implementierung (Somit kann die Darstellungsgenauigkeit verbessert werden).
+	\item Implementation einer GPS Lösung mit SLAM Implementierung (damit könnte die Darstellungsgenauigkeit verbessert werden)
 	\item Verbesserung des GUI
 	\item Implementation der Serverseite mit dazugehörender Client Logik
 	\item Implementation einer Schnittstelle um neue Gebäude auf Server hochzuladen
@@ -1246,6 +1360,10 @@ Ausstehend da Bedingungen nicht erfüllt waren.
 \chapter{Anleitungen}
 
 \includepdf[pages=-]{Gebaeudemodell_korrekt_zu_ARModel_konvertieren.pdf}
+
+\chapter{Daten der Nutzerbefragung}
+
+\includepdf[pages=-]{Nutzerbefragung_Rohdaten.pdf}
 
 \chapter*{Eidesstattliche Erklärung}
 Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
