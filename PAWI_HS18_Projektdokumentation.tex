@@ -283,6 +283,7 @@ Eine AR Applikation soll stets für eine Vielzahl von Benutzer brauchbar sein. D
 Im folgenden Kapitel wird die Lösung beschrieben. Es soll ein Überblick über die Umsetzung der Applikation bieten. Eine detaillierte Beschreibung ist in Kapitel \ref{sec:SysSpec} zu finden. Es wird zudem ein alternatives Konzept vorgestellt, welches nicht weiter verfolgt wurde.
 
 \section{Konzeptionelle Idee}
+\label{ch:KonzeptionelleIdee}
 Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation Markerless oder Markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim Markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies nicht beim Markerless Tracking. Da Markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss beim Markerless eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
 Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker wie auch Markerless basierend, anbieten.
 \bigbreak
@@ -354,7 +355,12 @@ Der Benutzer kann von diesem Zustand wieder in folgende zustände kommen:
 
 \clearpage
 
-\section{Verworfene Markerbasierte Lösung}
+\section{Verworfene Lösungen}
+Insgesamt wurden vier Prototypen gebaut, von denen drei verworfen wurden.
+Es wurde dabei jeweils zwei Mal das gleiche Konzept auf verschiedener Entwicklungsumgebungen aufgebaut. So wurde zuerst die konzeptionelle Idee aus Kapitel \ref{ch:KonzeptionelleIdee} mit Unity entwickelt. Zudem wurde ein zweites Lösungskonzept (siehe Kapitel \ref{ch:markerbasiertesLoesungskonzept} simultan zum gewählten Konzept entwickelt, welches jedoch nach der Prototypenphase verworfen wurde. Auch dieser Prototyp wurde zuerst mit Unity und anschliessend mit AndroidStudio entwickelt (Gründe dafür sind in Kapitel \ref{ch:evaluation} zu finden).
+
+\subsection{Markerbasiertes Lösungskonzept}
+\label{ch:markerbasiertesLoesungskonzept}
 Das Konzept eines markerbasierten Lösung sieht vor, dass die Position des Markers in der realen Welt bereits bekannt ist, und sich diese nicht ändert. Sofern dies der Fall ist, kann die relative Position der Kamera zum Marker und somit zum Gebäude berechnet werden.
 
 Die relative Position zum Marker kann durch dessen Grösse sowie dem Winkel in Relation zur Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude ausgerechnet werden.
@@ -395,7 +401,7 @@ Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändern
 Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen in den jeweiligen Sprints spezifiziert werden, und in der Sprintplanung festgehalten wird. Wir unterteilten unser Projekt in eine zweiwöchige Initialisierung, zweiwöchige Evaluation, und fünf Sprints, in der unser Produkt entwickelt wurde.
 
 \subsection{Ermittlung offener Projektrahmenbedingungen}
-\label{sec:evaluation}
+\label{ch:evaluation}
 Im Rahmen dieses Projektes mussten verschiedene Unbekannte zuerst analysiert und evaluiert werden. Dazu gehörten die Zielplattform, Entwicklungsumgebung und die zu verwendenden Augmented Reality Frameworks.
 \subsubsection{Zielplattform}
 Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
@@ -490,11 +496,12 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 \label{sec:SysSpec}
 
 \subsection{Anforderungen}
+\label{ch:Anforderungen}
 \begin{enumerate}
 	\item Das Augmented Reality Objekt soll ausserhalb von Gebäuden ...
 	\begin{enumerate}[label*=\arabic*.]
 		\item eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden (fortan korrekte Position genannt).
-		\item eine maximale Rotationsabweichung von \ang{10} aufweisen.
+		\item eine maximale Rotationsabweichung von \ang{25} aufweisen.
 		\item eine maximale Grössenunterschied von 5\% zum Original Aufweisen.
 		\item mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.
 		\item nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.
@@ -616,6 +623,16 @@ Das AsyncElevationRequestCallee abstrahiert die Rückgabemethode für einen Asyn
 	\caption{AsyncElevationRequestCallee Interface}
 \end{figure}
 
+\subsection{Klassendiagramm}
+Nachfolgend ist das Klassendiagramm der AR Applikation. Es zeigt die Packages auf, und deren Klassen. Zusätzlich ist auf Serverseite die REST API angedacht.
+
+\begin{figure}[h!]
+	\center
+	\includegraphics[width=\textwidth]{Klassendiagramm.png}
+	\caption{Klassendiagramm der AR Applikation}
+\end{figure}
+
+
 \subsection{Anforderungen der Software}
 \subsubsection{Hardware}
 Die AR Applikation stellte folgende Hardware Anforderungen an das Gerät:
@@ -635,10 +652,17 @@ Die AR Applikation stellt zudem folgende Software Anforderungen an das Gerät:
 Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name für diese sowie deren Parameter gewählt werden musste.
 \subsubsection{Git Flow}
 Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
+Auf der Abbildung \ref{fig:FeatureBranchWorkflow} ist ein Auszug aus der Baumstruktur unserer Dokumentation dargestellt. Dabei ist zu erkennen, dass zu Sprintbeginn möglichst keine offenen Zweige mehr vorhanden sind und gegen Sprintende alle Zweige in den Master (in Abbildung \ref{fig:FeatureBranchWorkflow} die Schwarze Linie) über einen Pull Request zusammengeführt werden.
+\begin{figure}[h!]
+	\center
+	\includegraphics[width=\textwidth]{GitFeatureBranchWorkflow.png}
+	\caption{Branches unsere Dokumentation aus Sprint 5}
+	\label{fig:FeatureBranchWorkflow}
+\end{figure}
+
+
 \subsubsection{Unit Test}
 Da es sich bei der Entwickelten Applikation um einen Prototypen handelt, wurde zu beginn des Projektes entschlossen, die Anzahl an Unit Tests vorerst noch gering zu halten. Dies ermöglichte, dass wir genug Zeit hatten um verschiedene Prototypen zu entwickeln.
-
-\section{Testing}
 
 \section{Testing}
 
@@ -703,19 +727,19 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 	Version &
-	T-004v2 \\
-\hline
-	Beschreibung &
-	Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird.\\
-\hline
+	T-004v2 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird. \\ 
+\hline 
 	Testvoraussetzung &
-	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.145739885261925,8.436641571608824, Altitude: 450 \\
-\hline
-	Testschritte &
-		1. Smartphone nach Norden ausrichten \\ &
-		2. App starten \\ &
-		3. Smartphone erneut nach Norden ausrichten \\ &
+	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ & 
+		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Norden ausrichten\\ &
+		2. App starten\\ &
+		3. Smartphone erneut nach Norden ausrichten\\ &
 		4. Initialisierung abwarten (ca. 3 Sekunden)\\
 \hline
 	Erwartetes Ergebnis &
@@ -726,23 +750,24 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 	Version &
-	T-005v2 \\
-\hline
-	Beschreibung &
-	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. \\
-\hline
+
+	T-005v2 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach Norden gerichtet ist. \\ 
+\hline 
 	Testvoraussetzung &
 	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.145739885261925,8.436641571608824, Altitude: 450 \\
-\hline
-	Testschritte &
-		1. Smartphone nach Westen ausrichten \\ &
-		2. App starten \\ &
-		3. Smartphone nach Norden ausrichten \\
+		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Westen ausrichten\\ &
+		2. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wird auf 7Uhr 30 dargestellt. \\
-\hline
+	Das Gebäude wird auf 7Uhr 30 dargestellt\\ 
+\hline 
 \end{tabularx}
 \subsubsection{Testfall 6-Darstellung Gebäude mit Bewegung nach rechts}
 \begin{tabularx}{\textwidth}{|l|X|}
@@ -755,18 +780,18 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 \hline
 	Testvoraussetzung &
 	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.145739885261925,8.436641571608824, Altitude: 450 \\
-\hline
-	Testschritte &
-		1. Smartphone nach Westen ausrichten \\ &
-		2. App starten \\ &
-		3. Smartphone nach Norden ausrichten \\ &
-		4. App minimieren (Home Button drücken) \\ &
-		5. GPS Mocklocation verändern (auf Position 47.145739885261925,8.436641571608824) \\ &
-		6. App erneut öffnen \\
+		47.145739885261925,8.436641571608824, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Westen ausrichten\\ &
+		2. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. App minimieren (Home Button drücken)\\ &
+		5. GPS Mocklocation verändern (auf Position 47.145739885261925,8.436641571608824)\\ &
+		6. App erneut öffnen\\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wandert von 7Uhr 30 auf 9Uhr \\
+	Das Gebäude wandert von 7Uhr 30 auf 9Uhr.\\ 
 \hline
 \end{tabularx}
 \subsubsection{Testfall 7-Darstellung Gebäude mit Bewegung nach links}
@@ -780,37 +805,37 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 \hline
 	Testvoraussetzung &
 	Die App ist auf dem Smartphone installiert. GPS gemocked auf folgende Position: \\ &
-		47.142958, 8.430126, Altitude: 450 \\
-\hline
-	Testschritte &
-		1. Smartphone nach Norden ausrichten \\ &
-		2. App starten \\ &
-		3. Smartphone nach Norden ausrichten \\ &
-		4. App minimieren (Home Button drücken) \\ &
-		5. GPS Mocklocation verändern (auf Position  47.141427, 8.432621) \\ &
-		6. App erneut öffnen \\
+		47.142958, 8.430126, Altitude: 450 \\ 
+\hline 
+	Testschritte & 
+		1. Smartphone nach Norden ausrichten\\ &
+		2. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. App minimieren (Home Button drücken)\\ &
+		5. GPS Mocklocation verändern (auf Position  47.141427, 8.432621)\\ &
+		6. App erneut öffnen\\
 \hline
 	Erwartetes Ergebnis &
-	Das Gebäude wandert von 15Uhr auf 12Uhr \\
-\hline
+	Das Gebäude wandert von 15Uhr auf 12Uhr. \\ 
+\hline 
 \end{tabularx}
 \subsubsection{Testfall 8-Entfernen der Berechtigung zur Laufzeit}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 	Version &
-	T-008v1 \\
-\hline
-	Beschreibung &
-	Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. \\
-\hline
+	T-008v1 \\ 
+\hline 
+	Beschreibung & 
+	Bei diesem Testfall so überprüft werden, ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. \\ 
+\hline 
 	Testvoraussetzung &
-	Die App ist auf dem Smartphone installiert und hat alle nötigen Berechtigungen \\
-\hline
-	Testschritte &
-		1. App starten \\ &
-		2. App minimieren \\ &
-		3. Berechtigungen der App entfernen \\ &
-		4. App wieder öffnen \\
+	Die App ist auf dem Smartphone installiert und hat alle nötigen Berechtigungen. \\ 
+\hline 
+	Testschritte & 
+		1. App starten\\ &
+		2. App minimieren\\ &
+		3. Berechtigungen der App entfernen\\ &
+		4. App wieder öffnen\\
 \hline
 	Erwartetes Ergebnis &
 	Die App schaltet wieder auf den Berechtigungsbildschirm. \\
@@ -826,12 +851,12 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 	Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. \\
 \hline
 	Testvoraussetzung &
-	Die App hat alle Berechtigungen \\
-\hline
-	Testschritte &
-		1. App starten \\ &
-		3. Smartphone nach Norden ausrichten \\ &
-		3. Rotieren des Smartphones um 90 Grad (Portrait auf Landscape) \\
+	Die App hat alle Berechtigungen. \\ 
+\hline 
+	Testschritte & 
+		1. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		3. Rotieren des Smartphones um 90 Grad (Portrait auf Landscape)\\
 \hline
 	Erwartetes Ergebnis &
 	Die App soll keine Rotationsanimation beinhalten. Die App soll das Gebäude weiter anzeigen. \\
@@ -841,21 +866,21 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 	Version &
-	T-010v1 \\
-\hline
-	Beschreibung &
-	Es soll überprüft werden, ob das Bestehende Gebäude mit dem AR Gebäude Deckungsgleich ist.\\
-\hline
+	T-010v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich ist. \\ 
+\hline 
 	Testvoraussetzung &
-	Die App hat alle Berechtigungen \\ &
-	Teil des Gebäudekomplex ist Sichtbar\\ &
-	Der Tester befindet sich vor Ort\\
-\hline
-	Testschritte &
-		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
-		2. App starten \\ &
-		3. Smartphone nach Norden ausrichten \\ &
-		4. Gebäudekomplex in Kamera fokussieren. \\
+	Die App hat alle Berechtigungen\\ &
+	Teil des Gebäudekomplexes ist sichtbar\\ &
+	Der Tester befindet sich vor Ort\\ 
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436)\\ &
+		2. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. Gebäudekomplex in Kamera fokussieren\\
 \hline
 	Erwartetes Ergebnis &
 	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
@@ -863,10 +888,144 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		Maximale Abweichung 10m in alle Richtungen.\\
 \hline
 \end{tabularx}
+\subsubsection{Testfall 11-Grössenunterschied}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-011v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich was die Grösse des Gebäudes betrifft ist. \\ 
+\hline
+    Testvoraussetzung &
+	Die App hat alle Berechtigungen.\\ &
+	Teil des Gebäudekomplexes ist sichtbar.\\ &
+	Der Tester befindet sich vor Ort. \\ &
+	Das Gebäude wird nach Initialisierung an korrekter Position dargestellt. \\
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436)\\ &
+		2. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. Gebäudekomplex in Kamera fokussieren. \\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell über dem realen Gebäude darstellen. \\ &
+	Randbedingungen: \\ &
+		Der maximale Grösssenunterschied beträgt < 5\% (Augenmass). \\ 
+\hline 
+\end{tabularx}
+\subsubsection{Testfall 12-Rotationsabweichung}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-012v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich was die Rotation des Gebäudes betrifft. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen. \\ &
+	Teil des Gebäudekomplexes ist sichtbar. \\ &
+	Der Tester befindet sich vor Ort. \\ &
+	Das Gebäude wird nach Initialisierung an korrekter Position dargestellt. \\
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436)\\ &
+		2. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. Gebäudekomplex in Kamera fokussieren\\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell über dem Realen Gebäude darstellen. \\ &
+	Randbedingungen: \\ &
+		Der maximale Rotationsabweichung beträgt < \ang{25} (Augenmass). \\ 
+\hline 
+\end{tabularx}
 
+\subsubsection{Testfall 13-Leichte bis starke Erschütterung}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-013v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich bleibt, nachdem das Smartphone leichten bis starken Erschütterungen ausgesetzt war. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen. \\ &
+	Teil des Gebäudekomplexes ist sichtbar. \\ &
+	Der Tester befindet sich vor Ort. \\ &
+	Das Gebäude wird nach Initialisierung an Korrekter Position dargestellt. \\
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
+		2. App starten\\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. Gebäudekomplex in Kamera fokussieren\\ &
+		5. Leichte / Mittlere / Starke Erschütterung simulieren\\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell wieder an derselben Position darstellen.\\ 
+\hline 
+\end{tabularx}
+
+\subsubsection{Testfall 14-Darstellungsgeschwindigkeit}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-014v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das AR Gebäude schnell auf die Smartphone-Bewegungen reagiert. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen \\ &
+	Teil des Gebäudekomplexes ist sichtbar \\ &
+	Der Tester befindet sich vor Ort \\ &
+	Das Gebäude wird nach Initialisierung an korrekter Position dargestellt. \\
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.142835, 8.431436) \\ &
+		2. App starten \\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. Gebäudekomplex in Kamera fokussieren\\ &
+		5. Leichte bewegungen des Smartphones\\
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell ohne Verzögerungen über einer Sekunde darstellen. \\ 
+\hline 
+\end{tabularx}
+
+
+\subsubsection{Testfall 15-Darstellung bis mindestens 1km Entfernung}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline 
+	Version &
+	T-015v1 \\ 
+\hline 
+	Beschreibung & 
+	Es soll überprüft werden, ob das AR Gebäude bis mindestens 1km Entfernung dargestellt wird. \\ 
+\hline 
+	Testvoraussetzung &
+	Die App hat alle Berechtigungen \\ &
+	Teil des Gebäudekomplexes ist Sichtbar \\ &
+	Der Tester befindet sich vor Ort \\ &
+	Das Gebäude wird nach Initialisierung an korrekter Position dargestellt. \\
+\hline 
+	Testschritte & 
+		1. Tester läuft auf Position (47.135743, 8.425906) \\ &
+		2. App starten \\ &
+		3. Smartphone nach Norden ausrichten\\ &
+		4. Gebäudekomplex in Kamera fokussieren\\ 
+\hline
+	Erwartetes Ergebnis &
+	Die App soll das AR Modell in der Distanz Darstellen \\ 
+\hline 
+\end{tabularx}
 \subsection{Testprotokoll}
 \label{ch:testprotokoll}
-Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere Resultate sind im Anhang \ref{appendig:testprotokolle} zu finden .
+Die folgende Tabelle zeigt ob die Tests erfolgreich waren oder nicht. Genauere Resultate sind im Anhang \ref{appendig:testprotokolle} zu finden . 
 \bigbreak
 
 \begin{tabularx}{\textwidth}{|l|X|l|}
@@ -879,7 +1038,7 @@ Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere R
 \hline
 	T-003v2 & Es soll überprüft werden ob die Kudan Komponenten starten. & \checkmark \\
 \hline
-	T-004v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude Dargestellt wird. & \checkmark \\
+	T-004v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird. & \checkmark \\
 \hline
 	T-005v2 & Bei diesem Testfall soll getestet werden, ob das Gebäude dargestellt wird, wenn es nicht nach norden gerichtet ist. & \checkmark \\
 \hline
@@ -890,6 +1049,18 @@ Die Folgende Tabelle Zeigt ob die Tests erfolgreich waren oder nicht. Genauere R
 	T-008v1 & Bei diesem Testfall so überprüft werden ob die App nicht abstürzt, wenn zur Laufzeit der App Berechtigungen entzogen werden. & \checkmark \\
 \hline
 	T-009v2 & Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. & \checkmark \\
+\hline
+	T-010v1 & Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich ist. & x \\
+\hline
+	T-011v1 & Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich was die Grösse des Gebäudes betrifft. & \checkmark \\
+\hline
+	T-012v1 & Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich was die Rotation des Gebäudes betrifft. & \checkmark \\
+\hline
+	T-013v1 & Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich bleibt, nachdem das Smartphone leichten bis starken Erschütterungen ausgesetzt war. & \checkmark \\
+\hline
+	T-014v1 & Es soll überprüft werden, ob das AR Gebäude schnell auf die Smartphone-Bewegungen Reagiert. & \checkmark \\
+\hline
+	T-015v1 & Es soll überprüft werden, ob das AR Gebäude bis mindestens 1km Entfernung dargestellt wird. & \checkmark \\
 \hline
 \end{tabularx}
 
@@ -1217,7 +1388,7 @@ Als zusätzliche Nutzungsmöglichkeiten wurden neben der Betrachtung einer Immob
 Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls Sie verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einlick über die Innenstruktur von ausserhalb.
 
 \section{Vergleich mit Anforderungen}
-Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben.
+Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben. Für die Verifikation wurden die Testfälle überprüft.
 \bigbreak
 Legende:
 <<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
@@ -1311,10 +1482,66 @@ Test liefert erwartetes Ergebnis.
 Test liefert erwartetes Ergebnis.
 \subsection{T-009-v2}
 Test liefert erwartetes Ergebnis.
+\subsection{T-010 und Folgende}
+Wurden nicht durchgeführt
+\section{Testprotokoll 04.12.2018}
+Dieses Protokoll wurde von Dane Wicki am 04.12.2018 erstellt.
+\subsection{T-001v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-002v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-003v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-004-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-005-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-006-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-007-v2}
+Test liefert erwartetes Ergebnis.
+\subsection{T-008-v1}
+Test liefert erwartetes Ergebnis.
+\subsection{T-009-v2}
+Test liefert erwartetes Ergebnis.
 \subsection{T-010-v1}
-Ausstehend da Bedingungen nicht erfüllt waren.
+Test wurde nicht erfüllt.
+Das Darstellung des Gebäudes weist teilweise stärkere Abweichungen als erlaubt auf. Diese Abweichungen hängen stark von der korrekten Nordausrichtung des Smartphones zusammen.
+Mit einem Abstand zum Gebäude von ca. 80m wurden insgesammt 10 Testdurchfürungen durchgeführt. Die Höhenungenauigkeit wurde bei diesen durchführungen lediglich das augenmas verewendet. Für die X und Y abweichungen wurde das Smartphone auf bedennähe gebracht und dort Fixiert, damit die Position des Smartphones glechbleibt. Anschliessend wurde auf sichtlinie in ca. 50cm abstand ein Marker für den Rand des Physikalischen gebäudes auf den Boden des Sichtbereiches gelegt. Danach wurde für denselben Rand des Virtuellen Gebäudes ein weiterer Marker in der Gleichen Distanz auf den Boden gelegt. Danach konnte mittels Trigonometrie die ungefähre Abweichung berechnet werden (siehe Abbildung \ref{fig:TrigometrieBeispiel})
 
 
+\begin{figure}[h!]
+	\center
+	\includegraphics[keepaspectratio, width=\textwidth / 2]{TrigonometrieBeispiel.png}
+	\caption{Beispiel der Verwendeten Trigonometrie}
+	\label{fig:TrigometrieBeispiel}
+\end{figure}
+
+Die 10 Messungen ergaben folgende Abweichungen (gerundete auf einen Meter):
+\begin{enumerate}
+	\item 8m
+	\item 15m
+	\item 4m
+	\item 7m
+	\item 2m
+	\item 19m
+	\item 5m
+	\item 14m
+	\item 9m
+	\item 12m
+\end{enumerate}
+\subsection{T-011-v1}
+Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Grössenunterschiede festgestellt werden.
+\subsection{T-012-v1}
+Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Rotationsabweichungen festgestellt werden.
+\subsection{T-013-v1}
+Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft nach durchführung des Testes.
+Dieser Test wurde 3 mal durchgeführt, für jede stärke (siehe \ref{ch:Anforderungen} der Erschütterung.
+Alle 3 Test haben bestanden.
+\subsection{T-014-v1}
+Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Darstellungsgeschwindigkeit des Gebäudes überprüft. Es konnten keine starken (> eine Sekunde) Verzögerungen festgestellt werden.
+\subsection{T-015-v1}
+Test liefert erwartetes Ergebnis.
 \chapter{Sprints}
 
 \begin{figure}[h!]
