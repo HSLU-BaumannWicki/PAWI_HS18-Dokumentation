@@ -47,6 +47,7 @@
 
 % Symbols like checkmark
 \usepackage{amssymb}
+\usepackage{pifont}
 
 % Bibliography & citing
 \usepackage[
@@ -61,6 +62,7 @@
 
 %%% COMMAND REBINDINGS %%%
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\xmark}{\ding{55}}
 
 % Define list of equations - Thanks to Charles Clayton: https://tex.stackexchange.com/a/354096
 \newcommand{\listequationsname}{\huge{Formelverzeichnis}}
@@ -124,7 +126,7 @@ Die vorliegende Arbeit beschäftigt sich stark mit der Fragestellung, inwiefern 
 \chapter{Grundlagen}
 \label{ch:StandDerForschung}
 
-Dieses Kapitel bietet einen Übersicht über die Entwicklung der Augmented Reality und deren Technologien. Es führt weiterhin wichtige Konzepte und Begriffe dieser Arbeit ein. Es soll dem Leser einen Startpunkt in dieses Thema bieten und in das Projekt einführen.
+Dieses Kapitel bietet eine Übersicht über die Entwicklung der Augmented Reality und deren Technologien. Es führt weiterhin wichtige Konzepte und Begriffe dieser Arbeit ein. Es soll dem Leser einen Startpunkt in dieses Thema bieten und in das Projekt einführen.
 
 \section{Technologische Grundlagen}
 
@@ -467,13 +469,13 @@ Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie v
 		\hline
 		& \textbf{Mobile} & \textbf{UWP (HoloLens)} & \textbf{SLAM} & \textbf{Licence} \\
 		\hline
-		Kudan & \checkmark & x & \checkmark & Commercial, free \\
+		Kudan & \checkmark & \xmark & \checkmark & Commercial, free \\
 		\hline
 		Vuforia & \checkmark & \checkmark & \checkmark & Commercial \\
 		\hline
 		Wikitude & \checkmark & \checkmark & \checkmark & Commercial, free \ \\
 		\hline
-		ARToolkit & \checkmark & x & x & OpenSource \\
+		ARToolkit & \checkmark & \xmark & \xmark & OpenSource \\
 		\hline
 	\end{tabular}
 	\caption{Vergleichstabelle verschiedener AR Frameworks}
@@ -513,14 +515,14 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 		\item mit einer maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden (fortan korrekte Position genannt).
 		\item eine maximale Rotationsabweichung von \ang{25} aufweisen.
 		\item einen maximalen Grössenunterschied von 5\% zum Original aufweisen.
-		\item mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.
-		\item nach Beendigung von langsamen($<=$10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.
-		\item nach Beendigung von mittelmässig schnellen (>10km/s und $<=$20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.
-		\item nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.
+		\item mit einer Maximalen Verzögerung (bei Bewegung) von $<$1 Sekunde reagieren.
+		\item nach Beendigung von langsamen($\leq$10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.
+		\item nach Beendigung von mittelmässig schnellen ($>$10km/s und $\leq$20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.
+		\item nach Beendigungen von schnellen ($>$20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.
 		\item nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).
 	\end{enumerate}
 	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden (basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
-	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden (basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
+	\item Sofern keine Informationen zur Lokalisierung vorhanden sind, soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden (basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
 \end{enumerate}
 
 \subsection{Kontext}
@@ -1488,13 +1490,13 @@ Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht wer
 Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für deren Erfüllung eine potenzielle Lösungsidee beschrieben. Für die Verifikation wurden die Testfälle überprüft.
 \bigbreak
 Legende:
-<<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
+<<\checkmark >> = Anforderung erfüllt, <<\xmark>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
 
 \begin{tabularx}{\textwidth}{l l X}
 \hline
 	\# & \textbf{Erfüllt?} & \textbf{Beschreibung} \\
 \hline
-	1.1 & x & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden \\
+	1.1 & \xmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden \\
 \hline
 	1.2 & \checkmark & Das Augmented Reality Objekt soll ausserhalb von Gebäuden eine maximale Rotationsabweichung von \ang{10} aufweisen.\\
 \hline
@@ -1568,51 +1570,51 @@ Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein
 
 \printbibliography
 
-\chapter{Testprotokolle}
+\chapter*{Testprotokolle}
 \label{appendig:testprotokolle}
-\section{Testprotokoll 28.11.2018}
+\section*{Testprotokoll 28.11.2018}
 Dieses Protokoll wurde von Dane Wicki am 28.11.2018 erstellt.
-\subsection{T-001v1}
+\subsection*{T-001v1}
 Test liefert erwartetes Ergebnis.
-\subsection{T-002v1}
+\subsection*{T-002v1}
 Test liefert erwartetes Ergebnis.
-\subsection{T-003v2}
+\subsection*{T-003v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-004-v2}
+\subsection*{T-004-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-005-v2}
+\subsection*{T-005-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-006-v2}
+\subsection*{T-006-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-007-v2}
+\subsection*{T-007-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-008-v1}
+\subsection*{T-008-v1}
 Test liefert erwartetes Ergebnis.
-\subsection{T-009-v2}
+\subsection*{T-009-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-010 und Folgende}
+\subsection*{T-010 und Folgende}
 Wurden nicht durchgeführt
-\section{Testprotokoll 04.12.2018}
+\section*{Testprotokoll 04.12.2018}
 Dieses Protokoll wurde von Dane Wicki am 04.12.2018 erstellt.
-\subsection{T-001v1}
+\subsection*{T-001v1}
 Test liefert erwartetes Ergebnis.
-\subsection{T-002v1}
+\subsection*{T-002v1}
 Test liefert erwartetes Ergebnis.
-\subsection{T-003v2}
+\subsection*{T-003v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-004-v2}
+\subsection*{T-004-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-005-v2}
+\subsection*{T-005-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-006-v2}
+\subsection*{T-006-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-007-v2}
+\subsection*{T-007-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-008-v1}
+\subsection*{T-008-v1}
 Test liefert erwartetes Ergebnis.
-\subsection{T-009-v2}
+\subsection*{T-009-v2}
 Test liefert erwartetes Ergebnis.
-\subsection{T-010-v1}
+\subsection*{T-010-v1}
 Test wurde nicht erfüllt.
 Das Darstellung des Gebäudes weist teilweise stärkere Abweichungen als erlaubt auf. Diese Abweichungen hängen stark von der korrekten Nordausrichtung des Smartphones zusammen.
 Mit einem Abstand zum Gebäude von ca. 80m wurden insgesammt 10 Testdurchfürungen durchgeführt. Die Höhenungenauigkeit wurde bei diesen durchführungen lediglich das augenmas verewendet. Für die X und Y abweichungen wurde das Smartphone auf bedennähe gebracht und dort Fixiert, damit die Position des Smartphones glechbleibt. Anschliessend wurde auf sichtlinie in ca. 50cm abstand ein Marker für den Rand des Physikalischen gebäudes auf den Boden des Sichtbereiches gelegt. Danach wurde für denselben Rand des Virtuellen Gebäudes ein weiterer Marker in der Gleichen Distanz auf den Boden gelegt. Danach konnte mittels Trigonometrie die ungefähre Abweichung berechnet werden (siehe Abbildung \ref{fig:TrigometrieBeispiel})
@@ -1638,19 +1640,19 @@ Die 10 Messungen ergaben folgende Abweichungen (gerundete auf einen Meter):
 	\item 9m
 	\item 12m
 \end{enumerate}
-\subsection{T-011-v1}
+\subsection*{T-011-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Grössenunterschiede festgestellt werden.
-\subsection{T-012-v1}
+\subsection*{T-012-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Rotationsabweichungen festgestellt werden.
-\subsection{T-013-v1}
+\subsection*{T-013-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft nach durchführung des Testes.
 Dieser Test wurde 3 mal durchgeführt, für jede Stärke (siehe \ref{ch:Anforderungen}) der Erschütterung.
 Alle 3 Test haben bestanden.
-\subsection{T-014-v1}
+\subsection*{T-014-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Darstellungsgeschwindigkeit des Gebäudes überprüft. Es konnten keine starken (> eine Sekunde) Verzögerungen festgestellt werden.
-\subsection{T-015-v1}
+\subsection*{T-015-v1}
 Test liefert erwartetes Ergebnis.
-\chapter{Sprints}
+\chapter*{Sprints}
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_2}
@@ -1678,15 +1680,19 @@ Test liefert erwartetes Ergebnis.
 
 \newpage
 
-\chapter{Evaluationen}
+\chapter*{Evaluationen}
 
 \includepdf[pages=-]{Evaluation_HoloLens.pdf}
 
-\chapter{Anleitungen}
+\chapter*{Anleitungen}
 
 \includepdf[pages=-]{Gebaeudemodell_korrekt_zu_ARModel_konvertieren.pdf}
 
-\chapter{Daten der Nutzerbefragung}
+\chapter*{Rahmenplanung}
+
+\includepdf[pages=-]{Rahmenplanung.pdf}
+
+\chapter*{Daten der Nutzerbefragung}
 
 \includepdf[pages=-]{Nutzerbefragung_Rohdaten.pdf}
 
