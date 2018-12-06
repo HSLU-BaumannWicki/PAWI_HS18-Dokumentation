@@ -258,6 +258,7 @@ Diese Methodik für die Ermittlung einer guten User Experience kann auch bei der
 In Phase 3 werden im User Centered Design zu Beginn meist Prototypen auf Papier entwickelt, mit welchem sich der Benutzter konzeptuell durch die Applikation navigieren muss. Diese Papierprototypen sind für eine dreidimensionale Applikation schwieriger zu gestalten und erschweren dadurch den Prozess. Bedingt durch diese Komplikation, ist der ganze Ablauf des User Centered Design teurer und komplexer (\cite{ISO9241}).
 
 \subsection{Graphical User Interface Konzepte}
+\label{ch:GraphicalUserInterface}
 Im Rahmen des User Centered Designs gibt es zudem Richtlinien und Verhaltensweisen der graphischen Benutzeroberfläche.
 Auch hier gilt, was bei zweidimensionalen GUI's funktioniert, muss nicht oder kann nicht zwingend bei einer AR Applikation verwendet werden. Um dem Benutzer die Interaktion mit der AR Applikation möglichst einfach und intuitiv zu gestalten, müssen folgende Punkte mit Sicherheit beachtet werden.
 
@@ -284,8 +285,11 @@ Im folgenden Kapitel wird die Lösung beschrieben. Es soll ein Überblick über 
 
 \section{Konzeptionelle Idee}
 \label{ch:KonzeptionelleIdee}
-Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation markerless oder markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies beim markerless Tracking nicht. Da markerless Tracking jedoch nicht aus dem Nichts etwas auf dem Bildschirm darstellen kann, muss bei markerless Tracking eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
+Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation markerless oder markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies beim markerless Tracking nicht. Da markerless Tracking jedoch ein Objekt nicht ohne weitere Anhaltspunkte auf dem Bildschirm darstellen kann, muss bei markerless Tracking eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
 Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker basierend wie auch markerless Tracking, anbieten.
+Im Rahmen des Projektes wurde zuerst eine markerless wie auch eine markerbasierte Lösung parallel entwickelt. Jedoch stiessen wir beim markerbasierenden Konzept auf Probleme, auf welche in Kapitel \ref{ch:verworfeneLösungen} näher eingegangen wird, wodurch Lösung nicht weiter verfolgt wurde.
+
+
 \bigbreak
 Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass das darzustellende Gerät über folgende zusätzliche Komponenten verfügt:
 \begin{enumerate}
@@ -296,6 +300,7 @@ Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass da
 
 Bei dieser Lösung werden die Lokalisierungssensoren sowie der Kompass dazu verwendet die Positionierung des darzustellenden Gebäudes zu berechnen. Die lokalen Bewegungen des Anzeigegerätes würden mithilfe des Gyroskops ausgelesen, und dazu verwendet das Gebäude an Ort und Stelle zu halten.
 Nachteil dieser Methode liegt darin, dass die Anzeige nun abhängig von drei Sensorwerten ist, welche selber jeweils eine Ungenauigkeit aufweisen und damit Fehler ins System einbringen. Dieser Umstand kann dazu führen, dass das anzuzeigende Gebäude nicht immer an der exakten Position dargestellt wird.
+Der Vorteil liegt darin, dass neue Objekte welche dargestellt werden sollen, sehr einfach hinzugefügt werden können.
 
 \section{Applikationsablauf}
 Die Applikation durchläuft verschiedene Schritte, damit sie dem Benutzer das Modell in der Umgebung an der korrekten Position anzeigen kann. Diese Schritte sind anhand der Abbildung  \ref{fig:Ablaufdiagramm} grafisch dargestellt.
@@ -307,7 +312,13 @@ Die Applikation durchläuft verschiedene Schritte, damit sie dem Benutzer das Mo
 \end{figure}
 
 \subsection{Permission Init}
-Sobald die Applikation startet, werden diverse Berechtigungen überprüft. Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status beim Benutzer nachgefragt. Hierfür wird dem Benutzer alle fehlenden Berechtigungen in einer Liste dargestellt. Damit der Benutzer nicht in einer Endlosschlaufe die Berechtigungen ablehnt, wird nur einmal nach den Berechtigungen gefragt und anschliessend lediglich auf Wunsch des Benutzers erneut gefragt. Es ist zwingend notwendig, dass der Benutzer diese Berechtigungen zulässt da sonst die ganze Applikation nicht funktionsfähig ist. Hat der Benutzer allen Berechtigungen zugestimmt oder hat die Applikation schon alle Berechtigungen, wechselt der Status auf den im Kapitel \ref{ch:NorthInit} beschriebenen Zustand. Die Abbildung \ref{fig:PermissionInitStatus} stellt das Grafische Benutzeroberfläche der Abfrage dar.
+Sobald die Applikation startet, werden diverse Berechtigungen überprüft, welche die Applikation für den normalen Gebrauch benötigt. Dazu gehören folgende Berechtigungen:
+\begin{itemize}
+\item Zugriff auf Kamera
+\item Zugriff auf Lokalisierungssensoren
+\item Speicherzugriff (um Modelle laden/speichern zu können)
+\end{itemize}
+Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status beim Benutzer nachgefragt. Hierfür wird dem Benutzer alle fehlenden Berechtigungen in einer Liste dargestellt. Damit der Benutzer nicht in einer Endlosschlaufe die Berechtigungen ablehnt, wird nur einmal nach den Berechtigungen gefragt und anschliessend lediglich auf Wunsch des Benutzers erneut gefragt. Es ist zwingend notwendig, dass der Benutzer diese Berechtigungen zulässt da sonst die ganze Applikation nicht funktionsfähig ist. Hat der Benutzer allen Berechtigungen zugestimmt oder hat die Applikation schon alle Berechtigungen, wechselt der Status auf den im Kapitel \ref{ch:NorthInit} beschriebenen Zustand. Die Abbildung \ref{fig:PermissionInitStatus} stellt das Grafische Benutzeroberfläche der Abfrage dar.
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{ARBuildingPermissionRequest.png}
 	\caption{Darstellung und Abfrage fehlender Berechtigung}
@@ -315,7 +326,9 @@ Sobald die Applikation startet, werden diverse Berechtigungen überprüft. Sind 
 \end{figure}
 
 \subsection{North Init} \label{ch:NorthInit}
-In diesem Status wird versucht den Nordpol mittels Kompass herauszulesen. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dieser Zustand dient dazu, dass nicht ständig der Norden vom Kompasssensor herausgelesen werden muss, was zu einer Steigerung der Genauigkeit führt. Sobald der Benutzer das Gerät genug lange nach Norden ausgerichtet hat, startet die Applikation in den in Kapitel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
+In diesem Status wird versucht den Norden mittels Kompass herauszulesen und dem Benutzer visuell dessen Richtung angezeigt. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dies dient dazu, dass das Virtuelle Koordinatensystem welches Kudan in sich aufbaut, mit dem Physischen Koordinatensystem übereinstimmt.
+
+Sobald der Benutzer das Gerät genug lange nach Norden ausgerichtet hat, startet die Applikation in den in Kapitel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{NorthInitProcess.png}
 	\caption{Darstellung North Init mit Indikator ob richtige Position erreicht wurde.}
@@ -329,7 +342,7 @@ Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für di
 Dieser Status \textquotedblleft 3D Model Init\textquoteright\ erfüllt zum jetzigen Zeitpunkt noch keinen Zweck. Er würde jedoch die Modelle, welche die Applikation darstellen soll von einer Website herunterladen und diese der Applikation bereitstellen.
 
 \subsection{Waiting for localisation} \label{ch:waitingForLocation}
-In diesem Schritt wird gewartet, bis eine valide Position vom Gerät zurückgegeben wird. Die Position wird als valide betrachtet, sobald sie genügend genau ist. Der Benutzer wird auch hier über den Zustand der Applikation informiert (siehe Abbildung \ref{fig:KoordinationNotFound}), indem eine Grafische Darstellung dem Benutzer mitteilt, dass zurzeit keine Daten über die Position vorhanden seien um das Gebäude darzustellen. Der Status wechselt automatisch in den in Kapitel \ref{ch:ThreeDModelPresenting} beschriebenen Zustand, sobald dies ändert.
+In diesem Schritt wird gewartet, bis eine valide Position vom Gerät zurückgegeben wird. Die Position wird als valide betrachtet, sobald sie eine Genauigkeit von unter 10m aufweist. Der Benutzer wird auch hier über den Zustand der Applikation informiert (siehe Abbildung \ref{fig:KoordinationNotFound}), indem eine Grafische Darstellung dem Benutzer mitteilt, dass zurzeit keine Daten über die Position vorhanden seien um das Gebäude darzustellen. Der Status wechselt automatisch in den in Kapitel \ref{ch:ThreeDModelPresenting} beschriebenen Zustand, sobald dies ändert.
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{UnknownLocation.png}
@@ -339,12 +352,11 @@ In diesem Schritt wird gewartet, bis eine valide Position vom Gerät zurückgege
 
 
 \subsection{3D Model presenting} \label{ch:ThreeDModelPresenting}
-In diesem Schritt wird das Model für den Benutzer dargestellt. Das Modell wird mittels eines Gyroskops stets an der korrekten Stelle gehalten, solange der Benutzer an Ort und Stelle bleibt. Bewegt sich der Benutzer jedoch wieder, werden die neuen Positionsdaten dazu verwendet das Modell darzustellen.
-Der Benutzer kann von diesem Zustand wieder in folgende Zustände kommen:
+In diesem Schritt wird das Model für den Benutzer dargestellt. Das Modell wird mittels des Kudan Frameworks auf derselben virtuellen Position gehalten. Dazu wird der Gyroskopsensor ausgewertet um die Ausrichtung des Smartphones zu ermitteln. Bewegt sich der Benutzer in der Physikalischen Welt und neue Lokalisationsdaten treffen ein, werden diese verwendet um die Lokalisation des dargestellten Objektes neu zu berechnen und Anzuzeigen. 
+Der Benutzer kann von diesem Zustand wieder in folgenden Zustand kommen:
 
 \begin{itemize}
 	\item North init (Durch Klicken auf entsprechenden Button siehe Abbildung \ref{fig:ARShowBuilding})
-	\item Waiting for localisation (Sofern über eine gewisse Zeit keine neuen Daten hinzugefügt werden konnten).
 \end{itemize}
 
 \begin{figure}[h!]
@@ -356,6 +368,7 @@ Der Benutzer kann von diesem Zustand wieder in folgende Zustände kommen:
 \clearpage
 
 \section{Verworfene Lösungen}
+\label{ch:verworfeneLösungen}
 Insgesamt wurden vier Prototypen gebaut, von denen drei verworfen wurden.
 Es wurde dabei jeweils zwei Mal das gleiche Konzept auf verschiedener Entwicklungsumgebungen aufgebaut. So wurde zuerst die konzeptionelle Idee aus Kapitel \ref{ch:KonzeptionelleIdee} mit Unity entwickelt. Zudem wurde ein zweites Lösungskonzept (siehe Kapitel \ref{ch:markerbasiertesLoesungskonzept} simultan zum gewählten Konzept entwickelt, welches jedoch nach der Prototypenphase verworfen wurde. Auch dieser Prototyp wurde zuerst mit Unity und anschliessend mit AndroidStudio entwickelt (Gründe dafür sind in Kapitel \ref{ch:evaluation} zu finden).
 
@@ -508,8 +521,8 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 		\item nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.
 		\item nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).
 	\end{enumerate}
-	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden.
-	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden.
+	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden (basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
+	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden (basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
 \end{enumerate}
 
 \subsection{Kontext}
@@ -543,7 +556,7 @@ Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit v
 Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
 
 \begin{figure}[h!]
-	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverviewV0_4.png}
+	\includegraphics[keepaspectratio, width=\textwidth]{ArchitekturOverviewV0_5.png}
 	\caption{Architekturübersicht}
 \end{figure}
 
@@ -555,8 +568,8 @@ Eine detaillierte Beschreibung der einzelnen Schichten ist in den folgenden Kapi
   \caption{Übersicht der simplifizierten Schichtenarchitektur}
 \end{figure}
 
-\subsubsection{AndroidApp}
-In AndroidApp befindet sich die kompletten grafischen Elemente der Applikation. Dies ist das Interface, mit welchem der User arbeitet. Zudem werden hier die benötigten Berechtigungen geprüft und wenn nötig vom Benutzer erfragt.
+\subsubsection{Presentation}
+In Presentation befindet sich die kompletten grafischen Elemente der Applikation. Dies ist das Interface, mit welchem der User arbeitet. Zudem werden hier die benötigten Berechtigungen geprüft und wenn nötig vom Benutzer erfragt, sowie die Initialisierung gegen Norden gemacht. 
 
 \subsubsection{ModelPosition}
 In ModelPosition ist die gesamte Logik für die Positionierung eines Gebäudes in der virtuellen Kudan Welt enthalten. Es abstrahiert zudem die Zugriffe auf Kudan selber, sodass diese nicht in der eigentlichen AndroidApp Komponente zu finden sind.
@@ -1648,7 +1661,7 @@ Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abwe
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Rotationsabweichungen festgestellt werden.
 \subsection{T-013-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft nach durchführung des Testes.
-Dieser Test wurde 3 mal durchgeführt, für jede stärke (siehe \ref{ch:Anforderungen} der Erschütterung.
+Dieser Test wurde 3 mal durchgeführt, für jede Stärke (siehe \ref{ch:Anforderungen}) der Erschütterung.
 Alle 3 Test haben bestanden.
 \subsection{T-014-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Darstellungsgeschwindigkeit des Gebäudes überprüft. Es konnten keine starken (> eine Sekunde) Verzögerungen festgestellt werden.
