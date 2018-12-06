@@ -285,9 +285,9 @@ Im folgenden Kapitel wird die Lösung beschrieben. Es soll ein Überblick über 
 
 \section{Konzeptionelle Idee}
 \label{ch:KonzeptionelleIdee}
-Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation markerless oder markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies beim markerless Tracking nicht. Da markerless Tracking jedoch ein Objekt nicht ohne weitere Anhaltspunkte etwas auf dem Bildschirm darstellen kann, muss bei markerless Tracking eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
+Wie in Kapitel \ref{ch:StandDerForschung} beschrieben, kann eine AR Applikation markerless oder markerbasiert sein. Dabei gibt es auch bei diesen zwei Kategorien unterschiedliche Möglichkeiten diese zu realisieren. Müssen beim markerbasierten Tracking für die Initiierung und Platzierung ein Marker verwendet werden, so geschieht dies beim markerless Tracking nicht. Da markerless Tracking jedoch ein Objekt nicht ohne weitere Anhaltspunkte auf dem Bildschirm darstellen kann, muss bei markerless Tracking eine Alternative zum Marker gefunden werden. Dies kann beispielsweise die Erkennung von Flächen sein \parencite{GoogleARCore2018} oder auch Lokalisierungssensoren.
 Um eine AR Applikation zu entwickeln, welches ein Gebäude in der realen Umgebung darstellt, würden sich potenziell beide Lösungen, also auf Marker basierend wie auch markerless Tracking, anbieten.
-Im Rahmen des Projektes wurden zuerst beide möglichkeiten parallel entwickelt, jedoch stiessen wir beim Marker basierenden Konzept auf Probleme, auf welche in Kapitel \ref{ch:verworfeneLösungen} näher eingegangen wird.
+Im Rahmen des Projektes wurde zuerst eine markerless wie auch eine markerbasierte Lösung parallel entwickelt. Jedoch stiessen wir beim markerbasierenden Konzept auf Probleme, auf welche in Kapitel \ref{ch:verworfeneLösungen} näher eingegangen wird, wodurch Lösung nicht weiter verfolgt wurde.
 
 
 \bigbreak
@@ -300,7 +300,7 @@ Das Konzept einer auf Lokalisierungssensoren basierte Lösung sieht vor, dass da
 
 Bei dieser Lösung werden die Lokalisierungssensoren sowie der Kompass dazu verwendet die Positionierung des darzustellenden Gebäudes zu berechnen. Die lokalen Bewegungen des Anzeigegerätes würden mithilfe des Gyroskops ausgelesen, und dazu verwendet das Gebäude an Ort und Stelle zu halten.
 Nachteil dieser Methode liegt darin, dass die Anzeige nun abhängig von drei Sensorwerten ist, welche selber jeweils eine Ungenauigkeit aufweisen und damit Fehler ins System einbringen. Dieser Umstand kann dazu führen, dass das anzuzeigende Gebäude nicht immer an der exakten Position dargestellt wird.
-Der grosse Vorteil liegt darin, dass neue Objekte, welche dargestellt werden sollen sehr einfach hinzugefügt werden können.
+Der Vorteil liegt darin, dass neue Objekte welche dargestellt werden sollen, sehr einfach hinzugefügt werden können.
 
 \section{Applikationsablauf}
 Die Applikation durchläuft verschiedene Schritte, damit sie dem Benutzer das Modell in der Umgebung an der korrekten Position anzeigen kann. Diese Schritte sind anhand der Abbildung  \ref{fig:Ablaufdiagramm} grafisch dargestellt.
@@ -314,9 +314,9 @@ Die Applikation durchläuft verschiedene Schritte, damit sie dem Benutzer das Mo
 \subsection{Permission Init}
 Sobald die Applikation startet, werden diverse Berechtigungen überprüft, welche die Applikation für den normalen Gebrauch benötigt. Dazu gehören folgende Berechtigungen:
 \begin{itemize}
-\item Kamera zugriff
-\item Lokalisierungssensoren zugriff
-\item Speicherzugriff (um das Model zu laden/speichern)
+\item Zugriff auf Kamera
+\item Zugriff auf Lokalisierungssensoren
+\item Speicherzugriff (um Modelle laden/speichern zu können)
 \end{itemize}
 Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status beim Benutzer nachgefragt. Hierfür wird dem Benutzer alle fehlenden Berechtigungen in einer Liste dargestellt. Damit der Benutzer nicht in einer Endlosschlaufe die Berechtigungen ablehnt, wird nur einmal nach den Berechtigungen gefragt und anschliessend lediglich auf Wunsch des Benutzers erneut gefragt. Es ist zwingend notwendig, dass der Benutzer diese Berechtigungen zulässt da sonst die ganze Applikation nicht funktionsfähig ist. Hat der Benutzer allen Berechtigungen zugestimmt oder hat die Applikation schon alle Berechtigungen, wechselt der Status auf den im Kapitel \ref{ch:NorthInit} beschriebenen Zustand. Die Abbildung \ref{fig:PermissionInitStatus} stellt das Grafische Benutzeroberfläche der Abfrage dar.
 \begin{figure}[h!]
@@ -326,7 +326,7 @@ Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status be
 \end{figure}
 
 \subsection{North Init} \label{ch:NorthInit}
-In diesem Status wird versucht den Norden mittels Kompass herauszulesen und dem Benutzer visuell dessen Richtung angezeigt. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dies dient dazu, dass das Virtuelle Koordinatensystem, welches Kudan in sich aufbaut mit dem Physischen Koordinatensystem übereinstimmt.
+In diesem Status wird versucht den Norden mittels Kompass herauszulesen und dem Benutzer visuell dessen Richtung angezeigt. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dies dient dazu, dass das Virtuelle Koordinatensystem welches Kudan in sich aufbaut, mit dem Physischen Koordinatensystem übereinstimmt.
 
 Sobald der Benutzer das Gerät genug lange nach Norden ausgerichtet hat, startet die Applikation in den in Kapitel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
 \begin{figure}[h!]
@@ -352,8 +352,8 @@ In diesem Schritt wird gewartet, bis eine valide Position vom Gerät zurückgege
 
 
 \subsection{3D Model presenting} \label{ch:ThreeDModelPresenting}
-In diesem Schritt wird das Model für den Benutzer dargestellt. Das Modell wird mittels des Kudan Frameworks, welches in diesem Fall den Gyroskopsensor benutzt, für die Ausrichtung des Smartphones auf der selben virtuellen Position gehalten. Bewegt sich der Benutzer in der Physikalischen Welt und neue Lokalisationsdaten treffen ein, werden diese verwendet um die Lokalisation des dargestellten Objektes neu zu berechnen und Anzuzeigen. 
-Der Benutzer kann von diesem Zustand wieder in folgende Zustand kommen:
+In diesem Schritt wird das Model für den Benutzer dargestellt. Das Modell wird mittels des Kudan Frameworks auf derselben virtuellen Position gehalten. Dazu wird der Gyroskopsensor ausgewertet um die Ausrichtung des Smartphones zu ermitteln. Bewegt sich der Benutzer in der Physikalischen Welt und neue Lokalisationsdaten treffen ein, werden diese verwendet um die Lokalisation des dargestellten Objektes neu zu berechnen und Anzuzeigen. 
+Der Benutzer kann von diesem Zustand wieder in folgenden Zustand kommen:
 
 \begin{itemize}
 	\item North init (Durch Klicken auf entsprechenden Button siehe Abbildung \ref{fig:ARShowBuilding})
@@ -521,8 +521,8 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 		\item nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.
 		\item nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).
 	\end{enumerate}
-	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden (Basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
-	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden (Basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
+	\item Sobald das Objekt ausserhalb des Sichtfeldes ist, soll dem Benutzer eine Anzeige für das Wiederauffinden des Objektes angezeigt werden (basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
+	\item Sofern keine Informationen zur Lokalisierung vorhanden sind soll der Benutzer in weniger als 3 Sekunden über diese fehlende Informationen informiert werden (basierend auf Kapitel \ref{ch:GraphicalUserInterface}).
 \end{enumerate}
 
 \subsection{Kontext}
@@ -569,7 +569,7 @@ Eine detaillierte Beschreibung der einzelnen Schichten ist in den folgenden Kapi
 \end{figure}
 
 \subsubsection{Presentation}
-In Presentation befindet sich die kompletten grafischen Elemente der Applikation. Dies ist das Interface, mit welchem der User arbeitet. Zudem werden hier die benötigten Berechtigungen geprüft und wenn nötig vom Benutzer erfragt, sowie die Nord Initialisierung gemacht. 
+In Presentation befindet sich die kompletten grafischen Elemente der Applikation. Dies ist das Interface, mit welchem der User arbeitet. Zudem werden hier die benötigten Berechtigungen geprüft und wenn nötig vom Benutzer erfragt, sowie die Initialisierung gegen Norden gemacht. 
 
 \subsubsection{ModelPosition}
 In ModelPosition ist die gesamte Logik für die Positionierung eines Gebäudes in der virtuellen Kudan Welt enthalten. Es abstrahiert zudem die Zugriffe auf Kudan selber, sodass diese nicht in der eigentlichen AndroidApp Komponente zu finden sind.
@@ -1600,7 +1600,7 @@ Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abwe
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft. Es konnten keine Rotationsabweichungen festgestellt werden.
 \subsection{T-013-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Abweichung des Gebäudes überprüft nach durchführung des Testes.
-Dieser Test wurde 3 mal durchgeführt, für jede stärke (siehe \ref{ch:Anforderungen}) der Erschütterung.
+Dieser Test wurde 3 mal durchgeführt, für jede Stärke (siehe \ref{ch:Anforderungen}) der Erschütterung.
 Alle 3 Test haben bestanden.
 \subsection{T-014-v1}
 Durch die Bedingungen dieses Test, wurde bei jeder Korrekten Position (<10m Abweichung) von Augenmass die Darstellungsgeschwindigkeit des Gebäudes überprüft. Es konnten keine starken (> eine Sekunde) Verzögerungen festgestellt werden.
