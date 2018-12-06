@@ -318,7 +318,7 @@ Sobald die Applikation startet, werden diverse Berechtigungen überprüft, welch
 \item Zugriff auf Lokalisierungssensoren
 \item Speicherzugriff (um Modelle laden/speichern zu können)
 \end{itemize}
-Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status beim Benutzer nachgefragt. Hierfür wird dem Benutzer alle fehlenden Berechtigungen in einer Liste dargestellt. Damit der Benutzer nicht in einer Endlosschlaufe die Berechtigungen ablehnt, wird nur einmal nach den Berechtigungen gefragt und anschliessend lediglich auf Wunsch des Benutzers erneut gefragt. Es ist zwingend notwendig, dass der Benutzer diese Berechtigungen zulässt da sonst die ganze Applikation nicht funktionsfähig ist. Hat der Benutzer allen Berechtigungen zugestimmt oder hat die Applikation schon alle Berechtigungen, wechselt der Status auf den im Kapitel \ref{ch:NorthInit} beschriebenen Zustand. Die Abbildung \ref{fig:PermissionInitStatus} stellt das Grafische Benutzeroberfläche der Abfrage dar.
+Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status beim Benutzer nachgefragt. Hierfür werden dem Benutzer alle fehlenden Berechtigungen in einer Liste dargestellt. Damit der Benutzer nicht in einer Endlosschlaufe die Berechtigungen ablehnt, wird nur einmal nach den Berechtigungen gefragt und anschliessend lediglich auf Wunsch des Benutzers erneut gefragt. Es ist zwingend notwendig, dass der Benutzer diese Berechtigungen zulässt, da die ganze Applikation ansonsten nicht funktionsfähig ist. Hat der Benutzer allen Berechtigungen zugestimmt oder hat die Applikation schon alle Berechtigungen, wechselt der Status auf den im Kapitel \ref{ch:NorthInit} beschriebenen Zustand. Die Abbildung \ref{fig:PermissionInitStatus} stellt die Grafische Benutzeroberfläche der Abfrage dar.
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{ARBuildingPermissionRequest.png}
 	\caption{Darstellung und Abfrage fehlender Berechtigung}
@@ -326,7 +326,7 @@ Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status be
 \end{figure}
 
 \subsection{North Init} \label{ch:NorthInit}
-In diesem Status wird versucht den Norden mittels Kompass herauszulesen und dem Benutzer visuell dessen Richtung angezeigt. Dabei wird der Benutzer dazu aufgefordert, dass Smartphone nach Norden auszurichten. Dies dient dazu, dass das Virtuelle Koordinatensystem welches Kudan in sich aufbaut, mit dem Physischen Koordinatensystem übereinstimmt.
+In diesem Status wird versucht den Norden mittels Kompass auszulesen und dem Benutzer visuell dessen Richtung angezeigt. Dabei wird der Benutzer dazu aufgefordert das Smartphone nach Norden auszurichten. Dies dient dazu, dass das virtuelle Koordinatensystem welches Kudan in sich aufbaut, mit dem Physischen Koordinatensystem übereinstimmt.
 
 Sobald der Benutzer das Gerät genug lange nach Norden ausgerichtet hat, startet die Applikation in den in Kapitel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
 \begin{figure}[h!]
@@ -342,7 +342,7 @@ Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für di
 Dieser Status \textquotedblleft 3D Model Init\textquoteright\ erfüllt zum jetzigen Zeitpunkt noch keinen Zweck. Er würde jedoch die Modelle, welche die Applikation darstellen soll von einer Website herunterladen und diese der Applikation bereitstellen.
 
 \subsection{Waiting for localisation} \label{ch:waitingForLocation}
-In diesem Schritt wird gewartet, bis eine valide Position vom Gerät zurückgegeben wird. Die Position wird als valide betrachtet, sobald sie eine Genauigkeit von unter 10m aufweist. Der Benutzer wird auch hier über den Zustand der Applikation informiert (siehe Abbildung \ref{fig:KoordinationNotFound}), indem eine Grafische Darstellung dem Benutzer mitteilt, dass zurzeit keine Daten über die Position vorhanden seien um das Gebäude darzustellen. Der Status wechselt automatisch in den in Kapitel \ref{ch:ThreeDModelPresenting} beschriebenen Zustand, sobald dies ändert.
+In diesem Schritt wird gewartet, bis eine valide Position vom Gerät zurückgegeben wird. Die Position wird als valide betrachtet, sobald sie eine Genauigkeit von unter 10m aufweist. Der Benutzer wird auch hier über den Zustand der Applikation informiert (siehe Abbildung \ref{fig:KoordinationNotFound}), indem eine Grafische Darstellung dem Benutzer mitteilt, dass zurzeit keine Daten über die Position vorhanden sind um das Gebäude darzustellen. Der Status wechselt automatisch in den in Kapitel \ref{ch:ThreeDModelPresenting} beschriebenen Zustand, sobald sich dies ändert.
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{UnknownLocation.png}
@@ -369,8 +369,7 @@ Der Benutzer kann von diesem Zustand wieder in folgenden Zustand kommen:
 
 \section{Verworfene Lösungen}
 \label{ch:verworfeneLösungen}
-Insgesamt wurden vier Prototypen gebaut, von denen drei verworfen wurden.
-Es wurde dabei jeweils zwei Mal das gleiche Konzept auf verschiedener Entwicklungsumgebungen aufgebaut. So wurde zuerst die konzeptionelle Idee aus Kapitel \ref{ch:KonzeptionelleIdee} mit Unity entwickelt. Zudem wurde ein zweites Lösungskonzept (siehe Kapitel \ref{ch:markerbasiertesLoesungskonzept} simultan zum gewählten Konzept entwickelt, welches jedoch nach der Prototypenphase verworfen wurde. Auch dieser Prototyp wurde zuerst mit Unity und anschliessend mit AndroidStudio entwickelt (Gründe dafür sind in Kapitel \ref{ch:evaluation} zu finden).
+Insgesamt wurden vier Prototypen entwickelt, von denen drei verworfen wurden. Es wurde dabei jeweils zwei Mal das gleiche Konzept auf verschiedener Entwicklungsumgebungen aufgebaut. So wurde zuerst die konzeptionelle Idee aus Kapitel \ref{ch:KonzeptionelleIdee} mit Unity entwickelt. Zudem wurde ein zweites Lösungskonzept (siehe Kapitel \ref{ch:markerbasiertesLoesungskonzept} simultan zum gewählten Konzept entwickelt, welches jedoch nach der Prototypenphase verworfen wurde. Auch dieser Prototyp wurde zuerst mit Unity und anschliessend mit AndroidStudio entwickelt (Gründe dafür sind in Kapitel \ref{ch:evaluation} zu finden).
 
 \subsection{Markerbasiertes Lösungskonzept}
 \label{ch:markerbasiertesLoesungskonzept}
@@ -378,7 +377,7 @@ Das Konzept eines markerbasierten Lösung sieht vor, dass die Position des Marke
 
 Die relative Position zum Marker kann durch dessen Grösse sowie dem Winkel in Relation zur Ausrichtung der Kamera berechnet werden. Sobald diese relative Position berechnet werden konnte, kann die relative Position zum Gebäude ausgerechnet werden.
 
-Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung nicht abhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker an einer fixen Stelle befestigt werden muss. Es ist zudem aufwendiger neue Gebäude hinzuzufügen, da man physisch vor Ort den Marker platzieren muss.
+Der Vorteil dieser markerbasierten Lösung liegt darin, dass die Genauigkeit der Darstellung unabhängig von weiteren Faktoren ist. Die grosse Schwäche liegt darin, dass ein Marker an einer fixen Stelle befestigt werden muss. Zudem ist es aufwendiger neue Gebäude hinzuzufügen, da man den Marker physisch vor Ort platzieren muss.
 
 \subsection{Prototyp}
 Um dieses Konzept zu realisieren, wurde ein Prototyp entwickelt. Bei diesem wurde jedoch ein schwerwiegendes Problem identifiziert. Nämlich, dass das Gebäude aus nicht weiter untersuchten Gründen beim gleichen Marker immer wieder verschieden dargestellt wurde. Dieses Verhalten führte dazu, dass die Parallele Entwicklung dieses Konzeptes eingestellt wurde, und der Fokus auf die auf der Position basierte Lösung gelegt wurde. In Abbildung \ref{fig:alternativeSolution} sieht man das Fehlverhalten des 3D Modells.
@@ -405,11 +404,11 @@ Alle Wirtschaftsprojekte an der Hochschule Luzern fallen in eine der folgenden K
 	\item Strukturierte Analyse und Konzeption von Systemen und Abläufen
 \end{enumerate}
 
-Dabei ist dieses Projekt als Innovationsprojekt und Softwareentwicklung klassifiziert worden. Wir erwarteten daher unter anderem, eine Evaluation, Recherchen und weitere Unbekannten. Um auf diese eingehen zu können, entschied sich das Team darauf die hybride, inkrementelle Agile Methode zu verwenden.
+Dabei ist dieses Projekt als Innovationsprojekt und Softwareentwicklung klassifiziert worden. Wir erwarteten daher unter anderem, eine Evaluation, Recherchen und weitere Unbekannten. Um auf diese eingehen zu können, entschied sich das Team dafür die hybride, inkrementelle Agile Methode zu verwenden.
 
 \subsection{Agile Projektmethode}
 
-Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändernden Umfeld zu bestehen. Insbesondere heisst das, das auf sich verändernden Voraussetzungen schnell reagiert werden kann und ein funktionierendes Produkt dabei entsteht \parencite{AgileAlliance2015}. Dies soll durch eine enge Zusammenarbeit mit dem Auftraggeber und guter teaminterner Kommunikation erreicht werden.
+Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändernden Umfeld zu bestehen. Insbesondere bedeutet dies, das auf sich verändernde Voraussetzungen schnell reagiert werden kann und dabei ein funktionierendes Produkt entsteht \parencite{AgileAlliance2015}. Dies soll durch eine enge Zusammenarbeit mit dem Auftraggeber und guter teaminterner Kommunikation erreicht werden.
 \bigbreak
 Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen in den jeweiligen Sprints spezifiziert werden, und in der Sprintplanung festgehalten wird. Wir unterteilten unser Projekt in eine zweiwöchige Initialisierung, zweiwöchige Evaluation, und fünf Sprints, in der unser Produkt entwickelt wurde.
 
@@ -422,19 +421,18 @@ Als Zielplattform standen gemäss Projektbeschrieb die Folgenden zur Auswahl:
 \item Microsoft HoloLens
 \item Smartphone und Tablets
 \end{itemize}
-Für alle dieser Plattformen galt die Idee, diese als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
+Für alle dieser Plattformen galt die Idee, sie als Interface zu gebrauchen um das AR Gebäude in der Umgebung anzuzeigen. Alle drei Zielplattformen weisen unterschiedliche Stärken und Schwächen auf.
 
 Die HoloLens zeigte grosse Schwächen beim Gebrauch im Freien, da deren Bildschirm für den Aussengebrauch zu wenig hell ist.
-
-Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten, die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der Hololens ignoriert wurden (Antippen eines virtuellen Objektes).
-Das Positive der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters.
+Zudem fehlen der HoloLens Lokalisierungssensoren. Im Rahmen einer Analyse der Bedienung wurden 5 Probanden dazu aufgefordert mit der vorhanden HoloLens und HoloLens Apps zu interagieren und ihr Verhalten beobachtet. Die Probanden besassen keinerlei Erfahrung im Umgang mit der HoloLens und es wurde ihnen auch keine vorgängigen Informationen zur Bedienung mitgeteilt. Bei diesem Test stellte sich heraus, dass die Interaktion mit der HoloLens für alle Probanden nicht intuitiv war. Dies äusserte sich in Gesten, die von der HoloLens nur manchmal erkannt wurden (Pinching) und solche die zwar für Probanden intuitiv waren, aber von der HoloLens ignoriert wurden (Antippen eines virtuellen Objektes).
+Der Vorteil der HoloLens ist die nahtlose Integration der Augmented Reality Modelle in die Umgebung des Betrachters.
 
 Die Smartphones zeigen ihre grosse Stärke in der Verbreitung. Dies führt zu einer hohen Vertrautheit des Benutzers mit dem Gerät. Zudem sind die heutigen Smartphones hell genug um das Display bei normalen Tageslicht zu sehen.
 Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Augmented Reality Modelle das Smartphone ständig in den Händen gehalten werden muss.
 
-In einer ersten Evaluation mit einer Hololens wurde entschieden, dass für dieses Projekt die Hololens ausgeschlossen wird, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
+In einer ersten Evaluation mit einer HoloLens wurde entschieden, dass für dieses Projekt die HoloLens ausgeschlossen wird, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
 
-Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf den bereits vorhanden Geräten verwendet werden kann.
+Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, dies aus den Gründen, dass Android keine speziellen Bedingungen voraussetzt und somit auch auf bereits vorhanden Geräten verwendet werden kann.
 
 \subsubsection{Entwicklungsumgebung}
 \label{ssec:EvalPlattform}
@@ -448,9 +446,9 @@ Auf beiden Entwicklungsumgebungen wurde ein Prototyp für Android entwickelt. Da
 
 Bei Unity ist das Erstellen einer ersten lauffähigen Version sehr einfach. Ein weiterer Vorteil ist die grafische Darstellung der 3D Modelle. Zudem würde eine allfällige Portierung auf weitere Platformen einfach umsetzbar sein. Bei der Entwicklung stellte sich eine Schwäche mit den GPS Sensoren heraus. So funktionierten diese aus unbekannten Gründen nicht bei jeder Installation der Applikation korrekt. Für die Lösung dieses Problemes fehlte eine ausreichende Debugmöglichkeit in Unity.
 
-Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeichneten API Dokumentation. So funktionierten alle benötigten Sensoren auf Anhieb. Die Schwächen dieser Entwicklungsumgebung liegt darin, dass eine allfällige Portierung auf weitere Plattformen nur durch eine Neuimplementation möglich ist. Zudem werden die 3D Modelle nicht grafisch dargestellt und müssen mit einer anderen Software Editiert werden.
+Android Studio zeigte seine Stärke in den Debugmöglichkeiten und der ausgezeichneten API Dokumentation. So funktionierten alle benötigten Sensoren auf Anhieb. Die Schwächen dieser Entwicklungsumgebung liegen darin, dass eine allfällige Portierung auf weitere Plattformen nur durch eine Neuimplementierung möglich ist. Zudem werden die 3D Modelle nicht grafisch dargestellt und müssen mit einer anderen Software editiert werden.
 
-Die unzureichende Debugmöglichkeiten und Probleme mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementation zu gebrauchen.
+Die unzureichende Debugmöglichkeiten und Probleme mit den GPS Sensoren waren die Hauptgründe die Unity Entwicklungsumgebung nicht für die Implementierung zu gebrauchen.
 
 \subsubsection{Augmented Reality Frameworks}
 Während der Recherchen stellte sich heraus, dass ein breites Spektrum verschiedener AR Frameworks auf dem Markt vorhanden ist. Jedes Framework setzt dabei auf eigene Anwendungsbereiche. Für dieses Projekt wurden vier häufig verwendete und gut dokumentierte Frameworks näher untersucht (\cite{DDIDevelopment}). Konkret handelte es sich dabei um folgende Frameworks:
@@ -467,7 +465,7 @@ Die Folgende Tabelle zeigt eine vereinfachte Darstellung der 4 Frameworks. Sie v
 	\center
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		& \textbf{Mobile} & \textbf{UWP (Hololens)} & \textbf{SLAM} & \textbf{Licence} \\
+		& \textbf{Mobile} & \textbf{UWP (HoloLens)} & \textbf{SLAM} & \textbf{Licence} \\
 		\hline
 		Kudan & \checkmark & x & \checkmark & Commercial, free \\
 		\hline
@@ -486,7 +484,7 @@ Für das Projekt wurde entschieden, Kudan als AR Framework zu verwenden. Gründe
 
 \subsection{Einschränkungen und Abgrenzungen}
 
-Wie aus der Evaluation (siehe \ref{ssec:EvalPlattform}) ersichtlich ist, haben wir uns schlussendlich auf Android als Plattform beschränkt. Dies hat zur Folge, dass der erarbeitete Code nicht ohne weiteres auf andere Plattformen portiert werden kann. Die Architektur ist aber so modular aufgebaut, dass die Implementierung für andere Plattformen dennoch ohne grossen Aufwand geschehen kann.
+Wie aus der Evaluation (siehe \ref{ssec:EvalPlattform}) ersichtlich ist, haben wir uns schlussendlich auf Android als Plattform beschränkt. Dies hat zur Folge, dass der erarbeitete Code nicht ohne weiteres auf andere Plattformen portiert werden kann. Die Architektur ist aber so modular aufgebaut, dass die Implementierung auf anderen Plattformen dennoch ohne grossen Aufwand geschehen kann.
 
 Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt. Dies entspricht etwa 80\% aller Androidbesitzer (siehe Abb. \ref{fig:AndroidMarketshare}) und beinhaltet wichtige Funktionen die wir für unser Projekt gebrauchen. Zudem muss das jeweilige Gerät folgende Systemanforderungen besitzen:
 \begin{itemize}
@@ -512,12 +510,12 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 \begin{enumerate}
 	\item Das Augmented Reality Objekt soll ausserhalb von Gebäuden ...
 	\begin{enumerate}[label*=\arabic*.]
-		\item eine maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden (fortan korrekte Position genannt).
+		\item mit einer maximale Abweichung von 10m auf einer minimalen Distanz von 50m bis zu einer Distanz von 1km auf korrekter Position dargestellt werden (fortan korrekte Position genannt).
 		\item eine maximale Rotationsabweichung von \ang{25} aufweisen.
-		\item eine maximale Grössenunterschied von 5\% zum Original Aufweisen.
+		\item einen maximalen Grössenunterschied von 5\% zum Original aufweisen.
 		\item mit einer Maximalen Verzögerung (bei Bewegung) von <1 Sekunde reagieren.
-		\item nach Beendigung von langsamen(<=10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.
-		\item nach Beendigung von mittelmässig schnellen (>10km/s und <=20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.
+		\item nach Beendigung von langsamen($<=$10km/s) Bewegungen der Kamera auf der korrekten Position bleiben.
+		\item nach Beendigung von mittelmässig schnellen (>10km/s und $<=$20km/s) Bewegungen wieder auf korrekter Position dargestellt werden.
 		\item nach Beendigungen von schnellen (>20km/s) Bewegungen nach einer erneuten Initialisierung wieder auf korrekter Position dargestellt werden.
 		\item nur in einer Distanz bis mindestens 1km dargestellt werden (gilt auch für alle Informationen zum Objekt).
 	\end{enumerate}
@@ -526,7 +524,7 @@ Weiter haben wir die Androidversion auf Version 6.0 und aufwärts eingeschränkt
 \end{enumerate}
 
 \subsection{Kontext}
-Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die Interaktion der AR Applikation mit den Benutzer, Systemen und anderen Prozessen. Es zeigt somit den Kontext der gesamten Applikation auf.
+Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die Interaktion der AR Applikation mit dem Benutzer, Systemen und anderen Prozessen. Es zeigt somit den Kontext der gesamten Applikation auf.
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{KontextDiagram.png}
@@ -538,7 +536,7 @@ Das nachfolgende Kontextdiagramm (Abbildung \ref{fig:Kontext}) beschreibt die In
 
 \subsection{Komponentendesign}
 
-Die entwickelte Applikation ist von weiteren Komponenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind abgebildet. Aus Gründen der Übersichtlichkeit sind keine weiteren aufgelistet.
+Die entwickelte Applikation ist von weiteren Komponenten und Teilsystemen abhängig. In der Abbildung \ref{fig:Komponentendesign} sind nur die wichtigsten Komponenten, welche für die Funktionstüchtigkeit notwendig sind, abgebildet.
 \bigbreak
 Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese nicht auf dem Gerät selber sind und daher eine weitere Fehlerquelle (Funktionieren des externen Systems bedingen).
 
@@ -550,7 +548,7 @@ Besonderer Augenmerk geht auf die GPS und OpenElevation Komponenten, da diese ni
 \end{figure}
 
 \subsubsection{Out of Scope}
-Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei in nicht existierender Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
+Aus der Abbildung \ref{fig:Kontext} wird ersichtlich, dass die Applikation mit verschiedenen Systemen agiert. Das System Remote Server ist dabei ein geplanter Server, welcher die Modelle und deren Koordinaten enthält. Dieser Server ist nicht Bestandteil dieses Projektes und soll lediglich bei der Planung mit einbezogen werden.
 
 \subsection{Architektur \& Design}
 Die Architektur des Projektes wurde in 3 Schichten aufgeteilt. Diese werden in der nachfolgenden Grafik dargestellt.Dabei werden Abhängigkeiten untereinander wie auch zu externen Schnittstellen aufgezeigt.
@@ -621,7 +619,7 @@ Die BuildingPositioner Schnittstelle ist verantwortlich für die Abstraktion des
 \end{figure}
 \clearpage
 \subsubsection{Building Model}
-Das Building Model Interface ist das Bindeglied zwischen der realen Position des Benutzers und der virtuellen Position in der Applikationswelt. Es ist verantwortlich, dass das Gebäude reale Positionsdaten besitzt und die virtuellen Koordinaten an das Modell in der virtuellen Welt übergibt.
+Das Building Model Interface ist das Bindeglied zwischen der realen Position des Benutzers und der virtuellen Position in der Applikationswelt. Es ist dafür verantwortlich, dass das Gebäude reale Positionsdaten besitzt und die virtuellen Koordinaten an das Modell in der virtuellen Welt übergibt.
 
 \begin{figure}[h!]
 	\center
@@ -698,12 +696,12 @@ Die AR Applikation stellt zudem folgende Software Anforderungen an das Gerät:
 
 \subsubsection{Clean Code}
 
-Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dieses Verzichten auf zusätzliche Kommentare hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name für diese sowie deren Parameter gewählt werden musste.
+Da gut lesbarer Code verständlicher und zeitnaher die Aufgaben des Codes widerspiegelt als ein Kommentar, wurde grösstenteils auf JavaDoc und weitere Kommentare verzichtet. Dies hatte zur Folge, dass bei der Erstellung einer Methode notwendigerweise ein selbst sprechender Name für diese sowie deren Parameter gewählt werden musste.
 
 \subsubsection{Git Flow}
 
-Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt worden ist (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
-Auf der Abbildung \ref{fig:FeatureBranchWorkflow} ist ein Auszug aus der Baumstruktur unserer Dokumentation dargestellt. Dabei ist zu erkennen, dass zu Sprintbeginn möglichst keine offenen Zweige mehr vorhanden sind und gegen Sprintende alle Zweige in den Master (in Abbildung \ref{fig:FeatureBranchWorkflow} die Schwarze Linie) über einen Pull Request zusammengeführt werden.
+Um möglichst effizient und unabhängig voneinander zu programmieren, sowie zu dokumentieren, wurde mit Git Feature Branch Workflow gearbeitet. Dies bedeutet, dass für jedes Feature einen Branch erstellt wurde (\cite{gitFeatureBranchWorkflow}). Weiter wurde eine Regelung eingeführt, wobei ein Branch nicht vom Ersteller in den Master Branch zusammengeführt werden darf. Dies schafft Sicherheit, da eine zweite Person einen Review des Codes macht.
+Auf der Abbildung \ref{fig:FeatureBranchWorkflow} ist ein Auszug aus der Baumstruktur unserer Dokumentation dargestellt. Dabei ist zu erkennen, dass zu Sprintbeginn möglichst keine offenen Zweige (engl. Branches) mehr vorhanden sind und gegen Sprintende alle Zweige in den Master (in Abbildung \ref{fig:FeatureBranchWorkflow} schwarz dargestellt) über einen Pull Request zusammengeführt werden.
 
 \begin{figure}[h!]
 	\center
@@ -718,7 +716,7 @@ Da es sich bei der entwickelten Applikation um einen Prototyp handelt, wurde zu 
 \section{Testing}
 
 \subsection{Testfälle}
-Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} definiert sind, wurden folgende Tests erstellt. In Kapitel \ref{ch:testprotokoll} ist das Protokoll zu diesen Tests zu finden. Die Testfälle werden mit einer Version versehen. Alte Testfälle sind im git Repository weiterhin verfügbar.
+Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} definiert sind, wurden verschiedene Tests erstellt. In Kapitel \ref{ch:testprotokoll} ist das Protokoll zu diesen Tests zu finden. Die Testfälle werden mit einer Version versehen. Alte Testfälle sind im git Repository weiterhin verfügbar.
 
 \subsubsection{Testfall 1-Berechtigung erlauben}
 \begin{tabularx}{\textwidth}{|l|X|}
@@ -732,9 +730,9 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 \hline
 	Testschritte &
 		1. App starten \\ &
-		2. Berechtigungen geben \\
+		2. Berechtigungen erteilen \\
 \hline
-	Erwartetes Ergebnis & Nachdem alle Berechtigungen gegeben wurden, startet die App normal -> der North Initialize Bildschirm erscheint. \\
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen erteilt wurden, startet die App normal -> der North Initialize Bildschirm erscheint. \\
 \hline
 \end{tabularx}
 \subsubsection{Testfall 2-Berechtigung verweigern}
@@ -751,7 +749,7 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		1. App starten \\ &
 		2. Berechtigungsanfragen sehen und ablehnen \\
 \hline
-	Erwartetes Ergebnis & Nachdem alle Berechtigungen nicht gegeben wurden, bleibt die App in einem Abfangbildschirm, wo die Nachfrage für die Berechtigungen erneut gestartet werden kann. \\
+	Erwartetes Ergebnis & Nachdem alle Berechtigungen abgelehnt wurden, bleibt die App in einem Abfangbildschirm, wo die Nachfrage für die Berechtigungen erneut gestartet werden kann. \\
 \hline
 \end{tabularx}
 \subsubsection{Testfall 3-Starten von Kudan}
@@ -889,7 +887,7 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 		4. App wieder öffnen\\
 \hline
 	Erwartetes Ergebnis &
-	Die App schaltet wieder auf den Berechtigungsbildschirm. \\
+	Die App wechselt wieder auf den Berechtigungsbildschirm. \\
 \hline
 \end{tabularx}
 \subsubsection{Testfall 9-Smartphone Rotation}
@@ -946,7 +944,7 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 	T-011v1 \\ 
 \hline 
 	Beschreibung & 
-	Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich was die Grösse des Gebäudes betrifft ist. \\ 
+	Es soll überprüft werden, ob die Grösse des bestehenden Gebäudes mit dem AR Gebäude deckungsgleich ist. \\ 
 \hline
     Testvoraussetzung &
 	Die App hat alle Berechtigungen.\\ &
@@ -973,7 +971,7 @@ Basierend auf den Anforderungen, welche in Kapitel \ref{ch:Anforderungen} defini
 	T-012v1 \\ 
 \hline 
 	Beschreibung & 
-	Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich was die Rotation des Gebäudes betrifft. \\ 
+	Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude betreffend Rotation deckungsgleich ist. \\ 
 \hline 
 	Testvoraussetzung &
 	Die App hat alle Berechtigungen. \\ &
@@ -1117,30 +1115,10 @@ Die folgende Tabelle zeigt ob die Tests erfolgreich waren oder nicht. Genauere R
 
 \chapter{Projektmanagementplan}
 
-\section{Vorgehensmodell}
-
-Alle Wirtschaftsprojekte an der Hochschule Luzern fallen in eine der folgenden Kategorien:
-
-\begin{enumerate}
-	\item Einsatz von Standardsoftware und Services
-	\item Software- und Produktentwicklung
-	\item Innovationsprojekt
-	\item IT-Infrastrukturentwicklung
-	\item Strukturierte Analyse und Konzeption von Systemen und Abläufen
-\end{enumerate}
-
-Dabei ist dieses Projekt als Innovationsprojekt und Softwareentwicklung klassifiziert worden. Wir erwarteten daher unter anderem, eine Evaluation, Recherchen und weitere Unbekannten. Um auf diese eingehen zu können, entschied sich das Team darauf die hybride, inkrementelle Agile Methode zu verwenden.
-
-\section{Agile Projektmethode}
-
-Die agile Projektmethode zielt darauf ab in einem ungewissen und sich verändernden Umfeld zu bestehen. Insbesondere heisst das, das auf sich verändernden Voraussetzungen schnell reagiert werden kann und ein funktionierendes Produkt dabei entsteht \parencite{AgileAlliance2015}. Dies soll durch eine enge Zusammenarbeit mit dem Auftraggeber und guter teaminterner Kommunikation erreicht werden.
-\bigbreak
-Ein Rahmenplan dient als Richtschnur des Projektes, während die Anforderungen in den jeweiligen Sprints spezifiziert werden, und in der Sprintplanung festgehalten wird. Wir unterteilten unser Projekt in eine zweiwöchige Initialisierung, zweiwöchige Evaluation, und fünf Sprints, in der unser Produkt entwickelt wurde.
-
 \section{Projektorganisation}
 Da beide Projektmitglieder ihre Kompetenzen eher in den technischen Bereichen dieses Projekts sehen, wurde von einer strikten Aufgabenteilung abgesehen.
 
-Es wurde dennoch darauf geachtet, dass beide Mitglieder klare Verantwortungen übernehmen. Diese waren jedoch mehr in einer überwachenden Funktion gesehen, und soll nicht heissen, dass dieses Mitglied die Arbeit alleine leistete.
+Es wurde dennoch darauf geachtet, dass beide Mitglieder klare Verantwortungen übernehmen. Diese waren jedoch mehr in einer überwachenden Funktion gesehen, und sollen nicht bedeuten, dass dieses Mitglied die Arbeit alleine leistete.
 
 \vspace{1em}
 
@@ -1186,6 +1164,7 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 		Unity (Prototypen) & 2018.2.15f1 \\
 		\hline
 	\end{tabular}
+	\caption{Verwendete Versionen der Tools}
 \end{table}
 
 \subsection{Versions Kontrolle}
@@ -1201,6 +1180,7 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 		GitHub & GitHub.com \\
 		\hline
 	\end{tabular}
+	\caption{Verwendete Versionen der Versionierungssysteme}
 \end{table}
 
 \clearpage
@@ -1221,6 +1201,7 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 		OneDrive & - \\
 		\hline
 	\end{tabular}
+	\caption{Verwendete Versionen der Hilfsmittel für die Dokumentation}
 \end{table}
 
 \subsection{Frameworks}
@@ -1234,6 +1215,7 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 		Vuforia Unity (Prototypen) & 7.5.26 \\
 		\hline
 	\end{tabular}
+	\caption{Verwendete Versionen der Frameworks}
 \end{table}
 
 
@@ -1249,6 +1231,7 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 		Dokumentation & \url{https://github.com/PAWI-HS18-ARBuilding/Dokumentation} \\
 		\hline
 	\end{tabular}
+	\caption{Verwendete Repositories}
 \end{table}
 
 \subsection{Übrige}
@@ -1262,6 +1245,7 @@ Das Projekt wurde in 6 zweiwöchige Sprints unterteilt und in diesen iterativ en
 		WhatsApp & Kommunikation im Team \\
 		\hline
 	\end{tabular}
+	\caption{Übrige Hilfsmittel}
 \end{table}
 
 \section{Risikomanagement}
@@ -1436,7 +1420,7 @@ Legende:
 
 \chapter{Evaluation und Validation}
 \section{Nutzerumfrage}
-Um den Stand der Arbeit zu messen und den Erreichungsgrad der Ziele einzuschätzen wurde eine Nutzerumfrage durchgeführt. Diese fand am Freitag 30. November um 11:00 bis 13:00 am Bahnhof Rotkreuz statt. Ziel war es ein möglichst guter Durchschnitt der Bevölkerung und der Demografie der entwickelten Applikation (siehe Tabelle \ref{tab:UserDemografie}) zu erreichen. Im folgenden Kapitel werden der Versuchsaufbau und das Drehbuch erläutert, danach die Resultate ausgewertet und ein Fazit gezogen.
+Um den Stand der Arbeit zu messen und den Erreichungsgrad der Ziele einzuschätzen wurde eine Nutzerumfrage durchgeführt. Diese fand am Freitag 30. November um 11:00 bis 13:00 am Bahnhof Rotkreuz statt. Ziel war es einen möglichst guten Durchschnitt der Bevölkerung und der Demografie der entwickelten Applikation (siehe Tabelle \ref{tab:UserDemografie}) zu erreichen. Im folgenden Kapitel werden der Versuchsaufbau und das Drehbuch erläutert, die Resultate ausgewertet und ein Fazit gezogen.
 
 \begin{table}[htb]
 	\centering
@@ -1501,7 +1485,7 @@ Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht wer
 
 \section{Vergleich mit Anforderungen}
 \label{sec:VergleichAnforderungen}
-Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für dessen Erfüllung eine potenzielle Lösungsidee beschrieben. Für die Verifikation wurden die Testfälle überprüft.
+Hier werden die Anforderungen aufgelistet und ob diese erfüllt wurden oder nicht. Sofern diese nicht erfüllt wurden, wird für deren Erfüllung eine potenzielle Lösungsidee beschrieben. Für die Verifikation wurden die Testfälle überprüft.
 \bigbreak
 Legende:
 <<\checkmark >> = Anforderung erfüllt, <<x>> = Anforderung nicht erfüllt, <<->> Wurde aus Zeitgründen nicht Implementiert.
@@ -1533,28 +1517,27 @@ Legende:
 \end{tabularx}
 
 \subsection{Verbesserung für \#1.1}
-Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den ungenauesten Sensor darstellt. Eine potenzielle Lösung für dieses Problem kann die kontinuierliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehender Zeit nicht Lösbar gewesen.
+Um die Anforderung von 1.1 erfüllen zu können, müsste die Nordinitialisierung erheblich verbessert werden, da dieser den ungenauesten Sensor darstellt. Eine potenzielle Lösung für dieses Problem kann die kontinuierliche Berechnung von Norden mit den Bewegungen des Smartphones darstellen. Dies ist jedoch in der zur Verfügung stehenden Zeit nicht Lösbar gewesen.
 
 \subsection{Verbesserung für \#2}
-Um die Anforderung von Nummer 2 erfüllen zu können, braucht es noch einen Indikator, welcher die Richtung des ausser Sichtweite geratenes Objekt anzeigt. Kudan liefert bereits die Möglichkeit die Position zum Viewpoint zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
+Um die Anforderung von Nummer 2 erfüllen zu können, wird ein Indikator, welcher die Richtung des ausser Sichtweite geratenen Objekt anzeigt, benötigt. Kudan liefert bereits die Möglichkeit die Position zum Viewpoint zu berechnen. Damit lässt sich die Position des Pfeiles bestimmen und er kann an der korrekten Position dargestellt werden. Die Implementierung konnte jedoch aus zeitlichen Gründen nicht durchgeführt werden.
 
 \subsection{Verbesserung für \#3}
-Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste, um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder zurückgesetzt werden.
-Die Implementation konnte jedoch aus zeitlichen Gründen nicht Implementiert werden.
+Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste, um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder zurückgesetzt werden. Die Implementierung konnte jedoch aus zeitlichen Gründen nicht durchgeführt werden.
 
 \section{Projekt Fazit}
-Die Projektarbeit im Rahmen dieses Moduls hat uns sehr viel gebracht. Wir konnten wertvolle Erkenntnisse sammeln und wissen dadurch viel besser, was uns bei der Bachelorarbeit erwartet. Die Zusammenarbeit und Kommunikation innerhalb des Teams verlief einwandfrei, auch die Kommunikation mit dem Betreuer war sehr gut und angenehm.
+Die Projektarbeit im Rahmen dieses Moduls hat uns sehr viel gelehrt. Wir konnten wertvolle Erkenntnisse sammeln und können nun besser einschätzen, was uns bei der Bachelorarbeit erwartet. Die Zusammenarbeit und Kommunikation innerhalb des Teams verlief einwandfrei, auch die Kommunikation mit dem Betreuer war sehr gut und angenehm.
 
 Im nachfolgenden Abschnitt schildern wir was wir gelernt haben und was wir bei unserem nächsten Projekt besser lösen werden.
 Der erste Punkt, welchen wir verbessern werden, ist mit der Dokumentation früher im Projekt zu beginnen.  Die Dokumentation ist nicht erst während der letzten Wochen entstanden, aber es gab viele Punkte, die bis zum Schluss nicht ganz klar und somit noch nicht dokumentiert waren.
 
-Eine weiterer Punkt zur Verbesserung wäre, dass wir uns schneller auf eine Plattform und ein Framework beschränken. Eine Eingrenzung der Plattform und des Frameworks hätte früher im Projekt eine Abgrenzung gesetzt und die Entwicklung des eigentlichen Prototyps fokussiert.
+Ein weiterer Punkt zur Verbesserung wäre, dass wir uns schneller auf eine Plattform und ein Framework beschränken. Eine Eingrenzung der Plattform und des Frameworks hätte früher im Projekt eine Abgrenzung gesetzt und die Entwicklung des eigentlichen Prototyps fokussiert und somit beschleunigt.
 
-Weiter haben wir den Aufwand für die Literaturrecherche und das Schreiben der Stand der Forschung massiv unterschätzt, dieser Punkt wird für die nächste Arbeit sicher hohe Priorität am Anfang bekommen.
+Weiter haben wir den Aufwand für die Literaturrecherche und das Schreiben der Stand der Forschung massiv unterschätzt, wir werden diese Aktivität beim nächsten Projekt früher angehen und höher priorisieren.
 
-Weiter gilt es zu beachten, dass auch in dieser Projekt entstandene Artefakte weiter nutzen können. So konnten wir den Umgang mit den Hilfsmitteln stärker vertiefen. Zudem konnte für die Dokumentation sowie den Code der Git Feature Branch Workflow etabliert werden, welche das simultane Arbeiten stark vereinfachte und einen optimalen Code und Dokumentationsüberprüfung des anderen Projektmitgliedes forcierte. Ein weiterer Vorteil ist zudem das nun vorhandene Wissen wie eine CI \& CD Infrastruktur für Code sowie Dokumentation früher und effizienter aufgebaut werden kann.
+Weiter können wir auch in diesem Projekt entstandene Artefakte weiter nutzen. So konnten wir den Umgang mit den Hilfsmitteln stärker vertiefen. Zudem konnte für die Dokumentation sowie den Code der Git Feature Branch Workflow etabliert werden, welche das simultane Arbeiten stark vereinfachte und einen optimalen Code und Dokumentationsüberprüfung des anderen Projektmitgliedes forcierte. Ein weiterer Vorteil ist zudem das nun vorhandene Wissen wie eine CI \& CD Infrastruktur für Code sowie Dokumentation früher und effizienter aufgebaut werden können.
 
-Wie im Unterkapitel \ref{sec:VergleichAnforderungen} beschrieben wurde nur ein Subset der Anforderungen erfüllt. Dennoch konnte in der Nutzerumfrage bewiesen werden, dass die Nutzer ein Interesse an der Applikation besitzt und einen reellen Nutzen sieht. Es konnten jedoch wichtige Funktionalitäten nicht realisiert werden, welche für eine Markteinführung noch implementiert werden müssten. Diese schildern wir im Ausblick (siehe \ref{sec:Ausblick}) im Detail.
+Wie im Unterkapitel \ref{sec:VergleichAnforderungen} beschrieben wurde nur ein Subset der Anforderungen erfüllt. Dennoch konnte in der Nutzerumfrage bewiesen werden, dass die Nutzer ein Interesse an der Applikation besitzen und einen reellen Nutzen sehen. Es konnten jedoch wichtige Funktionalitäten nicht realisiert werden, welche für eine Markteinführung noch implementiert werden müssten. Diese schildern wir im Ausblick (siehe \ref{sec:Ausblick}) im Detail.
 
 \section{Ausblick}
 \label{sec:Ausblick}
