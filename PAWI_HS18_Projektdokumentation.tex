@@ -45,6 +45,9 @@
 % Clickable Links to Websites and chapters
 \usepackage{hyperref}
 
+% Change page rotation
+\usepackage{pdflscape}
+
 % Symbols like checkmark
 \usepackage{amssymb}
 \usepackage{pifont}
@@ -1702,7 +1705,9 @@ Test liefert erwartetes Ergebnis.
 
 \chapter*{Rahmenplanung}
 
-\includepdf[pages=-]{Rahmenplanung.pdf}
+\begin{landscape}
+	\includepdf[pages=-,angle=90]{Rahmenplanung.pdf}
+\end{landscape}
 
 \chapter*{Arbeitsjournale}
 
@@ -1711,7 +1716,9 @@ Test liefert erwartetes Ergebnis.
 
 \chapter*{Daten der Nutzerbefragung}
 
-\includepdf[pages=-]{Nutzerbefragung_Rohdaten.pdf}
+\begin{landscape}
+	\includepdf[pages=-,angle=90]{Nutzerbefragung_Rohdaten.pdf}
+\end{landscape}
 
 \chapter*{Eidesstattliche Erklärung}
 Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
