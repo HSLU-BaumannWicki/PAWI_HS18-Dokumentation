@@ -581,11 +581,11 @@ Der Server ist eine über eine REST Schnittstelle ansprechbare Komponente, welch
 Neben der Android Bibliothek wurde KudanAR als externe Schnittstelle verwendet. Die Dokumentation zu dieser Schnittstelle für Android ist unter folgendem Link zu finden:
 \href{https://www.kudan.eu/docs-reference/AndroidDocs/annotated.html}{Dokumentation Kudan - Android}
 
-Um die Höhe anhand der Koordinaten zu errechnen wurde sowohl die OpenElevation wie auch die GoogleMaps API angesprochen. Beide unterstützen eine Abfrage über eine GET-Abfrage und beide die gleiche Genauigkeit der Koordinaten, nämlich $0.000 001$ Grad. Was das Gradmass auf Meter übertragen bedeutet, wird in Tabelle \ref{tab:GradMeter} dargestellt. Dabei wird folgende Formel zu Hilfe genommen:
+Um die Höhe anhand der Koordinaten zu errechnen wurde sowohl die OpenElevation wie auch die GoogleMaps API angesprochen. Beide unterstützen eine Abfrage über einen GET-Request und beide die gleiche Genauigkeit der Koordinaten, nämlich $0.000 001$ Grad. Was das Gradmass auf Meter übertragen bedeutet, wird in Tabelle \ref{tab:GradMeter} dargestellt. Dabei wird folgende Formel zu Hilfe genommen:
 
 \indexequation{b = \frac{\pi}{\SI{180}{\degree}}\cdot\beta\cdot 6378.137}{Bogenlänge $b$ des Winkels $\beta$ mit Radius 6378.137m (Distanz zum Erdmittelpunkt am Äquator)}{Bogenlaenge}
 
-Wie der Tabelle entnommen werden kann, entspricht die maximale Abweichung von den wahren Koordinaten (angenommen die empfangenen Daten sind absolut korrekt) $0.05$ Meter (die Hälfte des Rasters). Um jedoch zusätzlich nicht einem Rate Limiting Opfer zu Fallen werden Abfragen auf $10^{-4}$ gerundet. Dies entspricht einer Abweichung von elf Metern, die Annahme ist dabei, dass die Höhe innerhalb dieser Distanz nicht sprunghaft ansteigt oder sinkt.
+Wie der Tabelle entnommen werden kann, entspricht die maximale Abweichung von den wahren Koordinaten (angenommen die empfangenen Daten sind absolut korrekt) $0.06$ Meter (die Hälfte des Rasters). Um jedoch zusätzlich nicht einem Rate Limiting Opfer zu Fallen werden Abfragen auf $10^{-4}$ gerundet. Dies entspricht einer Abweichung von elf Metern, die Annahme ist dabei, dass die Höhe innerhalb dieser Distanz nicht sprunghaft ansteigt oder sinkt.
 
 \begin{table}[htb]
 	\centering
