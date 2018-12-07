@@ -1314,33 +1314,36 @@ Legende:
 
 \vspace{1em}
 \noindent
-\begin{tabularx}{\textwidth}{|l|X|l|l|l||l|}
-	\hline
-	\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
-	\hline
-	1 & Datenverlust & P & 5 & 1 & 5\\
-	\hline
-	2 & Fehlkommunikation im Team & P & 3 & 2 & 6 \\
-	\hline
-	3 & Teammitglied fällt aus & P & 3 & 2 & 6 \\
-	\hline
-	4 & Verzug bei Erstellung von Dokumenten & P & 3 & 2 & 6 \\
-	\hline
-	5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 2 & 10 \\
-	\hline
-	6 & Probleme mit GPS Sensor & T & 5 & 2 & 10 \\
-	\hline
-	7 & Unerwartete Aktionen der Applikation & T & 3 & 3 & 9\\
-	\hline
-	8 & GPS ungenau & T & 2 & 5 & 10\\
-	\hline
-	9 & Kompass ungenau & T & 4 & 3 & 12\\
-	\hline
-	10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
-	\hline
-	11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
-	\hline
-\end{tabularx}
+\begin{table}[htb]
+	\begin{tabularx}{\textwidth}{|l|X|l|l|l||l|}
+		\hline
+		\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
+		\hline
+		1 & Datenverlust & P & 5 & 1 & 5\\
+		\hline
+		2 & Fehlkommunikation im Team & P & 3 & 2 & 6 \\
+		\hline
+		3 & Teammitglied fällt aus & P & 3 & 2 & 6 \\
+		\hline
+		4 & Verzug bei Erstellung von Dokumenten & P & 3 & 2 & 6 \\
+		\hline
+		5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 2 & 10 \\
+		\hline
+		6 & Probleme mit GPS Sensor & T & 5 & 2 & 10 \\
+		\hline
+		7 & Unerwartete Aktionen der Applikation & T & 3 & 3 & 9\\
+		\hline
+		8 & GPS ungenau & T & 2 & 5 & 10\\
+		\hline
+		9 & Kompass ungenau & T & 4 & 3 & 12\\
+		\hline
+		10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
+		\hline
+		11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
+		\hline
+	\end{tabularx}
+	\caption{Die im Projekt identifizierten Risiken}
+\end{table}
 
 \vspace{1em}
 
@@ -1352,65 +1355,69 @@ Legende:
 
 \subsubsection{Massnahmen}
 
-\begin{tabularx}{\textwidth}{|l|X|}
-	\hline
-	\textbf{Nr.} & \textbf{Beschreibung Massnahme} \\
-	\hline
-	1 & Alle Wichtigen Daten werden auf externen Diensten ausgelagert, Code und Dokumentation auf GitHub, alle projektrelevanten Dokumente auf OneDrive\\
-	\hline
-	2 & Sprintmeetings werden in Person durchgeführt, Teammitglieder bemühen sich proaktiv um Kommunikation in Person oder über Messenger und Videochat\\
-	\hline
-	3 & Alle Arbeiten werden nach CleanCode Praktiken ausgeführt und sauber dokumentiert, sodass das andere Teammitglied übernehmen kann\\
-	\hline
-	4 & Vorgaben werden periodisch durch Team überprüft, Kontakt mit Betreuer gepflegt\\
-	\hline
-	5 & Kontakt mit Betreuer wird Proaktiv gesucht und Stossrichtung validiert\\
-	\hline
-	6 & Nutzer werden Probleme mitgeteilt, Applikation meldet Funktionsbeeinträchtigung\\
-	\hline
-	7 & Applikation wird nach CleanCode Standards entwickelt und durch Teammitglieder validiert\\
-	\hline
-	8 & Es werden mehrere Messungen zusammengefasst und der Median deren berechnet\\
-	\hline
-	9 & In einer Initialisierungsphase wird der Kompass kalibriert\\
-	\hline
-	10 & Dem Benutzer wird die Möglichkeit gegeben die Initialisierungsphase manuell neu zu starten\\
-	\hline
-	11 & Das Laden des Gebäudemodells geschieht in der Initialisierungsphase, welche nicht abgeschlossen ist solange das Gebäude nicht verfügbar ist; das Gebäudemodell wird im Detailgrad reduziert, sodass das Laden des Modells schneller vonstatten geht\\
-	\hline
-\end{tabularx}
-
-\subsubsection{Effekt der Massnahmen}
+\begin{table}[htb]
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Nr.} & \textbf{Beschreibung Massnahme} \\
+		\hline
+		1 & Alle Wichtigen Daten werden auf externen Diensten ausgelagert, Code und Dokumentation auf GitHub, alle projektrelevanten Dokumente auf OneDrive\\
+		\hline
+		2 & Sprintmeetings werden in Person durchgeführt, Teammitglieder bemühen sich proaktiv um Kommunikation in Person oder über Messenger und Videochat\\
+		\hline
+		3 & Alle Arbeiten werden nach CleanCode Praktiken ausgeführt und sauber dokumentiert, sodass das andere Teammitglied übernehmen kann\\
+		\hline
+		4 & Vorgaben werden periodisch durch Team überprüft, Kontakt mit Betreuer gepflegt\\
+		\hline
+		5 & Kontakt mit Betreuer wird Proaktiv gesucht und Stossrichtung validiert\\
+		\hline
+		6 & Nutzer werden Probleme mitgeteilt, Applikation meldet Funktionsbeeinträchtigung\\
+		\hline
+		7 & Applikation wird nach CleanCode Standards entwickelt und durch Teammitglieder validiert\\
+		\hline
+		8 & Es werden mehrere Messungen zusammengefasst und der Median deren berechnet\\
+		\hline
+		9 & In einer Initialisierungsphase wird der Kompass kalibriert\\
+		\hline
+		10 & Dem Benutzer wird die Möglichkeit gegeben die Initialisierungsphase manuell neu zu starten\\
+		\hline
+		11 & Das Laden des Gebäudemodells geschieht in der Initialisierungsphase, welche nicht abgeschlossen ist solange das Gebäude nicht verfügbar ist; das Gebäudemodell wird im Detailgrad reduziert, sodass das Laden des Modells schneller vonstatten geht\\
+		\hline
+	\end{tabularx}
+	\caption{Massnahmen um Effekte oder Eintrittswahrscheinlichkeit zu reduzieren}
+\end{table}
 
 \vspace{1em}
-\noindent
-\begin{tabularx}{\textwidth}{|l|X|l|l|l||l|}
-	\hline
-	\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
-	\hline
-	1 & Datenverlust & P & 2 & 1 & 2\\
-	\hline
-	2 & Fehlkommunikation im Team & P & 3 & 1 & 3 \\
-	\hline
-	3 & Teammitglied fällt aus & P & 3 & 1 & 3 \\
-	\hline
-	4 & Verzug bei Erstellung von Dokumenten & P & 3 & 1 & 3 \\
-	\hline
-	5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 1 & 5 \\
-	\hline
-	6 & Probleme mit GPS Sensor & T & 5 & 1 & 5 \\
-	\hline
-	7 & Unerwartete Aktionen der Applikation & T & 2 & 2 & 4\\
-	\hline
-	8 & GPS ungenau & T & 2 & 5 & 10\\
-	\hline
-	9 & Kompass ungenau & T & 4 & 3 & 12\\
-	\hline
-	10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
-	\hline
-	11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
-	\hline
-\end{tabularx}
+
+\begin{table}[htb]
+	\begin{tabularx}{\textwidth}{|l|X|l|l|l||l|}
+		\hline
+		\textbf{Nr.} & \textbf{Beschreibung / Risiko} & \textbf{K} & \textbf{S} & \textbf{W} & \textbf{A} \\
+		\hline
+		1 & Datenverlust & P & 2 & 1 & 2\\
+		\hline
+		2 & Fehlkommunikation im Team & P & 3 & 1 & 3 \\
+		\hline
+		3 & Teammitglied fällt aus & P & 3 & 1 & 3 \\
+		\hline
+		4 & Verzug bei Erstellung von Dokumenten & P & 3 & 1 & 3 \\
+		\hline
+		5 & Prototyp entspricht nicht den Kundenwünschen & T & 5 & 1 & 5 \\
+		\hline
+		6 & Probleme mit GPS Sensor & T & 5 & 1 & 5 \\
+		\hline
+		7 & Unerwartete Aktionen der Applikation & T & 2 & 2 & 4\\
+		\hline
+		8 & GPS ungenau & T & 2 & 5 & 10\\
+		\hline
+		9 & Kompass ungenau & T & 4 & 3 & 12\\
+		\hline
+		10 & Kombination GPS und Kompass zu ungenau & T & 4 & 4 & 16\\
+		\hline
+		11 & Gebäudemodell zu langsam in der Darstellung & T & 3 & 2 & 6\\
+		\hline
+	\end{tabularx}
+	\caption{Neueinschätzung der Risiken nach Einführung der Massnahmen}
+\end{table}
 
 \vspace{1em}
 
