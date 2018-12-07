@@ -45,6 +45,9 @@
 % Clickable Links to Websites and chapters
 \usepackage{hyperref}
 
+% Change page rotation
+\usepackage{pdflscape}
+
 % Symbols like checkmark
 \usepackage{amssymb}
 \usepackage{pifont}
@@ -1558,6 +1561,10 @@ Um die im Rahmen dieser Arbeit entwickelte und realisierte AR Applikation in ein
 	\item Implementation einer iOS Lösung
 \end{itemize}
 
+\newpage
+
+\pagenumbering{Roman}
+
 \appendix
 
 \glossary{Abkürzungsverzeichnis}
@@ -1656,26 +1663,34 @@ Test liefert erwartetes Ergebnis.
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_2}
-	\caption{Erledigte Tasks in Sprint 2}
+	\caption*{Erledigte Tasks in Sprint 2}
 \end{figure}
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_3}
-	\caption{Erledigte Tasks in Sprint 3}
+	\caption*{Erledigte Tasks in Sprint 3}
 \end{figure}
 
 \newpage
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_4}
-	\caption{Erledigte Tasks in Sprint 4}
+	\caption*{Erledigte Tasks in Sprint 4}
 \end{figure}
 
 \newpage
 
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio,width=\textwidth]{SprintReview_5}
-	\caption{Erledigte Tasks in Sprint 5}
+	\caption*{Erledigte Tasks in Sprint 5}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio,height=\textheight]{SprintReview_6}
+	\caption*{Erledigte Tasks in Sprint 6}
 \end{figure}
 
 \newpage
@@ -1690,7 +1705,9 @@ Test liefert erwartetes Ergebnis.
 
 \chapter*{Rahmenplanung}
 
-\includepdf[pages=-]{Rahmenplanung.pdf}
+\begin{landscape}
+	\includepdf[pages=-,angle=90]{Rahmenplanung.pdf}
+\end{landscape}
 
 \chapter*{Arbeitsjournale}
 
@@ -1699,7 +1716,9 @@ Test liefert erwartetes Ergebnis.
 
 \chapter*{Daten der Nutzerbefragung}
 
-\includepdf[pages=-]{Nutzerbefragung_Rohdaten.pdf}
+\begin{landscape}
+	\includepdf[pages=-,angle=90]{Nutzerbefragung_Rohdaten.pdf}
+\end{landscape}
 
 \chapter*{Eidesstattliche Erklärung}
 Ich erkläre hiermit, dass ich/wir die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt haben, alle verwendeten Quellen, Literatur und andere Hilfsmittel angegeben haben, wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht haben, das Vertraulichkeitsinteresse des Auftraggebers wahren und die Urheberrechtsbestimmungen der Fachhochschule Zentralschweiz (siehe Merkblatt «Studentische Arbeiten» auf MyCampus) respektieren werden.
