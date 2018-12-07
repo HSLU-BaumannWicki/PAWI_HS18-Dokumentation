@@ -356,7 +356,7 @@ Sobald der Benutzer das Gerät mit einer maximalen Abweichung von 0.5 Grad über
 \end{figure}
 
 \subsection{AR Application Init} \label{ch:ARApplicationInit}
-Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für die Initialisierung der AR Applikation gestartet. Dies bedeutet insbesondere, dass die Kudan AR Welt aufgebaut wird. Zudem abonniert dieser Status den Event, welcher bei Aktualisierungen der Lokalisierung des Gerätes geworfen wird und wechselt, sobald dieser Event eintritt wird, zum in Kapitel \ref{ch:waitingForLocation} beschrieben Status.
+Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für die Initialisierung der AR Applikation gestartet. Dies bedeutet insbesondere, dass die Kudan AR Welt aufgebaut wird. Zudem abonniert dieser Status den Event, welcher bei Aktualisierungen der Lokalisierung des Gerätes geworfen wird und wechselt, sobald dieser Event eintritt wird, zum in Kapitel \ref{ch:waitingForLocation} beschriebenen Status.
 
 \subsection{3D Model Init}
 Dieser Status \textquotedblleft 3D Model Init\textquoteright\ erfüllt zum jetzigen Zeitpunkt noch keinen Zweck. Er würde jedoch die Modelle, welche die Applikation darstellen soll von einer Website herunterladen und diese der Applikation bereitstellen.
@@ -1119,7 +1119,7 @@ Die folgende Tabelle zeigt ob die Tests erfolgreich waren oder nicht. Genauere R
 \hline
 	T-009v2 & Es soll überprüft werden wie das Verhalten ist, wenn das Smartphone rotiert wird. & \checkmark \\
 \hline
-	T-010v1 & Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich ist. & x \\
+	T-010v1 & Es soll überprüft werden, o"b das bestehende Gebäude mit dem AR Gebäude deckungsgleich ist. & \xmark \\
 \hline
 	T-011v1 & Es soll überprüft werden, ob das bestehende Gebäude mit dem AR Gebäude deckungsgleich was die Grösse des Gebäudes betrifft. & \checkmark \\
 \hline
@@ -1447,7 +1447,7 @@ Legende:
 
 \chapter{Evaluation und Validation}
 \section{Nutzerumfrage}
-Um den Stand der Arbeit zu messen und den Erreichungsgrad der Ziele einzuschätzen wurde eine Nutzerumfrage durchgeführt. Diese fand am Freitag 30. November um 11:00 bis 13:00 am Bahnhof Rotkreuz statt. Ziel war es einen möglichst guten Durchschnitt der Bevölkerung und der Demografie der entwickelten Applikation (siehe Tabelle \ref{tab:UserDemografie}) zu erreichen. Im folgenden Kapitel werden der Versuchsaufbau und das Drehbuch erläutert, die Resultate ausgewertet und ein Fazit gezogen.
+Um den Stand der Arbeit zu messen und den Erreichungsgrad der Ziele einzuschätzen wurde eine Nutzerumfrage durchgeführt. Diese fand am Freitag 30. November um 11:00 bis 13:00 am Bahnhof Rotkreuz statt. Ziel war es einen möglichst guten Durchschnitt der Bevölkerung und der Demografie der entwickelten Applikation (siehe Tabelle \ref{tbl:UserDemography}) zu erreichen. Im folgenden Kapitel werden der Versuchsaufbau und das Drehbuch erläutert, die Resultate ausgewertet und ein Fazit gezogen.
 
 \begin{table}[htb]
 	\centering
@@ -1466,8 +1466,8 @@ Um den Stand der Arbeit zu messen und den Erreichungsgrad der Ziele einzuschätz
 		66+ & 10\% \\
 		\hline
 	\end{tabular}
-	\label{tab:UserDemografie}
 	\caption{Geschätzte Prozentanteile des Alters an Demografie der Nutzer}
+	\label{tbl:UserDemography}
 \end{table}
 
 \subsection{Methodik und Drehbuch}
