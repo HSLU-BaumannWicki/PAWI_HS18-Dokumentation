@@ -345,7 +345,7 @@ Sind gewisse Berechtigungen nicht vorhanden, so werden diese in diesem Status be
 \subsection{North Init} \label{ch:NorthInit}
 In diesem Status wird versucht den Norden mittels Kompass auszulesen und dem Benutzer visuell dessen Richtung angezeigt. Dabei wird der Benutzer dazu aufgefordert das Smartphone nach Norden auszurichten. Dies dient dazu, dass das virtuelle Koordinatensystem welches Kudan in sich aufbaut, mit dem Physischen Koordinatensystem übereinstimmt.
 
-(obald der Benutzer das Gerät mit einer maximalen Abweichung von 0.5 Grad über 20 Messung nach Norden ausgerichtet hat, startet die Applikation in den in Kapitel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
+Sobald der Benutzer das Gerät mit einer maximalen Abweichung von 0.5 Grad über 20 Messung nach Norden ausgerichtet hat, startet die Applikation in den in Kapitel \ref{ch:ARApplicationInit} beschriebenen Status. In der Abbildung \ref{fig:NorthInitProcess} ist die Grafische Benutzeroberfläche für die Initialisierung dieses Schrittes zu sehen.
 \begin{figure}[h!]
 	\includegraphics[keepaspectratio, width=\textwidth]{NorthInitProcess.png}
 	\caption{Darstellung North Init mit Indikator ob richtige Position erreicht wurde.}
@@ -353,7 +353,7 @@ In diesem Status wird versucht den Norden mittels Kompass auszulesen und dem Ben
 \end{figure}
 
 \subsection{AR Application Init} \label{ch:ARApplicationInit}
-Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für die Initialisierung der AR Applikation gestartet. Dies bedeutet insbesondere, dass die Kudan AR Welt aufgebaut wird. Zudem abonniert dieser Status den Event, welcher bei Aktualisierungen der Lokalisierung des Gerätes geworfen wird und wechselt, sobald dieser Event geworfen wird, zum in Kapitel \ref{ch:waitingForLocation} beschrieben Status.
+Kommt die Applikation in diesen Status, werden alle notwendigen Schritte für die Initialisierung der AR Applikation gestartet. Dies bedeutet insbesondere, dass die Kudan AR Welt aufgebaut wird. Zudem abonniert dieser Status den Event, welcher bei Aktualisierungen der Lokalisierung des Gerätes geworfen wird und wechselt, sobald dieser Event eintritt wird, zum in Kapitel \ref{ch:waitingForLocation} beschrieben Status.
 
 \subsection{3D Model Init}
 Dieser Status \textquotedblleft 3D Model Init\textquoteright\ erfüllt zum jetzigen Zeitpunkt noch keinen Zweck. Er würde jedoch die Modelle, welche die Applikation darstellen soll von einer Website herunterladen und diese der Applikation bereitstellen.
@@ -453,7 +453,7 @@ Nachteile zeigen sich in der Haltung des Gerätes, da für die Einbindung der Au
 
 In einer ersten Evaluation mit einer HoloLens wurde entschieden, dass für dieses Projekt die HoloLens ausgeschlossen wird, da diese für Ausseneinsätze nur bedingt verwendet werden kann.
 
-Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, da für die Entwiclung auf dieser Platform kein MacOS gebraucht wird und somit auf den bereits vorhanden Geräten für Android entwickelt werden kann.
+Dank der höheren Verbreitung und der damit entstehenden höheren Flexibilität beim Entwickeln, fiel die Entscheidung auf eine Lösung für Smartphones. Es wurde schliesslich noch auf die Android Plattform eingeschränkt, da für die Entwicklung auf dieser Plattform kein MacOS gebraucht wird und somit auf den bereits vorhanden Geräten für Android entwickelt werden kann.
 
 \subsubsection{Entwicklungsumgebung}
 \label{ssec:EvalPlattform}
@@ -600,9 +600,6 @@ Der Server ist eine über eine REST Schnittstelle ansprechbare Komponente, welch
 
 \subsection{Externe Schnittstellen}
 Neben der Android Bibliothek wurde KudanAR als externe Schnittstelle verwendet. Die Dokumentation zu dieser Schnittstelle wird von Kudan zur verfügung gestellt (\cite{KudanAPI}).
-
-
-\href{https://www.kudan.eu/docs-reference/AndroidDocs/annotated.html}{Dokumentation Kudan - Android}
 
 Um die Höhe anhand der Koordinaten zu errechnen wurde sowohl die OpenElevation wie auch die GoogleMaps API angesprochen. Beide unterstützen eine Abfrage über einen GET-Request. Weiter weisen beide die gleiche Genauigkeit der Koordinaten, nämlich $0.000 001$ Grad auf. Was das Gradmass auf Meter übertragen bedeutet, wird in Tabelle \ref{tab:GradMeter} dargestellt. Dabei wird folgende Formel zu Hilfe genommen:
 
