@@ -1479,7 +1479,7 @@ Die Nutzerumfrage wurde folgendermassen durchgeführt: Nach einer kurzen Einleit
 
 \subsection{Analyse und Resultat}
 
-Insgesamt war die Teilnahmebereitschaft der Probanden auf einem sehr niedrigen Niveau. So erklärten sich von gut 60 Probanden lediglich 13 bereit an der Umfrage teilzunehmen. Die meisten Probanden waren, wie in Abbildung \ref{fig:Altersgruppen} zu sehen, Schüler oder Studenten, welche sich für die Umfrage Zeit nahmen.
+Insgesamt war die Teilnahmebereitschaft der Probanden auf einem sehr niedrigen Niveau. So erklärten sich von gut 60 Probanden lediglich 13 bereit an der Umfrage teilzunehmen. Die meisten Probanden waren, wie in Abbildung \ref{fig:Altersgruppen} zu sehen, unter 30 Jährige, welche sich für die Umfrage Zeit nahmen.
 
 \begin{figure}[htb]
 	\centering
@@ -1500,7 +1500,7 @@ Die Bewertung der Handhabung wurde insgesamt mit 4.54 (0: unintuitiv, 6: intuiti
 Als zusätzliche Nutzungsmöglichkeiten wurden neben der Betrachtung einer Immobilie (Apartments, Neubau, geplantes Gebäude) von aussen, auch die Visualisierung von Gebäuden für den Unterricht (beispielsweise Geschichtsunterricht oder gestalterisches Zeichnen) und eine Art Röntgenblick für Gebäude genannt.
 
 \subsection{Fazit}
-Die gewünschte Zieldemografie konnte durch geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls Sie verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einblick über die Innenstruktur von ausserhalb.
+Die gewünschte Zieldemografie konnte durch die geringe Teilnahme nicht erreicht werden. Es besteht jedoch auf jeden Fall Marktpotenzial für die Applikation; mehr als 90\% der Probanden gaben an die Applikation zu nutzen, falls diese verfügbar würde. Die Bedienbarkeit der Applikation wurde als intuitiv und gut bewertet, es wurden jedoch ein Tutorial, Hilfetexte am Gebäude und Indikatoren zur Verbesserung gewünscht. Es wurden auch interessante Alternativnutzungen vorgeschlagen, wie beispielsweise als Hilfsmittel in der Bildung und für einen detaillierten Einblick über die Innenstruktur von ausserhalb.
 
 \section{Vergleich mit Anforderungen}
 \label{sec:VergleichAnforderungen}
@@ -1545,16 +1545,18 @@ Um die Anforderung von Nummer 2 erfüllen zu können, wird ein Indikator, welche
 Die momentane Architektur lässt es mit einfachen Anpassungen zu, dass die Activity selbst über Location Updates informiert wird. So müsste, um diese Anforderung zu erfüllen die Activity das Interface LocationFilterListener implementieren und sich selber bei LocationFilter registrieren. So würde die Activity über alle LocationUpdates informiert werden. Um nun dem Benutzer die Information anzuzeigen, müsste im Hintergrund ein Timer laufen, welcher nach 3 Sekunden eine Information an den Benutzer liefert. Bei eingegangene Location müsste der Timer wieder zurückgesetzt werden. Die Implementierung konnte jedoch aus zeitlichen Gründen nicht durchgeführt werden.
 
 \section{Projekt Fazit}
+Im nachfolgenden Abschnitt schildern wir was wir gelernt haben und was gut lief, sowie was wir bei unserem nächsten Projekt besser lösen werden.
+
+
 Die Projektarbeit im Rahmen dieses Moduls hat uns sehr viel gelehrt. Wir konnten wertvolle Erkenntnisse sammeln und können nun besser einschätzen, was uns bei der Bachelorarbeit erwartet. Die Zusammenarbeit und Kommunikation innerhalb des Teams verlief einwandfrei, auch die Kommunikation mit dem Betreuer war sehr gut und angenehm.
 
-Im nachfolgenden Abschnitt schildern wir was wir gelernt haben und was wir bei unserem nächsten Projekt besser lösen werden.
 Der erste Punkt, welchen wir verbessern werden, ist mit der Dokumentation früher im Projekt zu beginnen.  Die Dokumentation ist nicht erst während der letzten Wochen entstanden, aber es gab viele Punkte, die bis zum Schluss nicht ganz klar und somit noch nicht dokumentiert waren.
 
 Ein weiterer Punkt zur Verbesserung wäre, dass wir uns schneller auf eine Plattform und ein Framework beschränken. Eine Eingrenzung der Plattform und des Frameworks hätte früher im Projekt eine Abgrenzung gesetzt und die Entwicklung des eigentlichen Prototyps fokussiert und somit beschleunigt.
 
 Weiter haben wir den Aufwand für die Literaturrecherche und das Schreiben der Stand der Forschung massiv unterschätzt, wir werden diese Aktivität beim nächsten Projekt früher angehen und höher priorisieren.
 
-Weiter können wir auch in diesem Projekt entstandene Artefakte weiter nutzen. So konnten wir den Umgang mit den Hilfsmitteln stärker vertiefen. Zudem konnte für die Dokumentation sowie den Code der Git Feature Branch Workflow etabliert werden, welche das simultane Arbeiten stark vereinfachte und einen optimalen Code und Dokumentationsüberprüfung des anderen Projektmitgliedes forcierte. Ein weiterer Vorteil ist zudem das nun vorhandene Wissen wie eine CI \& CD Infrastruktur für Code sowie Dokumentation früher und effizienter aufgebaut werden können.
+Weiter können wir auch in diesem Projekt entstandene Artefakte weiter nutzen. So konnten wir den Umgang mit den Hilfsmitteln stärker vertiefen. Zudem konnte für die Dokumentation sowie den Code der Git Feature Branch Workflow etabliert werden, welche das simultane Arbeiten stark vereinfachte und einen optimalen Code und Dokumentationsüberprüfung des anderen Projektmitgliedes forcierte. Ein weiterer Vorteil ist das nun vorhandene Wissen wie eine CI \& CD Infrastruktur für Code sowie Dokumentation früher und effizienter aufgebaut werden können.
 
 Wie im Unterkapitel \ref{sec:VergleichAnforderungen} beschrieben wurde nur ein Subset der Anforderungen erfüllt. Dennoch konnte in der Nutzerumfrage bewiesen werden, dass die Nutzer ein Interesse an der Applikation besitzen und einen reellen Nutzen sehen. Es konnten jedoch wichtige Funktionalitäten nicht realisiert werden, welche für eine Markteinführung noch implementiert werden müssten. Diese schildern wir im Ausblick (siehe \ref{sec:Ausblick}) im Detail.
 
