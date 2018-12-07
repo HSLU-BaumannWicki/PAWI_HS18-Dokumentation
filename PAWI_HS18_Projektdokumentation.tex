@@ -585,7 +585,7 @@ Um die Höhe anhand der Koordinaten zu errechnen wurde sowohl die OpenElevation 
 
 \indexequation{b = \frac{\pi}{\SI{180}{\degree}}\cdot\beta\cdot 6378.137}{Bogenlänge $b$ des Winkels $\beta$ mit Radius 6378.137m (Distanz zum Erdmittelpunkt am Äquator)}{Bogenlaenge}
 
-Wie der Tabelle entnommen werden kann, entspricht die maximale Abweichung (angenommen die empfangenen Daten sind absolut korrekt) $0.05$ Meter. Um jedoch zusätzlich nicht einem Rate Limiting Opfer zu Fallen werden Abfragen auf $10^{-4}$ gerundet. Dies entspricht einer Abweichung von elf Metern, die Annahme ist dabei, dass die Höhe innerhalb dieser Distanz nicht sprunghaft ansteigt oder sinkt.
+Wie der Tabelle entnommen werden kann, entspricht die maximale Abweichung von den wahren Koordinaten (angenommen die empfangenen Daten sind absolut korrekt) $0.05$ Meter (die Hälfte des Rasters). Um jedoch zusätzlich nicht einem Rate Limiting Opfer zu Fallen werden Abfragen auf $10^{-4}$ gerundet. Dies entspricht einer Abweichung von elf Metern, die Annahme ist dabei, dass die Höhe innerhalb dieser Distanz nicht sprunghaft ansteigt oder sinkt.
 
 \begin{table}[htb]
 	\centering
